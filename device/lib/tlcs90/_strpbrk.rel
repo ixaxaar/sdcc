@@ -1,0 +1,48 @@
+XL2
+H 9 areas 5 global symbols
+M _strpbrk
+O -mtlcs90
+S .__.ABS. Def0000
+S _strchr Ref0000
+A _CODE size 4A flags 0 addr 0
+S _strpbrk Def0000
+S _strpbrk_start Def0000
+S _strpbrk_end Def004A
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 00 00
+T 00 00
+R 00 00 00 00
+T 00 00 54 3C 00 00 FE 14 38 00 00 F2 06 4A
+R 00 00 00 00
+T 0C 00
+R 00 00 00 00
+T 0C 00 E2 2E FE 66 EB 44 00 C6 2B A2 FE 63 2A 52
+R 00 00 00 00 00 07 00 00
+T 1A 00 50 51 08 F2 0A 4A 52 1C 00 00 16 04 00 08
+R 00 00 00 00 02 0A 01 00
+T 28 00 58 5A 22 FB 66 C6 11 20 F9 66 C6 08 23 F9
+R 00 00 00 00
+T 36 00 62 22 F8 63 CF 04
+R 00 00 00 00
+T 3C 00
+R 00 00 00 00
+T 3C 00 FB 31 FA 30
+R 00 00 00 00
+T 40 00
+R 00 00 00 00
+T 40 00 92 1A 0C 00
+R 00 00 00 00 00 04 00 00
+T 44 00
+R 00 00 00 00
+T 44 00 F9 35 F8 34 5C 1E
+R 00 00 00 00
+T 4A 00
+R 00 00 00 00

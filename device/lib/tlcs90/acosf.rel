@@ -1,0 +1,51 @@
+XL2
+H 9 areas 6 global symbols
+M acosf
+O -mtlcs90
+S ___fseq Ref0000
+S .__.ABS. Def0000
+S _asincosf Ref0000
+A _CODE size 73 flags 0 addr 0
+S _acosf_end Def0073
+S _acosf Def0000
+S _acosf_start Def0000
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 00 00
+T 00 00
+R 00 00 00 00
+T 00 00 3A 80 3F 52 3A 00 00 52 F2 08 4A 52 F2 08
+R 00 00 00 00
+T 0E 00 4A 52 1C 00 00 16 08 00 25 FE 66 C6 08 3A
+R 00 00 00 00 02 05 00 00
+T 1C 00 00 00 FD 33 FC 32 1E
+R 00 00 00 00
+T 23 00
+R 00 00 00 00
+T 23 00 3A 80 BF 52 3A 00 00 52 F2 08 4A 52 F2 08
+R 00 00 00 00
+T 31 00 4A 52 1C 00 00 16 08 00 25 FE 66 C6 07 3A
+R 00 00 00 00 02 05 00 00
+T 3F 00 DB 0F 39 49 40 1E
+R 00 00 00 00
+T 45 00
+R 00 00 00 00
+T 45 00 3D 02 00 FE 15 F1 03 2E FE B7 F1 02 66 F1
+R 00 00 00 00
+T 53 00 01 66 E5 66 CE 07 3A DB 0F 39 C9 3F 1E
+R 00 00 00 00
+T 60 00
+R 00 00 00 00
+T 60 00 36 01 56 96 F2 05 4A 52 F2 05 4A 52 1C
+R 00 00 00 00
+T 6D 00 00 00 16 05 00 1E
+R 00 00 00 00 02 02 02 00
+T 73 00
+R 00 00 00 00

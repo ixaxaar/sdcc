@@ -1,0 +1,26 @@
+lk_readnl.o: lk_readnl.c lk_readnl.h
+lkaomf51.o: lkaomf51.c aslink.h sdld.h
+lkar.o: lkar.c aslink.h sdld.h lklibr.h lkrel.h lkar.h
+lkarea.o: lkarea.c aslink.h sdld.h
+lkdata.o: lkdata.c aslink.h sdld.h
+lkelf.o: lkelf.c asxxxx_config.h aslink.h sdld.h
+lkeval.o: lkeval.c aslink.h sdld.h
+lkhead.o: lkhead.c aslink.h sdld.h
+lklex.o: lklex.c aslink.h sdld.h
+lklib.o: lklib.c sdld.h lk_readnl.h aslink.h lklibr.h lkrel.h
+lklibr.o: lklibr.c aslink.h sdld.h lkrel.h lklibr.h
+lklist.o: lklist.c aslink.h sdld.h
+lkmain.o: lkmain.c aslink.h sdld.h
+lkmem.o: lkmem.c sdld.h aslink.h
+lknoice.o: lknoice.c aslink.h sdld.h
+lkout.o: lkout.c aslink.h sdld.h
+lkrel.o: lkrel.c lk_readnl.h aslink.h sdld.h lkrel.h
+lkrloc.o: lkrloc.c aslink.h sdld.h
+lkrloc3.o: lkrloc3.c aslink.h sdld.h
+lks19.o: lks19.c sdld.h aslink.h
+lksdcclib.o: lksdcclib.c sdld.h lk_readnl.h aslink.h lklibr.h lkrel.h
+lksym.o: lksym.c aslink.h sdld.h
+sdld.o: sdld.c sdld.h
+lksdcdb.o: lksdcdb.c aslink.h sdld.h
+lkbank.o: lkbank.c aslink.h sdld.h
+strcmpi.o: ../asxxsrc/strcmpi.c

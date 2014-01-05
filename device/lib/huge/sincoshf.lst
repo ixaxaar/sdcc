@@ -1,0 +1,787 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                                      4 ; This file was generated Wed Nov 27 12:28:00 2013
+                                      5 ;--------------------------------------------------------
+                                      6 	.module sincoshf
+                                      7 	.optsdcc -mmcs51 --model-huge
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl _sincoshf
+                                     13 	.globl _expf
+                                     14 	.globl _sincoshf_PARM_2
+                                     15 ;--------------------------------------------------------
+                                     16 ; special function registers
+                                     17 ;--------------------------------------------------------
+                                     18 	.area RSEG    (ABS,DATA)
+      000000                         19 	.org 0x0000
+                                     20 ;--------------------------------------------------------
+                                     21 ; special function bits
+                                     22 ;--------------------------------------------------------
+                                     23 	.area RSEG    (ABS,DATA)
+      000000                         24 	.org 0x0000
+                                     25 ;--------------------------------------------------------
+                                     26 ; overlayable register banks
+                                     27 ;--------------------------------------------------------
+                                     28 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         29 	.ds 8
+                                     30 ;--------------------------------------------------------
+                                     31 ; internal ram data
+                                     32 ;--------------------------------------------------------
+                                     33 	.area DSEG    (DATA)
+      000000                         34 _sincoshf_sloc0_1_0:
+      000000                         35 	.ds 4
+      000004                         36 _sincoshf_sloc1_1_0:
+      000004                         37 	.ds 4
+      000008                         38 _sincoshf_sloc2_1_0:
+      000008                         39 	.ds 4
+                                     40 ;--------------------------------------------------------
+                                     41 ; overlayable items in internal ram 
+                                     42 ;--------------------------------------------------------
+                                     43 ;--------------------------------------------------------
+                                     44 ; indirectly addressable internal ram data
+                                     45 ;--------------------------------------------------------
+                                     46 	.area ISEG    (DATA)
+                                     47 ;--------------------------------------------------------
+                                     48 ; absolute internal ram data
+                                     49 ;--------------------------------------------------------
+                                     50 	.area IABS    (ABS,DATA)
+                                     51 	.area IABS    (ABS,DATA)
+                                     52 ;--------------------------------------------------------
+                                     53 ; bit data
+                                     54 ;--------------------------------------------------------
+                                     55 	.area BSEG    (BIT)
+      000000                         56 _sincoshf_sign_1_24:
+      000000                         57 	.ds 1
+                                     58 ;--------------------------------------------------------
+                                     59 ; paged external ram data
+                                     60 ;--------------------------------------------------------
+                                     61 	.area PSEG    (PAG,XDATA)
+                                     62 ;--------------------------------------------------------
+                                     63 ; external ram data
+                                     64 ;--------------------------------------------------------
+                                     65 	.area XSEG    (XDATA)
+      000000                         66 _sincoshf_PARM_2:
+      000000                         67 	.ds 2
+      000002                         68 _sincoshf_x_1_23:
+      000002                         69 	.ds 4
+      000006                         70 _sincoshf_y_1_24:
+      000006                         71 	.ds 4
+      00000A                         72 _sincoshf_w_1_24:
+      00000A                         73 	.ds 4
+      00000E                         74 _sincoshf_z_1_24:
+      00000E                         75 	.ds 4
+                                     76 ;--------------------------------------------------------
+                                     77 ; absolute external ram data
+                                     78 ;--------------------------------------------------------
+                                     79 	.area XABS    (ABS,XDATA)
+                                     80 ;--------------------------------------------------------
+                                     81 ; external initialized ram data
+                                     82 ;--------------------------------------------------------
+                                     83 	.area XISEG   (XDATA)
+                                     84 	.area HOME    (CODE)
+                                     85 	.area GSINIT0 (CODE)
+                                     86 	.area GSINIT1 (CODE)
+                                     87 	.area GSINIT2 (CODE)
+                                     88 	.area GSINIT3 (CODE)
+                                     89 	.area GSINIT4 (CODE)
+                                     90 	.area GSINIT5 (CODE)
+                                     91 	.area GSINIT  (CODE)
+                                     92 	.area GSFINAL (CODE)
+                                     93 	.area CSEG    (CODE)
+                                     94 ;--------------------------------------------------------
+                                     95 ; global & static initialisations
+                                     96 ;--------------------------------------------------------
+                                     97 	.area HOME    (CODE)
+                                     98 	.area GSINIT  (CODE)
+                                     99 	.area GSFINAL (CODE)
+                                    100 	.area GSINIT  (CODE)
+                                    101 ;--------------------------------------------------------
+                                    102 ; Home
+                                    103 ;--------------------------------------------------------
+                                    104 	.area HOME    (CODE)
+                                    105 	.area HOME    (CODE)
+                                    106 ;--------------------------------------------------------
+                                    107 ; code
+                                    108 ;--------------------------------------------------------
+                                    109 	.area CSEG    (CODE)
+                                    110 ;------------------------------------------------------------
+                                    111 ;Allocation info for local variables in function 'sincoshf'
+                                    112 ;------------------------------------------------------------
+                                    113 ;sloc0                     Allocated with name '_sincoshf_sloc0_1_0'
+                                    114 ;sloc1                     Allocated with name '_sincoshf_sloc1_1_0'
+                                    115 ;sloc2                     Allocated with name '_sincoshf_sloc2_1_0'
+                                    116 ;iscosh                    Allocated with name '_sincoshf_PARM_2'
+                                    117 ;x                         Allocated with name '_sincoshf_x_1_23'
+                                    118 ;y                         Allocated with name '_sincoshf_y_1_24'
+                                    119 ;w                         Allocated with name '_sincoshf_w_1_24'
+                                    120 ;z                         Allocated with name '_sincoshf_z_1_24'
+                                    121 ;------------------------------------------------------------
+                                    122 ;	sincoshf.c:56: float sincoshf(const float x, const int iscosh)
+                                    123 ;	-----------------------------------------
+                                    124 ;	 function sincoshf
+                                    125 ;	-----------------------------------------
+      000000                        126 _sincoshf:
+                           000007   127 	ar7 = 0x07
+                           000006   128 	ar6 = 0x06
+                           000005   129 	ar5 = 0x05
+                           000004   130 	ar4 = 0x04
+                           000003   131 	ar3 = 0x03
+                           000002   132 	ar2 = 0x02
+                           000001   133 	ar1 = 0x01
+                           000000   134 	ar0 = 0x00
+      000000 AF 82            [24]  135 	mov	r7,dpl
+      000002 AE 83            [24]  136 	mov	r6,dph
+      000004 AD F0            [24]  137 	mov	r5,b
+      000006 FC               [12]  138 	mov	r4,a
+      000007 90r00r02         [24]  139 	mov	dptr,#_sincoshf_x_1_23
+      00000A EF               [12]  140 	mov	a,r7
+      00000B F0               [24]  141 	movx	@dptr,a
+      00000C EE               [12]  142 	mov	a,r6
+      00000D A3               [24]  143 	inc	dptr
+      00000E F0               [24]  144 	movx	@dptr,a
+      00000F ED               [12]  145 	mov	a,r5
+      000010 A3               [24]  146 	inc	dptr
+      000011 F0               [24]  147 	movx	@dptr,a
+      000012 EC               [12]  148 	mov	a,r4
+      000013 A3               [24]  149 	inc	dptr
+      000014 F0               [24]  150 	movx	@dptr,a
+                                    151 ;	sincoshf.c:61: if (x<0.0) { y=-x; sign=1; }
+      000015 90r00r02         [24]  152 	mov	dptr,#_sincoshf_x_1_23
+      000018 E0               [24]  153 	movx	a,@dptr
+      000019 FC               [12]  154 	mov	r4,a
+      00001A A3               [24]  155 	inc	dptr
+      00001B E0               [24]  156 	movx	a,@dptr
+      00001C FD               [12]  157 	mov	r5,a
+      00001D A3               [24]  158 	inc	dptr
+      00001E E0               [24]  159 	movx	a,@dptr
+      00001F FE               [12]  160 	mov	r6,a
+      000020 A3               [24]  161 	inc	dptr
+      000021 E0               [24]  162 	movx	a,@dptr
+      000022 FF               [12]  163 	mov	r7,a
+      000023 C0 07            [24]  164 	push	ar7
+      000025 C0 06            [24]  165 	push	ar6
+      000027 C0 05            [24]  166 	push	ar5
+      000029 C0 04            [24]  167 	push	ar4
+      00002B E4               [12]  168 	clr	a
+      00002C C0 E0            [24]  169 	push	acc
+      00002E C0 E0            [24]  170 	push	acc
+      000030 C0 E0            [24]  171 	push	acc
+      000032 C0 E0            [24]  172 	push	acc
+      000034 8C 82            [24]  173 	mov	dpl,r4
+      000036 8D 83            [24]  174 	mov	dph,r5
+      000038 8E F0            [24]  175 	mov	b,r6
+      00003A EF               [12]  176 	mov	a,r7
+      00003B 12r00r00         [24]  177 	lcall	___fslt
+      00003E AB 82            [24]  178 	mov	r3,dpl
+      000040 E5 81            [12]  179 	mov	a,sp
+      000042 24 FC            [12]  180 	add	a,#0xfc
+      000044 F5 81            [12]  181 	mov	sp,a
+      000046 D0 04            [24]  182 	pop	ar4
+      000048 D0 05            [24]  183 	pop	ar5
+      00004A D0 06            [24]  184 	pop	ar6
+      00004C D0 07            [24]  185 	pop	ar7
+      00004E EB               [12]  186 	mov	a,r3
+      00004F 60 14            [24]  187 	jz	00102$
+      000051 90r00r06         [24]  188 	mov	dptr,#_sincoshf_y_1_24
+      000054 EC               [12]  189 	mov	a,r4
+      000055 F0               [24]  190 	movx	@dptr,a
+      000056 ED               [12]  191 	mov	a,r5
+      000057 A3               [24]  192 	inc	dptr
+      000058 F0               [24]  193 	movx	@dptr,a
+      000059 EE               [12]  194 	mov	a,r6
+      00005A A3               [24]  195 	inc	dptr
+      00005B F0               [24]  196 	movx	@dptr,a
+      00005C EF               [12]  197 	mov	a,r7
+      00005D B2 E7            [12]  198 	cpl	acc.7
+      00005F A3               [24]  199 	inc	dptr
+      000060 F0               [24]  200 	movx	@dptr,a
+      000061 D2*00            [12]  201 	setb	_sincoshf_sign_1_24
+      000063 80 10            [24]  202 	sjmp	00103$
+      000065                        203 00102$:
+                                    204 ;	sincoshf.c:62: else { y=x;  sign=0; }
+      000065 90r00r06         [24]  205 	mov	dptr,#_sincoshf_y_1_24
+      000068 EC               [12]  206 	mov	a,r4
+      000069 F0               [24]  207 	movx	@dptr,a
+      00006A ED               [12]  208 	mov	a,r5
+      00006B A3               [24]  209 	inc	dptr
+      00006C F0               [24]  210 	movx	@dptr,a
+      00006D EE               [12]  211 	mov	a,r6
+      00006E A3               [24]  212 	inc	dptr
+      00006F F0               [24]  213 	movx	@dptr,a
+      000070 EF               [12]  214 	mov	a,r7
+      000071 A3               [24]  215 	inc	dptr
+      000072 F0               [24]  216 	movx	@dptr,a
+      000073 C2*00            [12]  217 	clr	_sincoshf_sign_1_24
+      000075                        218 00103$:
+                                    219 ;	sincoshf.c:64: if ((y>1.0) || iscosh)
+      000075 90r00r06         [24]  220 	mov	dptr,#_sincoshf_y_1_24
+      000078 E0               [24]  221 	movx	a,@dptr
+      000079 F5*00            [12]  222 	mov	_sincoshf_sloc0_1_0,a
+      00007B A3               [24]  223 	inc	dptr
+      00007C E0               [24]  224 	movx	a,@dptr
+      00007D F5*01            [12]  225 	mov	(_sincoshf_sloc0_1_0 + 1),a
+      00007F A3               [24]  226 	inc	dptr
+      000080 E0               [24]  227 	movx	a,@dptr
+      000081 F5*02            [12]  228 	mov	(_sincoshf_sloc0_1_0 + 2),a
+      000083 A3               [24]  229 	inc	dptr
+      000084 E0               [24]  230 	movx	a,@dptr
+      000085 F5*03            [12]  231 	mov	(_sincoshf_sloc0_1_0 + 3),a
+      000087 C0 07            [24]  232 	push	ar7
+      000089 C0 06            [24]  233 	push	ar6
+      00008B C0 05            [24]  234 	push	ar5
+      00008D C0 04            [24]  235 	push	ar4
+      00008F E4               [12]  236 	clr	a
+      000090 C0 E0            [24]  237 	push	acc
+      000092 C0 E0            [24]  238 	push	acc
+      000094 74 80            [12]  239 	mov	a,#0x80
+      000096 C0 E0            [24]  240 	push	acc
+      000098 74 3F            [12]  241 	mov	a,#0x3F
+      00009A C0 E0            [24]  242 	push	acc
+      00009C 85*00 82         [24]  243 	mov	dpl,_sincoshf_sloc0_1_0
+      00009F 85*01 83         [24]  244 	mov	dph,(_sincoshf_sloc0_1_0 + 1)
+      0000A2 85*02 F0         [24]  245 	mov	b,(_sincoshf_sloc0_1_0 + 2)
+      0000A5 E5*03            [12]  246 	mov	a,(_sincoshf_sloc0_1_0 + 3)
+      0000A7 12r00r00         [24]  247 	lcall	___fsgt
+      0000AA AB 82            [24]  248 	mov	r3,dpl
+      0000AC E5 81            [12]  249 	mov	a,sp
+      0000AE 24 FC            [12]  250 	add	a,#0xfc
+      0000B0 F5 81            [12]  251 	mov	sp,a
+      0000B2 D0 04            [24]  252 	pop	ar4
+      0000B4 D0 05            [24]  253 	pop	ar5
+      0000B6 D0 06            [24]  254 	pop	ar6
+      0000B8 D0 07            [24]  255 	pop	ar7
+      0000BA EB               [12]  256 	mov	a,r3
+      0000BB 70 0E            [24]  257 	jnz	00117$
+      0000BD 90r00r00         [24]  258 	mov	dptr,#_sincoshf_PARM_2
+      0000C0 E0               [24]  259 	movx	a,@dptr
+      0000C1 FA               [12]  260 	mov	r2,a
+      0000C2 A3               [24]  261 	inc	dptr
+      0000C3 E0               [24]  262 	movx	a,@dptr
+      0000C4 FB               [12]  263 	mov	r3,a
+      0000C5 4A               [12]  264 	orl	a,r2
+      0000C6 70 03            [24]  265 	jnz	00146$
+      0000C8 02r02rCD         [24]  266 	ljmp	00118$
+      0000CB                        267 00146$:
+      0000CB                        268 00117$:
+                                    269 ;	sincoshf.c:66: if(y>YBAR)
+      0000CB E4               [12]  270 	clr	a
+      0000CC C0 E0            [24]  271 	push	acc
+      0000CE C0 E0            [24]  272 	push	acc
+      0000D0 74 10            [12]  273 	mov	a,#0x10
+      0000D2 C0 E0            [24]  274 	push	acc
+      0000D4 74 41            [12]  275 	mov	a,#0x41
+      0000D6 C0 E0            [24]  276 	push	acc
+      0000D8 85*00 82         [24]  277 	mov	dpl,_sincoshf_sloc0_1_0
+      0000DB 85*01 83         [24]  278 	mov	dph,(_sincoshf_sloc0_1_0 + 1)
+      0000DE 85*02 F0         [24]  279 	mov	b,(_sincoshf_sloc0_1_0 + 2)
+      0000E1 E5*03            [12]  280 	mov	a,(_sincoshf_sloc0_1_0 + 3)
+      0000E3 12r00r00         [24]  281 	lcall	___fsgt
+      0000E6 AB 82            [24]  282 	mov	r3,dpl
+      0000E8 E5 81            [12]  283 	mov	a,sp
+      0000EA 24 FC            [12]  284 	add	a,#0xfc
+      0000EC F5 81            [12]  285 	mov	sp,a
+      0000EE EB               [12]  286 	mov	a,r3
+      0000EF 70 03            [24]  287 	jnz	00147$
+      0000F1 02r01rD7         [24]  288 	ljmp	00110$
+      0000F4                        289 00147$:
+                                    290 ;	sincoshf.c:68: w=y-K1;
+      0000F4 E4               [12]  291 	clr	a
+      0000F5 C0 E0            [24]  292 	push	acc
+      0000F7 74 73            [12]  293 	mov	a,#0x73
+      0000F9 C0 E0            [24]  294 	push	acc
+      0000FB 74 31            [12]  295 	mov	a,#0x31
+      0000FD C0 E0            [24]  296 	push	acc
+      0000FF 74 3F            [12]  297 	mov	a,#0x3F
+      000101 C0 E0            [24]  298 	push	acc
+                                    299 ;	sincoshf.c:69: if (w>WMAX)
+      000103 85*00 82         [24]  300 	mov	dpl,_sincoshf_sloc0_1_0
+      000106 85*01 83         [24]  301 	mov	dph,(_sincoshf_sloc0_1_0 + 1)
+      000109 85*02 F0         [24]  302 	mov	b,(_sincoshf_sloc0_1_0 + 2)
+      00010C E5*03            [12]  303 	mov	a,(_sincoshf_sloc0_1_0 + 3)
+      00010E 12r00r00         [24]  304 	lcall	___fssub
+      000111 85 82*04         [24]  305 	mov	_sincoshf_sloc1_1_0,dpl
+      000114 85 83*05         [24]  306 	mov	(_sincoshf_sloc1_1_0 + 1),dph
+      000117 85 F0*06         [24]  307 	mov	(_sincoshf_sloc1_1_0 + 2),b
+      00011A F5*07            [12]  308 	mov	(_sincoshf_sloc1_1_0 + 3),a
+      00011C E5 81            [12]  309 	mov	a,sp
+      00011E 24 FC            [12]  310 	add	a,#0xfc
+      000120 F5 81            [12]  311 	mov	sp,a
+      000122 74 CF            [12]  312 	mov	a,#0xCF
+      000124 C0 E0            [24]  313 	push	acc
+      000126 74 BD            [12]  314 	mov	a,#0xBD
+      000128 C0 E0            [24]  315 	push	acc
+      00012A 74 33            [12]  316 	mov	a,#0x33
+      00012C C0 E0            [24]  317 	push	acc
+      00012E 74 42            [12]  318 	mov	a,#0x42
+      000130 C0 E0            [24]  319 	push	acc
+      000132 85*04 82         [24]  320 	mov	dpl,_sincoshf_sloc1_1_0
+      000135 85*05 83         [24]  321 	mov	dph,(_sincoshf_sloc1_1_0 + 1)
+      000138 85*06 F0         [24]  322 	mov	b,(_sincoshf_sloc1_1_0 + 2)
+      00013B E5*07            [12]  323 	mov	a,(_sincoshf_sloc1_1_0 + 3)
+      00013D 12r00r00         [24]  324 	lcall	___fsgt
+      000140 AB 82            [24]  325 	mov	r3,dpl
+      000142 E5 81            [12]  326 	mov	a,sp
+      000144 24 FC            [12]  327 	add	a,#0xfc
+      000146 F5 81            [12]  328 	mov	sp,a
+      000148 EB               [12]  329 	mov	a,r3
+      000149 60 19            [24]  330 	jz	00105$
+                                    331 ;	sincoshf.c:71: errno=ERANGE;
+      00014B 90r00r00         [24]  332 	mov	dptr,#_errno
+      00014E 74 22            [12]  333 	mov	a,#0x22
+      000150 F0               [24]  334 	movx	@dptr,a
+      000151 E4               [12]  335 	clr	a
+      000152 A3               [24]  336 	inc	dptr
+      000153 F0               [24]  337 	movx	@dptr,a
+                                    338 ;	sincoshf.c:72: z=HUGE_VALF;
+      000154 90r00r0E         [24]  339 	mov	dptr,#_sincoshf_z_1_24
+      000157 14               [12]  340 	dec	a
+      000158 F0               [24]  341 	movx	@dptr,a
+      000159 A3               [24]  342 	inc	dptr
+      00015A F0               [24]  343 	movx	@dptr,a
+      00015B 74 7F            [12]  344 	mov	a,#0x7F
+      00015D A3               [24]  345 	inc	dptr
+      00015E F0               [24]  346 	movx	@dptr,a
+      00015F A3               [24]  347 	inc	dptr
+      000160 F0               [24]  348 	movx	@dptr,a
+      000161 02r02rA6         [24]  349 	ljmp	00111$
+      000164                        350 00105$:
+                                    351 ;	sincoshf.c:76: z=expf(w);
+      000164 85*04 82         [24]  352 	mov	dpl,_sincoshf_sloc1_1_0
+      000167 85*05 83         [24]  353 	mov	dph,(_sincoshf_sloc1_1_0 + 1)
+      00016A 85*06 F0         [24]  354 	mov	b,(_sincoshf_sloc1_1_0 + 2)
+      00016D E5*07            [12]  355 	mov	a,(_sincoshf_sloc1_1_0 + 3)
+      00016F 78r00            [12]  356 	mov	r0,#_expf
+      000171 79s00            [12]  357 	mov	r1,#(_expf >> 8)
+      000173 7As00            [12]  358 	mov	r2,#(_expf >> 16)
+      000175 12r00r00         [24]  359 	lcall	__sdcc_banked_call
+      000178 85 82*04         [24]  360 	mov	_sincoshf_sloc1_1_0,dpl
+      00017B 85 83*05         [24]  361 	mov	(_sincoshf_sloc1_1_0 + 1),dph
+      00017E 85 F0*06         [24]  362 	mov	(_sincoshf_sloc1_1_0 + 2),b
+      000181 F5*07            [12]  363 	mov	(_sincoshf_sloc1_1_0 + 3),a
+                                    364 ;	sincoshf.c:77: z+=K3*z;
+      000183 C0*04            [24]  365 	push	_sincoshf_sloc1_1_0
+      000185 C0*05            [24]  366 	push	(_sincoshf_sloc1_1_0 + 1)
+      000187 C0*06            [24]  367 	push	(_sincoshf_sloc1_1_0 + 2)
+      000189 C0*07            [24]  368 	push	(_sincoshf_sloc1_1_0 + 3)
+      00018B 90 08 97         [24]  369 	mov	dptr,#0x0897
+      00018E 75 F0 68         [24]  370 	mov	b,#0x68
+      000191 74 37            [12]  371 	mov	a,#0x37
+      000193 12r00r00         [24]  372 	lcall	___fsmul
+      000196 A8 82            [24]  373 	mov	r0,dpl
+      000198 A9 83            [24]  374 	mov	r1,dph
+      00019A AA F0            [24]  375 	mov	r2,b
+      00019C FB               [12]  376 	mov	r3,a
+      00019D E5 81            [12]  377 	mov	a,sp
+      00019F 24 FC            [12]  378 	add	a,#0xfc
+      0001A1 F5 81            [12]  379 	mov	sp,a
+      0001A3 C0 00            [24]  380 	push	ar0
+      0001A5 C0 01            [24]  381 	push	ar1
+      0001A7 C0 02            [24]  382 	push	ar2
+      0001A9 C0 03            [24]  383 	push	ar3
+      0001AB 85*04 82         [24]  384 	mov	dpl,_sincoshf_sloc1_1_0
+      0001AE 85*05 83         [24]  385 	mov	dph,(_sincoshf_sloc1_1_0 + 1)
+      0001B1 85*06 F0         [24]  386 	mov	b,(_sincoshf_sloc1_1_0 + 2)
+      0001B4 E5*07            [12]  387 	mov	a,(_sincoshf_sloc1_1_0 + 3)
+      0001B6 12r00r00         [24]  388 	lcall	___fsadd
+      0001B9 A8 82            [24]  389 	mov	r0,dpl
+      0001BB A9 83            [24]  390 	mov	r1,dph
+      0001BD AA F0            [24]  391 	mov	r2,b
+      0001BF FB               [12]  392 	mov	r3,a
+      0001C0 E5 81            [12]  393 	mov	a,sp
+      0001C2 24 FC            [12]  394 	add	a,#0xfc
+      0001C4 F5 81            [12]  395 	mov	sp,a
+      0001C6 90r00r0E         [24]  396 	mov	dptr,#_sincoshf_z_1_24
+      0001C9 E8               [12]  397 	mov	a,r0
+      0001CA F0               [24]  398 	movx	@dptr,a
+      0001CB E9               [12]  399 	mov	a,r1
+      0001CC A3               [24]  400 	inc	dptr
+      0001CD F0               [24]  401 	movx	@dptr,a
+      0001CE EA               [12]  402 	mov	a,r2
+      0001CF A3               [24]  403 	inc	dptr
+      0001D0 F0               [24]  404 	movx	@dptr,a
+      0001D1 EB               [12]  405 	mov	a,r3
+      0001D2 A3               [24]  406 	inc	dptr
+      0001D3 F0               [24]  407 	movx	@dptr,a
+      0001D4 02r02rA6         [24]  408 	ljmp	00111$
+      0001D7                        409 00110$:
+                                    410 ;	sincoshf.c:82: z=expf(y);
+      0001D7 85*00 82         [24]  411 	mov	dpl,_sincoshf_sloc0_1_0
+      0001DA 85*01 83         [24]  412 	mov	dph,(_sincoshf_sloc0_1_0 + 1)
+      0001DD 85*02 F0         [24]  413 	mov	b,(_sincoshf_sloc0_1_0 + 2)
+      0001E0 E5*03            [12]  414 	mov	a,(_sincoshf_sloc0_1_0 + 3)
+      0001E2 78r00            [12]  415 	mov	r0,#_expf
+      0001E4 79s00            [12]  416 	mov	r1,#(_expf >> 8)
+      0001E6 7As00            [12]  417 	mov	r2,#(_expf >> 16)
+      0001E8 12r00r00         [24]  418 	lcall	__sdcc_banked_call
+      0001EB 85 82*08         [24]  419 	mov	_sincoshf_sloc2_1_0,dpl
+      0001EE 85 83*09         [24]  420 	mov	(_sincoshf_sloc2_1_0 + 1),dph
+      0001F1 85 F0*0A         [24]  421 	mov	(_sincoshf_sloc2_1_0 + 2),b
+      0001F4 F5*0B            [12]  422 	mov	(_sincoshf_sloc2_1_0 + 3),a
+                                    423 ;	sincoshf.c:83: w=1.0/z;
+      0001F6 C0*08            [24]  424 	push	_sincoshf_sloc2_1_0
+      0001F8 C0*09            [24]  425 	push	(_sincoshf_sloc2_1_0 + 1)
+      0001FA C0*0A            [24]  426 	push	(_sincoshf_sloc2_1_0 + 2)
+      0001FC C0*0B            [24]  427 	push	(_sincoshf_sloc2_1_0 + 3)
+      0001FE 90 00 00         [24]  428 	mov	dptr,#0x0000
+      000201 75 F0 80         [24]  429 	mov	b,#0x80
+      000204 74 3F            [12]  430 	mov	a,#0x3F
+      000206 12r00r00         [24]  431 	lcall	___fsdiv
+      000209 85 82*04         [24]  432 	mov	_sincoshf_sloc1_1_0,dpl
+      00020C 85 83*05         [24]  433 	mov	(_sincoshf_sloc1_1_0 + 1),dph
+      00020F 85 F0*06         [24]  434 	mov	(_sincoshf_sloc1_1_0 + 2),b
+      000212 F5*07            [12]  435 	mov	(_sincoshf_sloc1_1_0 + 3),a
+      000214 E5 81            [12]  436 	mov	a,sp
+      000216 24 FC            [12]  437 	add	a,#0xfc
+      000218 F5 81            [12]  438 	mov	sp,a
+      00021A 90r00r0A         [24]  439 	mov	dptr,#_sincoshf_w_1_24
+      00021D E5*04            [12]  440 	mov	a,_sincoshf_sloc1_1_0
+      00021F F0               [24]  441 	movx	@dptr,a
+      000220 E5*05            [12]  442 	mov	a,(_sincoshf_sloc1_1_0 + 1)
+      000222 A3               [24]  443 	inc	dptr
+      000223 F0               [24]  444 	movx	@dptr,a
+      000224 E5*06            [12]  445 	mov	a,(_sincoshf_sloc1_1_0 + 2)
+      000226 A3               [24]  446 	inc	dptr
+      000227 F0               [24]  447 	movx	@dptr,a
+      000228 E5*07            [12]  448 	mov	a,(_sincoshf_sloc1_1_0 + 3)
+      00022A A3               [24]  449 	inc	dptr
+      00022B F0               [24]  450 	movx	@dptr,a
+                                    451 ;	sincoshf.c:84: if(!iscosh) w=-w;
+      00022C 90r00r00         [24]  452 	mov	dptr,#_sincoshf_PARM_2
+      00022F E0               [24]  453 	movx	a,@dptr
+      000230 FA               [12]  454 	mov	r2,a
+      000231 A3               [24]  455 	inc	dptr
+      000232 E0               [24]  456 	movx	a,@dptr
+      000233 FB               [12]  457 	mov	r3,a
+      000234 4A               [12]  458 	orl	a,r2
+      000235 70 14            [24]  459 	jnz	00108$
+      000237 90r00r0A         [24]  460 	mov	dptr,#_sincoshf_w_1_24
+      00023A E5*04            [12]  461 	mov	a,_sincoshf_sloc1_1_0
+      00023C F0               [24]  462 	movx	@dptr,a
+      00023D E5*05            [12]  463 	mov	a,(_sincoshf_sloc1_1_0 + 1)
+      00023F A3               [24]  464 	inc	dptr
+      000240 F0               [24]  465 	movx	@dptr,a
+      000241 E5*06            [12]  466 	mov	a,(_sincoshf_sloc1_1_0 + 2)
+      000243 A3               [24]  467 	inc	dptr
+      000244 F0               [24]  468 	movx	@dptr,a
+      000245 E5*07            [12]  469 	mov	a,(_sincoshf_sloc1_1_0 + 3)
+      000247 B2 E7            [12]  470 	cpl	acc.7
+      000249 A3               [24]  471 	inc	dptr
+      00024A F0               [24]  472 	movx	@dptr,a
+      00024B                        473 00108$:
+                                    474 ;	sincoshf.c:85: z=(z+w)*0.5;
+      00024B 90r00r0A         [24]  475 	mov	dptr,#_sincoshf_w_1_24
+      00024E E0               [24]  476 	movx	a,@dptr
+      00024F C0 E0            [24]  477 	push	acc
+      000251 A3               [24]  478 	inc	dptr
+      000252 E0               [24]  479 	movx	a,@dptr
+      000253 C0 E0            [24]  480 	push	acc
+      000255 A3               [24]  481 	inc	dptr
+      000256 E0               [24]  482 	movx	a,@dptr
+      000257 C0 E0            [24]  483 	push	acc
+      000259 A3               [24]  484 	inc	dptr
+      00025A E0               [24]  485 	movx	a,@dptr
+      00025B C0 E0            [24]  486 	push	acc
+      00025D 85*08 82         [24]  487 	mov	dpl,_sincoshf_sloc2_1_0
+      000260 85*09 83         [24]  488 	mov	dph,(_sincoshf_sloc2_1_0 + 1)
+      000263 85*0A F0         [24]  489 	mov	b,(_sincoshf_sloc2_1_0 + 2)
+      000266 E5*0B            [12]  490 	mov	a,(_sincoshf_sloc2_1_0 + 3)
+      000268 12r00r00         [24]  491 	lcall	___fsadd
+      00026B A8 82            [24]  492 	mov	r0,dpl
+      00026D A9 83            [24]  493 	mov	r1,dph
+      00026F AA F0            [24]  494 	mov	r2,b
+      000271 FB               [12]  495 	mov	r3,a
+      000272 E5 81            [12]  496 	mov	a,sp
+      000274 24 FC            [12]  497 	add	a,#0xfc
+      000276 F5 81            [12]  498 	mov	sp,a
+      000278 C0 00            [24]  499 	push	ar0
+      00027A C0 01            [24]  500 	push	ar1
+      00027C C0 02            [24]  501 	push	ar2
+      00027E C0 03            [24]  502 	push	ar3
+      000280 90 00 00         [24]  503 	mov	dptr,#(0x00&0x00ff)
+      000283 E4               [12]  504 	clr	a
+      000284 F5 F0            [12]  505 	mov	b,a
+      000286 74 3F            [12]  506 	mov	a,#0x3F
+      000288 12r00r00         [24]  507 	lcall	___fsmul
+      00028B A8 82            [24]  508 	mov	r0,dpl
+      00028D A9 83            [24]  509 	mov	r1,dph
+      00028F AA F0            [24]  510 	mov	r2,b
+      000291 FB               [12]  511 	mov	r3,a
+      000292 E5 81            [12]  512 	mov	a,sp
+      000294 24 FC            [12]  513 	add	a,#0xfc
+      000296 F5 81            [12]  514 	mov	sp,a
+      000298 90r00r0E         [24]  515 	mov	dptr,#_sincoshf_z_1_24
+      00029B E8               [12]  516 	mov	a,r0
+      00029C F0               [24]  517 	movx	@dptr,a
+      00029D E9               [12]  518 	mov	a,r1
+      00029E A3               [24]  519 	inc	dptr
+      00029F F0               [24]  520 	movx	@dptr,a
+      0002A0 EA               [12]  521 	mov	a,r2
+      0002A1 A3               [24]  522 	inc	dptr
+      0002A2 F0               [24]  523 	movx	@dptr,a
+      0002A3 EB               [12]  524 	mov	a,r3
+      0002A4 A3               [24]  525 	inc	dptr
+      0002A5 F0               [24]  526 	movx	@dptr,a
+      0002A6                        527 00111$:
+                                    528 ;	sincoshf.c:87: if(sign) z=-z;
+      0002A6 20*00 03         [24]  529 	jb	_sincoshf_sign_1_24,00150$
+      0002A9 02r04r63         [24]  530 	ljmp	00119$
+      0002AC                        531 00150$:
+      0002AC 90r00r0E         [24]  532 	mov	dptr,#_sincoshf_z_1_24
+      0002AF E0               [24]  533 	movx	a,@dptr
+      0002B0 F8               [12]  534 	mov	r0,a
+      0002B1 A3               [24]  535 	inc	dptr
+      0002B2 E0               [24]  536 	movx	a,@dptr
+      0002B3 F9               [12]  537 	mov	r1,a
+      0002B4 A3               [24]  538 	inc	dptr
+      0002B5 E0               [24]  539 	movx	a,@dptr
+      0002B6 FA               [12]  540 	mov	r2,a
+      0002B7 A3               [24]  541 	inc	dptr
+      0002B8 E0               [24]  542 	movx	a,@dptr
+      0002B9 FB               [12]  543 	mov	r3,a
+      0002BA 90r00r0E         [24]  544 	mov	dptr,#_sincoshf_z_1_24
+      0002BD E8               [12]  545 	mov	a,r0
+      0002BE F0               [24]  546 	movx	@dptr,a
+      0002BF E9               [12]  547 	mov	a,r1
+      0002C0 A3               [24]  548 	inc	dptr
+      0002C1 F0               [24]  549 	movx	@dptr,a
+      0002C2 EA               [12]  550 	mov	a,r2
+      0002C3 A3               [24]  551 	inc	dptr
+      0002C4 F0               [24]  552 	movx	@dptr,a
+      0002C5 EB               [12]  553 	mov	a,r3
+      0002C6 B2 E7            [12]  554 	cpl	acc.7
+      0002C8 A3               [24]  555 	inc	dptr
+      0002C9 F0               [24]  556 	movx	@dptr,a
+      0002CA 02r04r63         [24]  557 	ljmp	00119$
+      0002CD                        558 00118$:
+                                    559 ;	sincoshf.c:91: if (y<EPS)
+      0002CD C0 07            [24]  560 	push	ar7
+      0002CF C0 06            [24]  561 	push	ar6
+      0002D1 C0 05            [24]  562 	push	ar5
+      0002D3 C0 04            [24]  563 	push	ar4
+      0002D5 E4               [12]  564 	clr	a
+      0002D6 C0 E0            [24]  565 	push	acc
+      0002D8 C0 E0            [24]  566 	push	acc
+      0002DA 74 80            [12]  567 	mov	a,#0x80
+      0002DC C0 E0            [24]  568 	push	acc
+      0002DE 74 39            [12]  569 	mov	a,#0x39
+      0002E0 C0 E0            [24]  570 	push	acc
+      0002E2 85*00 82         [24]  571 	mov	dpl,_sincoshf_sloc0_1_0
+      0002E5 85*01 83         [24]  572 	mov	dph,(_sincoshf_sloc0_1_0 + 1)
+      0002E8 85*02 F0         [24]  573 	mov	b,(_sincoshf_sloc0_1_0 + 2)
+      0002EB E5*03            [12]  574 	mov	a,(_sincoshf_sloc0_1_0 + 3)
+      0002ED 12r00r00         [24]  575 	lcall	___fslt
+      0002F0 AB 82            [24]  576 	mov	r3,dpl
+      0002F2 E5 81            [12]  577 	mov	a,sp
+      0002F4 24 FC            [12]  578 	add	a,#0xfc
+      0002F6 F5 81            [12]  579 	mov	sp,a
+      0002F8 D0 04            [24]  580 	pop	ar4
+      0002FA D0 05            [24]  581 	pop	ar5
+      0002FC D0 06            [24]  582 	pop	ar6
+      0002FE D0 07            [24]  583 	pop	ar7
+      000300 EB               [12]  584 	mov	a,r3
+      000301 60 11            [24]  585 	jz	00115$
+                                    586 ;	sincoshf.c:92: z=x;
+      000303 90r00r0E         [24]  587 	mov	dptr,#_sincoshf_z_1_24
+      000306 EC               [12]  588 	mov	a,r4
+      000307 F0               [24]  589 	movx	@dptr,a
+      000308 ED               [12]  590 	mov	a,r5
+      000309 A3               [24]  591 	inc	dptr
+      00030A F0               [24]  592 	movx	@dptr,a
+      00030B EE               [12]  593 	mov	a,r6
+      00030C A3               [24]  594 	inc	dptr
+      00030D F0               [24]  595 	movx	@dptr,a
+      00030E EF               [12]  596 	mov	a,r7
+      00030F A3               [24]  597 	inc	dptr
+      000310 F0               [24]  598 	movx	@dptr,a
+      000311 02r04r63         [24]  599 	ljmp	00119$
+      000314                        600 00115$:
+                                    601 ;	sincoshf.c:95: z=x*x;
+      000314 C0 07            [24]  602 	push	ar7
+      000316 C0 06            [24]  603 	push	ar6
+      000318 C0 05            [24]  604 	push	ar5
+      00031A C0 04            [24]  605 	push	ar4
+      00031C C0 04            [24]  606 	push	ar4
+      00031E C0 05            [24]  607 	push	ar5
+      000320 C0 06            [24]  608 	push	ar6
+      000322 C0 07            [24]  609 	push	ar7
+                                    610 ;	sincoshf.c:96: z=x+x*z*P(z)/Q(z);
+      000324 8C 82            [24]  611 	mov	dpl,r4
+      000326 8D 83            [24]  612 	mov	dph,r5
+      000328 8E F0            [24]  613 	mov	b,r6
+      00032A EF               [12]  614 	mov	a,r7
+      00032B 12r00r00         [24]  615 	lcall	___fsmul
+      00032E 85 82*08         [24]  616 	mov	_sincoshf_sloc2_1_0,dpl
+      000331 85 83*09         [24]  617 	mov	(_sincoshf_sloc2_1_0 + 1),dph
+      000334 85 F0*0A         [24]  618 	mov	(_sincoshf_sloc2_1_0 + 2),b
+      000337 F5*0B            [12]  619 	mov	(_sincoshf_sloc2_1_0 + 3),a
+      000339 E5 81            [12]  620 	mov	a,sp
+      00033B 24 FC            [12]  621 	add	a,#0xfc
+      00033D F5 81            [12]  622 	mov	sp,a
+      00033F D0 04            [24]  623 	pop	ar4
+      000341 D0 05            [24]  624 	pop	ar5
+      000343 D0 06            [24]  625 	pop	ar6
+      000345 D0 07            [24]  626 	pop	ar7
+      000347 C0 07            [24]  627 	push	ar7
+      000349 C0 06            [24]  628 	push	ar6
+      00034B C0 05            [24]  629 	push	ar5
+      00034D C0 04            [24]  630 	push	ar4
+      00034F C0*08            [24]  631 	push	_sincoshf_sloc2_1_0
+      000351 C0*09            [24]  632 	push	(_sincoshf_sloc2_1_0 + 1)
+      000353 C0*0A            [24]  633 	push	(_sincoshf_sloc2_1_0 + 2)
+      000355 C0*0B            [24]  634 	push	(_sincoshf_sloc2_1_0 + 3)
+      000357 8C 82            [24]  635 	mov	dpl,r4
+      000359 8D 83            [24]  636 	mov	dph,r5
+      00035B 8E F0            [24]  637 	mov	b,r6
+      00035D EF               [12]  638 	mov	a,r7
+      00035E 12r00r00         [24]  639 	lcall	___fsmul
+      000361 85 82*04         [24]  640 	mov	_sincoshf_sloc1_1_0,dpl
+      000364 85 83*05         [24]  641 	mov	(_sincoshf_sloc1_1_0 + 1),dph
+      000367 85 F0*06         [24]  642 	mov	(_sincoshf_sloc1_1_0 + 2),b
+      00036A F5*07            [12]  643 	mov	(_sincoshf_sloc1_1_0 + 3),a
+      00036C E5 81            [12]  644 	mov	a,sp
+      00036E 24 FC            [12]  645 	add	a,#0xfc
+      000370 F5 81            [12]  646 	mov	sp,a
+      000372 C0*08            [24]  647 	push	_sincoshf_sloc2_1_0
+      000374 C0*09            [24]  648 	push	(_sincoshf_sloc2_1_0 + 1)
+      000376 C0*0A            [24]  649 	push	(_sincoshf_sloc2_1_0 + 2)
+      000378 C0*0B            [24]  650 	push	(_sincoshf_sloc2_1_0 + 3)
+      00037A 90 E6 EA         [24]  651 	mov	dptr,#0xE6EA
+      00037D 75 F0 42         [24]  652 	mov	b,#0x42
+      000380 74 BE            [12]  653 	mov	a,#0xBE
+      000382 12r00r00         [24]  654 	lcall	___fsmul
+      000385 A8 82            [24]  655 	mov	r0,dpl
+      000387 A9 83            [24]  656 	mov	r1,dph
+      000389 AA F0            [24]  657 	mov	r2,b
+      00038B FB               [12]  658 	mov	r3,a
+      00038C E5 81            [12]  659 	mov	a,sp
+      00038E 24 FC            [12]  660 	add	a,#0xfc
+      000390 F5 81            [12]  661 	mov	sp,a
+      000392 74 F0            [12]  662 	mov	a,#0xF0
+      000394 C0 E0            [24]  663 	push	acc
+      000396 74 69            [12]  664 	mov	a,#0x69
+      000398 C0 E0            [24]  665 	push	acc
+      00039A 74 E4            [12]  666 	mov	a,#0xE4
+      00039C C0 E0            [24]  667 	push	acc
+      00039E 74 C0            [12]  668 	mov	a,#0xC0
+      0003A0 C0 E0            [24]  669 	push	acc
+      0003A2 88 82            [24]  670 	mov	dpl,r0
+      0003A4 89 83            [24]  671 	mov	dph,r1
+      0003A6 8A F0            [24]  672 	mov	b,r2
+      0003A8 EB               [12]  673 	mov	a,r3
+      0003A9 12r00r00         [24]  674 	lcall	___fsadd
+      0003AC A8 82            [24]  675 	mov	r0,dpl
+      0003AE A9 83            [24]  676 	mov	r1,dph
+      0003B0 AA F0            [24]  677 	mov	r2,b
+      0003B2 FB               [12]  678 	mov	r3,a
+      0003B3 E5 81            [12]  679 	mov	a,sp
+      0003B5 24 FC            [12]  680 	add	a,#0xfc
+      0003B7 F5 81            [12]  681 	mov	sp,a
+      0003B9 C0 00            [24]  682 	push	ar0
+      0003BB C0 01            [24]  683 	push	ar1
+      0003BD C0 02            [24]  684 	push	ar2
+      0003BF C0 03            [24]  685 	push	ar3
+      0003C1 85*04 82         [24]  686 	mov	dpl,_sincoshf_sloc1_1_0
+      0003C4 85*05 83         [24]  687 	mov	dph,(_sincoshf_sloc1_1_0 + 1)
+      0003C7 85*06 F0         [24]  688 	mov	b,(_sincoshf_sloc1_1_0 + 2)
+      0003CA E5*07            [12]  689 	mov	a,(_sincoshf_sloc1_1_0 + 3)
+      0003CC 12r00r00         [24]  690 	lcall	___fsmul
+      0003CF 85 82*04         [24]  691 	mov	_sincoshf_sloc1_1_0,dpl
+      0003D2 85 83*05         [24]  692 	mov	(_sincoshf_sloc1_1_0 + 1),dph
+      0003D5 85 F0*06         [24]  693 	mov	(_sincoshf_sloc1_1_0 + 2),b
+      0003D8 F5*07            [12]  694 	mov	(_sincoshf_sloc1_1_0 + 3),a
+      0003DA E5 81            [12]  695 	mov	a,sp
+      0003DC 24 FC            [12]  696 	add	a,#0xfc
+      0003DE F5 81            [12]  697 	mov	sp,a
+      0003E0 74 93            [12]  698 	mov	a,#0x93
+      0003E2 C0 E0            [24]  699 	push	acc
+      0003E4 74 4F            [12]  700 	mov	a,#0x4F
+      0003E6 C0 E0            [24]  701 	push	acc
+      0003E8 74 2B            [12]  702 	mov	a,#0x2B
+      0003EA C0 E0            [24]  703 	push	acc
+      0003EC 74 C2            [12]  704 	mov	a,#0xC2
+      0003EE C0 E0            [24]  705 	push	acc
+      0003F0 85*08 82         [24]  706 	mov	dpl,_sincoshf_sloc2_1_0
+      0003F3 85*09 83         [24]  707 	mov	dph,(_sincoshf_sloc2_1_0 + 1)
+      0003F6 85*0A F0         [24]  708 	mov	b,(_sincoshf_sloc2_1_0 + 2)
+      0003F9 E5*0B            [12]  709 	mov	a,(_sincoshf_sloc2_1_0 + 3)
+      0003FB 12r00r00         [24]  710 	lcall	___fsadd
+      0003FE A8 82            [24]  711 	mov	r0,dpl
+      000400 A9 83            [24]  712 	mov	r1,dph
+      000402 AA F0            [24]  713 	mov	r2,b
+      000404 FB               [12]  714 	mov	r3,a
+      000405 E5 81            [12]  715 	mov	a,sp
+      000407 24 FC            [12]  716 	add	a,#0xfc
+      000409 F5 81            [12]  717 	mov	sp,a
+      00040B C0 00            [24]  718 	push	ar0
+      00040D C0 01            [24]  719 	push	ar1
+      00040F C0 02            [24]  720 	push	ar2
+      000411 C0 03            [24]  721 	push	ar3
+      000413 85*04 82         [24]  722 	mov	dpl,_sincoshf_sloc1_1_0
+      000416 85*05 83         [24]  723 	mov	dph,(_sincoshf_sloc1_1_0 + 1)
+      000419 85*06 F0         [24]  724 	mov	b,(_sincoshf_sloc1_1_0 + 2)
+      00041C E5*07            [12]  725 	mov	a,(_sincoshf_sloc1_1_0 + 3)
+      00041E 12r00r00         [24]  726 	lcall	___fsdiv
+      000421 A8 82            [24]  727 	mov	r0,dpl
+      000423 A9 83            [24]  728 	mov	r1,dph
+      000425 AA F0            [24]  729 	mov	r2,b
+      000427 FB               [12]  730 	mov	r3,a
+      000428 E5 81            [12]  731 	mov	a,sp
+      00042A 24 FC            [12]  732 	add	a,#0xfc
+      00042C F5 81            [12]  733 	mov	sp,a
+      00042E D0 04            [24]  734 	pop	ar4
+      000430 D0 05            [24]  735 	pop	ar5
+      000432 D0 06            [24]  736 	pop	ar6
+      000434 D0 07            [24]  737 	pop	ar7
+      000436 C0 00            [24]  738 	push	ar0
+      000438 C0 01            [24]  739 	push	ar1
+      00043A C0 02            [24]  740 	push	ar2
+      00043C C0 03            [24]  741 	push	ar3
+      00043E 8C 82            [24]  742 	mov	dpl,r4
+      000440 8D 83            [24]  743 	mov	dph,r5
+      000442 8E F0            [24]  744 	mov	b,r6
+      000444 EF               [12]  745 	mov	a,r7
+      000445 12r00r00         [24]  746 	lcall	___fsadd
+      000448 AC 82            [24]  747 	mov	r4,dpl
+      00044A AD 83            [24]  748 	mov	r5,dph
+      00044C AE F0            [24]  749 	mov	r6,b
+      00044E FF               [12]  750 	mov	r7,a
+      00044F E5 81            [12]  751 	mov	a,sp
+      000451 24 FC            [12]  752 	add	a,#0xfc
+      000453 F5 81            [12]  753 	mov	sp,a
+      000455 90r00r0E         [24]  754 	mov	dptr,#_sincoshf_z_1_24
+      000458 EC               [12]  755 	mov	a,r4
+      000459 F0               [24]  756 	movx	@dptr,a
+      00045A ED               [12]  757 	mov	a,r5
+      00045B A3               [24]  758 	inc	dptr
+      00045C F0               [24]  759 	movx	@dptr,a
+      00045D EE               [12]  760 	mov	a,r6
+      00045E A3               [24]  761 	inc	dptr
+      00045F F0               [24]  762 	movx	@dptr,a
+      000460 EF               [12]  763 	mov	a,r7
+      000461 A3               [24]  764 	inc	dptr
+      000462 F0               [24]  765 	movx	@dptr,a
+      000463                        766 00119$:
+                                    767 ;	sincoshf.c:99: return z;
+      000463 90r00r0E         [24]  768 	mov	dptr,#_sincoshf_z_1_24
+      000466 E0               [24]  769 	movx	a,@dptr
+      000467 FC               [12]  770 	mov	r4,a
+      000468 A3               [24]  771 	inc	dptr
+      000469 E0               [24]  772 	movx	a,@dptr
+      00046A FD               [12]  773 	mov	r5,a
+      00046B A3               [24]  774 	inc	dptr
+      00046C E0               [24]  775 	movx	a,@dptr
+      00046D FE               [12]  776 	mov	r6,a
+      00046E A3               [24]  777 	inc	dptr
+      00046F E0               [24]  778 	movx	a,@dptr
+      000470 FF               [12]  779 	mov	r7,a
+      000471 8C 82            [24]  780 	mov	dpl,r4
+      000473 8D 83            [24]  781 	mov	dph,r5
+      000475 8E F0            [24]  782 	mov	b,r6
+      000477 02r00r00         [24]  783 	ljmp	__sdcc_banked_ret
+                                    784 	.area CSEG    (CODE)
+                                    785 	.area CONST   (CODE)
+                                    786 	.area XINIT   (CODE)
+                                    787 	.area CABS    (ABS,CODE)

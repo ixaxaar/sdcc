@@ -1,0 +1,38 @@
+XH3
+H A areas 5 global symbols
+M _modschar
+S .__.ABS. Def000000
+S __modsint Ref000000
+A _CODE size 0 flags 0 addr 0
+A DATA size 0 flags 0 addr 0
+A INITIALIZED size 0 flags 0 addr 0
+A DABS size 0 flags 8 addr 0
+A HOME size 0 flags 0 addr 0
+A GSINIT size 0 flags 0 addr 0
+A GSFINAL size 0 flags 0 addr 0
+A CODE size 4E flags 0 addr 0
+S __modsuchar Def000036
+S __moduschar Def00001E
+S __modschar Def000000
+A INITIALIZER size 0 flags 0 addr 0
+A CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 00 07
+T 00 00 00 7B 03 90 97 90 9F 49 4F A2 00 90 95 7B
+R 00 00 00 07
+T 00 00 0D 04 97 9F 49 4F A2 00 95 89 90 89 CD
+R 00 00 00 07
+T 00 00 19 00 00 5B 04 81
+R 00 00 00 07 02 03 00 01
+T 00 00 1E
+R 00 00 00 07
+T 00 00 1E 7B 03 97 9F 49 4F A2 00 95 90 5F 7B 04
+R 00 00 00 07
+T 00 00 2B 90 97 90 89 89 CD 00 00 5B 04 81
+R 00 00 00 07 02 09 00 01
+T 00 00 36
+R 00 00 00 07
+T 00 00 36 7B 03 90 5F 90 97 7B 04 97 9F 49 4F A2
+R 00 00 00 07
+T 00 00 43 00 95 89 90 89 CD 00 00 5B 04 81
+R 00 00 00 07 02 09 00 01

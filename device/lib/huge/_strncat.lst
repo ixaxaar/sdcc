@@ -1,0 +1,302 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                                      4 ; This file was generated Wed Nov 27 12:28:00 2013
+                                      5 ;--------------------------------------------------------
+                                      6 	.module _strncat
+                                      7 	.optsdcc -mmcs51 --model-huge
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl _strncat_PARM_3
+                                     13 	.globl _strncat_PARM_2
+                                     14 	.globl _strncat
+                                     15 ;--------------------------------------------------------
+                                     16 ; special function registers
+                                     17 ;--------------------------------------------------------
+                                     18 	.area RSEG    (ABS,DATA)
+      000000                         19 	.org 0x0000
+                                     20 ;--------------------------------------------------------
+                                     21 ; special function bits
+                                     22 ;--------------------------------------------------------
+                                     23 	.area RSEG    (ABS,DATA)
+      000000                         24 	.org 0x0000
+                                     25 ;--------------------------------------------------------
+                                     26 ; overlayable register banks
+                                     27 ;--------------------------------------------------------
+                                     28 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         29 	.ds 8
+                                     30 ;--------------------------------------------------------
+                                     31 ; internal ram data
+                                     32 ;--------------------------------------------------------
+                                     33 	.area DSEG    (DATA)
+                                     34 ;--------------------------------------------------------
+                                     35 ; overlayable items in internal ram 
+                                     36 ;--------------------------------------------------------
+                                     37 	.area	OSEG    (OVR,DATA)
+      000000                         38 _strncat_sloc0_1_0:
+      000000                         39 	.ds 2
+                                     40 ;--------------------------------------------------------
+                                     41 ; indirectly addressable internal ram data
+                                     42 ;--------------------------------------------------------
+                                     43 	.area ISEG    (DATA)
+                                     44 ;--------------------------------------------------------
+                                     45 ; absolute internal ram data
+                                     46 ;--------------------------------------------------------
+                                     47 	.area IABS    (ABS,DATA)
+                                     48 	.area IABS    (ABS,DATA)
+                                     49 ;--------------------------------------------------------
+                                     50 ; bit data
+                                     51 ;--------------------------------------------------------
+                                     52 	.area BSEG    (BIT)
+                                     53 ;--------------------------------------------------------
+                                     54 ; paged external ram data
+                                     55 ;--------------------------------------------------------
+                                     56 	.area PSEG    (PAG,XDATA)
+                                     57 ;--------------------------------------------------------
+                                     58 ; external ram data
+                                     59 ;--------------------------------------------------------
+                                     60 	.area XSEG    (XDATA)
+      000000                         61 _strncat_PARM_2:
+      000000                         62 	.ds 3
+      000003                         63 _strncat_PARM_3:
+      000003                         64 	.ds 2
+      000005                         65 _strncat_front_1_21:
+      000005                         66 	.ds 3
+      000008                         67 _strncat_start_1_22:
+      000008                         68 	.ds 3
+                                     69 ;--------------------------------------------------------
+                                     70 ; absolute external ram data
+                                     71 ;--------------------------------------------------------
+                                     72 	.area XABS    (ABS,XDATA)
+                                     73 ;--------------------------------------------------------
+                                     74 ; external initialized ram data
+                                     75 ;--------------------------------------------------------
+                                     76 	.area XISEG   (XDATA)
+                                     77 	.area HOME    (CODE)
+                                     78 	.area GSINIT0 (CODE)
+                                     79 	.area GSINIT1 (CODE)
+                                     80 	.area GSINIT2 (CODE)
+                                     81 	.area GSINIT3 (CODE)
+                                     82 	.area GSINIT4 (CODE)
+                                     83 	.area GSINIT5 (CODE)
+                                     84 	.area GSINIT  (CODE)
+                                     85 	.area GSFINAL (CODE)
+                                     86 	.area CSEG    (CODE)
+                                     87 ;--------------------------------------------------------
+                                     88 ; global & static initialisations
+                                     89 ;--------------------------------------------------------
+                                     90 	.area HOME    (CODE)
+                                     91 	.area GSINIT  (CODE)
+                                     92 	.area GSFINAL (CODE)
+                                     93 	.area GSINIT  (CODE)
+                                     94 ;--------------------------------------------------------
+                                     95 ; Home
+                                     96 ;--------------------------------------------------------
+                                     97 	.area HOME    (CODE)
+                                     98 	.area HOME    (CODE)
+                                     99 ;--------------------------------------------------------
+                                    100 ; code
+                                    101 ;--------------------------------------------------------
+                                    102 	.area CSEG    (CODE)
+                                    103 ;------------------------------------------------------------
+                                    104 ;Allocation info for local variables in function 'strncat'
+                                    105 ;------------------------------------------------------------
+                                    106 ;back                      Allocated with name '_strncat_PARM_2'
+                                    107 ;count                     Allocated with name '_strncat_PARM_3'
+                                    108 ;front                     Allocated with name '_strncat_front_1_21'
+                                    109 ;start                     Allocated with name '_strncat_start_1_22'
+                                    110 ;sloc0                     Allocated with name '_strncat_sloc0_1_0'
+                                    111 ;------------------------------------------------------------
+                                    112 ;	_strncat.c:31: char * strncat (
+                                    113 ;	-----------------------------------------
+                                    114 ;	 function strncat
+                                    115 ;	-----------------------------------------
+      000000                        116 _strncat:
+                           000007   117 	ar7 = 0x07
+                           000006   118 	ar6 = 0x06
+                           000005   119 	ar5 = 0x05
+                           000004   120 	ar4 = 0x04
+                           000003   121 	ar3 = 0x03
+                           000002   122 	ar2 = 0x02
+                           000001   123 	ar1 = 0x01
+                           000000   124 	ar0 = 0x00
+      000000 AF F0            [24]  125 	mov	r7,b
+      000002 AE 83            [24]  126 	mov	r6,dph
+      000004 E5 82            [12]  127 	mov	a,dpl
+      000006 90r00r05         [24]  128 	mov	dptr,#_strncat_front_1_21
+      000009 F0               [24]  129 	movx	@dptr,a
+      00000A EE               [12]  130 	mov	a,r6
+      00000B A3               [24]  131 	inc	dptr
+      00000C F0               [24]  132 	movx	@dptr,a
+      00000D EF               [12]  133 	mov	a,r7
+      00000E A3               [24]  134 	inc	dptr
+      00000F F0               [24]  135 	movx	@dptr,a
+                                    136 ;	_strncat.c:37: char *start = front;
+      000010 90r00r05         [24]  137 	mov	dptr,#_strncat_front_1_21
+      000013 E0               [24]  138 	movx	a,@dptr
+      000014 FD               [12]  139 	mov	r5,a
+      000015 A3               [24]  140 	inc	dptr
+      000016 E0               [24]  141 	movx	a,@dptr
+      000017 FE               [12]  142 	mov	r6,a
+      000018 A3               [24]  143 	inc	dptr
+      000019 E0               [24]  144 	movx	a,@dptr
+      00001A FF               [12]  145 	mov	r7,a
+      00001B 90r00r08         [24]  146 	mov	dptr,#_strncat_start_1_22
+      00001E ED               [12]  147 	mov	a,r5
+      00001F F0               [24]  148 	movx	@dptr,a
+      000020 EE               [12]  149 	mov	a,r6
+      000021 A3               [24]  150 	inc	dptr
+      000022 F0               [24]  151 	movx	@dptr,a
+      000023 EF               [12]  152 	mov	a,r7
+      000024 A3               [24]  153 	inc	dptr
+      000025 F0               [24]  154 	movx	@dptr,a
+                                    155 ;	_strncat.c:39: while (*front++);
+      000026                        156 00101$:
+      000026 8D 82            [24]  157 	mov	dpl,r5
+      000028 8E 83            [24]  158 	mov	dph,r6
+      00002A 8F F0            [24]  159 	mov	b,r7
+      00002C 12r00r00         [24]  160 	lcall	__gptrget
+      00002F FC               [12]  161 	mov	r4,a
+      000030 A3               [24]  162 	inc	dptr
+      000031 AD 82            [24]  163 	mov	r5,dpl
+      000033 AE 83            [24]  164 	mov	r6,dph
+      000035 90r00r05         [24]  165 	mov	dptr,#_strncat_front_1_21
+      000038 ED               [12]  166 	mov	a,r5
+      000039 F0               [24]  167 	movx	@dptr,a
+      00003A EE               [12]  168 	mov	a,r6
+      00003B A3               [24]  169 	inc	dptr
+      00003C F0               [24]  170 	movx	@dptr,a
+      00003D EF               [12]  171 	mov	a,r7
+      00003E A3               [24]  172 	inc	dptr
+      00003F F0               [24]  173 	movx	@dptr,a
+      000040 EC               [12]  174 	mov	a,r4
+      000041 70 E3            [24]  175 	jnz	00101$
+                                    176 ;	_strncat.c:41: front--;
+      000043 1D               [12]  177 	dec	r5
+      000044 BD FF 01         [24]  178 	cjne	r5,#0xFF,00128$
+      000047 1E               [12]  179 	dec	r6
+      000048                        180 00128$:
+      000048 90r00r05         [24]  181 	mov	dptr,#_strncat_front_1_21
+      00004B ED               [12]  182 	mov	a,r5
+      00004C F0               [24]  183 	movx	@dptr,a
+      00004D EE               [12]  184 	mov	a,r6
+      00004E A3               [24]  185 	inc	dptr
+      00004F F0               [24]  186 	movx	@dptr,a
+      000050 EF               [12]  187 	mov	a,r7
+      000051 A3               [24]  188 	inc	dptr
+      000052 F0               [24]  189 	movx	@dptr,a
+                                    190 ;	_strncat.c:43: while (count--)
+      000053 90r00r00         [24]  191 	mov	dptr,#_strncat_PARM_2
+      000056 E0               [24]  192 	movx	a,@dptr
+      000057 FD               [12]  193 	mov	r5,a
+      000058 A3               [24]  194 	inc	dptr
+      000059 E0               [24]  195 	movx	a,@dptr
+      00005A FE               [12]  196 	mov	r6,a
+      00005B A3               [24]  197 	inc	dptr
+      00005C E0               [24]  198 	movx	a,@dptr
+      00005D FF               [12]  199 	mov	r7,a
+      00005E 90r00r05         [24]  200 	mov	dptr,#_strncat_front_1_21
+      000061 E0               [24]  201 	movx	a,@dptr
+      000062 FA               [12]  202 	mov	r2,a
+      000063 A3               [24]  203 	inc	dptr
+      000064 E0               [24]  204 	movx	a,@dptr
+      000065 FB               [12]  205 	mov	r3,a
+      000066 A3               [24]  206 	inc	dptr
+      000067 E0               [24]  207 	movx	a,@dptr
+      000068 FC               [12]  208 	mov	r4,a
+      000069 90r00r03         [24]  209 	mov	dptr,#_strncat_PARM_3
+      00006C E0               [24]  210 	movx	a,@dptr
+      00006D F5*00            [12]  211 	mov	_strncat_sloc0_1_0,a
+      00006F A3               [24]  212 	inc	dptr
+      000070 E0               [24]  213 	movx	a,@dptr
+      000071 F5*01            [12]  214 	mov	(_strncat_sloc0_1_0 + 1),a
+      000073                        215 00106$:
+      000073 A8*00            [24]  216 	mov	r0,_strncat_sloc0_1_0
+      000075 A9*01            [24]  217 	mov	r1,(_strncat_sloc0_1_0 + 1)
+      000077 15*00            [12]  218 	dec	_strncat_sloc0_1_0
+      000079 74 FF            [12]  219 	mov	a,#0xFF
+      00007B B5*00 02         [24]  220 	cjne	a,_strncat_sloc0_1_0,00129$
+      00007E 15*01            [12]  221 	dec	(_strncat_sloc0_1_0 + 1)
+      000080                        222 00129$:
+      000080 E8               [12]  223 	mov	a,r0
+      000081 49               [12]  224 	orl	a,r1
+      000082 60 3F            [24]  225 	jz	00108$
+                                    226 ;	_strncat.c:44: if (!(*front++ = *back++))
+      000084 8D 82            [24]  227 	mov	dpl,r5
+      000086 8E 83            [24]  228 	mov	dph,r6
+      000088 8F F0            [24]  229 	mov	b,r7
+      00008A 12r00r00         [24]  230 	lcall	__gptrget
+      00008D F9               [12]  231 	mov	r1,a
+      00008E A3               [24]  232 	inc	dptr
+      00008F AD 82            [24]  233 	mov	r5,dpl
+      000091 AE 83            [24]  234 	mov	r6,dph
+      000093 8A 82            [24]  235 	mov	dpl,r2
+      000095 8B 83            [24]  236 	mov	dph,r3
+      000097 8C F0            [24]  237 	mov	b,r4
+      000099 E9               [12]  238 	mov	a,r1
+      00009A 12r00r00         [24]  239 	lcall	__gptrput
+      00009D A3               [24]  240 	inc	dptr
+      00009E AA 82            [24]  241 	mov	r2,dpl
+      0000A0 AB 83            [24]  242 	mov	r3,dph
+      0000A2 90r00r05         [24]  243 	mov	dptr,#_strncat_front_1_21
+      0000A5 EA               [12]  244 	mov	a,r2
+      0000A6 F0               [24]  245 	movx	@dptr,a
+      0000A7 EB               [12]  246 	mov	a,r3
+      0000A8 A3               [24]  247 	inc	dptr
+      0000A9 F0               [24]  248 	movx	@dptr,a
+      0000AA EC               [12]  249 	mov	a,r4
+      0000AB A3               [24]  250 	inc	dptr
+      0000AC F0               [24]  251 	movx	@dptr,a
+      0000AD E9               [12]  252 	mov	a,r1
+      0000AE 70 C3            [24]  253 	jnz	00106$
+                                    254 ;	_strncat.c:45: return(start);
+      0000B0 90r00r08         [24]  255 	mov	dptr,#_strncat_start_1_22
+      0000B3 E0               [24]  256 	movx	a,@dptr
+      0000B4 FD               [12]  257 	mov	r5,a
+      0000B5 A3               [24]  258 	inc	dptr
+      0000B6 E0               [24]  259 	movx	a,@dptr
+      0000B7 FE               [12]  260 	mov	r6,a
+      0000B8 A3               [24]  261 	inc	dptr
+      0000B9 E0               [24]  262 	movx	a,@dptr
+      0000BA FF               [12]  263 	mov	r7,a
+      0000BB 8D 82            [24]  264 	mov	dpl,r5
+      0000BD 8E 83            [24]  265 	mov	dph,r6
+      0000BF 8F F0            [24]  266 	mov	b,r7
+      0000C1 80 26            [24]  267 	sjmp	00109$
+      0000C3                        268 00108$:
+                                    269 ;	_strncat.c:47: *front = '\0';
+      0000C3 90r00r05         [24]  270 	mov	dptr,#_strncat_front_1_21
+      0000C6 E0               [24]  271 	movx	a,@dptr
+      0000C7 FD               [12]  272 	mov	r5,a
+      0000C8 A3               [24]  273 	inc	dptr
+      0000C9 E0               [24]  274 	movx	a,@dptr
+      0000CA FE               [12]  275 	mov	r6,a
+      0000CB A3               [24]  276 	inc	dptr
+      0000CC E0               [24]  277 	movx	a,@dptr
+      0000CD FF               [12]  278 	mov	r7,a
+      0000CE 8D 82            [24]  279 	mov	dpl,r5
+      0000D0 8E 83            [24]  280 	mov	dph,r6
+      0000D2 8F F0            [24]  281 	mov	b,r7
+      0000D4 E4               [12]  282 	clr	a
+      0000D5 12r00r00         [24]  283 	lcall	__gptrput
+                                    284 ;	_strncat.c:48: return(start);
+      0000D8 90r00r08         [24]  285 	mov	dptr,#_strncat_start_1_22
+      0000DB E0               [24]  286 	movx	a,@dptr
+      0000DC FD               [12]  287 	mov	r5,a
+      0000DD A3               [24]  288 	inc	dptr
+      0000DE E0               [24]  289 	movx	a,@dptr
+      0000DF FE               [12]  290 	mov	r6,a
+      0000E0 A3               [24]  291 	inc	dptr
+      0000E1 E0               [24]  292 	movx	a,@dptr
+      0000E2 FF               [12]  293 	mov	r7,a
+      0000E3 8D 82            [24]  294 	mov	dpl,r5
+      0000E5 8E 83            [24]  295 	mov	dph,r6
+      0000E7 8F F0            [24]  296 	mov	b,r7
+      0000E9                        297 00109$:
+      0000E9 02r00r00         [24]  298 	ljmp	__sdcc_banked_ret
+                                    299 	.area CSEG    (CODE)
+                                    300 	.area CONST   (CODE)
+                                    301 	.area XINIT   (CODE)
+                                    302 	.area CABS    (ABS,CODE)

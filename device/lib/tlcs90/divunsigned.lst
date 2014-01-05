@@ -1,0 +1,138 @@
+                              1 ;--------------------------------------------------------------------------
+                              2 ;  divunsigned.s
+                              3 ;
+                              4 ;  Copyright (C) 2000-2012, Michael Hope, Philipp Klaus Krause, Marco Bodrato
+                              5 ;
+                              6 ;  This library is free software; you can redistribute it and/or modify it
+                              7 ;  under the terms of the GNU General Public License as published by the
+                              8 ;  Free Software Foundation; either version 2, or (at your option) any
+                              9 ;  later version.
+                             10 ;
+                             11 ;  This library is distributed in the hope that it will be useful,
+                             12 ;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                             13 ;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+                             14 ;  GNU General Public License for more details.
+                             15 ;
+                             16 ;  You should have received a copy of the GNU General Public License 
+                             17 ;  along with this library; see the file COPYING. If not, write to the
+                             18 ;  Free Software Foundation, 51 Franklin Street, Fifth Floor, Boston,
+                             19 ;   MA 02110-1301, USA.
+                             20 ;
+                             21 ;  As a special exception, if you link this library with other files,
+                             22 ;  some of which are compiled with SDCC, to produce an executable,
+                             23 ;  this library does not by itself cause the resulting executable to
+                             24 ;  be covered by the GNU General Public License. This exception does
+                             25 ;  not however invalidate any other reasons why the executable file
+                             26 ;   might be covered by the GNU General Public License.
+                             27 ;--------------------------------------------------------------------------
+                             28 
+                             29         ;; Originally from GBDK by Pascal Felber.
+                             30 
+                             31         .area   _CODE
+                             32 
+   0000                      33 __divuint_rrx_s::
+   0000 F2 02 4A      [10]   34         ld	hl, 2 (sp)
+   0003 F2 04 49      [10]   35         ld	de, 4 (sp)
+                             36 
+   0006 C8 0E         [11]   37         jr      __divu16
+                             38 
+   0008                      39 __divuchar_rrx_s::
+   0008 3A 03 00      [13]   40         ld      hl,#2+1
+   000B FE 70         [ 7]   41         add     hl,sp
+                             42 
+   000D E2 2B         [10]   43         ld      e,(hl)
+   000F 9A            [ 4]   44         dec     hl
+   0010 E2 2D         [10]   45         ld      l,(hl)
+                             46 
+                             47         ;; Fall through
+   0012                      48 __divuchar_rrx_hds::
+   0012                      49 __divu8::
+   0012 34 00         [11]   50         ld      h,#0x00
+   0014 FC 32         [17]   51         ld      d,h
+                             52         ; Fall through to __divu16
+                             53 
+                             54         ;; unsigned 16-bit division
+                             55         ;;
+                             56         ;; Entry conditions
+                             57         ;;   HL = dividend
+                             58         ;;   DE = divisor
+                             59         ;;
+                             60         ;; Exit conditions
+                             61         ;;   HL = quotient
+                             62         ;;   DE = remainder
+                             63         ;;   carry = 0
+                             64         ;;   If divisor is 0, quotient is set to "infinity", i.e HL = 0xFFFF.
+                             65         ;;
+                             66         ;; Register used: AF,B,DE,HL
+   0016                      67 __divuint_rrx_hds::
+   0016                      68 __divu16::
+                             69         ;; Two algorithms: one assumes divisor <2^7, the second
+                             70         ;; assumes divisor >=2^7; choose the applicable one.
+   0016 23            [ 6]   71         ld      a,e
+   0017 6C 80         [ 4]   72         and     a,#0x80
+   0019 FA 66         [10]   73         or      a,d
+   001B CE 12         [ 7]   74         jr      NZ,.morethan7bits
+                             75         ;; Both algorithms "rotate" 24 bits (H,L,A) but roles change.
+                             76 
+                             77         ;; unsigned 16/7-bit division
+   001D                      78 .atmost7bits:
+   001D 30 10         [12]   79         ld      b,#16           ; bits in dividend and possible quotient
+                             80         ;; Carry cleared by AND/OR, this "0" bit will pass trough HL.[*]
+   001F FA 71         [10]   81         adc     hl,hl
+   0021                      82 .dvloop7:
+                             83         ;; HL holds both dividend and quotient. While we shift a bit from
+                             84         ;;  MSB of dividend, we shift next bit of quotient in from carry.
+                             85         ;; A holds remainder.
+   0021 A2            [ 4]   86         rla
+                             87 
+                             88         ;; If remainder is >= divisor, next bit of quotient is 1.  We try
+                             89         ;;  to compute the difference.
+   0022 FB 62         [ 4]   90         sub     a,e
+   0024 CF 02         [11]   91         jr      NC,.nodrop7     ; Jump if remainder is >= dividend
+   0026 FB 60         [ 4]   92         add     a,e             ; Otherwise, restore remainder
+                             93         ;; The add above sets the carry, because sbc a,e did set it.
+   0028                      94 .nodrop7:
+   0028 0E            [ 7]   95         ccf                     ; Complement borrow so 1 indicates a
+                             96                                 ;  successful substraction (this is the
+                             97                                 ;  next bit of quotient)
+   0029 FA 71         [10]   98         adc     hl,hl
+   002B 18 F4         [12]   99         djnz    .dvloop7
+                            100         ;; Carry now contains the same value it contained before
+                            101         ;; entering .dvloop7[*]: "0" = valid result.
+   002D 2B            [ 6]  102         ld      e,a             ; DE = remainder, HL = quotient
+   002E 1E            [ 7]  103         ret
+                            104 
+   002F                     105 .morethan7bits:
+   002F 30 09         [12]  106         ld      b,#9            ; at most 9 bits in quotient.
+   0031 25            [ 4]  107         ld      a,l             ; precompute the first 7 shifts, by
+   0032 FC 35         [17]  108         ld      l,h             ;  doing 8
+   0034 34 00         [11]  109         ld      h,#0
+   0036 FD A3               110         rr      l               ;  undoing 1
+   0038                     111 .dvloop:
+                            112         ;; Shift next bit of quotient into bit 0 of dividend
+                            113         ;; Shift next MSB of dividend into LSB of remainder
+                            114         ;; A holds both dividend and quotient. While we shift a bit from
+                            115         ;;  MSB of dividend, we shift next bit of quotient in from carry
+                            116         ;; HL holds remainder
+   0038 FA 71         [10]  117         adc     hl,hl           ; HL < 2^(7+9), no carry, ever.
+                            118 
+                            119         ;; If remainder is >= divisor, next bit of quotient is 1. We try
+                            120         ;;  to compute the difference.
+   003A F9 73         [ 6]  121         sbc     hl,de
+   003C CF 02         [11]  122         jr      NC,.nodrop      ; Jump if remainder is >= dividend
+   003E F9 70         [ 6]  123         add     hl,de           ; Otherwise, restore remainder
+                            124 	;; The add above sets the carry, because sbc hl,de did set it.
+   0040                     125 .nodrop:
+   0040 0E            [ 7]  126         ccf                     ; Complement borrow so 1 indicates a
+                            127                                 ;  successful substraction (this is the
+                            128                                 ;  next bit of quotient)
+   0041 A2            [ 4]  129         rla
+   0042 18 F4         [12]  130         djnz    .dvloop
+                            131         ;; Take care of the ninth quotient bit! after the loop B=0.
+   0044 F8 A2         [11]  132         rl      b               ; BA = quotient
+                            133         ;; Carry now contains "0" = valid result.
+   0046 F8 32         [11]  134         ld      d,b
+   0048 2B            [ 6]  135         ld      e,a             ; DE = quotient, HL = remainder
+   0049 08            [ 4]  136         ex      de,hl           ; HL = quotient, DE = remainder
+   004A 1E            [ 7]  137         ret
+                            138 

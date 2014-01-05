@@ -1,0 +1,66 @@
+XL2
+H 1 areas 21 global symbols
+S __modsint_rrx_s Ref0000
+S __moduint_rrx_s Ref0000
+S __divsint_rrx_s Ref0000
+S __divuint_rrx_s Ref0000
+S __moduschar_rrx_s Ref0000
+S __modsuchar_rrx_s Ref0000
+S __divuschar_rrx_s Ref0000
+S __divsuchar_rrx_s Ref0000
+S __modschar_rrx_s Ref0000
+S __moduchar_rrx_s Ref0000
+S .__.ABS. Def0000
+S __muluschar_rrx_s Ref0000
+S __mulsuchar_rrx_s Ref0000
+S __divschar_rrx_s Ref0000
+S __divuchar_rrx_s Ref0000
+S __modslong Ref0000
+S __modulong Ref0000
+S __mulint_rrx_s Ref0000
+S __divslong Ref0000
+S __divulong Ref0000
+S __mulschar_rrx_s Ref0000
+S __muluchar_rrx_s Ref0000
+S __mullong Ref0000
+A _CODE size F flags 0 addr 0
+S __mullong_rrx_s Def0000
+S __modslong_rrf_s Def0003
+S __modulong_rrf_s Def0006
+S __divslong_rrf_s Def0009
+S __divulong_rrf_s Def000C
+S __modslong_rrx_s Def0003
+S __modulong_rrx_s Def0006
+S __divslong_rrx_s Def0009
+S __divulong_rrx_s Def000C
+S __mullong_rrf_s Def0000
+T 00 00
+R 00 00 00 00
+T 00 00
+R 00 00 00 00
+T 00 00 1A 00 00
+R 00 00 00 00 02 03 16 00
+T 03 00
+R 00 00 00 00
+T 03 00
+R 00 00 00 00
+T 03 00 1A 00 00
+R 00 00 00 00 02 03 0F 00
+T 06 00
+R 00 00 00 00
+T 06 00
+R 00 00 00 00
+T 06 00 1A 00 00
+R 00 00 00 00 02 03 10 00
+T 09 00
+R 00 00 00 00
+T 09 00
+R 00 00 00 00
+T 09 00 1A 00 00
+R 00 00 00 00 02 03 12 00
+T 0C 00
+R 00 00 00 00
+T 0C 00
+R 00 00 00 00
+T 0C 00 1A 00 00
+R 00 00 00 00 02 03 13 00

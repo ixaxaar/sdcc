@@ -1,0 +1,443 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                                      4 ; This file was generated Wed Nov 27 12:28:12 2013
+                                      5 ;--------------------------------------------------------
+                                      6 	.module _itoa
+                                      7 	.optsdcc -mmcs51 --model-large
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl __itoa
+                                     13 	.globl __uitoa
+                                     14 ;--------------------------------------------------------
+                                     15 ; special function registers
+                                     16 ;--------------------------------------------------------
+                                     17 	.area RSEG    (ABS,DATA)
+      000000                         18 	.org 0x0000
+                                     19 ;--------------------------------------------------------
+                                     20 ; special function bits
+                                     21 ;--------------------------------------------------------
+                                     22 	.area RSEG    (ABS,DATA)
+      000000                         23 	.org 0x0000
+                                     24 ;--------------------------------------------------------
+                                     25 ; overlayable register banks
+                                     26 ;--------------------------------------------------------
+                                     27 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         28 	.ds 8
+                                     29 ;--------------------------------------------------------
+                                     30 ; internal ram data
+                                     31 ;--------------------------------------------------------
+                                     32 	.area DSEG    (DATA)
+                                     33 ;--------------------------------------------------------
+                                     34 ; overlayable items in internal ram 
+                                     35 ;--------------------------------------------------------
+                                     36 ;--------------------------------------------------------
+                                     37 ; indirectly addressable internal ram data
+                                     38 ;--------------------------------------------------------
+                                     39 	.area ISEG    (DATA)
+                                     40 ;--------------------------------------------------------
+                                     41 ; absolute internal ram data
+                                     42 ;--------------------------------------------------------
+                                     43 	.area IABS    (ABS,DATA)
+                                     44 	.area IABS    (ABS,DATA)
+                                     45 ;--------------------------------------------------------
+                                     46 ; bit data
+                                     47 ;--------------------------------------------------------
+                                     48 	.area BSEG    (BIT)
+                                     49 ;--------------------------------------------------------
+                                     50 ; paged external ram data
+                                     51 ;--------------------------------------------------------
+                                     52 	.area PSEG    (PAG,XDATA)
+                                     53 ;--------------------------------------------------------
+                                     54 ; external ram data
+                                     55 ;--------------------------------------------------------
+                                     56 	.area XSEG    (XDATA)
+                                     57 ;--------------------------------------------------------
+                                     58 ; absolute external ram data
+                                     59 ;--------------------------------------------------------
+                                     60 	.area XABS    (ABS,XDATA)
+                                     61 ;--------------------------------------------------------
+                                     62 ; external initialized ram data
+                                     63 ;--------------------------------------------------------
+                                     64 	.area XISEG   (XDATA)
+                                     65 	.area HOME    (CODE)
+                                     66 	.area GSINIT0 (CODE)
+                                     67 	.area GSINIT1 (CODE)
+                                     68 	.area GSINIT2 (CODE)
+                                     69 	.area GSINIT3 (CODE)
+                                     70 	.area GSINIT4 (CODE)
+                                     71 	.area GSINIT5 (CODE)
+                                     72 	.area GSINIT  (CODE)
+                                     73 	.area GSFINAL (CODE)
+                                     74 	.area CSEG    (CODE)
+                                     75 ;--------------------------------------------------------
+                                     76 ; global & static initialisations
+                                     77 ;--------------------------------------------------------
+                                     78 	.area HOME    (CODE)
+                                     79 	.area GSINIT  (CODE)
+                                     80 	.area GSFINAL (CODE)
+                                     81 	.area GSINIT  (CODE)
+                                     82 ;--------------------------------------------------------
+                                     83 ; Home
+                                     84 ;--------------------------------------------------------
+                                     85 	.area HOME    (CODE)
+                                     86 	.area HOME    (CODE)
+                                     87 ;--------------------------------------------------------
+                                     88 ; code
+                                     89 ;--------------------------------------------------------
+                                     90 	.area CSEG    (CODE)
+                                     91 ;------------------------------------------------------------
+                                     92 ;Allocation info for local variables in function '_uitoa'
+                                     93 ;------------------------------------------------------------
+                                     94 ;string                    Allocated to stack - _bp -5
+                                     95 ;radix                     Allocated to stack - _bp -6
+                                     96 ;value                     Allocated to stack - _bp +1
+                                     97 ;index                     Allocated to registers 
+                                     98 ;i                         Allocated to stack - _bp +8
+                                     99 ;tmp                       Allocated to registers r3 
+                                    100 ;sloc0                     Allocated to stack - _bp +3
+                                    101 ;sloc1                     Allocated to stack - _bp +5
+                                    102 ;------------------------------------------------------------
+                                    103 ;	_itoa.c:40: void _uitoa(unsigned int value, char* string, unsigned char radix)
+                                    104 ;	-----------------------------------------
+                                    105 ;	 function _uitoa
+                                    106 ;	-----------------------------------------
+      000000                        107 __uitoa:
+                           000007   108 	ar7 = 0x07
+                           000006   109 	ar6 = 0x06
+                           000005   110 	ar5 = 0x05
+                           000004   111 	ar4 = 0x04
+                           000003   112 	ar3 = 0x03
+                           000002   113 	ar2 = 0x02
+                           000001   114 	ar1 = 0x01
+                           000000   115 	ar0 = 0x00
+      000000 C0*00            [24]  116 	push	_bp
+      000002 85 81*00         [24]  117 	mov	_bp,sp
+      000005 C0 82            [24]  118 	push	dpl
+      000007 C0 83            [24]  119 	push	dph
+      000009 E5 81            [12]  120 	mov	a,sp
+      00000B 24 06            [12]  121 	add	a,#0x06
+      00000D F5 81            [12]  122 	mov	sp,a
+                                    123 ;	_itoa.c:45: do {
+      00000F 7E 00            [12]  124 	mov	r6,#0x00
+      000011                        125 00103$:
+                                    126 ;	_itoa.c:46: string[index] = '0' + (value % radix);
+      000011 E5*00            [12]  127 	mov	a,_bp
+      000013 24 FB            [12]  128 	add	a,#0xfb
+      000015 F8               [12]  129 	mov	r0,a
+      000016 EE               [12]  130 	mov	a,r6
+      000017 26               [12]  131 	add	a,@r0
+      000018 FA               [12]  132 	mov	r2,a
+      000019 E4               [12]  133 	clr	a
+      00001A 08               [12]  134 	inc	r0
+      00001B 36               [12]  135 	addc	a,@r0
+      00001C FB               [12]  136 	mov	r3,a
+      00001D 08               [12]  137 	inc	r0
+      00001E 86 04            [24]  138 	mov	ar4,@r0
+      000020 E5*00            [12]  139 	mov	a,_bp
+      000022 24 FA            [12]  140 	add	a,#0xfa
+      000024 F8               [12]  141 	mov	r0,a
+      000025 E5*00            [12]  142 	mov	a,_bp
+      000027 24 03            [12]  143 	add	a,#0x03
+      000029 F9               [12]  144 	mov	r1,a
+      00002A E6               [12]  145 	mov	a,@r0
+      00002B F7               [12]  146 	mov	@r1,a
+      00002C 09               [12]  147 	inc	r1
+      00002D 77 00            [12]  148 	mov	@r1,#0x00
+      00002F C0 06            [24]  149 	push	ar6
+      000031 C0 04            [24]  150 	push	ar4
+      000033 C0 03            [24]  151 	push	ar3
+      000035 C0 02            [24]  152 	push	ar2
+      000037 E5*00            [12]  153 	mov	a,_bp
+      000039 24 03            [12]  154 	add	a,#0x03
+      00003B F8               [12]  155 	mov	r0,a
+      00003C E6               [12]  156 	mov	a,@r0
+      00003D C0 E0            [24]  157 	push	acc
+      00003F 08               [12]  158 	inc	r0
+      000040 E6               [12]  159 	mov	a,@r0
+      000041 C0 E0            [24]  160 	push	acc
+      000043 A8*00            [24]  161 	mov	r0,_bp
+      000045 08               [12]  162 	inc	r0
+      000046 86 82            [24]  163 	mov	dpl,@r0
+      000048 08               [12]  164 	inc	r0
+      000049 86 83            [24]  165 	mov	dph,@r0
+      00004B 12r00r00         [24]  166 	lcall	__moduint
+      00004E AD 82            [24]  167 	mov	r5,dpl
+      000050 AF 83            [24]  168 	mov	r7,dph
+      000052 15 81            [12]  169 	dec	sp
+      000054 15 81            [12]  170 	dec	sp
+      000056 D0 02            [24]  171 	pop	ar2
+      000058 D0 03            [24]  172 	pop	ar3
+      00005A D0 04            [24]  173 	pop	ar4
+      00005C D0 06            [24]  174 	pop	ar6
+      00005E 74 30            [12]  175 	mov	a,#0x30
+      000060 2D               [12]  176 	add	a,r5
+      000061 FD               [12]  177 	mov	r5,a
+      000062 8A 82            [24]  178 	mov	dpl,r2
+      000064 8B 83            [24]  179 	mov	dph,r3
+      000066 8C F0            [24]  180 	mov	b,r4
+      000068 12r00r00         [24]  181 	lcall	__gptrput
+                                    182 ;	_itoa.c:47: if (string[index] > '9')
+      00006B C3               [12]  183 	clr	c
+      00006C 74 B9            [12]  184 	mov	a,#(0x39 ^ 0x80)
+      00006E 8D F0            [24]  185 	mov	b,r5
+      000070 63 F0 80         [24]  186 	xrl	b,#0x80
+      000073 95 F0            [12]  187 	subb	a,b
+      000075 50 15            [24]  188 	jnc	00102$
+                                    189 ;	_itoa.c:48: string[index] += 'A' - '9' - 1;
+      000077 8A 82            [24]  190 	mov	dpl,r2
+      000079 8B 83            [24]  191 	mov	dph,r3
+      00007B 8C F0            [24]  192 	mov	b,r4
+      00007D 12r00r00         [24]  193 	lcall	__gptrget
+      000080 24 07            [12]  194 	add	a,#0x07
+      000082 FF               [12]  195 	mov	r7,a
+      000083 8A 82            [24]  196 	mov	dpl,r2
+      000085 8B 83            [24]  197 	mov	dph,r3
+      000087 8C F0            [24]  198 	mov	b,r4
+      000089 12r00r00         [24]  199 	lcall	__gptrput
+      00008C                        200 00102$:
+                                    201 ;	_itoa.c:49: value /= radix;
+      00008C C0 06            [24]  202 	push	ar6
+      00008E E5*00            [12]  203 	mov	a,_bp
+      000090 24 03            [12]  204 	add	a,#0x03
+      000092 F8               [12]  205 	mov	r0,a
+      000093 E6               [12]  206 	mov	a,@r0
+      000094 C0 E0            [24]  207 	push	acc
+      000096 08               [12]  208 	inc	r0
+      000097 E6               [12]  209 	mov	a,@r0
+      000098 C0 E0            [24]  210 	push	acc
+      00009A A8*00            [24]  211 	mov	r0,_bp
+      00009C 08               [12]  212 	inc	r0
+      00009D 86 82            [24]  213 	mov	dpl,@r0
+      00009F 08               [12]  214 	inc	r0
+      0000A0 86 83            [24]  215 	mov	dph,@r0
+      0000A2 12r00r00         [24]  216 	lcall	__divuint
+      0000A5 A8*00            [24]  217 	mov	r0,_bp
+      0000A7 08               [12]  218 	inc	r0
+      0000A8 A6 82            [24]  219 	mov	@r0,dpl
+      0000AA 08               [12]  220 	inc	r0
+      0000AB A6 83            [24]  221 	mov	@r0,dph
+      0000AD 15 81            [12]  222 	dec	sp
+      0000AF 15 81            [12]  223 	dec	sp
+      0000B1 D0 06            [24]  224 	pop	ar6
+                                    225 ;	_itoa.c:50: ++index;
+      0000B3 0E               [12]  226 	inc	r6
+                                    227 ;	_itoa.c:51: } while (value != 0);
+      0000B4 A8*00            [24]  228 	mov	r0,_bp
+      0000B6 08               [12]  229 	inc	r0
+      0000B7 E6               [12]  230 	mov	a,@r0
+      0000B8 08               [12]  231 	inc	r0
+      0000B9 46               [12]  232 	orl	a,@r0
+      0000BA 60 03            [24]  233 	jz	00129$
+      0000BC 02r00r11         [24]  234 	ljmp	00103$
+      0000BF                        235 00129$:
+                                    236 ;	_itoa.c:54: string[index--] = '\0';
+      0000BF EE               [12]  237 	mov	a,r6
+      0000C0 14               [12]  238 	dec	a
+      0000C1 FF               [12]  239 	mov	r7,a
+      0000C2 E5*00            [12]  240 	mov	a,_bp
+      0000C4 24 FB            [12]  241 	add	a,#0xfb
+      0000C6 F8               [12]  242 	mov	r0,a
+      0000C7 EE               [12]  243 	mov	a,r6
+      0000C8 26               [12]  244 	add	a,@r0
+      0000C9 FC               [12]  245 	mov	r4,a
+      0000CA E4               [12]  246 	clr	a
+      0000CB 08               [12]  247 	inc	r0
+      0000CC 36               [12]  248 	addc	a,@r0
+      0000CD FD               [12]  249 	mov	r5,a
+      0000CE 08               [12]  250 	inc	r0
+      0000CF 86 06            [24]  251 	mov	ar6,@r0
+      0000D1 8C 82            [24]  252 	mov	dpl,r4
+      0000D3 8D 83            [24]  253 	mov	dph,r5
+      0000D5 8E F0            [24]  254 	mov	b,r6
+      0000D7 E4               [12]  255 	clr	a
+      0000D8 12r00r00         [24]  256 	lcall	__gptrput
+                                    257 ;	_itoa.c:57: while (index > i) {
+      0000DB E5*00            [12]  258 	mov	a,_bp
+      0000DD 24 08            [12]  259 	add	a,#0x08
+      0000DF F8               [12]  260 	mov	r0,a
+      0000E0 76 00            [12]  261 	mov	@r0,#0x00
+      0000E2                        262 00106$:
+      0000E2 E5*00            [12]  263 	mov	a,_bp
+      0000E4 24 08            [12]  264 	add	a,#0x08
+      0000E6 F8               [12]  265 	mov	r0,a
+      0000E7 C3               [12]  266 	clr	c
+      0000E8 E6               [12]  267 	mov	a,@r0
+      0000E9 64 80            [12]  268 	xrl	a,#0x80
+      0000EB 8F F0            [24]  269 	mov	b,r7
+      0000ED 63 F0 80         [24]  270 	xrl	b,#0x80
+      0000F0 95 F0            [12]  271 	subb	a,b
+      0000F2 50 76            [24]  272 	jnc	00109$
+                                    273 ;	_itoa.c:58: char tmp = string[i];
+      0000F4 E5*00            [12]  274 	mov	a,_bp
+      0000F6 24 FB            [12]  275 	add	a,#0xfb
+      0000F8 F8               [12]  276 	mov	r0,a
+      0000F9 E5*00            [12]  277 	mov	a,_bp
+      0000FB 24 08            [12]  278 	add	a,#0x08
+      0000FD F9               [12]  279 	mov	r1,a
+      0000FE E7               [12]  280 	mov	a,@r1
+      0000FF 26               [12]  281 	add	a,@r0
+      000100 C0 E0            [24]  282 	push	acc
+      000102 E4               [12]  283 	clr	a
+      000103 08               [12]  284 	inc	r0
+      000104 36               [12]  285 	addc	a,@r0
+      000105 C0 E0            [24]  286 	push	acc
+      000107 08               [12]  287 	inc	r0
+      000108 E6               [12]  288 	mov	a,@r0
+      000109 C0 E0            [24]  289 	push	acc
+      00010B E5*00            [12]  290 	mov	a,_bp
+      00010D 24 07            [12]  291 	add	a,#0x07
+      00010F F8               [12]  292 	mov	r0,a
+      000110 D0 E0            [24]  293 	pop	acc
+      000112 F6               [12]  294 	mov	@r0,a
+      000113 18               [12]  295 	dec	r0
+      000114 D0 E0            [24]  296 	pop	acc
+      000116 F6               [12]  297 	mov	@r0,a
+      000117 18               [12]  298 	dec	r0
+      000118 D0 E0            [24]  299 	pop	acc
+      00011A F6               [12]  300 	mov	@r0,a
+      00011B E5*00            [12]  301 	mov	a,_bp
+      00011D 24 05            [12]  302 	add	a,#0x05
+      00011F F8               [12]  303 	mov	r0,a
+      000120 86 82            [24]  304 	mov	dpl,@r0
+      000122 08               [12]  305 	inc	r0
+      000123 86 83            [24]  306 	mov	dph,@r0
+      000125 08               [12]  307 	inc	r0
+      000126 86 F0            [24]  308 	mov	b,@r0
+      000128 12r00r00         [24]  309 	lcall	__gptrget
+      00012B FB               [12]  310 	mov	r3,a
+                                    311 ;	_itoa.c:59: string[i] = string[index];
+      00012C E5*00            [12]  312 	mov	a,_bp
+      00012E 24 FB            [12]  313 	add	a,#0xfb
+      000130 F8               [12]  314 	mov	r0,a
+      000131 EF               [12]  315 	mov	a,r7
+      000132 26               [12]  316 	add	a,@r0
+      000133 FA               [12]  317 	mov	r2,a
+      000134 E4               [12]  318 	clr	a
+      000135 08               [12]  319 	inc	r0
+      000136 36               [12]  320 	addc	a,@r0
+      000137 FD               [12]  321 	mov	r5,a
+      000138 08               [12]  322 	inc	r0
+      000139 86 06            [24]  323 	mov	ar6,@r0
+      00013B 8A 82            [24]  324 	mov	dpl,r2
+      00013D 8D 83            [24]  325 	mov	dph,r5
+      00013F 8E F0            [24]  326 	mov	b,r6
+      000141 12r00r00         [24]  327 	lcall	__gptrget
+      000144 FC               [12]  328 	mov	r4,a
+      000145 E5*00            [12]  329 	mov	a,_bp
+      000147 24 05            [12]  330 	add	a,#0x05
+      000149 F8               [12]  331 	mov	r0,a
+      00014A 86 82            [24]  332 	mov	dpl,@r0
+      00014C 08               [12]  333 	inc	r0
+      00014D 86 83            [24]  334 	mov	dph,@r0
+      00014F 08               [12]  335 	inc	r0
+      000150 86 F0            [24]  336 	mov	b,@r0
+      000152 EC               [12]  337 	mov	a,r4
+      000153 12r00r00         [24]  338 	lcall	__gptrput
+                                    339 ;	_itoa.c:60: string[index] = tmp;
+      000156 8A 82            [24]  340 	mov	dpl,r2
+      000158 8D 83            [24]  341 	mov	dph,r5
+      00015A 8E F0            [24]  342 	mov	b,r6
+      00015C EB               [12]  343 	mov	a,r3
+      00015D 12r00r00         [24]  344 	lcall	__gptrput
+                                    345 ;	_itoa.c:61: ++i;
+      000160 E5*00            [12]  346 	mov	a,_bp
+      000162 24 08            [12]  347 	add	a,#0x08
+      000164 F8               [12]  348 	mov	r0,a
+      000165 06               [12]  349 	inc	@r0
+                                    350 ;	_itoa.c:62: --index;
+      000166 1F               [12]  351 	dec	r7
+      000167 02r00rE2         [24]  352 	ljmp	00106$
+      00016A                        353 00109$:
+      00016A 85*00 81         [24]  354 	mov	sp,_bp
+      00016D D0*00            [24]  355 	pop	_bp
+      00016F 22               [24]  356 	ret
+                                    357 ;------------------------------------------------------------
+                                    358 ;Allocation info for local variables in function '_itoa'
+                                    359 ;------------------------------------------------------------
+                                    360 ;string                    Allocated to stack - _bp -5
+                                    361 ;radix                     Allocated to stack - _bp -6
+                                    362 ;value                     Allocated to registers r6 r7 
+                                    363 ;------------------------------------------------------------
+                                    364 ;	_itoa.c:66: void _itoa(int value, char* string, unsigned char radix)
+                                    365 ;	-----------------------------------------
+                                    366 ;	 function _itoa
+                                    367 ;	-----------------------------------------
+      000170                        368 __itoa:
+      000170 C0*00            [24]  369 	push	_bp
+      000172 85 81*00         [24]  370 	mov	_bp,sp
+      000175 AE 82            [24]  371 	mov	r6,dpl
+                                    372 ;	_itoa.c:68: if (value < 0 && radix == 10) {
+      000177 E5 83            [12]  373 	mov	a,dph
+      000179 FF               [12]  374 	mov	r7,a
+      00017A 30 E7 37         [24]  375 	jnb	acc.7,00102$
+      00017D E5*00            [12]  376 	mov	a,_bp
+      00017F 24 FA            [12]  377 	add	a,#0xfa
+      000181 F8               [12]  378 	mov	r0,a
+      000182 B6 0A 2F         [24]  379 	cjne	@r0,#0x0A,00102$
+                                    380 ;	_itoa.c:69: *string++ = '-';
+      000185 E5*00            [12]  381 	mov	a,_bp
+      000187 24 FB            [12]  382 	add	a,#0xfb
+      000189 F8               [12]  383 	mov	r0,a
+      00018A 86 03            [24]  384 	mov	ar3,@r0
+      00018C 08               [12]  385 	inc	r0
+      00018D 86 04            [24]  386 	mov	ar4,@r0
+      00018F 08               [12]  387 	inc	r0
+      000190 86 05            [24]  388 	mov	ar5,@r0
+      000192 8B 82            [24]  389 	mov	dpl,r3
+      000194 8C 83            [24]  390 	mov	dph,r4
+      000196 8D F0            [24]  391 	mov	b,r5
+      000198 74 2D            [12]  392 	mov	a,#0x2D
+      00019A 12r00r00         [24]  393 	lcall	__gptrput
+      00019D E5*00            [12]  394 	mov	a,_bp
+      00019F 24 FB            [12]  395 	add	a,#0xfb
+      0001A1 F8               [12]  396 	mov	r0,a
+      0001A2 74 01            [12]  397 	mov	a,#0x01
+      0001A4 2B               [12]  398 	add	a,r3
+      0001A5 F6               [12]  399 	mov	@r0,a
+      0001A6 E4               [12]  400 	clr	a
+      0001A7 3C               [12]  401 	addc	a,r4
+      0001A8 08               [12]  402 	inc	r0
+      0001A9 F6               [12]  403 	mov	@r0,a
+      0001AA 08               [12]  404 	inc	r0
+      0001AB A6 05            [24]  405 	mov	@r0,ar5
+                                    406 ;	_itoa.c:70: value = -value;
+      0001AD C3               [12]  407 	clr	c
+      0001AE E4               [12]  408 	clr	a
+      0001AF 9E               [12]  409 	subb	a,r6
+      0001B0 FE               [12]  410 	mov	r6,a
+      0001B1 E4               [12]  411 	clr	a
+      0001B2 9F               [12]  412 	subb	a,r7
+      0001B3 FF               [12]  413 	mov	r7,a
+      0001B4                        414 00102$:
+                                    415 ;	_itoa.c:72: _uitoa(value, string, radix);
+      0001B4 E5*00            [12]  416 	mov	a,_bp
+      0001B6 24 FA            [12]  417 	add	a,#0xfa
+      0001B8 F8               [12]  418 	mov	r0,a
+      0001B9 E6               [12]  419 	mov	a,@r0
+      0001BA C0 E0            [24]  420 	push	acc
+      0001BC E5*00            [12]  421 	mov	a,_bp
+      0001BE 24 FB            [12]  422 	add	a,#0xfb
+      0001C0 F8               [12]  423 	mov	r0,a
+      0001C1 E6               [12]  424 	mov	a,@r0
+      0001C2 C0 E0            [24]  425 	push	acc
+      0001C4 08               [12]  426 	inc	r0
+      0001C5 E6               [12]  427 	mov	a,@r0
+      0001C6 C0 E0            [24]  428 	push	acc
+      0001C8 08               [12]  429 	inc	r0
+      0001C9 E6               [12]  430 	mov	a,@r0
+      0001CA C0 E0            [24]  431 	push	acc
+      0001CC 8E 82            [24]  432 	mov	dpl,r6
+      0001CE 8F 83            [24]  433 	mov	dph,r7
+      0001D0 12r00r00         [24]  434 	lcall	__uitoa
+      0001D3 E5 81            [12]  435 	mov	a,sp
+      0001D5 24 FC            [12]  436 	add	a,#0xfc
+      0001D7 F5 81            [12]  437 	mov	sp,a
+      0001D9 D0*00            [24]  438 	pop	_bp
+      0001DB 22               [24]  439 	ret
+                                    440 	.area CSEG    (CODE)
+                                    441 	.area CONST   (CODE)
+                                    442 	.area XINIT   (CODE)
+                                    443 	.area CABS    (ABS,CODE)

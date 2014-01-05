@@ -1,0 +1,35 @@
+XL2
+H 9 areas 4 global symbols
+M fabsf
+O -mtlcs90
+S .__.ABS. Def0000
+A _CODE size 50 flags 0 addr 0
+S _fabsf Def0000
+S _fabsf_start Def0000
+S _fabsf_end Def0050
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 00 00
+T 00 00
+R 00 00 00 00
+T 00 00 54 3C 00 00 FE 14 16 FC FF 3A 00 00 FE 70
+R 00 00 00 00
+T 0E 00 08 3A 08 00 FE 70 38 04 00 FE 59 3A 00 00
+R 00 00 00 00
+T 1C 00 FE 70 52 E2 2B 92 E2 2A 92 E2 29 92 E2 28
+R 00 00 00 00
+T 2A 00 5A F8 B7 EA 23 92 EA 22 92 EA 21 92 EA 20
+R 00 00 00 00
+T 38 00 3A 00 00 FE 70 E2 28 92 E2 29 92 E2 2B 92
+R 00 00 00 00
+T 46 00 E2 2A F8 35 F9 34 FC 3E 5C 1E
+R 00 00 00 00
+T 50 00
+R 00 00 00 00

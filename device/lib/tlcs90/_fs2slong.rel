@@ -1,0 +1,53 @@
+XL2
+H 9 areas 6 global symbols
+M _fs2slong
+O -mtlcs90
+S ___fs2ulong Ref0000
+S ___fslt Ref0000
+S .__.ABS. Def0000
+A _CODE size 0 flags 0 addr 0
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 7A flags 0 addr 0
+S ___fs2slong Def0000
+S ___fs2slong_start Def0000
+S ___fs2slong_end Def007A
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 04 00
+T 00 00
+R 00 00 04 00
+T 00 00 54 3C 00 00 FE 14 F0 07 2E FE B7 F0 06 66
+R 00 00 04 00
+T 0E 00 F0 05 66 F0 04 66 CE 0A 3A 00 00 FD 33 FC
+R 00 00 04 00
+T 1C 00 32 1A 78 00
+R 00 00 04 00 00 04 04 00
+T 20 00
+R 00 00 04 00
+T 20 00 3A 00 00 52 3A 00 00 52 F2 0A 4A 52 F2 0A
+R 00 00 04 00
+T 2E 00 4A 52 1C 00 00 16 08 00 25 FE 66 EB 6A 00
+R 00 00 04 00 02 05 01 00 00 0E 04 00
+T 3C 00 C6 F0 07 2E 6D 80 2A F0 04 2D F0 05 2C F0
+R 00 00 04 00
+T 4A 00 06 2B 51 52 1C 00 00 16 04 00 FE 65 FD 62
+R 00 00 04 00 02 07 00 00
+T 58 00 2D 36 00 FC 63 2C 36 00 FB 63 2B 36 00 FA
+R 00 00 04 00
+T 66 00 63 2A C8 0E
+R 00 00 04 00
+T 6A 00
+R 00 00 04 00
+T 6A 00 F2 06 4A 52 F2 06 4A 52 1C 00 00 16 04 00
+R 00 00 04 00 02 0B 00 00
+T 78 00
+R 00 00 04 00
+T 78 00 5C 1E
+R 00 00 04 00
+T 7A 00
+R 00 00 04 00

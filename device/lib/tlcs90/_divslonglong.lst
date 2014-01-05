@@ -1,0 +1,217 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                              4 ; This file was generated Wed Nov 27 12:28:23 2013
+                              5 ;--------------------------------------------------------
+                              6 	.module _divslonglong
+                              7 	.optsdcc -mtlcs90
+                              8 	
+                              9 ;--------------------------------------------------------
+                             10 ; Public variables in this module
+                             11 ;--------------------------------------------------------
+                             12 	.globl __divslonglong
+                             13 ;--------------------------------------------------------
+                             14 ; ram data
+                             15 ;--------------------------------------------------------
+                             16 	.area _DATA
+                             17 ;--------------------------------------------------------
+                             18 ; ram data
+                             19 ;--------------------------------------------------------
+                             20 	.area _INITIALIZED
+                             21 ;--------------------------------------------------------
+                             22 ; absolute external ram data
+                             23 ;--------------------------------------------------------
+                             24 	.area _DABS (ABS)
+                             25 ;--------------------------------------------------------
+                             26 ; global & static initialisations
+                             27 ;--------------------------------------------------------
+                             28 	.area _HOME
+                             29 	.area _GSINIT
+                             30 	.area _GSFINAL
+                             31 	.area _GSINIT
+                             32 ;--------------------------------------------------------
+                             33 ; Home
+                             34 ;--------------------------------------------------------
+                             35 	.area _HOME
+                             36 ;../_divslonglong.c:36: _divslonglong (long long numerator, long long denominator)
+                             37 ;	---------------------------------
+                             38 ; Function _divslonglong
+                             39 ; ---------------------------------
+   0000                      40 __divslonglong_start::
+   0000                      41 __divslonglong:
+   0000 54            [ 4]   42 	push	ix
+   0001 3C 00 00      [ 4]   43 	ld	ix,#0
+   0004 FE 14         [ 7]   44 	add	ix,sp
+   0006 16 E6 FF      [ 7]   45 	add	sp, #-26
+                             46 ;../_divslonglong.c:38: bool numeratorneg = (numerator < 0);
+   0009 F0 0D 2E      [11]   47 	ld	a,13 (ix)
+   000C A0            [ 4]   48 	rlca
+   000D 6C 01         [ 4]   49 	and	a,#0x01
+   000F F4 EF 26      [17]   50 	ld	-17 (ix),a
+                             51 ;../_divslonglong.c:39: bool denominatorneg = (denominator < 0);
+   0012 F0 15 2E      [11]   52 	ld	a,21 (ix)
+   0015 A0            [ 4]   53 	rlca
+   0016 6C 01         [ 4]   54 	and	a,#0x01
+   0018 F4 EE 26      [17]   55 	ld	-18 (ix),a
+                             56 ;../_divslonglong.c:42: if (numeratorneg)
+   001B F0 EF A8      [11]   57 	bit	0,-17 (ix)
+   001E EBr62r00 C6   [ 4]   58 	jp	Z,00102$
+                             59 ;../_divslonglong.c:43: numerator = -numerator;
+   0022 FE 65         [ 7]   60 	xor	a, a
+   0024 F0 06 62      [11]   61 	sub	a, 6 (ix)
+   0027 F4 06 26      [17]   62 	ld	6 (ix),a
+   002A 36 00         [10]   63 	ld	a, #0x00
+   002C F0 07 63      [11]   64 	sbc	a, 7 (ix)
+   002F F4 07 26      [17]   65 	ld	7 (ix),a
+   0032 36 00         [10]   66 	ld	a, #0x00
+   0034 F0 08 63      [11]   67 	sbc	a, 8 (ix)
+   0037 F4 08 26      [17]   68 	ld	8 (ix),a
+   003A 36 00         [10]   69 	ld	a, #0x00
+   003C F0 09 63      [11]   70 	sbc	a, 9 (ix)
+   003F F4 09 26      [17]   71 	ld	9 (ix),a
+   0042 36 00         [10]   72 	ld	a, #0x00
+   0044 F0 0A 63      [11]   73 	sbc	a, 10 (ix)
+   0047 F4 0A 26      [17]   74 	ld	10 (ix),a
+   004A 36 00         [10]   75 	ld	a, #0x00
+   004C F0 0B 63      [11]   76 	sbc	a, 11 (ix)
+   004F F4 0B 26      [17]   77 	ld	11 (ix),a
+   0052 36 00         [10]   78 	ld	a, #0x00
+   0054 F0 0C 63      [11]   79 	sbc	a, 12 (ix)
+   0057 F4 0C 26      [17]   80 	ld	12 (ix),a
+   005A 36 00         [10]   81 	ld	a, #0x00
+   005C F0 0D 63      [11]   82 	sbc	a, 13 (ix)
+   005F F4 0D 26      [17]   83 	ld	13 (ix),a
+   0062                      84 00102$:
+                             85 ;../_divslonglong.c:44: if (denominatorneg)
+   0062 F0 EE A8      [11]   86 	bit	0,-18 (ix)
+   0065 EBrA9r00 C6   [ 4]   87 	jp	Z,00104$
+                             88 ;../_divslonglong.c:45: denominator = -denominator;
+   0069 FE 65         [ 7]   89 	xor	a, a
+   006B F0 0E 62      [11]   90 	sub	a, 14 (ix)
+   006E F4 0E 26      [17]   91 	ld	14 (ix),a
+   0071 36 00         [10]   92 	ld	a, #0x00
+   0073 F0 0F 63      [11]   93 	sbc	a, 15 (ix)
+   0076 F4 0F 26      [17]   94 	ld	15 (ix),a
+   0079 36 00         [10]   95 	ld	a, #0x00
+   007B F0 10 63      [11]   96 	sbc	a, 16 (ix)
+   007E F4 10 26      [17]   97 	ld	16 (ix),a
+   0081 36 00         [10]   98 	ld	a, #0x00
+   0083 F0 11 63      [11]   99 	sbc	a, 17 (ix)
+   0086 F4 11 26      [17]  100 	ld	17 (ix),a
+   0089 36 00         [10]  101 	ld	a, #0x00
+   008B F0 12 63      [11]  102 	sbc	a, 18 (ix)
+   008E F4 12 26      [17]  103 	ld	18 (ix),a
+   0091 36 00         [10]  104 	ld	a, #0x00
+   0093 F0 13 63      [11]  105 	sbc	a, 19 (ix)
+   0096 F4 13 26      [17]  106 	ld	19 (ix),a
+   0099 36 00         [10]  107 	ld	a, #0x00
+   009B F0 14 63      [11]  108 	sbc	a, 20 (ix)
+   009E F4 14 26      [17]  109 	ld	20 (ix),a
+   00A1 36 00         [10]  110 	ld	a, #0x00
+   00A3 F0 15 63      [11]  111 	sbc	a, 21 (ix)
+   00A6 F4 15 26      [17]  112 	ld	21 (ix),a
+   00A9                     113 00104$:
+                            114 ;../_divslonglong.c:47: d = (unsigned long long)numerator / (unsigned long long)denominator;
+   00A9 3A 0A 00      [13]  115 	ld	hl, #10
+   00AC FE 70         [ 7]  116 	add	hl, sp
+   00AE 08            [ 4]  117 	ex	de, hl
+   00AF 3A 20 00      [13]  118 	ld	hl, #32
+   00B2 FE 70         [ 7]  119 	add	hl, sp
+   00B4 38 08 00      [12]  120 	ld	bc, #8
+   00B7 FE 59         [ 7]  121 	ldir
+   00B9 3A 12 00      [13]  122 	ld	hl, #18
+   00BC FE 70         [ 7]  123 	add	hl, sp
+   00BE 08            [ 4]  124 	ex	de, hl
+   00BF 3A 28 00      [13]  125 	ld	hl, #40
+   00C2 FE 70         [ 7]  126 	add	hl, sp
+   00C4 38 08 00      [12]  127 	ld	bc, #8
+   00C7 FE 59         [ 7]  128 	ldir
+   00C9 F0 FF 2C      [11]  129 	ld	h,-1 (ix)
+   00CC F0 FE 2D      [11]  130 	ld	l,-2 (ix)
+   00CF 52            [ 4]  131 	push	hl
+   00D0 F0 FD 2C      [11]  132 	ld	h,-3 (ix)
+   00D3 F0 FC 2D      [11]  133 	ld	l,-4 (ix)
+   00D6 52            [ 4]  134 	push	hl
+   00D7 F0 FB 2C      [11]  135 	ld	h,-5 (ix)
+   00DA F0 FA 2D      [11]  136 	ld	l,-6 (ix)
+   00DD 52            [ 4]  137 	push	hl
+   00DE F0 F9 2C      [11]  138 	ld	h,-7 (ix)
+   00E1 F0 F8 2D      [11]  139 	ld	l,-8 (ix)
+   00E4 52            [ 4]  140 	push	hl
+   00E5 F0 F7 2C      [11]  141 	ld	h,-9 (ix)
+   00E8 F0 F6 2D      [11]  142 	ld	l,-10 (ix)
+   00EB 52            [ 4]  143 	push	hl
+   00EC F0 F5 2C      [11]  144 	ld	h,-11 (ix)
+   00EF F0 F4 2D      [11]  145 	ld	l,-12 (ix)
+   00F2 52            [ 4]  146 	push	hl
+   00F3 F0 F3 2C      [11]  147 	ld	h,-13 (ix)
+   00F6 F0 F2 2D      [11]  148 	ld	l,-14 (ix)
+   00F9 52            [ 4]  149 	push	hl
+   00FA F0 F1 2C      [11]  150 	ld	h,-15 (ix)
+   00FD F0 F0 2D      [11]  151 	ld	l,-16 (ix)
+   0100 52            [ 4]  152 	push	hl
+   0101 3A 10 00      [13]  153 	ld	hl,#0x0010
+   0104 FE 70         [ 7]  154 	add	hl, sp
+   0106 52            [ 4]  155 	push	hl
+   0107 1Cr00r00      [ 4]  156 	call	__divulonglong
+   010A 16 12 00      [ 7]  157 	add	sp, #18
+                            158 ;../_divslonglong.c:49: return ((numeratorneg ^ denominatorneg) ? -d : d);
+   010D F0 EF 2E      [11]  159 	ld	a,-17 (ix)
+   0110 F0 EE 65      [11]  160 	xor	a, -18 (ix)
+   0113 FE A8         [ 7]  161 	bit	0,a
+   0115 EBr5Br01 C6   [ 4]  162 	jp	Z,00107$
+   0119 FE 65         [ 7]  163 	xor	a, a
+   011B F0 E6 62      [11]  164 	sub	a, -26 (ix)
+   011E F4 F8 26      [17]  165 	ld	-8 (ix),a
+   0121 36 00         [10]  166 	ld	a, #0x00
+   0123 F0 E7 63      [11]  167 	sbc	a, -25 (ix)
+   0126 F4 F9 26      [17]  168 	ld	-7 (ix),a
+   0129 36 00         [10]  169 	ld	a, #0x00
+   012B F0 E8 63      [11]  170 	sbc	a, -24 (ix)
+   012E F4 FA 26      [17]  171 	ld	-6 (ix),a
+   0131 36 00         [10]  172 	ld	a, #0x00
+   0133 F0 E9 63      [11]  173 	sbc	a, -23 (ix)
+   0136 F4 FB 26      [17]  174 	ld	-5 (ix),a
+   0139 36 00         [10]  175 	ld	a, #0x00
+   013B F0 EA 63      [11]  176 	sbc	a, -22 (ix)
+   013E F4 FC 26      [17]  177 	ld	-4 (ix),a
+   0141 36 00         [10]  178 	ld	a, #0x00
+   0143 F0 EB 63      [11]  179 	sbc	a, -21 (ix)
+   0146 F4 FD 26      [17]  180 	ld	-3 (ix),a
+   0149 36 00         [10]  181 	ld	a, #0x00
+   014B F0 EC 63      [11]  182 	sbc	a, -20 (ix)
+   014E F4 FE 26      [17]  183 	ld	-2 (ix),a
+   0151 36 00         [10]  184 	ld	a, #0x00
+   0153 F0 ED 63      [11]  185 	sbc	a, -19 (ix)
+   0156 F4 FF 26      [17]  186 	ld	-1 (ix),a
+   0159 C8 10         [11]  187 	jr	00108$
+   015B                     188 00107$:
+   015B 3A 12 00      [13]  189 	ld	hl, #18
+   015E FE 70         [ 7]  190 	add	hl, sp
+   0160 08            [ 4]  191 	ex	de, hl
+   0161 3A 00 00      [13]  192 	ld	hl, #0
+   0164 FE 70         [ 7]  193 	add	hl, sp
+   0166 38 08 00      [12]  194 	ld	bc, #8
+   0169 FE 59         [ 7]  195 	ldir
+   016B                     196 00108$:
+   016B 3A 1E 00      [13]  197 	ld	hl, #30
+   016E FE 70         [ 7]  198 	add	hl, sp
+   0170 E2 2B         [10]  199 	ld	e, (hl)
+   0172 92            [ 4]  200 	inc	hl
+   0173 E2 2A         [10]  201 	ld	d, (hl)
+   0175 3A 12 00      [13]  202 	ld	hl, #18
+   0178 FE 70         [ 7]  203 	add	hl, sp
+   017A 38 08 00      [12]  204 	ld	bc, #8
+   017D FE 59         [ 7]  205 	ldir
+   017F FC 3E         [17]  206 	ld	sp, ix
+   0181 5C            [ 4]  207 	pop	ix
+   0182 1E            [ 7]  208 	ret
+   0183                     209 __divslonglong_end::
+                            210 	.area _HOME
+                            211 ;--------------------------------------------------------
+                            212 ; code
+                            213 ;--------------------------------------------------------
+                            214 	.area _CODE
+                            215 	.area _CODE
+                            216 	.area _INITIALIZER
+                            217 	.area _CABS (ABS)

@@ -1,0 +1,30 @@
+XH3
+H A areas 3 global symbols
+M puts
+S _putchar Ref000000
+S .__.ABS. Def000000
+A _CODE size 0 flags 0 addr 0
+A DATA size 0 flags 0 addr 0
+A INITIALIZED size 0 flags 0 addr 0
+A DABS size 0 flags 8 addr 0
+A HOME size 0 flags 0 addr 0
+A GSINIT size 0 flags 0 addr 0
+A GSFINAL size 0 flags 0 addr 0
+A CODE size 2A flags 0 addr 0
+S _puts Def000000
+A INITIALIZER size 0 flags 0 addr 0
+A CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 00 07
+T 00 00 00 52 04 16 07 17 03 5F
+R 00 00 00 07
+T 00 00 07
+R 00 00 00 07
+T 00 00 07 16 03 90 F6 5C 1F 01 4D 27 0E 1E 03 5C
+R 00 00 00 07
+T 00 00 14 1F 03 88 CD 00 00 84 1E 01 20 E8
+R 00 00 00 07 02 07 00 00
+T 00 00 1F
+R 00 00 00 07
+T 00 00 1F 4B 0A CD 00 00 84 1E 01 5B 04 81
+R 00 00 00 07 02 06 00 00

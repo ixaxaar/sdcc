@@ -1,0 +1,192 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                              4 ; This file was generated Wed Nov 27 12:28:29 2013
+                              5 ;--------------------------------------------------------
+                              6 	.module _ltoa
+                              7 	.optsdcc -mtlcs90
+                              8 	
+                              9 ;--------------------------------------------------------
+                             10 ; Public variables in this module
+                             11 ;--------------------------------------------------------
+                             12 	.globl __ltoa
+                             13 	.globl __ultoa
+                             14 ;--------------------------------------------------------
+                             15 ; ram data
+                             16 ;--------------------------------------------------------
+                             17 	.area _DATA
+                             18 ;--------------------------------------------------------
+                             19 ; ram data
+                             20 ;--------------------------------------------------------
+                             21 	.area _INITIALIZED
+                             22 ;--------------------------------------------------------
+                             23 ; absolute external ram data
+                             24 ;--------------------------------------------------------
+                             25 	.area _DABS (ABS)
+                             26 ;--------------------------------------------------------
+                             27 ; global & static initialisations
+                             28 ;--------------------------------------------------------
+                             29 	.area _HOME
+                             30 	.area _GSINIT
+                             31 	.area _GSFINAL
+                             32 	.area _GSINIT
+                             33 ;--------------------------------------------------------
+                             34 ; Home
+                             35 ;--------------------------------------------------------
+                             36 	.area _HOME
+                             37 	.area _HOME
+                             38 ;--------------------------------------------------------
+                             39 ; code
+                             40 ;--------------------------------------------------------
+                             41 	.area _CODE
+                             42 ;../_ltoa.c:56: void _ultoa(unsigned long value, char* string, unsigned char radix)
+                             43 ;	---------------------------------
+                             44 ; Function _ultoa
+                             45 ; ---------------------------------
+   0000                      46 __ultoa_start::
+   0000                      47 __ultoa:
+   0000 54            [ 4]   48 	push	ix
+   0001 3C 00 00      [ 4]   49 	ld	ix,#0
+   0004 FE 14         [ 7]   50 	add	ix,sp
+   0006 16 DA FF      [ 7]   51 	add	sp, #-38
+                             52 ;../_ltoa.c:61: do {
+   0009 3A 00 00      [13]   53 	ld	hl,#0x0000
+   000C FE 70         [ 7]   54 	add	hl,sp
+   000E F6 24 42      [ 7]   55 	ld	36 (sp), hl
+   0011 31 20         [10]   56 	ld	c,#0x20
+   0013                      57 00103$:
+                             58 ;../_ltoa.c:62: unsigned char c = '0' + (value % radix);
+   0013 F0 0A 2E      [11]   59 	ld	a,10 (ix)
+   0016 F4 FA 26      [17]   60 	ld	-6 (ix),a
+   0019 F4 FB 37 00   [17]   61 	ld	-5 (ix),#0x00
+   001D F4 FC 37 00   [17]   62 	ld	-4 (ix),#0x00
+   0021 F4 FD 37 00   [17]   63 	ld	-3 (ix),#0x00
+   0025 50            [ 4]   64 	push	bc
+   0026 F2 24 4A      [10]   65 	ld	hl, 36 (sp)
+   0029 52            [ 4]   66 	push	hl
+   002A F2 24 4A      [10]   67 	ld	hl, 36 (sp)
+   002D 52            [ 4]   68 	push	hl
+   002E F2 32 4A      [10]   69 	ld	hl, 50 (sp)
+   0031 52            [ 4]   70 	push	hl
+   0032 F2 32 4A      [10]   71 	ld	hl, 50 (sp)
+   0035 52            [ 4]   72 	push	hl
+   0036 1Cr00r00      [ 4]   73 	call	__modulong_rrx_s
+   0039 16 08 00      [ 7]   74 	add	sp, #8
+   003C 58            [ 4]   75 	pop	bc
+   003D 25            [ 4]   76 	ld	a,l
+   003E 68 30         [ 4]   77 	add	a, #0x30
+   0040 2A            [16]   78 	ld	d,a
+                             79 ;../_ltoa.c:63: if (c > (unsigned char)'9')
+   0041 36 39         [10]   80 	ld	a,#0x39
+   0043 FA 62         [10]   81 	sub	a, d
+   0045 CF 04         [11]   82 	jr	NC,00102$
+                             83 ;../_ltoa.c:64: c += 'A' - '9' - 1;
+   0047 22            [16]   84 	ld	a,d
+   0048 68 07         [ 4]   85 	add	a, #0x07
+   004A 2A            [16]   86 	ld	d,a
+   004B                      87 00102$:
+                             88 ;../_ltoa.c:65: buffer[--index] = c;
+   004B 89            [ 4]   89 	dec	c
+   004C F2 24 4A      [10]   90 	ld	hl, 36 (sp)
+   004F 30 00         [12]   91 	ld	b,#0x00
+   0051 F8 70         [11]   92 	add	hl, bc
+   0053 EA 22         [10]   93 	ld	(hl),d
+                             94 ;../_ltoa.c:66: value /= radix;
+   0055 50            [ 4]   95 	push	bc
+   0056 F2 24 4A      [10]   96 	ld	hl, 36 (sp)
+   0059 52            [ 4]   97 	push	hl
+   005A F2 24 4A      [10]   98 	ld	hl, 36 (sp)
+   005D 52            [ 4]   99 	push	hl
+   005E F2 32 4A      [10]  100 	ld	hl, 50 (sp)
+   0061 52            [ 4]  101 	push	hl
+   0062 F2 32 4A      [10]  102 	ld	hl, 50 (sp)
+   0065 52            [ 4]  103 	push	hl
+   0066 1Cr00r00      [ 4]  104 	call	__divulong_rrx_s
+   0069 16 08 00      [ 7]  105 	add	sp, #8
+   006C 58            [ 4]  106 	pop	bc
+   006D F4 04 25      [17]  107 	ld	4 (ix),l
+   0070 F4 05 24      [17]  108 	ld	5 (ix),h
+   0073 F4 06 23      [17]  109 	ld	6 (ix),e
+                            110 ;../_ltoa.c:67: } while (value);
+   0076 F4 07 22      [17]  111 	ld	7 (ix), d
+   0079 22            [16]  112 	ld	a, d
+   007A F0 06 66      [11]  113 	or	a, 6 (ix)
+   007D F0 05 66      [11]  114 	or	a, 5 (ix)
+   0080 F0 04 66      [11]  115 	or	a,4 (ix)
+   0083 EBr13r00 CE   [ 4]  116 	jp	NZ,00103$
+                            117 ;../_ltoa.c:69: do {
+   0087 08            [ 4]  118 	ex	de, hl
+   0088 F2 2E 4A      [10]  119 	ld	hl, 46 (sp)
+   008B 08            [ 4]  120 	ex	de, hl
+   008C                     121 00106$:
+                            122 ;../_ltoa.c:70: *string++ = buffer[index];
+   008C F2 24 4A      [10]  123 	ld	hl, 36 (sp)
+   008F 30 00         [12]  124 	ld	b,#0x00
+   0091 F8 70         [11]  125 	add	hl, bc
+   0093 E2 2E         [10]  126 	ld	a,(hl)
+   0095 E9 26         [ 4]  127 	ld	(de),a
+   0097 91            [ 4]  128 	inc	de
+                            129 ;../_ltoa.c:71: } while ( ++index != NUMBER_OF_DIGITS );
+   0098 81            [ 4]  130 	inc	c
+   0099 21            [10]  131 	ld	a,c
+   009A 6A 20         [ 4]  132 	sub	a, #0x20
+   009C CE EE         [ 7]  133 	jr	NZ,00106$
+                            134 ;../_ltoa.c:73: *string = 0;  /* string terminator */
+   009E FE 65         [ 7]  135 	xor	a, a
+   00A0 E9 26         [ 4]  136 	ld	(de),a
+   00A2 FC 3E         [17]  137 	ld	sp, ix
+   00A4 5C            [ 4]  138 	pop	ix
+   00A5 1E            [ 7]  139 	ret
+   00A6                     140 __ultoa_end::
+                            141 ;../_ltoa.c:76: void _ltoa(long value, char* string, unsigned char radix)
+                            142 ;	---------------------------------
+                            143 ; Function _ltoa
+                            144 ; ---------------------------------
+   00A6                     145 __ltoa_start::
+   00A6                     146 __ltoa:
+   00A6 54            [ 4]  147 	push	ix
+   00A7 3C 00 00      [ 4]  148 	ld	ix,#0
+   00AA FE 14         [ 7]  149 	add	ix,sp
+                            150 ;../_ltoa.c:78: if (value < 0 && radix == 10) {
+   00AC F0 07 AF      [11]  151 	bit	7, 7 (ix)
+   00AF C6 31         [ 7]  152 	jr	Z,00102$
+   00B1 F0 0A 2E      [11]  153 	ld	a,10 (ix)
+   00B4 6A 0A         [ 4]  154 	sub	a, #0x0A
+   00B6 CE 2A         [ 7]  155 	jr	NZ,00102$
+                            156 ;../_ltoa.c:79: *string++ = '-';
+   00B8 F2 08 4A      [10]  157 	ld	hl, 8 (sp)
+   00BB EA 37 2D      [10]  158 	ld	(hl),#0x2D
+   00BE 92            [ 4]  159 	inc	hl
+   00BF F6 08 42      [ 7]  160 	ld	8 (sp), hl
+                            161 ;../_ltoa.c:80: value = -value;
+   00C2 FE 65         [ 7]  162 	xor	a, a
+   00C4 F0 04 62      [11]  163 	sub	a, 4 (ix)
+   00C7 F4 04 26      [17]  164 	ld	4 (ix),a
+   00CA 36 00         [10]  165 	ld	a, #0x00
+   00CC F0 05 63      [11]  166 	sbc	a, 5 (ix)
+   00CF F4 05 26      [17]  167 	ld	5 (ix),a
+   00D2 36 00         [10]  168 	ld	a, #0x00
+   00D4 F0 06 63      [11]  169 	sbc	a, 6 (ix)
+   00D7 F4 06 26      [17]  170 	ld	6 (ix),a
+   00DA 36 00         [10]  171 	ld	a, #0x00
+   00DC F0 07 63      [11]  172 	sbc	a, 7 (ix)
+   00DF F4 07 26      [17]  173 	ld	7 (ix),a
+   00E2                     174 00102$:
+                            175 ;../_ltoa.c:82: _ultoa(value, string, radix);
+   00E2 F0 0A 2E      [11]  176 	ld	a,10 (ix)
+   00E5 56            [ 7]  177 	push	af
+   00E6 96            [ 7]  178 	inc	sp
+   00E7 F2 09 4A      [10]  179 	ld	hl, 9 (sp)
+   00EA 52            [ 4]  180 	push	hl
+   00EB F2 09 4A      [10]  181 	ld	hl, 9 (sp)
+   00EE 52            [ 4]  182 	push	hl
+   00EF F2 09 4A      [10]  183 	ld	hl, 9 (sp)
+   00F2 52            [ 4]  184 	push	hl
+   00F3 1Cr00r00      [ 4]  185 	call	__ultoa
+   00F6 16 07 00      [ 7]  186 	add	sp, #7
+   00F9 5C            [ 4]  187 	pop	ix
+   00FA 1E            [ 7]  188 	ret
+   00FB                     189 __ltoa_end::
+                            190 	.area _CODE
+                            191 	.area _INITIALIZER
+                            192 	.area _CABS (ABS)

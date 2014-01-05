@@ -1,0 +1,86 @@
+                                      1 ;--------------------------------------------------------------------------
+                                      2 ;  gptr_cmp.asm - C run-time: compare two generic pointers
+                                      3 ;
+                                      4 ;  Copyright (C) 2011, Maarten Brock
+                                      5 ;
+                                      6 ;  This library is free software; you can redistribute it and/or modify it
+                                      7 ;  under the terms of the GNU General Public License as published by the
+                                      8 ;  Free Software Foundation; either version 2, or (at your option) any
+                                      9 ;  later version.
+                                     10 ;
+                                     11 ;  This library is distributed in the hope that it will be useful,
+                                     12 ;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                                     13 ;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+                                     14 ;  GNU General Public License for more details.
+                                     15 ;
+                                     16 ;  You should have received a copy of the GNU General Public License 
+                                     17 ;  along with this library; see the file COPYING. If not, write to the
+                                     18 ;  Free Software Foundation, 51 Franklin Street, Fifth Floor, Boston,
+                                     19 ;   MA 02110-1301, USA.
+                                     20 ;
+                                     21 ;  As a special exception, if you link this library with other files,
+                                     22 ;  some of which are compiled with SDCC, to produce an executable,
+                                     23 ;  this library does not by itself cause the resulting executable to
+                                     24 ;  be covered by the GNU General Public License. This exception does
+                                     25 ;  not however invalidate any other reasons why the executable file
+                                     26 ;  might be covered by the GNU General Public License.
+                                     27 ;--------------------------------------------------------------------------
+                                     28 
+                                     29 	.area HOME    (CODE)
+                                     30 	.area GSINIT0 (CODE)
+                                     31 	.area GSINIT1 (CODE)
+                                     32 	.area GSINIT2 (CODE)
+                                     33 	.area GSINIT3 (CODE)
+                                     34 	.area GSINIT4 (CODE)
+                                     35 	.area GSINIT5 (CODE)
+                                     36 	.area GSINIT  (CODE)
+                                     37 	.area GSFINAL (CODE)
+                                     38 	.area CSEG    (CODE)
+                                     39 
+                                     40 	.area HOME    (CODE)
+                                     41 
+                                     42 ; compares two generic pointers.
+                                     43 ; if p1 < p2  return NZ and C
+                                     44 ; if p1 == p2 return  Z and NC
+                                     45 ; if p1 > p2  return NZ and NC
+                                     46 ; if both are a NULL pointer (yes, we have several) also return Z and NC
+                                     47 ; assumes that banks never map to address 0x0000
+                                     48 ; so it suffices to check dptr part only and ignore b
+                                     49 
+      000000                         50 ___gptr_cmp::
+      000000 E5 81            [12]   51 	mov  a,sp
+      000002 24 FC            [12]   52 	add  a,#0xfc
+      000004 C3               [12]   53 	clr  c
+      000005 C8               [12]   54 	xch  a,r0
+      000006 C0 E0            [24]   55 	push acc
+      000008 C0 82            [24]   56 	push dpl
+      00000A E6               [12]   57 	mov  a,@r0
+      00000B 08               [12]   58 	inc  r0
+      00000C 46               [12]   59 	orl  a,@r0
+      00000D 70 06            [24]   60 	jnz  00001$
+      00000F E5 82            [12]   61 	mov  a,dpl
+      000011 45 83            [12]   62 	orl  a,dph
+                                     63 ; if both are NULL, return Z and NC
+      000013 60 12            [24]   64 	jz   00002$
+      000015                         65 00001$:
+      000015 18               [12]   66 	dec  r0
+      000016 E5 82            [12]   67 	mov  a,dpl
+      000018 96               [12]   68 	subb a,@r0
+      000019 F5 82            [12]   69 	mov  dpl,a
+      00001B 08               [12]   70 	inc  r0
+      00001C E5 83            [12]   71 	mov  a,dph
+      00001E 96               [12]   72 	subb a,@r0
+      00001F 42 82            [12]   73 	orl  dpl,a
+      000021 08               [12]   74 	inc  r0
+      000022 E5 F0            [12]   75 	mov  a,b
+      000024 96               [12]   76 	subb a,@r0
+      000025 45 82            [12]   77 	orl  a,dpl
+                                     78 ; p2 < p1, return NZ and C
+                                     79 ; p2 = p1, return Z and NC
+                                     80 ; p2 > p1, return NZ and NC
+      000027                         81 00002$:
+      000027 D0 82            [24]   82 	pop  dpl
+      000029 C8               [12]   83 	xch  a,r0
+      00002A D0 E0            [24]   84 	pop  acc
+      00002C C8               [12]   85 	xch  a,r0
+      00002D 22               [24]   86 	ret

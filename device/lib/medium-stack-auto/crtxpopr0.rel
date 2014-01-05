@@ -1,0 +1,17 @@
+XH3
+H 3 areas 4 global symbols
+S .__.ABS. Def000000
+S ___sdcc_xpop Ref000000
+S _spx Ref000000
+A _CODE size 0 flags 0 addr 0
+A BIT_BANK size 1 flags 4 addr 0
+A HOME size 7 flags 20 addr 0
+S ___sdcc_xpop_regs_r0 Def000000
+T 00 00 00
+R 00 00 00 01
+T 00 00 00
+R 00 00 00 01
+T 00 00 00
+R 00 00 00 02
+T 00 00 00 A8 00 00 00 18 E2 02 00 00
+R 00 00 00 02 F1 23 04 00 02 02 0A 00 01

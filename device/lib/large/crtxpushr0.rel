@@ -1,0 +1,19 @@
+XH3
+H 3 areas 4 global symbols
+S ___sdcc_xpush Ref000000
+S .__.ABS. Def000000
+S _spx Ref000000
+A _CODE size 0 flags 0 addr 0
+A BIT_BANK size 1 flags 4 addr 0
+A HOME size A flags 20 addr 0
+S ___sdcc_xpush_regs_r0 Def000000
+T 00 00 00
+R 00 00 00 01
+T 00 00 00
+R 00 00 00 01
+T 00 00 00
+R 00 00 00 02
+T 00 00 00 25 00 00 00 F5 00 00 00 C8 18 F2 02
+R 00 00 00 02 F1 23 04 00 02 F1 23 08 00 02
+T 00 00 08 00 00
+R 00 00 00 02 02 03 00 00

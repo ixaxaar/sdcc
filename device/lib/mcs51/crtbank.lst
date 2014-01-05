@@ -1,0 +1,75 @@
+                                      1 ;--------------------------------------------------------------------------
+                                      2 ;  crtbank.asm - C run-time: bank switching
+                                      3 ;
+                                      4 ;  Copyright (C) 2005, Maarten Brock
+                                      5 ;
+                                      6 ;  This library is free software; you can redistribute it and/or modify it
+                                      7 ;  under the terms of the GNU General Public License as published by the
+                                      8 ;  Free Software Foundation; either version 2, or (at your option) any
+                                      9 ;  later version.
+                                     10 ;
+                                     11 ;  This library is distributed in the hope that it will be useful,
+                                     12 ;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                                     13 ;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+                                     14 ;  GNU General Public License for more details.
+                                     15 ;
+                                     16 ;  You should have received a copy of the GNU General Public License 
+                                     17 ;  along with this library; see the file COPYING. If not, write to the
+                                     18 ;  Free Software Foundation, 51 Franklin Street, Fifth Floor, Boston,
+                                     19 ;   MA 02110-1301, USA.
+                                     20 ;
+                                     21 ;  As a special exception, if you link this library with other files,
+                                     22 ;  some of which are compiled with SDCC, to produce an executable,
+                                     23 ;  this library does not by itself cause the resulting executable to
+                                     24 ;  be covered by the GNU General Public License. This exception does
+                                     25 ;  not however invalidate any other reasons why the executable file
+                                     26 ;  might be covered by the GNU General Public License.
+                                     27 ;--------------------------------------------------------------------------
+                                     28 
+                                     29 
+                                     30 	.area HOME    (CODE)
+                                     31 	.area GSINIT0 (CODE)
+                                     32 	.area GSINIT1 (CODE)
+                                     33 	.area GSINIT2 (CODE)
+                                     34 	.area GSINIT3 (CODE)
+                                     35 	.area GSINIT4 (CODE)
+                                     36 	.area GSINIT5 (CODE)
+                                     37 	.area GSINIT  (CODE)
+                                     38 	.area GSFINAL (CODE)
+                                     39 	.area CSEG    (CODE)
+                                     40 
+                                     41 ; /*-------------------------------------------------------------------------
+                                     42 ;   Example for SiLabs C8051F12x / C8051F13x with 128kB code memory
+                                     43 ;   divided into 4 banks of 32kB
+                                     44 ;   These devices have an sfr called PSBANK containing two parts:
+                                     45 ;   COBANK (bit 5:4): Constant Operations Bank
+                                     46 ;   IFBANK (bit 1:0): Instruction Fetch Bank
+                                     47 ;   From 0x0000 to 0x7FFF bank 0 is always accessed
+                                     48 ;   From 0x8000 to 0xFFFF bank COBANK is accessed for reading with movc
+                                     49 ;   From 0x8000 to 0xFFFF bank IFBANK is accessed for executing instructions
+                                     50 ;
+                                     51 ;   Make your own copy of this file,
+                                     52 ;   adapt it to your situation,
+                                     53 ;   and compile/link it in your project
+                                     54 ; -------------------------------------------------------------------------*/
+                                     55 
+                                     56 	.globl _PSBANK
+                                     57 
+                                     58 	.area HOME    (CODE)
+                                     59 
+      000000                         60 __sdcc_banked_call::
+      000000 C0*00            [24]   61 	push	_PSBANK		;save return bank
+      000002 C8               [12]   62 	xch	a,r0		;save Acc in r0, do not assume any register bank
+      000003 C0 E0            [24]   63 	push	acc		;push LSB address
+      000005 E9               [12]   64 	mov	a,r1
+      000006 C0 E0            [24]   65 	push	acc		;push MSB address
+      000008 EA               [12]   66 	mov	a,r2		;get new bank
+      000009 54 0F            [12]   67 	anl	a,#0x0F		;remove storage class indicator
+      00000B 53*00 F0         [24]   68 	anl	_PSBANK,#0xF0
+      00000E 42*00            [12]   69 	orl	_PSBANK,a	;select bank
+      000010 C8               [12]   70 	xch	a,r0		;restore Acc
+      000011 22               [24]   71 	ret			;make the call
+                                     72 
+      000012                         73 __sdcc_banked_ret::
+      000012 D0*00            [24]   74 	pop	_PSBANK		;restore bank
+      000014 22               [24]   75 	ret			;return to caller

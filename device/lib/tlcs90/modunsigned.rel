@@ -1,0 +1,26 @@
+XL2
+H 1 areas 7 global symbols
+S __divu16 Ref0000
+S .__.ABS. Def0000
+S __divu8 Ref0000
+A _CODE size 1A flags 0 addr 0
+S __moduint_rrx_s Def000F
+S __moduint_rrx_hds Def0015
+S __moduchar_rrx_s Def0000
+S __moduchar_rrx_hds Def000A
+T 00 00
+R 00 00 00 00
+T 00 00 3A 03 00 FE 70 E2 2B 9A E2 2D
+R 00 00 00 00
+T 0A 00
+R 00 00 00 00
+T 0A 00 1C 00 00 08 1E
+R 00 00 00 00 02 03 02 00
+T 0F 00
+R 00 00 00 00
+T 0F 00 F2 02 4A F2 04 49
+R 00 00 00 00
+T 15 00
+R 00 00 00 00
+T 15 00 1C 00 00 08 1E
+R 00 00 00 00 02 03 00 00

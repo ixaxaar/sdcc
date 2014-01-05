@@ -1,0 +1,238 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                                      4 ; This file was generated Wed Nov 27 12:27:55 2013
+                                      5 ;--------------------------------------------------------
+                                      6 	.module logf
+                                      7 	.optsdcc -mmcs51 --model-large
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl _logf
+                                     13 ;--------------------------------------------------------
+                                     14 ; special function registers
+                                     15 ;--------------------------------------------------------
+                                     16 	.area RSEG    (ABS,DATA)
+      000000                         17 	.org 0x0000
+                                     18 ;--------------------------------------------------------
+                                     19 ; special function bits
+                                     20 ;--------------------------------------------------------
+                                     21 	.area RSEG    (ABS,DATA)
+      000000                         22 	.org 0x0000
+                                     23 ;--------------------------------------------------------
+                                     24 ; overlayable register banks
+                                     25 ;--------------------------------------------------------
+                                     26 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         27 	.ds 8
+                                     28 ;--------------------------------------------------------
+                                     29 ; internal ram data
+                                     30 ;--------------------------------------------------------
+                                     31 	.area DSEG    (DATA)
+      000000                         32 _logf_tmp:
+      000000                         33 	.ds 4
+                                     34 ;--------------------------------------------------------
+                                     35 ; overlayable items in internal ram 
+                                     36 ;--------------------------------------------------------
+                                     37 ;--------------------------------------------------------
+                                     38 ; indirectly addressable internal ram data
+                                     39 ;--------------------------------------------------------
+                                     40 	.area ISEG    (DATA)
+                                     41 ;--------------------------------------------------------
+                                     42 ; absolute internal ram data
+                                     43 ;--------------------------------------------------------
+                                     44 	.area IABS    (ABS,DATA)
+                                     45 	.area IABS    (ABS,DATA)
+                                     46 ;--------------------------------------------------------
+                                     47 ; bit data
+                                     48 ;--------------------------------------------------------
+                                     49 	.area BSEG    (BIT)
+                                     50 ;--------------------------------------------------------
+                                     51 ; paged external ram data
+                                     52 ;--------------------------------------------------------
+                                     53 	.area PSEG    (PAG,XDATA)
+                                     54 ;--------------------------------------------------------
+                                     55 ; external ram data
+                                     56 ;--------------------------------------------------------
+                                     57 	.area XSEG    (XDATA)
+                                     58 ;--------------------------------------------------------
+                                     59 ; absolute external ram data
+                                     60 ;--------------------------------------------------------
+                                     61 	.area XABS    (ABS,XDATA)
+                                     62 ;--------------------------------------------------------
+                                     63 ; external initialized ram data
+                                     64 ;--------------------------------------------------------
+                                     65 	.area XISEG   (XDATA)
+                                     66 	.area HOME    (CODE)
+                                     67 	.area GSINIT0 (CODE)
+                                     68 	.area GSINIT1 (CODE)
+                                     69 	.area GSINIT2 (CODE)
+                                     70 	.area GSINIT3 (CODE)
+                                     71 	.area GSINIT4 (CODE)
+                                     72 	.area GSINIT5 (CODE)
+                                     73 	.area GSINIT  (CODE)
+                                     74 	.area GSFINAL (CODE)
+                                     75 	.area CSEG    (CODE)
+                                     76 ;--------------------------------------------------------
+                                     77 ; global & static initialisations
+                                     78 ;--------------------------------------------------------
+                                     79 	.area HOME    (CODE)
+                                     80 	.area GSINIT  (CODE)
+                                     81 	.area GSFINAL (CODE)
+                                     82 	.area GSINIT  (CODE)
+                                     83 ;--------------------------------------------------------
+                                     84 ; Home
+                                     85 ;--------------------------------------------------------
+                                     86 	.area HOME    (CODE)
+                                     87 	.area HOME    (CODE)
+                                     88 ;--------------------------------------------------------
+                                     89 ; code
+                                     90 ;--------------------------------------------------------
+                                     91 	.area CSEG    (CODE)
+                                     92 ;------------------------------------------------------------
+                                     93 ;Allocation info for local variables in function 'logf'
+                                     94 ;------------------------------------------------------------
+                                     95 ;x                         Allocated with name '_logf_x_1_42'
+                                     96 ;------------------------------------------------------------
+                                     97 ;	logf.c:47: float logf(float x)
+                                     98 ;	-----------------------------------------
+                                     99 ;	 function logf
+                                    100 ;	-----------------------------------------
+      000000                        101 _logf:
+                           000007   102 	ar7 = 0x07
+                           000006   103 	ar6 = 0x06
+                           000005   104 	ar5 = 0x05
+                           000004   105 	ar4 = 0x04
+                           000003   106 	ar3 = 0x03
+                           000002   107 	ar2 = 0x02
+                           000001   108 	ar1 = 0x01
+                           000000   109 	ar0 = 0x00
+                                    110 ;	logf.c:200: __endasm;
+      000000 12r00r00         [24]  111 	lcall fsgetarg
+      000003                        112 	logf_neg_check:
+      000003 30 D1 06         [24]  113 	jnb psw.1, logf_zero_check
+      000006 12r00r00         [24]  114 	lcall fs_return_nan
+      000009 02r00rC8         [24]  115 	ljmp logf_exit
+      00000C                        116 	logf_zero_check:
+      00000C BC 00 08         [24]  117 	cjne r4, #0, logf_ok
+      00000F D2 D1            [12]  118 	setb psw.1
+      000011 12r00r00         [24]  119 	lcall fs_return_inf
+      000014 02r00rC8         [24]  120 	ljmp logf_exit
+      000017                        121 	logf_ok:
+      000017 C0 82            [24]  122 	push dpl
+      000019 74 03            [12]  123 	mov a, #3
+      00001B 79 00            [12]  124 	mov r1, #0
+      00001D 12r00r00         [24]  125 	lcall fs_rshift_a
+      000020 E4               [12]  126 	clr a
+      000021 F5*00            [12]  127 	mov (_logf_tmp + 0), a
+      000023 F5*01            [12]  128 	mov (_logf_tmp + 1), a
+      000025 F5*02            [12]  129 	mov (_logf_tmp + 2), a
+      000027 F5*03            [12]  130 	mov (_logf_tmp + 3), a
+      000029 90r00r00         [24]  131 	mov dptr, #__fs_natural_log_table
+      00002C F8               [12]  132 	mov r0, a
+      00002D                        133 	logf_cordic_loop:
+      00002D 8C 07            [24]  134 	mov ar7, r4
+      00002F 8B 06            [24]  135 	mov ar6, r3
+      000031 8A 05            [24]  136 	mov ar5, r2
+      000033 89 F0            [24]  137 	mov b, r1
+      000035 E8               [12]  138 	mov a, r0
+      000036 12r00r00         [24]  139 	lcall __fs_cordic_rshift_r765_unsigned
+      000039 E9               [12]  140 	mov a, r1
+      00003A 25 F0            [12]  141 	add a, b
+      00003C EA               [12]  142 	mov a, r2
+      00003D 3D               [12]  143 	addc a, r5
+      00003E EB               [12]  144 	mov a, r3
+      00003F 3E               [12]  145 	addc a, r6
+      000040 EC               [12]  146 	mov a, r4
+      000041 3F               [12]  147 	addc a, r7
+      000042 54 E0            [12]  148 	anl a, #0xE0
+      000044 70 28            [24]  149 	jnz logf_cordic_skip
+      000046 E9               [12]  150 	mov a, r1
+      000047 25 F0            [12]  151 	add a, b
+      000049 F9               [12]  152 	mov r1, a
+      00004A EA               [12]  153 	mov a, r2
+      00004B 3D               [12]  154 	addc a, r5
+      00004C FA               [12]  155 	mov r2, a
+      00004D EB               [12]  156 	mov a, r3
+      00004E 3E               [12]  157 	addc a, r6
+      00004F FB               [12]  158 	mov r3, a
+      000050 EC               [12]  159 	mov a, r4
+      000051 3F               [12]  160 	addc a, r7
+      000052 FC               [12]  161 	mov r4, a
+      000053 E4               [12]  162 	clr a
+      000054 93               [24]  163 	movc a, @a+dptr
+      000055 25*00            [12]  164 	add a, (_logf_tmp + 0)
+      000057 F5*00            [12]  165 	mov (_logf_tmp + 0), a
+      000059 74 01            [12]  166 	mov a, #1
+      00005B 93               [24]  167 	movc a, @a+dptr
+      00005C 35*01            [12]  168 	addc a, (_logf_tmp + 1)
+      00005E F5*01            [12]  169 	mov (_logf_tmp + 1), a
+      000060 74 02            [12]  170 	mov a, #2
+      000062 93               [24]  171 	movc a, @a+dptr
+      000063 35*02            [12]  172 	addc a, (_logf_tmp + 2)
+      000065 F5*02            [12]  173 	mov (_logf_tmp + 2), a
+      000067 74 03            [12]  174 	mov a, #3
+      000069 93               [24]  175 	movc a, @a+dptr
+      00006A 35*03            [12]  176 	addc a, (_logf_tmp + 3)
+      00006C F5*03            [12]  177 	mov (_logf_tmp + 3), a
+      00006E                        178 	logf_cordic_skip:
+      00006E A3               [24]  179 	inc dptr
+      00006F A3               [24]  180 	inc dptr
+      000070 A3               [24]  181 	inc dptr
+      000071 A3               [24]  182 	inc dptr
+      000072 08               [12]  183 	inc r0
+      000073 B8 1E B7         [24]  184 	cjne r0, #30, logf_cordic_loop
+      000076 AC*03            [24]  185 	mov r4, (_logf_tmp + 3)
+      000078 AB*02            [24]  186 	mov r3, (_logf_tmp + 2)
+      00007A AA*01            [24]  187 	mov r2, (_logf_tmp + 1)
+      00007C A9*00            [24]  188 	mov r1, (_logf_tmp + 0)
+      00007E 75 82 81         [24]  189 	mov dpl, #129
+      000081 D2 D1            [12]  190 	setb psw.1
+      000083 12r00r00         [24]  191 	lcall fs_normalize_a
+      000086 D0 E0            [24]  192 	pop acc
+      000088 B4 7E 05         [24]  193 	cjne a, #126, logf_exponent
+      00008B 12r00r00         [24]  194 	lcall fs_zerocheck_return
+      00008E 80 38            [24]  195 	sjmp logf_exit
+      000090                        196 	logf_exponent:
+      000090 40 06            [24]  197 	jc logf_exp_neg
+      000092                        198 	logf_exp_pos:
+      000092 24 82            [12]  199 	add a, #130
+      000094 C2 D5            [12]  200 	clr psw.5
+      000096 80 05            [24]  201 	sjmp logf_exp_scale
+      000098                        202 	logf_exp_neg:
+      000098 F4               [12]  203 	cpl a
+      000099 24 7F            [12]  204 	add a, #127
+      00009B D2 D5            [12]  205 	setb psw.5
+      00009D                        206 	logf_exp_scale:
+      00009D F8               [12]  207 	mov r0, a
+      00009E 12r00r00         [24]  208 	lcall fs_swap_a_b
+      0000A1 74 18            [12]  209 	mov a, #0x18
+      0000A3 88 F0            [24]  210 	mov b, r0
+      0000A5 A4               [48]  211 	mul ab
+      0000A6 F9               [12]  212 	mov r1, a
+      0000A7 AA F0            [24]  213 	mov r2, b
+      0000A9 74 B1            [12]  214 	mov a, #0xB1
+      0000AB 88 F0            [24]  215 	mov b, r0
+      0000AD A4               [48]  216 	mul ab
+      0000AE FB               [12]  217 	mov r3, a
+      0000AF AC F0            [24]  218 	mov r4, b
+      0000B1 74 72            [12]  219 	mov a, #0x72
+      0000B3 88 F0            [24]  220 	mov b, r0
+      0000B5 A4               [48]  221 	mul ab
+      0000B6 2A               [12]  222 	add a, r2
+      0000B7 FA               [12]  223 	mov r2, a
+      0000B8 E5 F0            [12]  224 	mov a, b
+      0000BA 3B               [12]  225 	addc a, r3
+      0000BB FB               [12]  226 	mov r3, a
+      0000BC E4               [12]  227 	clr a
+      0000BD 3C               [12]  228 	addc a, r4
+      0000BE FC               [12]  229 	mov r4, a
+      0000BF 75 82 86         [24]  230 	mov dpl, #134
+      0000C2 12r00r00         [24]  231 	lcall fs_normalize_a
+      0000C5 12r00r00         [24]  232 	lcall fsadd_direct_entry
+      0000C8                        233 	logf_exit:
+      0000C8 22               [24]  234 	ret
+                                    235 	.area CSEG    (CODE)
+                                    236 	.area CONST   (CODE)
+                                    237 	.area XINIT   (CODE)
+                                    238 	.area CABS    (ABS,CODE)

@@ -1,0 +1,208 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                                      4 ; This file was generated Wed Nov 27 12:28:12 2013
+                                      5 ;--------------------------------------------------------
+                                      6 	.module vprintf
+                                      7 	.optsdcc -mmcs51 --model-large
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl _putchar
+                                     13 	.globl __print_format
+                                     14 	.globl _vprintf
+                                     15 	.globl _printf
+                                     16 ;--------------------------------------------------------
+                                     17 ; special function registers
+                                     18 ;--------------------------------------------------------
+                                     19 	.area RSEG    (ABS,DATA)
+      000000                         20 	.org 0x0000
+                                     21 ;--------------------------------------------------------
+                                     22 ; special function bits
+                                     23 ;--------------------------------------------------------
+                                     24 	.area RSEG    (ABS,DATA)
+      000000                         25 	.org 0x0000
+                                     26 ;--------------------------------------------------------
+                                     27 ; overlayable register banks
+                                     28 ;--------------------------------------------------------
+                                     29 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         30 	.ds 8
+                                     31 ;--------------------------------------------------------
+                                     32 ; internal ram data
+                                     33 ;--------------------------------------------------------
+                                     34 	.area DSEG    (DATA)
+                                     35 ;--------------------------------------------------------
+                                     36 ; overlayable items in internal ram 
+                                     37 ;--------------------------------------------------------
+                                     38 ;--------------------------------------------------------
+                                     39 ; indirectly addressable internal ram data
+                                     40 ;--------------------------------------------------------
+                                     41 	.area ISEG    (DATA)
+                                     42 ;--------------------------------------------------------
+                                     43 ; absolute internal ram data
+                                     44 ;--------------------------------------------------------
+                                     45 	.area IABS    (ABS,DATA)
+                                     46 	.area IABS    (ABS,DATA)
+                                     47 ;--------------------------------------------------------
+                                     48 ; bit data
+                                     49 ;--------------------------------------------------------
+                                     50 	.area BSEG    (BIT)
+                                     51 ;--------------------------------------------------------
+                                     52 ; paged external ram data
+                                     53 ;--------------------------------------------------------
+                                     54 	.area PSEG    (PAG,XDATA)
+                                     55 ;--------------------------------------------------------
+                                     56 ; external ram data
+                                     57 ;--------------------------------------------------------
+                                     58 	.area XSEG    (XDATA)
+                                     59 ;--------------------------------------------------------
+                                     60 ; absolute external ram data
+                                     61 ;--------------------------------------------------------
+                                     62 	.area XABS    (ABS,XDATA)
+                                     63 ;--------------------------------------------------------
+                                     64 ; external initialized ram data
+                                     65 ;--------------------------------------------------------
+                                     66 	.area XISEG   (XDATA)
+                                     67 	.area HOME    (CODE)
+                                     68 	.area GSINIT0 (CODE)
+                                     69 	.area GSINIT1 (CODE)
+                                     70 	.area GSINIT2 (CODE)
+                                     71 	.area GSINIT3 (CODE)
+                                     72 	.area GSINIT4 (CODE)
+                                     73 	.area GSINIT5 (CODE)
+                                     74 	.area GSINIT  (CODE)
+                                     75 	.area GSFINAL (CODE)
+                                     76 	.area CSEG    (CODE)
+                                     77 ;--------------------------------------------------------
+                                     78 ; global & static initialisations
+                                     79 ;--------------------------------------------------------
+                                     80 	.area HOME    (CODE)
+                                     81 	.area GSINIT  (CODE)
+                                     82 	.area GSFINAL (CODE)
+                                     83 	.area GSINIT  (CODE)
+                                     84 ;--------------------------------------------------------
+                                     85 ; Home
+                                     86 ;--------------------------------------------------------
+                                     87 	.area HOME    (CODE)
+                                     88 	.area HOME    (CODE)
+                                     89 ;--------------------------------------------------------
+                                     90 ; code
+                                     91 ;--------------------------------------------------------
+                                     92 	.area CSEG    (CODE)
+                                     93 ;------------------------------------------------------------
+                                     94 ;Allocation info for local variables in function 'put_char_to_stdout'
+                                     95 ;------------------------------------------------------------
+                                     96 ;p                         Allocated to stack - _bp -5
+                                     97 ;c                         Allocated to registers r7 
+                                     98 ;------------------------------------------------------------
+                                     99 ;	vprintf.c:34: put_char_to_stdout (char c, void* p) _REENTRANT
+                                    100 ;	-----------------------------------------
+                                    101 ;	 function put_char_to_stdout
+                                    102 ;	-----------------------------------------
+      000000                        103 _put_char_to_stdout:
+                           000007   104 	ar7 = 0x07
+                           000006   105 	ar6 = 0x06
+                           000005   106 	ar5 = 0x05
+                           000004   107 	ar4 = 0x04
+                           000003   108 	ar3 = 0x03
+                           000002   109 	ar2 = 0x02
+                           000001   110 	ar1 = 0x01
+                           000000   111 	ar0 = 0x00
+      000000 C0*00            [24]  112 	push	_bp
+      000002 85 81*00         [24]  113 	mov	_bp,sp
+                                    114 ;	vprintf.c:37: putchar (c);
+      000005 12r00r00         [24]  115 	lcall	_putchar
+      000008 D0*00            [24]  116 	pop	_bp
+      00000A 22               [24]  117 	ret
+                                    118 ;------------------------------------------------------------
+                                    119 ;Allocation info for local variables in function 'vprintf'
+                                    120 ;------------------------------------------------------------
+                                    121 ;ap                        Allocated to stack - _bp -3
+                                    122 ;format                    Allocated to registers r5 r6 r7 
+                                    123 ;------------------------------------------------------------
+                                    124 ;	vprintf.c:41: vprintf (const char *format, va_list ap)
+                                    125 ;	-----------------------------------------
+                                    126 ;	 function vprintf
+                                    127 ;	-----------------------------------------
+      00000B                        128 _vprintf:
+      00000B C0*00            [24]  129 	push	_bp
+      00000D 85 81*00         [24]  130 	mov	_bp,sp
+      000010 AD 82            [24]  131 	mov	r5,dpl
+      000012 AE 83            [24]  132 	mov	r6,dph
+      000014 AF F0            [24]  133 	mov	r7,b
+                                    134 ;	vprintf.c:43: return _print_format (put_char_to_stdout, NULL, format, ap);
+      000016 E5*00            [12]  135 	mov	a,_bp
+      000018 24 FD            [12]  136 	add	a,#0xfd
+      00001A F8               [12]  137 	mov	r0,a
+      00001B E6               [12]  138 	mov	a,@r0
+      00001C C0 E0            [24]  139 	push	acc
+      00001E C0 05            [24]  140 	push	ar5
+      000020 C0 06            [24]  141 	push	ar6
+      000022 C0 07            [24]  142 	push	ar7
+      000024 E4               [12]  143 	clr	a
+      000025 C0 E0            [24]  144 	push	acc
+      000027 C0 E0            [24]  145 	push	acc
+      000029 C0 E0            [24]  146 	push	acc
+      00002B 90r00r00         [24]  147 	mov	dptr,#_put_char_to_stdout
+      00002E 12r00r00         [24]  148 	lcall	__print_format
+      000031 AE 82            [24]  149 	mov	r6,dpl
+      000033 AF 83            [24]  150 	mov	r7,dph
+      000035 E5 81            [12]  151 	mov	a,sp
+      000037 24 F9            [12]  152 	add	a,#0xf9
+      000039 F5 81            [12]  153 	mov	sp,a
+      00003B 8E 82            [24]  154 	mov	dpl,r6
+      00003D 8F 83            [24]  155 	mov	dph,r7
+      00003F D0*00            [24]  156 	pop	_bp
+      000041 22               [24]  157 	ret
+                                    158 ;------------------------------------------------------------
+                                    159 ;Allocation info for local variables in function 'printf'
+                                    160 ;------------------------------------------------------------
+                                    161 ;format                    Allocated to stack - _bp -5
+                                    162 ;arg                       Allocated to registers r7 
+                                    163 ;i                         Allocated to registers r6 r7 
+                                    164 ;------------------------------------------------------------
+                                    165 ;	vprintf.c:47: printf (const char *format, ...)
+                                    166 ;	-----------------------------------------
+                                    167 ;	 function printf
+                                    168 ;	-----------------------------------------
+      000042                        169 _printf:
+      000042 C0*00            [24]  170 	push	_bp
+      000044 85 81*00         [24]  171 	mov	_bp,sp
+                                    172 ;	vprintf.c:52: va_start (arg, format);
+      000047 E5*00            [12]  173 	mov	a,_bp
+      000049 24 FB            [12]  174 	add	a,#0xFB
+      00004B FF               [12]  175 	mov	r7,a
+                                    176 ;	vprintf.c:53: i = _print_format (put_char_to_stdout, NULL, format, arg);
+      00004C C0 07            [24]  177 	push	ar7
+      00004E E5*00            [12]  178 	mov	a,_bp
+      000050 24 FB            [12]  179 	add	a,#0xfb
+      000052 F8               [12]  180 	mov	r0,a
+      000053 E6               [12]  181 	mov	a,@r0
+      000054 C0 E0            [24]  182 	push	acc
+      000056 08               [12]  183 	inc	r0
+      000057 E6               [12]  184 	mov	a,@r0
+      000058 C0 E0            [24]  185 	push	acc
+      00005A 08               [12]  186 	inc	r0
+      00005B E6               [12]  187 	mov	a,@r0
+      00005C C0 E0            [24]  188 	push	acc
+      00005E E4               [12]  189 	clr	a
+      00005F C0 E0            [24]  190 	push	acc
+      000061 C0 E0            [24]  191 	push	acc
+      000063 C0 E0            [24]  192 	push	acc
+      000065 90r00r00         [24]  193 	mov	dptr,#_put_char_to_stdout
+      000068 12r00r00         [24]  194 	lcall	__print_format
+      00006B AE 82            [24]  195 	mov	r6,dpl
+      00006D AF 83            [24]  196 	mov	r7,dph
+      00006F E5 81            [12]  197 	mov	a,sp
+      000071 24 F9            [12]  198 	add	a,#0xf9
+      000073 F5 81            [12]  199 	mov	sp,a
+                                    200 ;	vprintf.c:56: return i;
+      000075 8E 82            [24]  201 	mov	dpl,r6
+      000077 8F 83            [24]  202 	mov	dph,r7
+      000079 D0*00            [24]  203 	pop	_bp
+      00007B 22               [24]  204 	ret
+                                    205 	.area CSEG    (CODE)
+                                    206 	.area CONST   (CODE)
+                                    207 	.area XINIT   (CODE)
+                                    208 	.area CABS    (ABS,CODE)

@@ -1,0 +1,351 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                                      4 ; This file was generated Wed Nov 27 12:27:58 2013
+                                      5 ;--------------------------------------------------------
+                                      6 	.module sprintf
+                                      7 	.optsdcc -mmcs51 --model-large
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl __print_format
+                                     13 	.globl _vsprintf_PARM_3
+                                     14 	.globl _vsprintf_PARM_2
+                                     15 	.globl _vsprintf
+                                     16 	.globl _sprintf
+                                     17 ;--------------------------------------------------------
+                                     18 ; special function registers
+                                     19 ;--------------------------------------------------------
+                                     20 	.area RSEG    (ABS,DATA)
+      000000                         21 	.org 0x0000
+                                     22 ;--------------------------------------------------------
+                                     23 ; special function bits
+                                     24 ;--------------------------------------------------------
+                                     25 	.area RSEG    (ABS,DATA)
+      000000                         26 	.org 0x0000
+                                     27 ;--------------------------------------------------------
+                                     28 ; overlayable register banks
+                                     29 ;--------------------------------------------------------
+                                     30 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         31 	.ds 8
+                                     32 ;--------------------------------------------------------
+                                     33 ; internal ram data
+                                     34 ;--------------------------------------------------------
+                                     35 	.area DSEG    (DATA)
+                                     36 ;--------------------------------------------------------
+                                     37 ; overlayable items in internal ram 
+                                     38 ;--------------------------------------------------------
+                                     39 ;--------------------------------------------------------
+                                     40 ; indirectly addressable internal ram data
+                                     41 ;--------------------------------------------------------
+                                     42 	.area ISEG    (DATA)
+                                     43 ;--------------------------------------------------------
+                                     44 ; absolute internal ram data
+                                     45 ;--------------------------------------------------------
+                                     46 	.area IABS    (ABS,DATA)
+                                     47 	.area IABS    (ABS,DATA)
+                                     48 ;--------------------------------------------------------
+                                     49 ; bit data
+                                     50 ;--------------------------------------------------------
+                                     51 	.area BSEG    (BIT)
+                                     52 ;--------------------------------------------------------
+                                     53 ; paged external ram data
+                                     54 ;--------------------------------------------------------
+                                     55 	.area PSEG    (PAG,XDATA)
+                                     56 ;--------------------------------------------------------
+                                     57 ; external ram data
+                                     58 ;--------------------------------------------------------
+                                     59 	.area XSEG    (XDATA)
+      000000                         60 _vsprintf_PARM_2:
+      000000                         61 	.ds 3
+      000003                         62 _vsprintf_PARM_3:
+      000003                         63 	.ds 1
+      000004                         64 _vsprintf_buf_1_14:
+      000004                         65 	.ds 3
+                                     66 ;--------------------------------------------------------
+                                     67 ; absolute external ram data
+                                     68 ;--------------------------------------------------------
+                                     69 	.area XABS    (ABS,XDATA)
+                                     70 ;--------------------------------------------------------
+                                     71 ; external initialized ram data
+                                     72 ;--------------------------------------------------------
+                                     73 	.area XISEG   (XDATA)
+                                     74 	.area HOME    (CODE)
+                                     75 	.area GSINIT0 (CODE)
+                                     76 	.area GSINIT1 (CODE)
+                                     77 	.area GSINIT2 (CODE)
+                                     78 	.area GSINIT3 (CODE)
+                                     79 	.area GSINIT4 (CODE)
+                                     80 	.area GSINIT5 (CODE)
+                                     81 	.area GSINIT  (CODE)
+                                     82 	.area GSFINAL (CODE)
+                                     83 	.area CSEG    (CODE)
+                                     84 ;--------------------------------------------------------
+                                     85 ; global & static initialisations
+                                     86 ;--------------------------------------------------------
+                                     87 	.area HOME    (CODE)
+                                     88 	.area GSINIT  (CODE)
+                                     89 	.area GSFINAL (CODE)
+                                     90 	.area GSINIT  (CODE)
+                                     91 ;--------------------------------------------------------
+                                     92 ; Home
+                                     93 ;--------------------------------------------------------
+                                     94 	.area HOME    (CODE)
+                                     95 	.area HOME    (CODE)
+                                     96 ;--------------------------------------------------------
+                                     97 ; code
+                                     98 ;--------------------------------------------------------
+                                     99 	.area CSEG    (CODE)
+                                    100 ;------------------------------------------------------------
+                                    101 ;Allocation info for local variables in function 'put_char_to_string'
+                                    102 ;------------------------------------------------------------
+                                    103 ;p                         Allocated to stack - _bp -5
+                                    104 ;c                         Allocated to stack - _bp +1
+                                    105 ;buf                       Allocated to stack - _bp +2
+                                    106 ;------------------------------------------------------------
+                                    107 ;	sprintf.c:34: put_char_to_string (char c, void* p) _REENTRANT
+                                    108 ;	-----------------------------------------
+                                    109 ;	 function put_char_to_string
+                                    110 ;	-----------------------------------------
+      000000                        111 _put_char_to_string:
+                           000007   112 	ar7 = 0x07
+                           000006   113 	ar6 = 0x06
+                           000005   114 	ar5 = 0x05
+                           000004   115 	ar4 = 0x04
+                           000003   116 	ar3 = 0x03
+                           000002   117 	ar2 = 0x02
+                           000001   118 	ar1 = 0x01
+                           000000   119 	ar0 = 0x00
+      000000 C0*00            [24]  120 	push	_bp
+      000002 85 81*00         [24]  121 	mov	_bp,sp
+      000005 C0 82            [24]  122 	push	dpl
+      000007 05 81            [12]  123 	inc	sp
+      000009 05 81            [12]  124 	inc	sp
+      00000B 05 81            [12]  125 	inc	sp
+                                    126 ;	sprintf.c:36: char **buf = (char **)p;
+      00000D E5*00            [12]  127 	mov	a,_bp
+      00000F 24 FB            [12]  128 	add	a,#0xfb
+      000011 F8               [12]  129 	mov	r0,a
+      000012 A9*00            [24]  130 	mov	r1,_bp
+      000014 09               [12]  131 	inc	r1
+      000015 09               [12]  132 	inc	r1
+      000016 E6               [12]  133 	mov	a,@r0
+      000017 F7               [12]  134 	mov	@r1,a
+      000018 08               [12]  135 	inc	r0
+      000019 09               [12]  136 	inc	r1
+      00001A E6               [12]  137 	mov	a,@r0
+      00001B F7               [12]  138 	mov	@r1,a
+      00001C 08               [12]  139 	inc	r0
+      00001D 09               [12]  140 	inc	r1
+      00001E E6               [12]  141 	mov	a,@r0
+      00001F F7               [12]  142 	mov	@r1,a
+                                    143 ;	sprintf.c:37: *(*buf)++ = c;
+      000020 A8*00            [24]  144 	mov	r0,_bp
+      000022 08               [12]  145 	inc	r0
+      000023 08               [12]  146 	inc	r0
+      000024 86 82            [24]  147 	mov	dpl,@r0
+      000026 08               [12]  148 	inc	r0
+      000027 86 83            [24]  149 	mov	dph,@r0
+      000029 08               [12]  150 	inc	r0
+      00002A 86 F0            [24]  151 	mov	b,@r0
+      00002C 12r00r00         [24]  152 	lcall	__gptrget
+      00002F FA               [12]  153 	mov	r2,a
+      000030 A3               [24]  154 	inc	dptr
+      000031 12r00r00         [24]  155 	lcall	__gptrget
+      000034 FB               [12]  156 	mov	r3,a
+      000035 A3               [24]  157 	inc	dptr
+      000036 12r00r00         [24]  158 	lcall	__gptrget
+      000039 FF               [12]  159 	mov	r7,a
+      00003A 74 01            [12]  160 	mov	a,#0x01
+      00003C 2A               [12]  161 	add	a,r2
+      00003D FC               [12]  162 	mov	r4,a
+      00003E E4               [12]  163 	clr	a
+      00003F 3B               [12]  164 	addc	a,r3
+      000040 FD               [12]  165 	mov	r5,a
+      000041 8F 06            [24]  166 	mov	ar6,r7
+      000043 A8*00            [24]  167 	mov	r0,_bp
+      000045 08               [12]  168 	inc	r0
+      000046 08               [12]  169 	inc	r0
+      000047 86 82            [24]  170 	mov	dpl,@r0
+      000049 08               [12]  171 	inc	r0
+      00004A 86 83            [24]  172 	mov	dph,@r0
+      00004C 08               [12]  173 	inc	r0
+      00004D 86 F0            [24]  174 	mov	b,@r0
+      00004F EC               [12]  175 	mov	a,r4
+      000050 12r00r00         [24]  176 	lcall	__gptrput
+      000053 A3               [24]  177 	inc	dptr
+      000054 ED               [12]  178 	mov	a,r5
+      000055 12r00r00         [24]  179 	lcall	__gptrput
+      000058 A3               [24]  180 	inc	dptr
+      000059 EE               [12]  181 	mov	a,r6
+      00005A 12r00r00         [24]  182 	lcall	__gptrput
+      00005D 8A 82            [24]  183 	mov	dpl,r2
+      00005F 8B 83            [24]  184 	mov	dph,r3
+      000061 8F F0            [24]  185 	mov	b,r7
+      000063 A8*00            [24]  186 	mov	r0,_bp
+      000065 08               [12]  187 	inc	r0
+      000066 E6               [12]  188 	mov	a,@r0
+      000067 12r00r00         [24]  189 	lcall	__gptrput
+      00006A 85*00 81         [24]  190 	mov	sp,_bp
+      00006D D0*00            [24]  191 	pop	_bp
+      00006F 22               [24]  192 	ret
+                                    193 ;------------------------------------------------------------
+                                    194 ;Allocation info for local variables in function 'vsprintf'
+                                    195 ;------------------------------------------------------------
+                                    196 ;format                    Allocated with name '_vsprintf_PARM_2'
+                                    197 ;ap                        Allocated with name '_vsprintf_PARM_3'
+                                    198 ;buf                       Allocated with name '_vsprintf_buf_1_14'
+                                    199 ;i                         Allocated with name '_vsprintf_i_1_15'
+                                    200 ;------------------------------------------------------------
+                                    201 ;	sprintf.c:41: vsprintf (char *buf, const char *format, va_list ap)
+                                    202 ;	-----------------------------------------
+                                    203 ;	 function vsprintf
+                                    204 ;	-----------------------------------------
+      000070                        205 _vsprintf:
+      000070 AF F0            [24]  206 	mov	r7,b
+      000072 AE 83            [24]  207 	mov	r6,dph
+      000074 E5 82            [12]  208 	mov	a,dpl
+      000076 90r00r04         [24]  209 	mov	dptr,#_vsprintf_buf_1_14
+      000079 F0               [24]  210 	movx	@dptr,a
+      00007A EE               [12]  211 	mov	a,r6
+      00007B A3               [24]  212 	inc	dptr
+      00007C F0               [24]  213 	movx	@dptr,a
+      00007D EF               [12]  214 	mov	a,r7
+      00007E A3               [24]  215 	inc	dptr
+      00007F F0               [24]  216 	movx	@dptr,a
+                                    217 ;	sprintf.c:44: i = _print_format (put_char_to_string, &buf, format, ap);
+      000080 90r00r00         [24]  218 	mov	dptr,#_vsprintf_PARM_2
+      000083 E0               [24]  219 	movx	a,@dptr
+      000084 FD               [12]  220 	mov	r5,a
+      000085 A3               [24]  221 	inc	dptr
+      000086 E0               [24]  222 	movx	a,@dptr
+      000087 FE               [12]  223 	mov	r6,a
+      000088 A3               [24]  224 	inc	dptr
+      000089 E0               [24]  225 	movx	a,@dptr
+      00008A FF               [12]  226 	mov	r7,a
+      00008B 90r00r03         [24]  227 	mov	dptr,#_vsprintf_PARM_3
+      00008E E0               [24]  228 	movx	a,@dptr
+      00008F FC               [12]  229 	mov	r4,a
+      000090 90r00r00         [24]  230 	mov	dptr,#__print_format_PARM_2
+      000093 74r04            [12]  231 	mov	a,#_vsprintf_buf_1_14
+      000095 F0               [24]  232 	movx	@dptr,a
+      000096 74s00            [12]  233 	mov	a,#(_vsprintf_buf_1_14 >> 8)
+      000098 A3               [24]  234 	inc	dptr
+      000099 F0               [24]  235 	movx	@dptr,a
+      00009A E4               [12]  236 	clr	a
+      00009B A3               [24]  237 	inc	dptr
+      00009C F0               [24]  238 	movx	@dptr,a
+      00009D 90r00r00         [24]  239 	mov	dptr,#__print_format_PARM_3
+      0000A0 ED               [12]  240 	mov	a,r5
+      0000A1 F0               [24]  241 	movx	@dptr,a
+      0000A2 EE               [12]  242 	mov	a,r6
+      0000A3 A3               [24]  243 	inc	dptr
+      0000A4 F0               [24]  244 	movx	@dptr,a
+      0000A5 EF               [12]  245 	mov	a,r7
+      0000A6 A3               [24]  246 	inc	dptr
+      0000A7 F0               [24]  247 	movx	@dptr,a
+      0000A8 90r00r00         [24]  248 	mov	dptr,#__print_format_PARM_4
+      0000AB EC               [12]  249 	mov	a,r4
+      0000AC F0               [24]  250 	movx	@dptr,a
+      0000AD 90r00r00         [24]  251 	mov	dptr,#_put_char_to_string
+      0000B0 12r00r00         [24]  252 	lcall	__print_format
+      0000B3 AE 82            [24]  253 	mov	r6,dpl
+      0000B5 AF 83            [24]  254 	mov	r7,dph
+                                    255 ;	sprintf.c:45: *buf = 0;
+      0000B7 90r00r04         [24]  256 	mov	dptr,#_vsprintf_buf_1_14
+      0000BA E0               [24]  257 	movx	a,@dptr
+      0000BB FB               [12]  258 	mov	r3,a
+      0000BC A3               [24]  259 	inc	dptr
+      0000BD E0               [24]  260 	movx	a,@dptr
+      0000BE FC               [12]  261 	mov	r4,a
+      0000BF A3               [24]  262 	inc	dptr
+      0000C0 E0               [24]  263 	movx	a,@dptr
+      0000C1 FD               [12]  264 	mov	r5,a
+      0000C2 8B 82            [24]  265 	mov	dpl,r3
+      0000C4 8C 83            [24]  266 	mov	dph,r4
+      0000C6 8D F0            [24]  267 	mov	b,r5
+      0000C8 E4               [12]  268 	clr	a
+      0000C9 12r00r00         [24]  269 	lcall	__gptrput
+                                    270 ;	sprintf.c:46: return i;
+      0000CC 8E 82            [24]  271 	mov	dpl,r6
+      0000CE 8F 83            [24]  272 	mov	dph,r7
+      0000D0 22               [24]  273 	ret
+                                    274 ;------------------------------------------------------------
+                                    275 ;Allocation info for local variables in function 'sprintf'
+                                    276 ;------------------------------------------------------------
+                                    277 ;buf                       Allocated to stack - _bp -5
+                                    278 ;format                    Allocated to stack - _bp -8
+                                    279 ;arg                       Allocated to registers r7 
+                                    280 ;i                         Allocated to registers r6 r7 
+                                    281 ;------------------------------------------------------------
+                                    282 ;	sprintf.c:50: sprintf (char *buf, const char *format, ...)
+                                    283 ;	-----------------------------------------
+                                    284 ;	 function sprintf
+                                    285 ;	-----------------------------------------
+      0000D1                        286 _sprintf:
+      0000D1 C0*00            [24]  287 	push	_bp
+      0000D3 85 81*00         [24]  288 	mov	_bp,sp
+                                    289 ;	sprintf.c:55: va_start (arg, format);
+      0000D6 E5*00            [12]  290 	mov	a,_bp
+      0000D8 24 F8            [12]  291 	add	a,#0xF8
+      0000DA FF               [12]  292 	mov	r7,a
+                                    293 ;	sprintf.c:56: i = _print_format (put_char_to_string, &buf, format, arg);
+      0000DB E5*00            [12]  294 	mov	a,_bp
+      0000DD 24 FB            [12]  295 	add	a,#0xFB
+      0000DF FE               [12]  296 	mov	r6,a
+      0000E0 7D 00            [12]  297 	mov	r5,#0x00
+      0000E2 7C 40            [12]  298 	mov	r4,#0x40
+      0000E4 90r00r00         [24]  299 	mov	dptr,#__print_format_PARM_2
+      0000E7 EE               [12]  300 	mov	a,r6
+      0000E8 F0               [24]  301 	movx	@dptr,a
+      0000E9 ED               [12]  302 	mov	a,r5
+      0000EA A3               [24]  303 	inc	dptr
+      0000EB F0               [24]  304 	movx	@dptr,a
+      0000EC EC               [12]  305 	mov	a,r4
+      0000ED A3               [24]  306 	inc	dptr
+      0000EE F0               [24]  307 	movx	@dptr,a
+      0000EF E5*00            [12]  308 	mov	a,_bp
+      0000F1 24 F8            [12]  309 	add	a,#0xf8
+      0000F3 F8               [12]  310 	mov	r0,a
+      0000F4 90r00r00         [24]  311 	mov	dptr,#__print_format_PARM_3
+      0000F7 E6               [12]  312 	mov	a,@r0
+      0000F8 F0               [24]  313 	movx	@dptr,a
+      0000F9 08               [12]  314 	inc	r0
+      0000FA E6               [12]  315 	mov	a,@r0
+      0000FB A3               [24]  316 	inc	dptr
+      0000FC F0               [24]  317 	movx	@dptr,a
+      0000FD 08               [12]  318 	inc	r0
+      0000FE E6               [12]  319 	mov	a,@r0
+      0000FF A3               [24]  320 	inc	dptr
+      000100 F0               [24]  321 	movx	@dptr,a
+      000101 90r00r00         [24]  322 	mov	dptr,#__print_format_PARM_4
+      000104 EF               [12]  323 	mov	a,r7
+      000105 F0               [24]  324 	movx	@dptr,a
+      000106 90r00r00         [24]  325 	mov	dptr,#_put_char_to_string
+      000109 12r00r00         [24]  326 	lcall	__print_format
+      00010C AE 82            [24]  327 	mov	r6,dpl
+      00010E AF 83            [24]  328 	mov	r7,dph
+                                    329 ;	sprintf.c:57: *buf = 0;
+      000110 E5*00            [12]  330 	mov	a,_bp
+      000112 24 FB            [12]  331 	add	a,#0xfb
+      000114 F8               [12]  332 	mov	r0,a
+      000115 86 03            [24]  333 	mov	ar3,@r0
+      000117 08               [12]  334 	inc	r0
+      000118 86 04            [24]  335 	mov	ar4,@r0
+      00011A 08               [12]  336 	inc	r0
+      00011B 86 05            [24]  337 	mov	ar5,@r0
+      00011D 8B 82            [24]  338 	mov	dpl,r3
+      00011F 8C 83            [24]  339 	mov	dph,r4
+      000121 8D F0            [24]  340 	mov	b,r5
+      000123 E4               [12]  341 	clr	a
+      000124 12r00r00         [24]  342 	lcall	__gptrput
+                                    343 ;	sprintf.c:60: return i;
+      000127 8E 82            [24]  344 	mov	dpl,r6
+      000129 8F 83            [24]  345 	mov	dph,r7
+      00012B D0*00            [24]  346 	pop	_bp
+      00012D 22               [24]  347 	ret
+                                    348 	.area CSEG    (CODE)
+                                    349 	.area CONST   (CODE)
+                                    350 	.area XINIT   (CODE)
+                                    351 	.area CABS    (ABS,CODE)

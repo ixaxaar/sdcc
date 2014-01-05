@@ -1,0 +1,49 @@
+XL2
+H 9 areas 4 global symbols
+M _memchr
+O -mtlcs90
+S .__.ABS. Def0000
+A _CODE size 51 flags 0 addr 0
+S _memchr Def0000
+S _memchr_start Def0000
+S _memchr_end Def0051
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 00 00
+T 00 00
+R 00 00 00 00
+T 00 00 54 3C 00 00 FE 14 16 FC FF 08 F2 08 4A 08
+R 00 00 00 00
+T 0E 00 F2 0C 4A F9 70 EE 42 FB 31 FA 30
+R 00 00 00 00
+T 19 00
+R 00 00 00 00
+T 19 00 F0 FC 2E F9 62 CE 07 F0 FD 2E F8 62 C6 23
+R 00 00 00 00
+T 27 00
+R 00 00 00 00
+T 27 00 E0 2E F4 FE 26 F4 FF 37 00 F0 06 2E F0 FE
+R 00 00 00 00
+T 35 00 62 CE 0B F0 07 2E F0 FF 62 CE 03 08 C8 0A
+R 00 00 00 00
+T 43 00
+R 00 00 00 00
+T 43 00 90 F9 33 F8 32 C8 CF
+R 00 00 00 00
+T 4A 00
+R 00 00 00 00
+T 4A 00 3A 00 00
+R 00 00 00 00
+T 4D 00
+R 00 00 00 00
+T 4D 00 FC 3E 5C 1E
+R 00 00 00 00
+T 51 00
+R 00 00 00 00

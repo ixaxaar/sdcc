@@ -1,0 +1,28 @@
+XH3
+H A areas 3 global symbols
+M _fs2uint
+S ___fs2ulong Ref000000
+S .__.ABS. Def000000
+A _CODE size 0 flags 0 addr 0
+A DATA size 0 flags 0 addr 0
+A INITIALIZED size 0 flags 0 addr 0
+A DABS size 0 flags 8 addr 0
+A HOME size 0 flags 0 addr 0
+A GSINIT size 0 flags 0 addr 0
+A GSFINAL size 0 flags 0 addr 0
+A CODE size 22 flags 0 addr 0
+S ___fs2uint Def000000
+A INITIALIZER size 0 flags 0 addr 0
+A CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 00 07
+T 00 00 00 52 04 1E 09 89 1E 09 89 CD 00 00 5B 04
+R 00 00 00 07 02 0C 00 00
+T 00 00 0D 17 01 A3 FF FF 7B 02 A2 00 7B 01 A2 00
+R 00 00 00 07
+T 00 00 1A 25 03 AE FF FF
+R 00 00 00 07
+T 00 00 1F
+R 00 00 00 07
+T 00 00 1F 5B 04 81
+R 00 00 00 07

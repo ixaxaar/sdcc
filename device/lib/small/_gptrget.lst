@@ -1,0 +1,150 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                                      4 ; This file was generated Wed Nov 27 12:27:51 2013
+                                      5 ;--------------------------------------------------------
+                                      6 	.module _gptrget
+                                      7 	.optsdcc -mmcs51 --model-small
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl __gptrget
+                                     13 	.globl _B_5
+                                     14 	.globl _B_6
+                                     15 	.globl _B_7
+                                     16 ;--------------------------------------------------------
+                                     17 ; special function registers
+                                     18 ;--------------------------------------------------------
+                                     19 	.area RSEG    (ABS,DATA)
+      000000                         20 	.org 0x0000
+                                     21 ;--------------------------------------------------------
+                                     22 ; special function bits
+                                     23 ;--------------------------------------------------------
+                                     24 	.area RSEG    (ABS,DATA)
+      000000                         25 	.org 0x0000
+                           0000F7    26 _B_7	=	0x00f7
+                           0000F6    27 _B_6	=	0x00f6
+                           0000F5    28 _B_5	=	0x00f5
+                                     29 ;--------------------------------------------------------
+                                     30 ; overlayable register banks
+                                     31 ;--------------------------------------------------------
+                                     32 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         33 	.ds 8
+                                     34 ;--------------------------------------------------------
+                                     35 ; internal ram data
+                                     36 ;--------------------------------------------------------
+                                     37 	.area DSEG    (DATA)
+                                     38 ;--------------------------------------------------------
+                                     39 ; overlayable items in internal ram 
+                                     40 ;--------------------------------------------------------
+                                     41 	.area	OSEG    (OVR,DATA)
+                                     42 ;--------------------------------------------------------
+                                     43 ; indirectly addressable internal ram data
+                                     44 ;--------------------------------------------------------
+                                     45 	.area ISEG    (DATA)
+                                     46 ;--------------------------------------------------------
+                                     47 ; absolute internal ram data
+                                     48 ;--------------------------------------------------------
+                                     49 	.area IABS    (ABS,DATA)
+                                     50 	.area IABS    (ABS,DATA)
+                                     51 ;--------------------------------------------------------
+                                     52 ; bit data
+                                     53 ;--------------------------------------------------------
+                                     54 	.area BSEG    (BIT)
+                                     55 ;--------------------------------------------------------
+                                     56 ; paged external ram data
+                                     57 ;--------------------------------------------------------
+                                     58 	.area PSEG    (PAG,XDATA)
+                                     59 ;--------------------------------------------------------
+                                     60 ; external ram data
+                                     61 ;--------------------------------------------------------
+                                     62 	.area XSEG    (XDATA)
+                                     63 ;--------------------------------------------------------
+                                     64 ; absolute external ram data
+                                     65 ;--------------------------------------------------------
+                                     66 	.area XABS    (ABS,XDATA)
+                                     67 ;--------------------------------------------------------
+                                     68 ; external initialized ram data
+                                     69 ;--------------------------------------------------------
+                                     70 	.area XISEG   (XDATA)
+                                     71 	.area HOME    (CODE)
+                                     72 	.area GSINIT0 (CODE)
+                                     73 	.area GSINIT1 (CODE)
+                                     74 	.area GSINIT2 (CODE)
+                                     75 	.area GSINIT3 (CODE)
+                                     76 	.area GSINIT4 (CODE)
+                                     77 	.area GSINIT5 (CODE)
+                                     78 	.area GSINIT  (CODE)
+                                     79 	.area GSFINAL (CODE)
+                                     80 	.area CSEG    (CODE)
+                                     81 ;--------------------------------------------------------
+                                     82 ; global & static initialisations
+                                     83 ;--------------------------------------------------------
+                                     84 	.area HOME    (CODE)
+                                     85 	.area GSINIT  (CODE)
+                                     86 	.area GSFINAL (CODE)
+                                     87 	.area GSINIT  (CODE)
+                                     88 ;--------------------------------------------------------
+                                     89 ; Home
+                                     90 ;--------------------------------------------------------
+                                     91 	.area HOME    (CODE)
+                                     92 	.area HOME    (CODE)
+                                     93 ;--------------------------------------------------------
+                                     94 ; code
+                                     95 ;--------------------------------------------------------
+                                     96 	.area CSEG    (CODE)
+                                     97 ;------------------------------------------------------------
+                                     98 ;Allocation info for local variables in function '_gptrget'
+                                     99 ;------------------------------------------------------------
+                                    100 ;gptr                      Allocated to registers 
+                                    101 ;------------------------------------------------------------
+                                    102 ;	_gptrget.c:167: _gptrget (char *gptr) __naked
+                                    103 ;	-----------------------------------------
+                                    104 ;	 function _gptrget
+                                    105 ;	-----------------------------------------
+      000000                        106 __gptrget:
+                                    107 ;	naked function: no prologue.
+                                    108 ;	_gptrget.c:214: __endasm;
+                                    109 ;
+                                    110 ; depending on the pointer type acc. to SDCCsymt.h
+                                    111 ;
+      000000 20 F7 14         [24]  112 	jb _B_7,codeptr$ ; >0x80 code ; 3
+      000003 30 F6 14         [24]  113 	jnb _B_6,xdataptr$ ; <0x40 far ; 3
+      000006 88 83            [24]  114 	mov dph,r0 ; save r0 independant of regbank ; 2
+      000008 A8 82            [24]  115 	mov r0,dpl ; use only low order address ; 2
+      00000A 20 F5 07         [24]  116 	jb _B_5,pdataptr$ ; >0x60 pdata ; 3
+                                    117 ;
+                                    118 ; Pointer to data space
+                                    119 ;
+      00000D E6               [12]  120 	mov a,@r0 ; 1
+      00000E                        121 	 dataptrrestore$:
+      00000E A8 83            [24]  122 	mov r0,dph ; restore r0 ; 2
+      000010 75 83 00         [24]  123 	mov dph,#0 ; restore dph ; 2
+      000013 22               [24]  124 	ret ; 1
+                                    125 ;
+                                    126 ; pointer to xternal stack or pdata
+                                    127 ;
+      000014                        128 	 pdataptr$:
+      000014 E2               [24]  129 	movx a,@r0 ; 1
+      000015 80 F7            [24]  130 	sjmp dataptrrestore$ ; 2
+                                    131 ;
+                                    132 ; pointer to code area, max 16 bits
+                                    133 ;
+      000017                        134 	 codeptr$:
+      000017 E4               [12]  135 	clr a ; 1
+      000018 93               [24]  136 	movc a,@a+dptr ; 1
+      000019 22               [24]  137 	ret ; 1
+                                    138 ;
+                                    139 ; pointer to xternal data, max 16 bits
+                                    140 ;
+      00001A                        141 	 xdataptr$:
+      00001A E0               [24]  142 	movx a,@dptr ; 1
+      00001B 22               [24]  143 	ret ; 1
+                                    144 ;===
+                                    145 ;27 bytes
+                                    146 ;	naked function: no epilogue.
+                                    147 	.area CSEG    (CODE)
+                                    148 	.area CONST   (CODE)
+                                    149 	.area XINIT   (CODE)
+                                    150 	.area CABS    (ABS,CODE)

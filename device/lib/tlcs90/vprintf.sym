@@ -1,0 +1,35 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Toshiba TLCS90), page 1.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  2710 L
+    .__.ABS.                                                    =  0000 G
+    .__.CPU.                                                    =  0000 L
+    .__.H$L.                                                    =  0000 L
+    __print_format                                                 **** GX
+  0 _printf                                                        0025 GR
+  0 _printf_end                                                    003E GR
+  0 _printf_start                                                  0025 GR
+  0 _put_char_to_stdout                                            0000 R
+    _putchar                                                       **** GX
+  0 _vprintf                                                       000E GR
+  0 _vprintf_end                                                   0025 GR
+  0 _vprintf_start                                                 000E GR
+
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Toshiba TLCS90), page 2.
+Hexadecimal [16-Bits]
+
+Area Table
+
+   0 _CODE                                      size   3E   flags    0
+   1 _DATA                                      size    0   flags    0
+   2 _INITIALIZED                               size    0   flags    0
+   3 _DABS                                      size    0   flags    8
+   4 _HOME                                      size    0   flags    0
+   5 _GSINIT                                    size    0   flags    0
+   6 _GSFINAL                                   size    0   flags    0
+   7 _INITIALIZER                               size    0   flags    0
+   8 _CABS                                      size    0   flags    8
+

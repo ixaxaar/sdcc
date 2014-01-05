@@ -1,0 +1,37 @@
+XH3
+H A areas 2 global symbols
+M _memchr
+S .__.ABS. Def000000
+A _CODE size 0 flags 0 addr 0
+A DATA size 0 flags 0 addr 0
+A INITIALIZED size 0 flags 0 addr 0
+A DABS size 0 flags 8 addr 0
+A HOME size 0 flags 0 addr 0
+A GSINIT size 0 flags 0 addr 0
+A GSFINAL size 0 flags 0 addr 0
+A CODE size 28 flags 0 addr 0
+S _memchr Def000000
+A INITIALIZER size 0 flags 0 addr 0
+A CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 00 07
+T 00 00 00 52 04 16 07 93 72 FB 0B 1F 01 93
+R 00 00 00 07
+T 00 00 0B
+R 00 00 00 07
+T 00 00 0B 13 01 27 15 F6 0F 03 89 97 7B 05 95 13
+R 00 00 00 07
+T 00 00 18 0B 85 26 03 93 20 06
+R 00 00 00 07
+T 00 00 1F
+R 00 00 00 07
+T 00 00 1F 5C 90 93 20 E7
+R 00 00 00 07
+T 00 00 24
+R 00 00 00 07
+T 00 00 24 5F
+R 00 00 00 07
+T 00 00 25
+R 00 00 00 07
+T 00 00 25 5B 04 81
+R 00 00 00 07

@@ -1,0 +1,90 @@
+                                      1 ;--------------------------------------------------------------------------
+                                      2 ;  crtxpop.asm - C run-time: pop registers (not bits) from xstack
+                                      3 ;
+                                      4 ;  Copyright (C) 2009, Maarten Brock
+                                      5 ;
+                                      6 ;  This library is free software; you can redistribute it and/or modify it
+                                      7 ;  under the terms of the GNU General Public License as published by the
+                                      8 ;  Free Software Foundation; either version 2, or (at your option) any
+                                      9 ;  later version.
+                                     10 ;
+                                     11 ;  This library is distributed in the hope that it will be useful,
+                                     12 ;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                                     13 ;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+                                     14 ;  GNU General Public License for more details.
+                                     15 ;
+                                     16 ;  You should have received a copy of the GNU General Public License 
+                                     17 ;  along with this library; see the file COPYING. If not, write to the
+                                     18 ;  Free Software Foundation, 51 Franklin Street, Fifth Floor, Boston,
+                                     19 ;   MA 02110-1301, USA.
+                                     20 ;
+                                     21 ;  As a special exception, if you link this library with other files,
+                                     22 ;  some of which are compiled with SDCC, to produce an executable,
+                                     23 ;  this library does not by itself cause the resulting executable to
+                                     24 ;  be covered by the GNU General Public License. This exception does
+                                     25 ;  not however invalidate any other reasons why the executable file
+                                     26 ;  might be covered by the GNU General Public License.
+                                     27 ;--------------------------------------------------------------------------
+                                     28 
+                                     29 ;--------------------------------------------------------
+                                     30 ; overlayable bit register bank
+                                     31 ;--------------------------------------------------------
+                                     32 	.area BIT_BANK	(REL,OVR,DATA)
+      000000                         33 bits:
+      000000                         34 	.ds 1
+                                     35 
+                           000000    36 	ar0 = 0x00
+                           000001    37 	ar1 = 0x01
+                                     38 
+                                     39 	.area HOME    (CODE)
+                                     40 
+                                     41 ; Pop registers r1..r7 & bits from xstack
+                                     42 ; Expect mask in B
+      000000                         43 ___sdcc_xpop_regs::
+      000000 E8               [12]   44 	mov	a,r0
+      000001 A8*00            [24]   45 	mov	r0,_spx
+      000003                         46 ___sdcc_xpop::
+      000003 C0 E0            [24]   47 	push acc
+      000005 10 F0 04         [24]   48 	jbc	B.0,00100$	;if B(0)=0 then
+      000008 18               [12]   49 	dec	r0
+      000009 E2               [24]   50 	movx	a,@r0		;pop bits
+      00000A F5*00            [12]   51 	mov	bits,a
+      00000C                         52 00100$:
+      00000C 10 F1 03         [24]   53 	jbc	B.1,00101$	;if B(1)=0 then
+      00000F 18               [12]   54 	dec	r0
+      000010 E2               [24]   55 	movx	a,@r0		;pop R1
+      000011 F9               [12]   56 	mov	r1,a
+      000012                         57 00101$:
+      000012 10 F2 03         [24]   58 	jbc	B.2,00102$	;if B(2)=0 then
+      000015 18               [12]   59 	dec	r0
+      000016 E2               [24]   60 	movx	a,@r0		;pop R2
+      000017 FA               [12]   61 	mov	r2,a
+      000018                         62 00102$:
+      000018 10 F3 03         [24]   63 	jbc	B.3,00103$	;if B(3)=0 then
+      00001B 18               [12]   64 	dec	r0
+      00001C E2               [24]   65 	movx	a,@r0		;pop R3
+      00001D FB               [12]   66 	mov	r3,a
+      00001E                         67 00103$:
+      00001E 10 F4 03         [24]   68 	jbc	B.4,00104$	;if B(4)=0 then
+      000021 18               [12]   69 	dec	r0
+      000022 E2               [24]   70 	movx	a,@r0		;pop R4
+      000023 FC               [12]   71 	mov	r4,a
+      000024                         72 00104$:
+      000024 10 F5 03         [24]   73 	jbc	B.5,00105$	;if B(5)=0 then
+      000027 18               [12]   74 	dec	r0
+      000028 E2               [24]   75 	movx	a,@r0		;pop R5
+      000029 FD               [12]   76 	mov	r5,a
+      00002A                         77 00105$:
+      00002A 10 F6 03         [24]   78 	jbc	B.6,00106$	;if B(6)=0 then
+      00002D 18               [12]   79 	dec	r0
+      00002E E2               [24]   80 	movx	a,@r0		;pop R6
+      00002F FE               [12]   81 	mov	r6,a
+      000030                         82 00106$:
+      000030 10 F7 03         [24]   83 	jbc	B.7,00107$	;if B(7)=0 then
+      000033 18               [12]   84 	dec	r0
+      000034 E2               [24]   85 	movx	a,@r0		;pop R7
+      000035 FF               [12]   86 	mov	r7,a
+      000036                         87 00107$:
+      000036 88*00            [24]   88 	mov	_spx,r0
+      000038 D0 00            [24]   89 	pop	ar0
+      00003A 22               [24]   90 	ret

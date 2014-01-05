@@ -1,0 +1,350 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                              4 ; This file was generated Wed Nov 27 12:28:20 2013
+                              5 ;--------------------------------------------------------
+                              6 	.module logf
+                              7 	.optsdcc -mtlcs90
+                              8 	
+                              9 ;--------------------------------------------------------
+                             10 ; Public variables in this module
+                             11 ;--------------------------------------------------------
+                             12 	.globl _frexpf
+                             13 	.globl _logf
+                             14 ;--------------------------------------------------------
+                             15 ; ram data
+                             16 ;--------------------------------------------------------
+                             17 	.area _DATA
+                             18 ;--------------------------------------------------------
+                             19 ; ram data
+                             20 ;--------------------------------------------------------
+                             21 	.area _INITIALIZED
+                             22 ;--------------------------------------------------------
+                             23 ; absolute external ram data
+                             24 ;--------------------------------------------------------
+                             25 	.area _DABS (ABS)
+                             26 ;--------------------------------------------------------
+                             27 ; global & static initialisations
+                             28 ;--------------------------------------------------------
+                             29 	.area _HOME
+                             30 	.area _GSINIT
+                             31 	.area _GSFINAL
+                             32 	.area _GSINIT
+                             33 ;--------------------------------------------------------
+                             34 ; Home
+                             35 ;--------------------------------------------------------
+                             36 	.area _HOME
+                             37 	.area _HOME
+                             38 ;--------------------------------------------------------
+                             39 ; code
+                             40 ;--------------------------------------------------------
+                             41 	.area _CODE
+                             42 ;../logf.c:216: float logf(const float x) _FLOAT_FUNC_REENTRANT
+                             43 ;	---------------------------------
+                             44 ; Function logf
+                             45 ; ---------------------------------
+   0000                      46 _logf_start::
+   0000                      47 _logf:
+   0000 54            [ 4]   48 	push	ix
+   0001 3C 00 00      [ 4]   49 	ld	ix,#0
+   0004 FE 14         [ 7]   50 	add	ix,sp
+   0006 16 DD FF      [ 7]   51 	add	sp, #-35
+                             52 ;../logf.c:226: if (x<=0.0)
+   0009 3A 00 00      [13]   53 	ld	hl,#0x0000
+   000C 52            [ 4]   54 	push	hl
+   000D 3A 00 00      [13]   55 	ld	hl,#0x0000
+   0010 52            [ 4]   56 	push	hl
+   0011 F2 2D 4A      [10]   57 	ld	hl, 45 (sp)
+   0014 52            [ 4]   58 	push	hl
+   0015 F2 2D 4A      [10]   59 	ld	hl, 45 (sp)
+   0018 52            [ 4]   60 	push	hl
+   0019 1Cr00r00      [ 4]   61 	call	___fsgt
+   001C 16 08 00      [ 7]   62 	add	sp, #8
+   001F 25            [ 4]   63 	ld	a, l
+   0020 FE 66         [ 7]   64 	or	a, a
+   0022 CE 16         [ 7]   65 	jr	NZ,00102$
+                             66 ;../logf.c:228: errno=EDOM;
+   0024 3Ar00r00      [13]   67 	ld	hl,#_errno + 0
+   0027 EA 37 21      [10]   68 	ld	(hl), #0x21
+   002A 3Ar01r00      [13]   69 	ld	hl,#_errno + 1
+   002D EA 37 00      [10]   70 	ld	(hl), #0x00
+                             71 ;../logf.c:229: return 0.0;
+   0030 3A 00 00      [13]   72 	ld	hl,#0x0000
+   0033 FD 33                73 	ld	e,l
+   0035 FC 32         [17]   74 	ld	d,h
+   0037 1Ar6Dr02      [ 7]   75 	jp	00106$
+   003A                      76 00102$:
+                             77 ;../logf.c:231: f=frexpf(x, &n);
+   003A 3A 00 00      [13]   78 	ld	hl,#0x0000
+   003D FE 70         [ 7]   79 	add	hl,sp
+   003F 52            [ 4]   80 	push	hl
+   0040 F2 2B 4A      [10]   81 	ld	hl, 43 (sp)
+   0043 52            [ 4]   82 	push	hl
+   0044 F2 2B 4A      [10]   83 	ld	hl, 43 (sp)
+   0047 52            [ 4]   84 	push	hl
+   0048 1Cr00r00      [ 4]   85 	call	_frexpf
+   004B 16 06 00      [ 7]   86 	add	sp, #6
+   004E F4 EF 25      [17]   87 	ld	-17 (ix),l
+   0051 F4 F0 24      [17]   88 	ld	-16 (ix),h
+   0054 F4 F1 23      [17]   89 	ld	-15 (ix),e
+   0057 F4 F2 22      [17]   90 	ld	-14 (ix),d
+                             91 ;../logf.c:232: znum=f-0.5;
+   005A 3A 00 3F      [13]   92 	ld	hl,#0x3F00
+   005D 52            [ 4]   93 	push	hl
+   005E 3A 00 00      [13]   94 	ld	hl,#0x0000
+   0061 52            [ 4]   95 	push	hl
+   0062 F2 18 4A      [10]   96 	ld	hl, 24 (sp)
+   0065 52            [ 4]   97 	push	hl
+   0066 F2 18 4A      [10]   98 	ld	hl, 24 (sp)
+   0069 52            [ 4]   99 	push	hl
+   006A 1Cr00r00      [ 4]  100 	call	___fssub
+   006D 16 08 00      [ 7]  101 	add	sp, #8
+   0070 F4 E7 25      [17]  102 	ld	-25 (ix),l
+   0073 F4 E8 24      [17]  103 	ld	-24 (ix),h
+   0076 F4 E9 23      [17]  104 	ld	-23 (ix),e
+   0079 F4 EA 22      [17]  105 	ld	-22 (ix),d
+                            106 ;../logf.c:233: if (f>C0)
+   007C 3A 35 3F      [13]  107 	ld	hl,#0x3F35
+   007F 52            [ 4]  108 	push	hl
+   0080 3A F3 04      [13]  109 	ld	hl,#0x04F3
+   0083 52            [ 4]  110 	push	hl
+   0084 F2 18 4A      [10]  111 	ld	hl, 24 (sp)
+   0087 52            [ 4]  112 	push	hl
+   0088 F2 18 4A      [10]  113 	ld	hl, 24 (sp)
+   008B 52            [ 4]  114 	push	hl
+   008C 1Cr00r00      [ 4]  115 	call	___fsgt
+   008F 16 08 00      [ 7]  116 	add	sp, #8
+   0092 F4 FF 25      [17]  117 	ld	-1 (ix), l
+   0095 25            [ 4]  118 	ld	a, l
+   0096 FE 66         [ 7]  119 	or	a, a
+   0098 EBrF7r00 C6   [ 4]  120 	jp	Z,00104$
+                            121 ;../logf.c:235: znum-=0.5;
+   009C 3A 00 3F      [13]  122 	ld	hl,#0x3F00
+   009F 52            [ 4]  123 	push	hl
+   00A0 3A 00 00      [13]  124 	ld	hl,#0x0000
+   00A3 52            [ 4]  125 	push	hl
+   00A4 F2 10 4A      [10]  126 	ld	hl, 16 (sp)
+   00A7 52            [ 4]  127 	push	hl
+   00A8 F2 10 4A      [10]  128 	ld	hl, 16 (sp)
+   00AB 52            [ 4]  129 	push	hl
+   00AC 1Cr00r00      [ 4]  130 	call	___fssub
+   00AF 16 08 00      [ 7]  131 	add	sp, #8
+   00B2 F4 E7 25      [17]  132 	ld	-25 (ix),l
+   00B5 F4 E8 24      [17]  133 	ld	-24 (ix),h
+   00B8 F4 E9 23      [17]  134 	ld	-23 (ix),e
+   00BB F4 EA 22      [17]  135 	ld	-22 (ix),d
+                            136 ;../logf.c:236: zden=(f*0.5)+0.5;
+   00BE F2 14 4A      [10]  137 	ld	hl, 20 (sp)
+   00C1 52            [ 4]  138 	push	hl
+   00C2 F2 14 4A      [10]  139 	ld	hl, 20 (sp)
+   00C5 52            [ 4]  140 	push	hl
+   00C6 3A 00 3F      [13]  141 	ld	hl,#0x3F00
+   00C9 52            [ 4]  142 	push	hl
+   00CA 3A 00 00      [13]  143 	ld	hl,#0x0000
+   00CD 52            [ 4]  144 	push	hl
+   00CE 1Cr00r00      [ 4]  145 	call	___fsmul
+   00D1 16 08 00      [ 7]  146 	add	sp, #8
+   00D4 FD 31               147 	ld	c,l
+   00D6 FC 30         [17]  148 	ld	b,h
+   00D8 3A 00 3F      [13]  149 	ld	hl,#0x3F00
+   00DB 52            [ 4]  150 	push	hl
+   00DC 3A 00 00      [13]  151 	ld	hl,#0x0000
+   00DF 52            [ 4]  152 	push	hl
+   00E0 51            [ 4]  153 	push	de
+   00E1 50            [ 4]  154 	push	bc
+   00E2 1Cr00r00      [ 4]  155 	call	___fsadd
+   00E5 16 08 00      [ 7]  156 	add	sp, #8
+   00E8 F4 FB 25      [17]  157 	ld	-5 (ix),l
+   00EB F4 FC 24      [17]  158 	ld	-4 (ix),h
+   00EE F4 FD 23      [17]  159 	ld	-3 (ix),e
+   00F1 F4 FE 22      [17]  160 	ld	-2 (ix),d
+   00F4 1Ar50r01      [ 7]  161 	jp	00105$
+   00F7                     162 00104$:
+                            163 ;../logf.c:240: n--;
+   00F7 5A            [ 4]  164 	pop	hl
+   00F8 52            [ 4]  165 	push	hl
+   00F9 9A            [ 4]  166 	dec	hl
+   00FA E6 52         [ 7]  167 	ex	(sp), hl
+                            168 ;../logf.c:241: zden=znum*0.5+0.5;
+   00FC F2 0C 4A      [10]  169 	ld	hl, 12 (sp)
+   00FF 52            [ 4]  170 	push	hl
+   0100 F2 0C 4A      [10]  171 	ld	hl, 12 (sp)
+   0103 52            [ 4]  172 	push	hl
+   0104 3A 00 3F      [13]  173 	ld	hl,#0x3F00
+   0107 52            [ 4]  174 	push	hl
+   0108 3A 00 00      [13]  175 	ld	hl,#0x0000
+   010B 52            [ 4]  176 	push	hl
+   010C 1Cr00r00      [ 4]  177 	call	___fsmul
+   010F 16 08 00      [ 7]  178 	add	sp, #8
+   0112 F4 FA 22      [17]  179 	ld	-6 (ix),d
+   0115 F4 F9 23      [17]  180 	ld	-7 (ix),e
+   0118 F4 F8 24      [17]  181 	ld	-8 (ix),h
+   011B F4 F7 25      [17]  182 	ld	-9 (ix),l
+   011E 3A 00 3F      [13]  183 	ld	hl,#0x3F00
+   0121 52            [ 4]  184 	push	hl
+   0122 3A 00 00      [13]  185 	ld	hl,#0x0000
+   0125 52            [ 4]  186 	push	hl
+   0126 F2 20 4A      [10]  187 	ld	hl, 32 (sp)
+   0129 52            [ 4]  188 	push	hl
+   012A F2 20 4A      [10]  189 	ld	hl, 32 (sp)
+   012D 52            [ 4]  190 	push	hl
+   012E 1Cr00r00      [ 4]  191 	call	___fsadd
+   0131 16 08 00      [ 7]  192 	add	sp, #8
+   0134 F4 E6 22      [17]  193 	ld	-26 (ix),d
+   0137 F4 E5 23      [17]  194 	ld	-27 (ix),e
+   013A F4 E4 24      [17]  195 	ld	-28 (ix),h
+   013D F4 E3 25      [17]  196 	ld	-29 (ix),l
+   0140 3A 1E 00      [13]  197 	ld	hl, #30
+   0143 FE 70         [ 7]  198 	add	hl, sp
+   0145 08            [ 4]  199 	ex	de, hl
+   0146 3A 06 00      [13]  200 	ld	hl, #6
+   0149 FE 70         [ 7]  201 	add	hl, sp
+   014B 38 04 00      [12]  202 	ld	bc, #4
+   014E FE 59         [ 7]  203 	ldir
+   0150                     204 00105$:
+                            205 ;../logf.c:243: z=znum/zden;
+   0150 F2 20 4A      [10]  206 	ld	hl, 32 (sp)
+   0153 52            [ 4]  207 	push	hl
+   0154 F2 20 4A      [10]  208 	ld	hl, 32 (sp)
+   0157 52            [ 4]  209 	push	hl
+   0158 F2 10 4A      [10]  210 	ld	hl, 16 (sp)
+   015B 52            [ 4]  211 	push	hl
+   015C F2 10 4A      [10]  212 	ld	hl, 16 (sp)
+   015F 52            [ 4]  213 	push	hl
+   0160 1Cr00r00      [ 4]  214 	call	___fsdiv
+   0163 16 08 00      [ 7]  215 	add	sp, #8
+   0166 F4 EB 25      [17]  216 	ld	-21 (ix),l
+   0169 F4 EC 24      [17]  217 	ld	-20 (ix),h
+   016C F4 ED 23      [17]  218 	ld	-19 (ix),e
+   016F F4 EE 22      [17]  219 	ld	-18 (ix),d
+                            220 ;../logf.c:244: w=z*z;
+   0172 F2 10 4A      [10]  221 	ld	hl, 16 (sp)
+   0175 52            [ 4]  222 	push	hl
+   0176 F2 10 4A      [10]  223 	ld	hl, 16 (sp)
+   0179 52            [ 4]  224 	push	hl
+   017A F2 14 4A      [10]  225 	ld	hl, 20 (sp)
+   017D 52            [ 4]  226 	push	hl
+   017E F2 14 4A      [10]  227 	ld	hl, 20 (sp)
+   0181 52            [ 4]  228 	push	hl
+   0182 1Cr00r00      [ 4]  229 	call	___fsmul
+   0185 16 08 00      [ 7]  230 	add	sp, #8
+   0188 FD 31               231 	ld	c,l
+   018A FC 30         [17]  232 	ld	b,h
+                            233 ;../logf.c:246: Rz=z+z*(w*A(w)/B(w));
+   018C 50            [ 4]  234 	push	bc
+   018D 51            [ 4]  235 	push	de
+   018E 51            [ 4]  236 	push	de
+   018F 50            [ 4]  237 	push	bc
+   0190 3A 0D BF      [13]  238 	ld	hl,#0xBF0D
+   0193 52            [ 4]  239 	push	hl
+   0194 3A 3D 7E      [13]  240 	ld	hl,#0x7E3D
+   0197 52            [ 4]  241 	push	hl
+   0198 1Cr00r00      [ 4]  242 	call	___fsmul
+   019B 16 08 00      [ 7]  243 	add	sp, #8
+   019E F4 FA 22      [17]  244 	ld	-6 (ix),d
+   01A1 F4 F9 23      [17]  245 	ld	-7 (ix),e
+   01A4 F4 F8 24      [17]  246 	ld	-8 (ix),h
+   01A7 F4 F7 25      [17]  247 	ld	-9 (ix),l
+   01AA 59            [ 4]  248 	pop	de
+   01AB 58            [ 4]  249 	pop	bc
+   01AC 3A D4 C0      [13]  250 	ld	hl,#0xC0D4
+   01AF 52            [ 4]  251 	push	hl
+   01B0 3A 3A 3F      [13]  252 	ld	hl,#0x3F3A
+   01B3 52            [ 4]  253 	push	hl
+   01B4 51            [ 4]  254 	push	de
+   01B5 50            [ 4]  255 	push	bc
+   01B6 1Cr00r00      [ 4]  256 	call	___fsadd
+   01B9 16 08 00      [ 7]  257 	add	sp, #8
+   01BC 08            [ 4]  258 	ex	de, hl
+   01BD 52            [ 4]  259 	push	hl
+   01BE 51            [ 4]  260 	push	de
+   01BF F2 20 4A      [10]  261 	ld	hl, 32 (sp)
+   01C2 52            [ 4]  262 	push	hl
+   01C3 F2 20 4A      [10]  263 	ld	hl, 32 (sp)
+   01C6 52            [ 4]  264 	push	hl
+   01C7 1Cr00r00      [ 4]  265 	call	___fsdiv
+   01CA 16 08 00      [ 7]  266 	add	sp, #8
+   01CD 08            [ 4]  267 	ex	de, hl
+   01CE 52            [ 4]  268 	push	hl
+   01CF 51            [ 4]  269 	push	de
+   01D0 F2 14 4A      [10]  270 	ld	hl, 20 (sp)
+   01D3 52            [ 4]  271 	push	hl
+   01D4 F2 14 4A      [10]  272 	ld	hl, 20 (sp)
+   01D7 52            [ 4]  273 	push	hl
+   01D8 1Cr00r00      [ 4]  274 	call	___fsmul
+   01DB 16 08 00      [ 7]  275 	add	sp, #8
+   01DE 08            [ 4]  276 	ex	de, hl
+   01DF 52            [ 4]  277 	push	hl
+   01E0 51            [ 4]  278 	push	de
+   01E1 F2 14 4A      [10]  279 	ld	hl, 20 (sp)
+   01E4 52            [ 4]  280 	push	hl
+   01E5 F2 14 4A      [10]  281 	ld	hl, 20 (sp)
+   01E8 52            [ 4]  282 	push	hl
+   01E9 1Cr00r00      [ 4]  283 	call	___fsadd
+   01EC 16 08 00      [ 7]  284 	add	sp, #8
+   01EF F4 F3 25      [17]  285 	ld	-13 (ix),l
+   01F2 F4 F4 24      [17]  286 	ld	-12 (ix),h
+   01F5 F4 F5 23      [17]  287 	ld	-11 (ix),e
+   01F8 F4 F6 22      [17]  288 	ld	-10 (ix),d
+                            289 ;../logf.c:247: xn=n;
+   01FB 5A            [ 4]  290 	pop	hl
+   01FC 52            [ 4]  291 	push	hl
+   01FD 52            [ 4]  292 	push	hl
+   01FE 1Cr00r00      [ 4]  293 	call	___sint2fs
+   0201 16 02 00      [ 7]  294 	add	sp, #2
+   0204 F4 DF 25      [17]  295 	ld	-33 (ix),l
+   0207 F4 E0 24      [17]  296 	ld	-32 (ix),h
+   020A F4 E1 23      [17]  297 	ld	-31 (ix),e
+   020D F4 E2 22      [17]  298 	ld	-30 (ix),d
+                            299 ;../logf.c:248: return ((xn*C2+Rz)+xn*C1);
+   0210 F2 04 4A      [10]  300 	ld	hl, 4 (sp)
+   0213 52            [ 4]  301 	push	hl
+   0214 F2 04 4A      [10]  302 	ld	hl, 4 (sp)
+   0217 52            [ 4]  303 	push	hl
+   0218 3A 5E B9      [13]  304 	ld	hl,#0xB95E
+   021B 52            [ 4]  305 	push	hl
+   021C 3A 83 80      [13]  306 	ld	hl,#0x8083
+   021F 52            [ 4]  307 	push	hl
+   0220 1Cr00r00      [ 4]  308 	call	___fsmul
+   0223 16 08 00      [ 7]  309 	add	sp, #8
+   0226 FD 31               310 	ld	c,l
+   0228 FC 30         [17]  311 	ld	b,h
+   022A F2 18 4A      [10]  312 	ld	hl, 24 (sp)
+   022D 52            [ 4]  313 	push	hl
+   022E F2 18 4A      [10]  314 	ld	hl, 24 (sp)
+   0231 52            [ 4]  315 	push	hl
+   0232 51            [ 4]  316 	push	de
+   0233 50            [ 4]  317 	push	bc
+   0234 1Cr00r00      [ 4]  318 	call	___fsadd
+   0237 16 08 00      [ 7]  319 	add	sp, #8
+   023A F4 FA 22      [17]  320 	ld	-6 (ix),d
+   023D F4 F9 23      [17]  321 	ld	-7 (ix),e
+   0240 F4 F8 24      [17]  322 	ld	-8 (ix),h
+   0243 F4 F7 25      [17]  323 	ld	-9 (ix),l
+   0246 F2 04 4A      [10]  324 	ld	hl, 4 (sp)
+   0249 52            [ 4]  325 	push	hl
+   024A F2 04 4A      [10]  326 	ld	hl, 4 (sp)
+   024D 52            [ 4]  327 	push	hl
+   024E 3A 31 3F      [13]  328 	ld	hl,#0x3F31
+   0251 52            [ 4]  329 	push	hl
+   0252 3A 00 80      [13]  330 	ld	hl,#0x8000
+   0255 52            [ 4]  331 	push	hl
+   0256 1Cr00r00      [ 4]  332 	call	___fsmul
+   0259 16 08 00      [ 7]  333 	add	sp, #8
+   025C 08            [ 4]  334 	ex	de, hl
+   025D 52            [ 4]  335 	push	hl
+   025E 51            [ 4]  336 	push	de
+   025F F2 20 4A      [10]  337 	ld	hl, 32 (sp)
+   0262 52            [ 4]  338 	push	hl
+   0263 F2 20 4A      [10]  339 	ld	hl, 32 (sp)
+   0266 52            [ 4]  340 	push	hl
+   0267 1Cr00r00      [ 4]  341 	call	___fsadd
+   026A 16 08 00      [ 7]  342 	add	sp, #8
+   026D                     343 00106$:
+   026D FC 3E         [17]  344 	ld	sp, ix
+   026F 5C            [ 4]  345 	pop	ix
+   0270 1E            [ 7]  346 	ret
+   0271                     347 _logf_end::
+                            348 	.area _CODE
+                            349 	.area _INITIALIZER
+                            350 	.area _CABS (ABS)

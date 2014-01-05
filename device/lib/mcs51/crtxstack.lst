@@ -1,0 +1,58 @@
+                                      1 ;--------------------------------------------------------------------------
+                                      2 ;  crtxstack.asm - C run-time: setup xstack
+                                      3 ;
+                                      4 ;  Copyright (C) 2004, Erik Petrich
+                                      5 ;
+                                      6 ;  This library is free software; you can redistribute it and/or modify it
+                                      7 ;  under the terms of the GNU General Public License as published by the
+                                      8 ;  Free Software Foundation; either version 2, or (at your option) any
+                                      9 ;  later version.
+                                     10 ;
+                                     11 ;  This library is distributed in the hope that it will be useful,
+                                     12 ;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                                     13 ;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+                                     14 ;  GNU General Public License for more details.
+                                     15 ;
+                                     16 ;  You should have received a copy of the GNU General Public License 
+                                     17 ;  along with this library; see the file COPYING. If not, write to the
+                                     18 ;  Free Software Foundation, 51 Franklin Street, Fifth Floor, Boston,
+                                     19 ;   MA 02110-1301, USA.
+                                     20 ;
+                                     21 ;  As a special exception, if you link this library with other files,
+                                     22 ;  some of which are compiled with SDCC, to produce an executable,
+                                     23 ;  this library does not by itself cause the resulting executable to
+                                     24 ;  be covered by the GNU General Public License. This exception does
+                                     25 ;  not however invalidate any other reasons why the executable file
+                                     26 ;  might be covered by the GNU General Public License.
+                                     27 ;--------------------------------------------------------------------------
+                                     28 
+                                     29 	.area CSEG    (CODE)
+                                     30 	.area GSINIT0 (CODE)
+                                     31 	.area GSINIT1 (CODE)
+                                     32 	.area GSINIT2 (CODE)
+                                     33 	.area GSINIT3 (CODE)
+                                     34 	.area GSINIT4 (CODE)
+                                     35 	.area GSINIT5 (CODE)
+                                     36 	.area GSINIT  (CODE)
+                                     37 	.area GSFINAL (CODE)
+                                     38 
+                                     39 	.globl __start__xstack
+                                     40 	.globl __XPAGE
+                                     41 
+                                     42 	.area GSINIT1 (CODE)
+                                     43 
+      000000                         44 __sdcc_init_xstack::
+                                     45 
+                                     46 ; Need to initialize in GSINIT1 in case the user's __sdcc_external_startup
+                                     47 ; uses the xstack.
+                                     48 	
+      000000 75*00s00         [24]   49 	mov	__XPAGE,#(__start__xstack >> 8)
+      000003 75*00r00         [24]   50 	mov	_spx,#__start__xstack
+                                     51 
+                                     52 	.area GSINIT5 (CODE)
+                                     53 
+                                     54 ; Need to initialize in GSINIT5 because __mcs51_genXINIT modifies __XPAGE
+                                     55 ; and __mcs51_genRAMCLEAR modifies _spx.
+                                     56 	
+      000000 75*00s00         [24]   57 	mov	__XPAGE,#(__start__xstack >> 8)
+      000003 75*00r00         [24]   58 	mov	_spx,#__start__xstack

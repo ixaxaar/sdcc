@@ -1,0 +1,663 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                                      4 ; This file was generated Wed Nov 27 12:27:49 2013
+                                      5 ;--------------------------------------------------------
+                                      6 	.module tancotf
+                                      7 	.optsdcc -mmcs51 --model-small
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl _tancotf
+                                     13 	.globl _fabsf
+                                     14 	.globl _tancotf_PARM_2
+                                     15 ;--------------------------------------------------------
+                                     16 ; special function registers
+                                     17 ;--------------------------------------------------------
+                                     18 	.area RSEG    (ABS,DATA)
+      000000                         19 	.org 0x0000
+                                     20 ;--------------------------------------------------------
+                                     21 ; special function bits
+                                     22 ;--------------------------------------------------------
+                                     23 	.area RSEG    (ABS,DATA)
+      000000                         24 	.org 0x0000
+                                     25 ;--------------------------------------------------------
+                                     26 ; overlayable register banks
+                                     27 ;--------------------------------------------------------
+                                     28 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         29 	.ds 8
+                                     30 ;--------------------------------------------------------
+                                     31 ; internal ram data
+                                     32 ;--------------------------------------------------------
+                                     33 	.area DSEG    (DATA)
+      000000                         34 _tancotf_x_1_23:
+      000000                         35 	.ds 4
+      000004                         36 _tancotf_f_1_24:
+      000004                         37 	.ds 4
+      000008                         38 _tancotf_g_1_24:
+      000008                         39 	.ds 4
+      00000C                         40 _tancotf_xn_1_24:
+      00000C                         41 	.ds 4
+      000010                         42 _tancotf_xden_1_24:
+      000010                         43 	.ds 4
+      000014                         44 _tancotf_n_1_24:
+      000014                         45 	.ds 2
+      000016                         46 _tancotf_sloc0_1_0:
+      000016                         47 	.ds 4
+                                     48 ;--------------------------------------------------------
+                                     49 ; overlayable items in internal ram 
+                                     50 ;--------------------------------------------------------
+                                     51 ;--------------------------------------------------------
+                                     52 ; indirectly addressable internal ram data
+                                     53 ;--------------------------------------------------------
+                                     54 	.area ISEG    (DATA)
+                                     55 ;--------------------------------------------------------
+                                     56 ; absolute internal ram data
+                                     57 ;--------------------------------------------------------
+                                     58 	.area IABS    (ABS,DATA)
+                                     59 	.area IABS    (ABS,DATA)
+                                     60 ;--------------------------------------------------------
+                                     61 ; bit data
+                                     62 ;--------------------------------------------------------
+                                     63 	.area BSEG    (BIT)
+      000000                         64 _tancotf_PARM_2:
+      000000                         65 	.ds 1
+                                     66 ;--------------------------------------------------------
+                                     67 ; paged external ram data
+                                     68 ;--------------------------------------------------------
+                                     69 	.area PSEG    (PAG,XDATA)
+                                     70 ;--------------------------------------------------------
+                                     71 ; external ram data
+                                     72 ;--------------------------------------------------------
+                                     73 	.area XSEG    (XDATA)
+                                     74 ;--------------------------------------------------------
+                                     75 ; absolute external ram data
+                                     76 ;--------------------------------------------------------
+                                     77 	.area XABS    (ABS,XDATA)
+                                     78 ;--------------------------------------------------------
+                                     79 ; external initialized ram data
+                                     80 ;--------------------------------------------------------
+                                     81 	.area XISEG   (XDATA)
+                                     82 	.area HOME    (CODE)
+                                     83 	.area GSINIT0 (CODE)
+                                     84 	.area GSINIT1 (CODE)
+                                     85 	.area GSINIT2 (CODE)
+                                     86 	.area GSINIT3 (CODE)
+                                     87 	.area GSINIT4 (CODE)
+                                     88 	.area GSINIT5 (CODE)
+                                     89 	.area GSINIT  (CODE)
+                                     90 	.area GSFINAL (CODE)
+                                     91 	.area CSEG    (CODE)
+                                     92 ;--------------------------------------------------------
+                                     93 ; global & static initialisations
+                                     94 ;--------------------------------------------------------
+                                     95 	.area HOME    (CODE)
+                                     96 	.area GSINIT  (CODE)
+                                     97 	.area GSFINAL (CODE)
+                                     98 	.area GSINIT  (CODE)
+                                     99 ;--------------------------------------------------------
+                                    100 ; Home
+                                    101 ;--------------------------------------------------------
+                                    102 	.area HOME    (CODE)
+                                    103 	.area HOME    (CODE)
+                                    104 ;--------------------------------------------------------
+                                    105 ; code
+                                    106 ;--------------------------------------------------------
+                                    107 	.area CSEG    (CODE)
+                                    108 ;------------------------------------------------------------
+                                    109 ;Allocation info for local variables in function 'tancotf'
+                                    110 ;------------------------------------------------------------
+                                    111 ;x                         Allocated with name '_tancotf_x_1_23'
+                                    112 ;f                         Allocated with name '_tancotf_f_1_24'
+                                    113 ;g                         Allocated with name '_tancotf_g_1_24'
+                                    114 ;xn                        Allocated with name '_tancotf_xn_1_24'
+                                    115 ;xnum                      Allocated to registers r0 r1 r6 r7 
+                                    116 ;xden                      Allocated with name '_tancotf_xden_1_24'
+                                    117 ;n                         Allocated with name '_tancotf_n_1_24'
+                                    118 ;sloc0                     Allocated with name '_tancotf_sloc0_1_0'
+                                    119 ;------------------------------------------------------------
+                                    120 ;	tancotf.c:53: float tancotf(const float x, const bool iscotan)
+                                    121 ;	-----------------------------------------
+                                    122 ;	 function tancotf
+                                    123 ;	-----------------------------------------
+      000000                        124 _tancotf:
+                           000007   125 	ar7 = 0x07
+                           000006   126 	ar6 = 0x06
+                           000005   127 	ar5 = 0x05
+                           000004   128 	ar4 = 0x04
+                           000003   129 	ar3 = 0x03
+                           000002   130 	ar2 = 0x02
+                           000001   131 	ar1 = 0x01
+                           000000   132 	ar0 = 0x00
+                                    133 ;	tancotf.c:58: if (fabsf(x) > YMAX)
+      000000 85 82*00         [24]  134 	mov	_tancotf_x_1_23,dpl
+      000003 85 83*01         [24]  135 	mov	(_tancotf_x_1_23 + 1),dph
+      000006 85 F0*02         [24]  136 	mov	(_tancotf_x_1_23 + 2),b
+      000009 F5*03            [12]  137 	mov	(_tancotf_x_1_23 + 3),a
+      00000B 12r00r00         [24]  138 	lcall	_fabsf
+      00000E A8 82            [24]  139 	mov	r0,dpl
+      000010 A9 83            [24]  140 	mov	r1,dph
+      000012 AA F0            [24]  141 	mov	r2,b
+      000014 FB               [12]  142 	mov	r3,a
+      000015 E4               [12]  143 	clr	a
+      000016 C0 E0            [24]  144 	push	acc
+      000018 74 08            [12]  145 	mov	a,#0x08
+      00001A C0 E0            [24]  146 	push	acc
+      00001C 74 C9            [12]  147 	mov	a,#0xC9
+      00001E C0 E0            [24]  148 	push	acc
+      000020 74 45            [12]  149 	mov	a,#0x45
+      000022 C0 E0            [24]  150 	push	acc
+      000024 88 82            [24]  151 	mov	dpl,r0
+      000026 89 83            [24]  152 	mov	dph,r1
+      000028 8A F0            [24]  153 	mov	b,r2
+      00002A EB               [12]  154 	mov	a,r3
+      00002B 12r00r00         [24]  155 	lcall	___fsgt
+      00002E AB 82            [24]  156 	mov	r3,dpl
+      000030 E5 81            [12]  157 	mov	a,sp
+      000032 24 FC            [12]  158 	add	a,#0xfc
+      000034 F5 81            [12]  159 	mov	sp,a
+      000036 EB               [12]  160 	mov	a,r3
+      000037 60 0D            [24]  161 	jz	00102$
+                                    162 ;	tancotf.c:60: errno = ERANGE;
+      000039 75*00 22         [24]  163 	mov	_errno,#0x22
+      00003C 75*01 00         [24]  164 	mov	(_errno + 1),#0x00
+                                    165 ;	tancotf.c:61: return 0.0;
+      00003F 90 00 00         [24]  166 	mov	dptr,#(0x00&0x00ff)
+      000042 E4               [12]  167 	clr	a
+      000043 F5 F0            [12]  168 	mov	b,a
+      000045 22               [24]  169 	ret
+      000046                        170 00102$:
+                                    171 ;	tancotf.c:65: n=(x*TWO_O_PI+(x>0.0?0.5:-0.5)); /*works for +-x*/
+      000046 C0*00            [24]  172 	push	_tancotf_x_1_23
+      000048 C0*01            [24]  173 	push	(_tancotf_x_1_23 + 1)
+      00004A C0*02            [24]  174 	push	(_tancotf_x_1_23 + 2)
+      00004C C0*03            [24]  175 	push	(_tancotf_x_1_23 + 3)
+      00004E 90 F9 83         [24]  176 	mov	dptr,#0xF983
+      000051 75 F0 22         [24]  177 	mov	b,#0x22
+      000054 74 3F            [12]  178 	mov	a,#0x3F
+      000056 12r00r00         [24]  179 	lcall	___fsmul
+      000059 A8 82            [24]  180 	mov	r0,dpl
+      00005B A9 83            [24]  181 	mov	r1,dph
+      00005D AA F0            [24]  182 	mov	r2,b
+      00005F FB               [12]  183 	mov	r3,a
+      000060 E5 81            [12]  184 	mov	a,sp
+      000062 24 FC            [12]  185 	add	a,#0xfc
+      000064 F5 81            [12]  186 	mov	sp,a
+      000066 C0 03            [24]  187 	push	ar3
+      000068 C0 02            [24]  188 	push	ar2
+      00006A C0 01            [24]  189 	push	ar1
+      00006C C0 00            [24]  190 	push	ar0
+      00006E E4               [12]  191 	clr	a
+      00006F C0 E0            [24]  192 	push	acc
+      000071 C0 E0            [24]  193 	push	acc
+      000073 C0 E0            [24]  194 	push	acc
+      000075 C0 E0            [24]  195 	push	acc
+      000077 85*00 82         [24]  196 	mov	dpl,_tancotf_x_1_23
+      00007A 85*01 83         [24]  197 	mov	dph,(_tancotf_x_1_23 + 1)
+      00007D 85*02 F0         [24]  198 	mov	b,(_tancotf_x_1_23 + 2)
+      000080 E5*03            [12]  199 	mov	a,(_tancotf_x_1_23 + 3)
+      000082 12r00r00         [24]  200 	lcall	___fsgt
+      000085 AF 82            [24]  201 	mov	r7,dpl
+      000087 E5 81            [12]  202 	mov	a,sp
+      000089 24 FC            [12]  203 	add	a,#0xfc
+      00008B F5 81            [12]  204 	mov	sp,a
+      00008D D0 00            [24]  205 	pop	ar0
+      00008F D0 01            [24]  206 	pop	ar1
+      000091 D0 02            [24]  207 	pop	ar2
+      000093 D0 03            [24]  208 	pop	ar3
+      000095 EF               [12]  209 	mov	a,r7
+      000096 60 0A            [24]  210 	jz	00117$
+      000098 7C 00            [12]  211 	mov	r4,#0x00
+      00009A 7D 00            [12]  212 	mov	r5,#0x00
+      00009C 7E 00            [12]  213 	mov	r6,#0x00
+      00009E 7F 3F            [12]  214 	mov	r7,#0x3F
+      0000A0 80 08            [24]  215 	sjmp	00118$
+      0000A2                        216 00117$:
+      0000A2 7C 00            [12]  217 	mov	r4,#0x00
+      0000A4 7D 00            [12]  218 	mov	r5,#0x00
+      0000A6 7E 00            [12]  219 	mov	r6,#0x00
+      0000A8 7F BF            [12]  220 	mov	r7,#0xBF
+      0000AA                        221 00118$:
+      0000AA C0 04            [24]  222 	push	ar4
+      0000AC C0 05            [24]  223 	push	ar5
+      0000AE C0 06            [24]  224 	push	ar6
+      0000B0 C0 07            [24]  225 	push	ar7
+      0000B2 88 82            [24]  226 	mov	dpl,r0
+      0000B4 89 83            [24]  227 	mov	dph,r1
+      0000B6 8A F0            [24]  228 	mov	b,r2
+      0000B8 EB               [12]  229 	mov	a,r3
+      0000B9 12r00r00         [24]  230 	lcall	___fsadd
+      0000BC AC 82            [24]  231 	mov	r4,dpl
+      0000BE AD 83            [24]  232 	mov	r5,dph
+      0000C0 AE F0            [24]  233 	mov	r6,b
+      0000C2 FF               [12]  234 	mov	r7,a
+      0000C3 E5 81            [12]  235 	mov	a,sp
+      0000C5 24 FC            [12]  236 	add	a,#0xfc
+      0000C7 F5 81            [12]  237 	mov	sp,a
+      0000C9 8C 82            [24]  238 	mov	dpl,r4
+      0000CB 8D 83            [24]  239 	mov	dph,r5
+      0000CD 8E F0            [24]  240 	mov	b,r6
+      0000CF EF               [12]  241 	mov	a,r7
+      0000D0 12r00r00         [24]  242 	lcall	___fs2sint
+                                    243 ;	tancotf.c:66: xn=n;
+      0000D3 85 82*14         [24]  244 	mov	_tancotf_n_1_24,dpl
+      0000D6 85 83*15         [24]  245 	mov  (_tancotf_n_1_24 + 1),dph
+      0000D9 12r00r00         [24]  246 	lcall	___sint2fs
+      0000DC 85 82*0C         [24]  247 	mov	_tancotf_xn_1_24,dpl
+      0000DF 85 83*0D         [24]  248 	mov	(_tancotf_xn_1_24 + 1),dph
+      0000E2 85 F0*0E         [24]  249 	mov	(_tancotf_xn_1_24 + 2),b
+      0000E5 F5*0F            [12]  250 	mov	(_tancotf_xn_1_24 + 3),a
+                                    251 ;	tancotf.c:68: xnum=(int)x;
+      0000E7 85*00 82         [24]  252 	mov	dpl,_tancotf_x_1_23
+      0000EA 85*01 83         [24]  253 	mov	dph,(_tancotf_x_1_23 + 1)
+      0000ED 85*02 F0         [24]  254 	mov	b,(_tancotf_x_1_23 + 2)
+      0000F0 E5*03            [12]  255 	mov	a,(_tancotf_x_1_23 + 3)
+      0000F2 12r00r00         [24]  256 	lcall	___fs2sint
+      0000F5 12r00r00         [24]  257 	lcall	___sint2fs
+      0000F8 A8 82            [24]  258 	mov	r0,dpl
+      0000FA A9 83            [24]  259 	mov	r1,dph
+      0000FC AE F0            [24]  260 	mov	r6,b
+      0000FE FF               [12]  261 	mov	r7,a
+                                    262 ;	tancotf.c:69: xden=x-xnum;
+      0000FF C0 07            [24]  263 	push	ar7
+      000101 C0 06            [24]  264 	push	ar6
+      000103 C0 01            [24]  265 	push	ar1
+      000105 C0 00            [24]  266 	push	ar0
+      000107 C0 00            [24]  267 	push	ar0
+      000109 C0 01            [24]  268 	push	ar1
+      00010B C0 06            [24]  269 	push	ar6
+      00010D C0 07            [24]  270 	push	ar7
+      00010F 85*00 82         [24]  271 	mov	dpl,_tancotf_x_1_23
+      000112 85*01 83         [24]  272 	mov	dph,(_tancotf_x_1_23 + 1)
+      000115 85*02 F0         [24]  273 	mov	b,(_tancotf_x_1_23 + 2)
+      000118 E5*03            [12]  274 	mov	a,(_tancotf_x_1_23 + 3)
+      00011A 12r00r00         [24]  275 	lcall	___fssub
+      00011D 85 82*10         [24]  276 	mov	_tancotf_xden_1_24,dpl
+      000120 85 83*11         [24]  277 	mov	(_tancotf_xden_1_24 + 1),dph
+      000123 85 F0*12         [24]  278 	mov	(_tancotf_xden_1_24 + 2),b
+      000126 F5*13            [12]  279 	mov	(_tancotf_xden_1_24 + 3),a
+      000128 E5 81            [12]  280 	mov	a,sp
+      00012A 24 FC            [12]  281 	add	a,#0xfc
+      00012C F5 81            [12]  282 	mov	sp,a
+                                    283 ;	tancotf.c:70: f=((xnum-xn*C1)+xden)-xn*C2;
+      00012E C0*0C            [24]  284 	push	_tancotf_xn_1_24
+      000130 C0*0D            [24]  285 	push	(_tancotf_xn_1_24 + 1)
+      000132 C0*0E            [24]  286 	push	(_tancotf_xn_1_24 + 2)
+      000134 C0*0F            [24]  287 	push	(_tancotf_xn_1_24 + 3)
+      000136 90 00 00         [24]  288 	mov	dptr,#0x0000
+      000139 75 F0 C9         [24]  289 	mov	b,#0xC9
+      00013C 74 3F            [12]  290 	mov	a,#0x3F
+      00013E 12r00r00         [24]  291 	lcall	___fsmul
+      000141 AA 82            [24]  292 	mov	r2,dpl
+      000143 AB 83            [24]  293 	mov	r3,dph
+      000145 AC F0            [24]  294 	mov	r4,b
+      000147 FD               [12]  295 	mov	r5,a
+      000148 E5 81            [12]  296 	mov	a,sp
+      00014A 24 FC            [12]  297 	add	a,#0xfc
+      00014C F5 81            [12]  298 	mov	sp,a
+      00014E D0 00            [24]  299 	pop	ar0
+      000150 D0 01            [24]  300 	pop	ar1
+      000152 D0 06            [24]  301 	pop	ar6
+      000154 D0 07            [24]  302 	pop	ar7
+      000156 C0 02            [24]  303 	push	ar2
+      000158 C0 03            [24]  304 	push	ar3
+      00015A C0 04            [24]  305 	push	ar4
+      00015C C0 05            [24]  306 	push	ar5
+      00015E 88 82            [24]  307 	mov	dpl,r0
+      000160 89 83            [24]  308 	mov	dph,r1
+      000162 8E F0            [24]  309 	mov	b,r6
+      000164 EF               [12]  310 	mov	a,r7
+      000165 12r00r00         [24]  311 	lcall	___fssub
+      000168 AA 82            [24]  312 	mov	r2,dpl
+      00016A AB 83            [24]  313 	mov	r3,dph
+      00016C AC F0            [24]  314 	mov	r4,b
+      00016E FD               [12]  315 	mov	r5,a
+      00016F E5 81            [12]  316 	mov	a,sp
+      000171 24 FC            [12]  317 	add	a,#0xfc
+      000173 F5 81            [12]  318 	mov	sp,a
+      000175 C0*10            [24]  319 	push	_tancotf_xden_1_24
+      000177 C0*11            [24]  320 	push	(_tancotf_xden_1_24 + 1)
+      000179 C0*12            [24]  321 	push	(_tancotf_xden_1_24 + 2)
+      00017B C0*13            [24]  322 	push	(_tancotf_xden_1_24 + 3)
+      00017D 8A 82            [24]  323 	mov	dpl,r2
+      00017F 8B 83            [24]  324 	mov	dph,r3
+      000181 8C F0            [24]  325 	mov	b,r4
+      000183 ED               [12]  326 	mov	a,r5
+      000184 12r00r00         [24]  327 	lcall	___fsadd
+      000187 85 82*16         [24]  328 	mov	_tancotf_sloc0_1_0,dpl
+      00018A 85 83*17         [24]  329 	mov	(_tancotf_sloc0_1_0 + 1),dph
+      00018D 85 F0*18         [24]  330 	mov	(_tancotf_sloc0_1_0 + 2),b
+      000190 F5*19            [12]  331 	mov	(_tancotf_sloc0_1_0 + 3),a
+      000192 E5 81            [12]  332 	mov	a,sp
+      000194 24 FC            [12]  333 	add	a,#0xfc
+      000196 F5 81            [12]  334 	mov	sp,a
+      000198 C0*0C            [24]  335 	push	_tancotf_xn_1_24
+      00019A C0*0D            [24]  336 	push	(_tancotf_xn_1_24 + 1)
+      00019C C0*0E            [24]  337 	push	(_tancotf_xn_1_24 + 2)
+      00019E C0*0F            [24]  338 	push	(_tancotf_xn_1_24 + 3)
+      0001A0 90 AA 22         [24]  339 	mov	dptr,#0xAA22
+      0001A3 75 F0 FD         [24]  340 	mov	b,#0xFD
+      0001A6 74 39            [12]  341 	mov	a,#0x39
+      0001A8 12r00r00         [24]  342 	lcall	___fsmul
+      0001AB AA 82            [24]  343 	mov	r2,dpl
+      0001AD AB 83            [24]  344 	mov	r3,dph
+      0001AF AC F0            [24]  345 	mov	r4,b
+      0001B1 FD               [12]  346 	mov	r5,a
+      0001B2 E5 81            [12]  347 	mov	a,sp
+      0001B4 24 FC            [12]  348 	add	a,#0xfc
+      0001B6 F5 81            [12]  349 	mov	sp,a
+      0001B8 C0 02            [24]  350 	push	ar2
+      0001BA C0 03            [24]  351 	push	ar3
+      0001BC C0 04            [24]  352 	push	ar4
+      0001BE C0 05            [24]  353 	push	ar5
+      0001C0 85*16 82         [24]  354 	mov	dpl,_tancotf_sloc0_1_0
+      0001C3 85*17 83         [24]  355 	mov	dph,(_tancotf_sloc0_1_0 + 1)
+      0001C6 85*18 F0         [24]  356 	mov	b,(_tancotf_sloc0_1_0 + 2)
+      0001C9 E5*19            [12]  357 	mov	a,(_tancotf_sloc0_1_0 + 3)
+      0001CB 12r00r00         [24]  358 	lcall	___fssub
+      0001CE 85 82*04         [24]  359 	mov	_tancotf_f_1_24,dpl
+      0001D1 85 83*05         [24]  360 	mov	(_tancotf_f_1_24 + 1),dph
+      0001D4 85 F0*06         [24]  361 	mov	(_tancotf_f_1_24 + 2),b
+      0001D7 F5*07            [12]  362 	mov	(_tancotf_f_1_24 + 3),a
+      0001D9 E5 81            [12]  363 	mov	a,sp
+      0001DB 24 FC            [12]  364 	add	a,#0xfc
+      0001DD F5 81            [12]  365 	mov	sp,a
+                                    366 ;	tancotf.c:72: if (fabsf(f) < EPS)
+      0001DF 85*04 82         [24]  367 	mov	dpl,_tancotf_f_1_24
+      0001E2 85*05 83         [24]  368 	mov	dph,(_tancotf_f_1_24 + 1)
+      0001E5 85*06 F0         [24]  369 	mov	b,(_tancotf_f_1_24 + 2)
+      0001E8 E5*07            [12]  370 	mov	a,(_tancotf_f_1_24 + 3)
+      0001EA 12r00r00         [24]  371 	lcall	_fabsf
+      0001ED AA 82            [24]  372 	mov	r2,dpl
+      0001EF AB 83            [24]  373 	mov	r3,dph
+      0001F1 AC F0            [24]  374 	mov	r4,b
+      0001F3 FD               [12]  375 	mov	r5,a
+      0001F4 E4               [12]  376 	clr	a
+      0001F5 C0 E0            [24]  377 	push	acc
+      0001F7 C0 E0            [24]  378 	push	acc
+      0001F9 74 80            [12]  379 	mov	a,#0x80
+      0001FB C0 E0            [24]  380 	push	acc
+      0001FD 74 39            [12]  381 	mov	a,#0x39
+      0001FF C0 E0            [24]  382 	push	acc
+      000201 8A 82            [24]  383 	mov	dpl,r2
+      000203 8B 83            [24]  384 	mov	dph,r3
+      000205 8C F0            [24]  385 	mov	b,r4
+      000207 ED               [12]  386 	mov	a,r5
+      000208 12r00r00         [24]  387 	lcall	___fslt
+      00020B AD 82            [24]  388 	mov	r5,dpl
+      00020D E5 81            [12]  389 	mov	a,sp
+      00020F 24 FC            [12]  390 	add	a,#0xfc
+      000211 F5 81            [12]  391 	mov	sp,a
+      000213 ED               [12]  392 	mov	a,r5
+      000214 60 16            [24]  393 	jz	00104$
+                                    394 ;	tancotf.c:74: xnum = f;
+      000216 A8*04            [24]  395 	mov	r0,_tancotf_f_1_24
+      000218 A9*05            [24]  396 	mov	r1,(_tancotf_f_1_24 + 1)
+      00021A AE*06            [24]  397 	mov	r6,(_tancotf_f_1_24 + 2)
+      00021C AF*07            [24]  398 	mov	r7,(_tancotf_f_1_24 + 3)
+                                    399 ;	tancotf.c:75: xden = 1.0;
+      00021E E4               [12]  400 	clr	a
+      00021F F5*10            [12]  401 	mov	_tancotf_xden_1_24,a
+      000221 F5*11            [12]  402 	mov	(_tancotf_xden_1_24 + 1),a
+      000223 75*12 80         [24]  403 	mov	(_tancotf_xden_1_24 + 2),#0x80
+      000226 75*13 3F         [24]  404 	mov	(_tancotf_xden_1_24 + 3),#0x3F
+      000229 02r03r4E         [24]  405 	ljmp	00105$
+      00022C                        406 00104$:
+                                    407 ;	tancotf.c:79: g = f*f;
+      00022C C0*04            [24]  408 	push	_tancotf_f_1_24
+      00022E C0*05            [24]  409 	push	(_tancotf_f_1_24 + 1)
+      000230 C0*06            [24]  410 	push	(_tancotf_f_1_24 + 2)
+      000232 C0*07            [24]  411 	push	(_tancotf_f_1_24 + 3)
+      000234 85*04 82         [24]  412 	mov	dpl,_tancotf_f_1_24
+      000237 85*05 83         [24]  413 	mov	dph,(_tancotf_f_1_24 + 1)
+      00023A 85*06 F0         [24]  414 	mov	b,(_tancotf_f_1_24 + 2)
+      00023D E5*07            [12]  415 	mov	a,(_tancotf_f_1_24 + 3)
+      00023F 12r00r00         [24]  416 	lcall	___fsmul
+      000242 85 82*08         [24]  417 	mov	_tancotf_g_1_24,dpl
+      000245 85 83*09         [24]  418 	mov	(_tancotf_g_1_24 + 1),dph
+      000248 85 F0*0A         [24]  419 	mov	(_tancotf_g_1_24 + 2),b
+      00024B F5*0B            [12]  420 	mov	(_tancotf_g_1_24 + 3),a
+      00024D E5 81            [12]  421 	mov	a,sp
+      00024F 24 FC            [12]  422 	add	a,#0xfc
+      000251 F5 81            [12]  423 	mov	sp,a
+                                    424 ;	tancotf.c:80: xnum = P(f,g);
+      000253 C0*08            [24]  425 	push	_tancotf_g_1_24
+      000255 C0*09            [24]  426 	push	(_tancotf_g_1_24 + 1)
+      000257 C0*0A            [24]  427 	push	(_tancotf_g_1_24 + 2)
+      000259 C0*0B            [24]  428 	push	(_tancotf_g_1_24 + 3)
+      00025B 90 33 B8         [24]  429 	mov	dptr,#0x33B8
+      00025E 75 F0 C4         [24]  430 	mov	b,#0xC4
+      000261 74 BD            [12]  431 	mov	a,#0xBD
+      000263 12r00r00         [24]  432 	lcall	___fsmul
+      000266 AA 82            [24]  433 	mov	r2,dpl
+      000268 AB 83            [24]  434 	mov	r3,dph
+      00026A AC F0            [24]  435 	mov	r4,b
+      00026C FD               [12]  436 	mov	r5,a
+      00026D E5 81            [12]  437 	mov	a,sp
+      00026F 24 FC            [12]  438 	add	a,#0xfc
+      000271 F5 81            [12]  439 	mov	sp,a
+      000273 C0*04            [24]  440 	push	_tancotf_f_1_24
+      000275 C0*05            [24]  441 	push	(_tancotf_f_1_24 + 1)
+      000277 C0*06            [24]  442 	push	(_tancotf_f_1_24 + 2)
+      000279 C0*07            [24]  443 	push	(_tancotf_f_1_24 + 3)
+      00027B 8A 82            [24]  444 	mov	dpl,r2
+      00027D 8B 83            [24]  445 	mov	dph,r3
+      00027F 8C F0            [24]  446 	mov	b,r4
+      000281 ED               [12]  447 	mov	a,r5
+      000282 12r00r00         [24]  448 	lcall	___fsmul
+      000285 AA 82            [24]  449 	mov	r2,dpl
+      000287 AB 83            [24]  450 	mov	r3,dph
+      000289 AC F0            [24]  451 	mov	r4,b
+      00028B FD               [12]  452 	mov	r5,a
+      00028C E5 81            [12]  453 	mov	a,sp
+      00028E 24 FC            [12]  454 	add	a,#0xfc
+      000290 F5 81            [12]  455 	mov	sp,a
+      000292 C0*04            [24]  456 	push	_tancotf_f_1_24
+      000294 C0*05            [24]  457 	push	(_tancotf_f_1_24 + 1)
+      000296 C0*06            [24]  458 	push	(_tancotf_f_1_24 + 2)
+      000298 C0*07            [24]  459 	push	(_tancotf_f_1_24 + 3)
+      00029A 8A 82            [24]  460 	mov	dpl,r2
+      00029C 8B 83            [24]  461 	mov	dph,r3
+      00029E 8C F0            [24]  462 	mov	b,r4
+      0002A0 ED               [12]  463 	mov	a,r5
+      0002A1 12r00r00         [24]  464 	lcall	___fsadd
+      0002A4 A8 82            [24]  465 	mov	r0,dpl
+      0002A6 A9 83            [24]  466 	mov	r1,dph
+      0002A8 AE F0            [24]  467 	mov	r6,b
+      0002AA FF               [12]  468 	mov	r7,a
+      0002AB E5 81            [12]  469 	mov	a,sp
+      0002AD 24 FC            [12]  470 	add	a,#0xfc
+      0002AF F5 81            [12]  471 	mov	sp,a
+                                    472 ;	tancotf.c:81: xden = Q(g);
+      0002B1 C0 07            [24]  473 	push	ar7
+      0002B3 C0 06            [24]  474 	push	ar6
+      0002B5 C0 01            [24]  475 	push	ar1
+      0002B7 C0 00            [24]  476 	push	ar0
+      0002B9 C0*08            [24]  477 	push	_tancotf_g_1_24
+      0002BB C0*09            [24]  478 	push	(_tancotf_g_1_24 + 1)
+      0002BD C0*0A            [24]  479 	push	(_tancotf_g_1_24 + 2)
+      0002BF C0*0B            [24]  480 	push	(_tancotf_g_1_24 + 3)
+      0002C1 90 33 75         [24]  481 	mov	dptr,#0x3375
+      0002C4 75 F0 1F         [24]  482 	mov	b,#0x1F
+      0002C7 74 3C            [12]  483 	mov	a,#0x3C
+      0002C9 12r00r00         [24]  484 	lcall	___fsmul
+      0002CC AA 82            [24]  485 	mov	r2,dpl
+      0002CE AB 83            [24]  486 	mov	r3,dph
+      0002D0 AC F0            [24]  487 	mov	r4,b
+      0002D2 FD               [12]  488 	mov	r5,a
+      0002D3 E5 81            [12]  489 	mov	a,sp
+      0002D5 24 FC            [12]  490 	add	a,#0xfc
+      0002D7 F5 81            [12]  491 	mov	sp,a
+      0002D9 74 AF            [12]  492 	mov	a,#0xAF
+      0002DB C0 E0            [24]  493 	push	acc
+      0002DD 74 B7            [12]  494 	mov	a,#0xB7
+      0002DF C0 E0            [24]  495 	push	acc
+      0002E1 03               [12]  496 	rr	a
+      0002E2 C0 E0            [24]  497 	push	acc
+      0002E4 74 BE            [12]  498 	mov	a,#0xBE
+      0002E6 C0 E0            [24]  499 	push	acc
+      0002E8 8A 82            [24]  500 	mov	dpl,r2
+      0002EA 8B 83            [24]  501 	mov	dph,r3
+      0002EC 8C F0            [24]  502 	mov	b,r4
+      0002EE ED               [12]  503 	mov	a,r5
+      0002EF 12r00r00         [24]  504 	lcall	___fsadd
+      0002F2 AA 82            [24]  505 	mov	r2,dpl
+      0002F4 AB 83            [24]  506 	mov	r3,dph
+      0002F6 AC F0            [24]  507 	mov	r4,b
+      0002F8 FD               [12]  508 	mov	r5,a
+      0002F9 E5 81            [12]  509 	mov	a,sp
+      0002FB 24 FC            [12]  510 	add	a,#0xfc
+      0002FD F5 81            [12]  511 	mov	sp,a
+      0002FF C0*08            [24]  512 	push	_tancotf_g_1_24
+      000301 C0*09            [24]  513 	push	(_tancotf_g_1_24 + 1)
+      000303 C0*0A            [24]  514 	push	(_tancotf_g_1_24 + 2)
+      000305 C0*0B            [24]  515 	push	(_tancotf_g_1_24 + 3)
+      000307 8A 82            [24]  516 	mov	dpl,r2
+      000309 8B 83            [24]  517 	mov	dph,r3
+      00030B 8C F0            [24]  518 	mov	b,r4
+      00030D ED               [12]  519 	mov	a,r5
+      00030E 12r00r00         [24]  520 	lcall	___fsmul
+      000311 AA 82            [24]  521 	mov	r2,dpl
+      000313 AB 83            [24]  522 	mov	r3,dph
+      000315 AC F0            [24]  523 	mov	r4,b
+      000317 FD               [12]  524 	mov	r5,a
+      000318 E5 81            [12]  525 	mov	a,sp
+      00031A 24 FC            [12]  526 	add	a,#0xfc
+      00031C F5 81            [12]  527 	mov	sp,a
+      00031E E4               [12]  528 	clr	a
+      00031F C0 E0            [24]  529 	push	acc
+      000321 C0 E0            [24]  530 	push	acc
+      000323 74 80            [12]  531 	mov	a,#0x80
+      000325 C0 E0            [24]  532 	push	acc
+      000327 74 3F            [12]  533 	mov	a,#0x3F
+      000329 C0 E0            [24]  534 	push	acc
+      00032B 8A 82            [24]  535 	mov	dpl,r2
+      00032D 8B 83            [24]  536 	mov	dph,r3
+      00032F 8C F0            [24]  537 	mov	b,r4
+      000331 ED               [12]  538 	mov	a,r5
+      000332 12r00r00         [24]  539 	lcall	___fsadd
+      000335 85 82*10         [24]  540 	mov	_tancotf_xden_1_24,dpl
+      000338 85 83*11         [24]  541 	mov	(_tancotf_xden_1_24 + 1),dph
+      00033B 85 F0*12         [24]  542 	mov	(_tancotf_xden_1_24 + 2),b
+      00033E F5*13            [12]  543 	mov	(_tancotf_xden_1_24 + 3),a
+      000340 E5 81            [12]  544 	mov	a,sp
+      000342 24 FC            [12]  545 	add	a,#0xfc
+      000344 F5 81            [12]  546 	mov	sp,a
+      000346 D0 00            [24]  547 	pop	ar0
+      000348 D0 01            [24]  548 	pop	ar1
+      00034A D0 06            [24]  549 	pop	ar6
+      00034C D0 07            [24]  550 	pop	ar7
+      00034E                        551 00105$:
+                                    552 ;	tancotf.c:84: if(n&1)
+      00034E E5*14            [12]  553 	mov	a,_tancotf_n_1_24
+      000350 30 E0 66         [24]  554 	jnb	acc.0,00113$
+                                    555 ;	tancotf.c:87: if(iscotan) return (-xnum/xden);
+      000353 30*00 31         [24]  556 	jnb	_tancotf_PARM_2,00107$
+      000356 88 02            [24]  557 	mov	ar2,r0
+      000358 89 03            [24]  558 	mov	ar3,r1
+      00035A 8E 04            [24]  559 	mov	ar4,r6
+      00035C EF               [12]  560 	mov	a,r7
+      00035D B2 E7            [12]  561 	cpl	acc.7
+      00035F FD               [12]  562 	mov	r5,a
+      000360 C0*10            [24]  563 	push	_tancotf_xden_1_24
+      000362 C0*11            [24]  564 	push	(_tancotf_xden_1_24 + 1)
+      000364 C0*12            [24]  565 	push	(_tancotf_xden_1_24 + 2)
+      000366 C0*13            [24]  566 	push	(_tancotf_xden_1_24 + 3)
+      000368 8A 82            [24]  567 	mov	dpl,r2
+      00036A 8B 83            [24]  568 	mov	dph,r3
+      00036C 8C F0            [24]  569 	mov	b,r4
+      00036E ED               [12]  570 	mov	a,r5
+      00036F 12r00r00         [24]  571 	lcall	___fsdiv
+      000372 AA 82            [24]  572 	mov	r2,dpl
+      000374 AB 83            [24]  573 	mov	r3,dph
+      000376 AC F0            [24]  574 	mov	r4,b
+      000378 FD               [12]  575 	mov	r5,a
+      000379 E5 81            [12]  576 	mov	a,sp
+      00037B 24 FC            [12]  577 	add	a,#0xfc
+      00037D F5 81            [12]  578 	mov	sp,a
+      00037F 8A 82            [24]  579 	mov	dpl,r2
+      000381 8B 83            [24]  580 	mov	dph,r3
+      000383 8C F0            [24]  581 	mov	b,r4
+      000385 ED               [12]  582 	mov	a,r5
+      000386 22               [24]  583 	ret
+      000387                        584 00107$:
+                                    585 ;	tancotf.c:88: else return (-xden/xnum);
+      000387 AA*10            [24]  586 	mov	r2,_tancotf_xden_1_24
+      000389 AB*11            [24]  587 	mov	r3,(_tancotf_xden_1_24 + 1)
+      00038B AC*12            [24]  588 	mov	r4,(_tancotf_xden_1_24 + 2)
+      00038D E5*13            [12]  589 	mov	a,(_tancotf_xden_1_24 + 3)
+      00038F B2 E7            [12]  590 	cpl	acc.7
+      000391 FD               [12]  591 	mov	r5,a
+      000392 C0 00            [24]  592 	push	ar0
+      000394 C0 01            [24]  593 	push	ar1
+      000396 C0 06            [24]  594 	push	ar6
+      000398 C0 07            [24]  595 	push	ar7
+      00039A 8A 82            [24]  596 	mov	dpl,r2
+      00039C 8B 83            [24]  597 	mov	dph,r3
+      00039E 8C F0            [24]  598 	mov	b,r4
+      0003A0 ED               [12]  599 	mov	a,r5
+      0003A1 12r00r00         [24]  600 	lcall	___fsdiv
+      0003A4 AA 82            [24]  601 	mov	r2,dpl
+      0003A6 AB 83            [24]  602 	mov	r3,dph
+      0003A8 AC F0            [24]  603 	mov	r4,b
+      0003AA FD               [12]  604 	mov	r5,a
+      0003AB E5 81            [12]  605 	mov	a,sp
+      0003AD 24 FC            [12]  606 	add	a,#0xfc
+      0003AF F5 81            [12]  607 	mov	sp,a
+      0003B1 8A 82            [24]  608 	mov	dpl,r2
+      0003B3 8B 83            [24]  609 	mov	dph,r3
+      0003B5 8C F0            [24]  610 	mov	b,r4
+      0003B7 ED               [12]  611 	mov	a,r5
+      0003B8 22               [24]  612 	ret
+      0003B9                        613 00113$:
+                                    614 ;	tancotf.c:92: if(iscotan) return (xden/xnum);
+      0003B9 30*00 2B         [24]  615 	jnb	_tancotf_PARM_2,00110$
+      0003BC C0 00            [24]  616 	push	ar0
+      0003BE C0 01            [24]  617 	push	ar1
+      0003C0 C0 06            [24]  618 	push	ar6
+      0003C2 C0 07            [24]  619 	push	ar7
+      0003C4 85*10 82         [24]  620 	mov	dpl,_tancotf_xden_1_24
+      0003C7 85*11 83         [24]  621 	mov	dph,(_tancotf_xden_1_24 + 1)
+      0003CA 85*12 F0         [24]  622 	mov	b,(_tancotf_xden_1_24 + 2)
+      0003CD E5*13            [12]  623 	mov	a,(_tancotf_xden_1_24 + 3)
+      0003CF 12r00r00         [24]  624 	lcall	___fsdiv
+      0003D2 AA 82            [24]  625 	mov	r2,dpl
+      0003D4 AB 83            [24]  626 	mov	r3,dph
+      0003D6 AC F0            [24]  627 	mov	r4,b
+      0003D8 FD               [12]  628 	mov	r5,a
+      0003D9 E5 81            [12]  629 	mov	a,sp
+      0003DB 24 FC            [12]  630 	add	a,#0xfc
+      0003DD F5 81            [12]  631 	mov	sp,a
+      0003DF 8A 82            [24]  632 	mov	dpl,r2
+      0003E1 8B 83            [24]  633 	mov	dph,r3
+      0003E3 8C F0            [24]  634 	mov	b,r4
+      0003E5 ED               [12]  635 	mov	a,r5
+      0003E6 22               [24]  636 	ret
+      0003E7                        637 00110$:
+                                    638 ;	tancotf.c:93: else return (xnum/xden);
+      0003E7 C0*10            [24]  639 	push	_tancotf_xden_1_24
+      0003E9 C0*11            [24]  640 	push	(_tancotf_xden_1_24 + 1)
+      0003EB C0*12            [24]  641 	push	(_tancotf_xden_1_24 + 2)
+      0003ED C0*13            [24]  642 	push	(_tancotf_xden_1_24 + 3)
+      0003EF 88 82            [24]  643 	mov	dpl,r0
+      0003F1 89 83            [24]  644 	mov	dph,r1
+      0003F3 8E F0            [24]  645 	mov	b,r6
+      0003F5 EF               [12]  646 	mov	a,r7
+      0003F6 12r00r00         [24]  647 	lcall	___fsdiv
+      0003F9 AC 82            [24]  648 	mov	r4,dpl
+      0003FB AD 83            [24]  649 	mov	r5,dph
+      0003FD AE F0            [24]  650 	mov	r6,b
+      0003FF FF               [12]  651 	mov	r7,a
+      000400 E5 81            [12]  652 	mov	a,sp
+      000402 24 FC            [12]  653 	add	a,#0xfc
+      000404 F5 81            [12]  654 	mov	sp,a
+      000406 8C 82            [24]  655 	mov	dpl,r4
+      000408 8D 83            [24]  656 	mov	dph,r5
+      00040A 8E F0            [24]  657 	mov	b,r6
+      00040C EF               [12]  658 	mov	a,r7
+      00040D 22               [24]  659 	ret
+                                    660 	.area CSEG    (CODE)
+                                    661 	.area CONST   (CODE)
+                                    662 	.area XINIT   (CODE)
+                                    663 	.area CABS    (ABS,CODE)

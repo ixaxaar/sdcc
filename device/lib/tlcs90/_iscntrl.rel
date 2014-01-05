@@ -1,0 +1,35 @@
+XL2
+H 9 areas 4 global symbols
+M _iscntrl
+O -mtlcs90
+S .__.ABS. Def0000
+A _CODE size 17 flags 0 addr 0
+S _iscntrl Def0000
+S _iscntrl_start Def0000
+S _iscntrl_end Def0017
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 00 00
+T 00 00
+R 00 00 00 00
+T 00 00 36 1F 3D 02 00 FE 15 E5 62 CF 06 E5 2E 6A
+R 00 00 00 00
+T 0E 00 7F CE 03
+R 00 00 00 00
+T 11 00
+R 00 00 00 00
+T 11 00 35 01 1E
+R 00 00 00 00
+T 14 00
+R 00 00 00 00
+T 14 00 35 00 1E
+R 00 00 00 00
+T 17 00
+R 00 00 00 00

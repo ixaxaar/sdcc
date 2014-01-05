@@ -1,0 +1,375 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                                      4 ; This file was generated Wed Nov 27 12:27:56 2013
+                                      5 ;--------------------------------------------------------
+                                      6 	.module _modulong
+                                      7 	.optsdcc -mmcs51 --model-large
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl __modulong_PARM_2
+                                     13 	.globl __modulong
+                                     14 ;--------------------------------------------------------
+                                     15 ; special function registers
+                                     16 ;--------------------------------------------------------
+                                     17 	.area RSEG    (ABS,DATA)
+      000000                         18 	.org 0x0000
+                                     19 ;--------------------------------------------------------
+                                     20 ; special function bits
+                                     21 ;--------------------------------------------------------
+                                     22 	.area RSEG    (ABS,DATA)
+      000000                         23 	.org 0x0000
+                                     24 ;--------------------------------------------------------
+                                     25 ; overlayable register banks
+                                     26 ;--------------------------------------------------------
+                                     27 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         28 	.ds 8
+                                     29 ;--------------------------------------------------------
+                                     30 ; internal ram data
+                                     31 ;--------------------------------------------------------
+                                     32 	.area DSEG    (DATA)
+                                     33 ;--------------------------------------------------------
+                                     34 ; overlayable items in internal ram 
+                                     35 ;--------------------------------------------------------
+                                     36 	.area	OSEG    (OVR,DATA)
+      000000                         37 __modulong_sloc0_1_0:
+      000000                         38 	.ds 4
+                                     39 ;--------------------------------------------------------
+                                     40 ; indirectly addressable internal ram data
+                                     41 ;--------------------------------------------------------
+                                     42 	.area ISEG    (DATA)
+                                     43 ;--------------------------------------------------------
+                                     44 ; absolute internal ram data
+                                     45 ;--------------------------------------------------------
+                                     46 	.area IABS    (ABS,DATA)
+                                     47 	.area IABS    (ABS,DATA)
+                                     48 ;--------------------------------------------------------
+                                     49 ; bit data
+                                     50 ;--------------------------------------------------------
+                                     51 	.area BSEG    (BIT)
+                                     52 ;--------------------------------------------------------
+                                     53 ; paged external ram data
+                                     54 ;--------------------------------------------------------
+                                     55 	.area PSEG    (PAG,XDATA)
+                                     56 ;--------------------------------------------------------
+                                     57 ; external ram data
+                                     58 ;--------------------------------------------------------
+                                     59 	.area XSEG    (XDATA)
+      000000                         60 __modulong_PARM_2:
+      000000                         61 	.ds 4
+      000004                         62 __modulong_a_1_1:
+      000004                         63 	.ds 4
+      000008                         64 __modulong_count_1_2:
+      000008                         65 	.ds 1
+                                     66 ;--------------------------------------------------------
+                                     67 ; absolute external ram data
+                                     68 ;--------------------------------------------------------
+                                     69 	.area XABS    (ABS,XDATA)
+                                     70 ;--------------------------------------------------------
+                                     71 ; external initialized ram data
+                                     72 ;--------------------------------------------------------
+                                     73 	.area XISEG   (XDATA)
+                                     74 	.area HOME    (CODE)
+                                     75 	.area GSINIT0 (CODE)
+                                     76 	.area GSINIT1 (CODE)
+                                     77 	.area GSINIT2 (CODE)
+                                     78 	.area GSINIT3 (CODE)
+                                     79 	.area GSINIT4 (CODE)
+                                     80 	.area GSINIT5 (CODE)
+                                     81 	.area GSINIT  (CODE)
+                                     82 	.area GSFINAL (CODE)
+                                     83 	.area CSEG    (CODE)
+                                     84 ;--------------------------------------------------------
+                                     85 ; global & static initialisations
+                                     86 ;--------------------------------------------------------
+                                     87 	.area HOME    (CODE)
+                                     88 	.area GSINIT  (CODE)
+                                     89 	.area GSFINAL (CODE)
+                                     90 	.area GSINIT  (CODE)
+                                     91 ;--------------------------------------------------------
+                                     92 ; Home
+                                     93 ;--------------------------------------------------------
+                                     94 	.area HOME    (CODE)
+                                     95 	.area HOME    (CODE)
+                                     96 ;--------------------------------------------------------
+                                     97 ; code
+                                     98 ;--------------------------------------------------------
+                                     99 	.area CSEG    (CODE)
+                                    100 ;------------------------------------------------------------
+                                    101 ;Allocation info for local variables in function '_modulong'
+                                    102 ;------------------------------------------------------------
+                                    103 ;b                         Allocated with name '__modulong_PARM_2'
+                                    104 ;a                         Allocated with name '__modulong_a_1_1'
+                                    105 ;count                     Allocated with name '__modulong_count_1_2'
+                                    106 ;sloc0                     Allocated with name '__modulong_sloc0_1_0'
+                                    107 ;------------------------------------------------------------
+                                    108 ;	_modulong.c:340: _modulong (unsigned long a, unsigned long b)
+                                    109 ;	-----------------------------------------
+                                    110 ;	 function _modulong
+                                    111 ;	-----------------------------------------
+      000000                        112 __modulong:
+                           000007   113 	ar7 = 0x07
+                           000006   114 	ar6 = 0x06
+                           000005   115 	ar5 = 0x05
+                           000004   116 	ar4 = 0x04
+                           000003   117 	ar3 = 0x03
+                           000002   118 	ar2 = 0x02
+                           000001   119 	ar1 = 0x01
+                           000000   120 	ar0 = 0x00
+      000000 AF 82            [24]  121 	mov	r7,dpl
+      000002 AE 83            [24]  122 	mov	r6,dph
+      000004 AD F0            [24]  123 	mov	r5,b
+      000006 FC               [12]  124 	mov	r4,a
+      000007 90r00r04         [24]  125 	mov	dptr,#__modulong_a_1_1
+      00000A EF               [12]  126 	mov	a,r7
+      00000B F0               [24]  127 	movx	@dptr,a
+      00000C EE               [12]  128 	mov	a,r6
+      00000D A3               [24]  129 	inc	dptr
+      00000E F0               [24]  130 	movx	@dptr,a
+      00000F ED               [12]  131 	mov	a,r5
+      000010 A3               [24]  132 	inc	dptr
+      000011 F0               [24]  133 	movx	@dptr,a
+      000012 EC               [12]  134 	mov	a,r4
+      000013 A3               [24]  135 	inc	dptr
+      000014 F0               [24]  136 	movx	@dptr,a
+                                    137 ;	_modulong.c:342: unsigned char count = 0;
+      000015 90r00r08         [24]  138 	mov	dptr,#__modulong_count_1_2
+      000018 E4               [12]  139 	clr	a
+      000019 F0               [24]  140 	movx	@dptr,a
+                                    141 ;	_modulong.c:344: while (!MSB_SET(b))
+      00001A 90r00r04         [24]  142 	mov	dptr,#__modulong_a_1_1
+      00001D E0               [24]  143 	movx	a,@dptr
+      00001E FC               [12]  144 	mov	r4,a
+      00001F A3               [24]  145 	inc	dptr
+      000020 E0               [24]  146 	movx	a,@dptr
+      000021 FD               [12]  147 	mov	r5,a
+      000022 A3               [24]  148 	inc	dptr
+      000023 E0               [24]  149 	movx	a,@dptr
+      000024 FE               [12]  150 	mov	r6,a
+      000025 A3               [24]  151 	inc	dptr
+      000026 E0               [24]  152 	movx	a,@dptr
+      000027 FF               [12]  153 	mov	r7,a
+      000028 7B 00            [12]  154 	mov	r3,#0x00
+      00002A                        155 00103$:
+      00002A 90r00r00         [24]  156 	mov	dptr,#__modulong_PARM_2
+      00002D E0               [24]  157 	movx	a,@dptr
+      00002E F5*00            [12]  158 	mov	__modulong_sloc0_1_0,a
+      000030 A3               [24]  159 	inc	dptr
+      000031 E0               [24]  160 	movx	a,@dptr
+      000032 F5*01            [12]  161 	mov	(__modulong_sloc0_1_0 + 1),a
+      000034 A3               [24]  162 	inc	dptr
+      000035 E0               [24]  163 	movx	a,@dptr
+      000036 F5*02            [12]  164 	mov	(__modulong_sloc0_1_0 + 2),a
+      000038 A3               [24]  165 	inc	dptr
+      000039 E0               [24]  166 	movx	a,@dptr
+      00003A F5*03            [12]  167 	mov	(__modulong_sloc0_1_0 + 3),a
+      00003C 23               [12]  168 	rl	a
+      00003D 54 01            [12]  169 	anl	a,#0x01
+      00003F FA               [12]  170 	mov	r2,a
+      000040 70 74            [24]  171 	jnz	00117$
+                                    172 ;	_modulong.c:346: b <<= 1;
+      000042 C0 03            [24]  173 	push	ar3
+      000044 E5*00            [12]  174 	mov	a,__modulong_sloc0_1_0
+      000046 25*00            [12]  175 	add	a,__modulong_sloc0_1_0
+      000048 F8               [12]  176 	mov	r0,a
+      000049 E5*01            [12]  177 	mov	a,(__modulong_sloc0_1_0 + 1)
+      00004B 33               [12]  178 	rlc	a
+      00004C F9               [12]  179 	mov	r1,a
+      00004D E5*02            [12]  180 	mov	a,(__modulong_sloc0_1_0 + 2)
+      00004F 33               [12]  181 	rlc	a
+      000050 FA               [12]  182 	mov	r2,a
+      000051 E5*03            [12]  183 	mov	a,(__modulong_sloc0_1_0 + 3)
+      000053 33               [12]  184 	rlc	a
+      000054 FB               [12]  185 	mov	r3,a
+      000055 90r00r00         [24]  186 	mov	dptr,#__modulong_PARM_2
+      000058 E8               [12]  187 	mov	a,r0
+      000059 F0               [24]  188 	movx	@dptr,a
+      00005A E9               [12]  189 	mov	a,r1
+      00005B A3               [24]  190 	inc	dptr
+      00005C F0               [24]  191 	movx	@dptr,a
+      00005D EA               [12]  192 	mov	a,r2
+      00005E A3               [24]  193 	inc	dptr
+      00005F F0               [24]  194 	movx	@dptr,a
+      000060 EB               [12]  195 	mov	a,r3
+      000061 A3               [24]  196 	inc	dptr
+      000062 F0               [24]  197 	movx	@dptr,a
+                                    198 ;	_modulong.c:347: if (b > a)
+      000063 90r00r00         [24]  199 	mov	dptr,#__modulong_PARM_2
+      000066 E0               [24]  200 	movx	a,@dptr
+      000067 F5*00            [12]  201 	mov	__modulong_sloc0_1_0,a
+      000069 A3               [24]  202 	inc	dptr
+      00006A E0               [24]  203 	movx	a,@dptr
+      00006B F5*01            [12]  204 	mov	(__modulong_sloc0_1_0 + 1),a
+      00006D A3               [24]  205 	inc	dptr
+      00006E E0               [24]  206 	movx	a,@dptr
+      00006F F5*02            [12]  207 	mov	(__modulong_sloc0_1_0 + 2),a
+      000071 A3               [24]  208 	inc	dptr
+      000072 E0               [24]  209 	movx	a,@dptr
+      000073 F5*03            [12]  210 	mov	(__modulong_sloc0_1_0 + 3),a
+      000075 C3               [12]  211 	clr	c
+      000076 EC               [12]  212 	mov	a,r4
+      000077 95*00            [12]  213 	subb	a,__modulong_sloc0_1_0
+      000079 ED               [12]  214 	mov	a,r5
+      00007A 95*01            [12]  215 	subb	a,(__modulong_sloc0_1_0 + 1)
+      00007C EE               [12]  216 	mov	a,r6
+      00007D 95*02            [12]  217 	subb	a,(__modulong_sloc0_1_0 + 2)
+      00007F EF               [12]  218 	mov	a,r7
+      000080 95*03            [12]  219 	subb	a,(__modulong_sloc0_1_0 + 3)
+      000082 D0 03            [24]  220 	pop	ar3
+      000084 50 27            [24]  221 	jnc	00102$
+                                    222 ;	_modulong.c:349: b >>=1;
+      000086 E5*03            [12]  223 	mov	a,(__modulong_sloc0_1_0 + 3)
+      000088 C3               [12]  224 	clr	c
+      000089 13               [12]  225 	rrc	a
+      00008A F5*03            [12]  226 	mov	(__modulong_sloc0_1_0 + 3),a
+      00008C E5*02            [12]  227 	mov	a,(__modulong_sloc0_1_0 + 2)
+      00008E 13               [12]  228 	rrc	a
+      00008F F5*02            [12]  229 	mov	(__modulong_sloc0_1_0 + 2),a
+      000091 E5*01            [12]  230 	mov	a,(__modulong_sloc0_1_0 + 1)
+      000093 13               [12]  231 	rrc	a
+      000094 F5*01            [12]  232 	mov	(__modulong_sloc0_1_0 + 1),a
+      000096 E5*00            [12]  233 	mov	a,__modulong_sloc0_1_0
+      000098 13               [12]  234 	rrc	a
+      000099 F5*00            [12]  235 	mov	__modulong_sloc0_1_0,a
+      00009B 90r00r00         [24]  236 	mov	dptr,#__modulong_PARM_2
+      00009E F0               [24]  237 	movx	@dptr,a
+      00009F E5*01            [12]  238 	mov	a,(__modulong_sloc0_1_0 + 1)
+      0000A1 A3               [24]  239 	inc	dptr
+      0000A2 F0               [24]  240 	movx	@dptr,a
+      0000A3 E5*02            [12]  241 	mov	a,(__modulong_sloc0_1_0 + 2)
+      0000A5 A3               [24]  242 	inc	dptr
+      0000A6 F0               [24]  243 	movx	@dptr,a
+      0000A7 E5*03            [12]  244 	mov	a,(__modulong_sloc0_1_0 + 3)
+      0000A9 A3               [24]  245 	inc	dptr
+      0000AA F0               [24]  246 	movx	@dptr,a
+                                    247 ;	_modulong.c:350: break;
+      0000AB 80 09            [24]  248 	sjmp	00117$
+      0000AD                        249 00102$:
+                                    250 ;	_modulong.c:352: count++;
+      0000AD 0B               [12]  251 	inc	r3
+      0000AE 90r00r08         [24]  252 	mov	dptr,#__modulong_count_1_2
+      0000B1 EB               [12]  253 	mov	a,r3
+      0000B2 F0               [24]  254 	movx	@dptr,a
+      0000B3 02r00r2A         [24]  255 	ljmp	00103$
+                                    256 ;	_modulong.c:354: do
+      0000B6                        257 00117$:
+      0000B6 90r00r08         [24]  258 	mov	dptr,#__modulong_count_1_2
+      0000B9 E0               [24]  259 	movx	a,@dptr
+      0000BA FF               [12]  260 	mov	r7,a
+      0000BB                        261 00108$:
+                                    262 ;	_modulong.c:356: if (a >= b)
+      0000BB 90r00r04         [24]  263 	mov	dptr,#__modulong_a_1_1
+      0000BE E0               [24]  264 	movx	a,@dptr
+      0000BF FB               [12]  265 	mov	r3,a
+      0000C0 A3               [24]  266 	inc	dptr
+      0000C1 E0               [24]  267 	movx	a,@dptr
+      0000C2 FC               [12]  268 	mov	r4,a
+      0000C3 A3               [24]  269 	inc	dptr
+      0000C4 E0               [24]  270 	movx	a,@dptr
+      0000C5 FD               [12]  271 	mov	r5,a
+      0000C6 A3               [24]  272 	inc	dptr
+      0000C7 E0               [24]  273 	movx	a,@dptr
+      0000C8 FE               [12]  274 	mov	r6,a
+      0000C9 90r00r00         [24]  275 	mov	dptr,#__modulong_PARM_2
+      0000CC E0               [24]  276 	movx	a,@dptr
+      0000CD F5*00            [12]  277 	mov	__modulong_sloc0_1_0,a
+      0000CF A3               [24]  278 	inc	dptr
+      0000D0 E0               [24]  279 	movx	a,@dptr
+      0000D1 F5*01            [12]  280 	mov	(__modulong_sloc0_1_0 + 1),a
+      0000D3 A3               [24]  281 	inc	dptr
+      0000D4 E0               [24]  282 	movx	a,@dptr
+      0000D5 F5*02            [12]  283 	mov	(__modulong_sloc0_1_0 + 2),a
+      0000D7 A3               [24]  284 	inc	dptr
+      0000D8 E0               [24]  285 	movx	a,@dptr
+      0000D9 F5*03            [12]  286 	mov	(__modulong_sloc0_1_0 + 3),a
+      0000DB C3               [12]  287 	clr	c
+      0000DC EB               [12]  288 	mov	a,r3
+      0000DD 95*00            [12]  289 	subb	a,__modulong_sloc0_1_0
+      0000DF EC               [12]  290 	mov	a,r4
+      0000E0 95*01            [12]  291 	subb	a,(__modulong_sloc0_1_0 + 1)
+      0000E2 ED               [12]  292 	mov	a,r5
+      0000E3 95*02            [12]  293 	subb	a,(__modulong_sloc0_1_0 + 2)
+      0000E5 EE               [12]  294 	mov	a,r6
+      0000E6 95*03            [12]  295 	subb	a,(__modulong_sloc0_1_0 + 3)
+      0000E8 40 17            [24]  296 	jc	00107$
+                                    297 ;	_modulong.c:357: a -= b;
+      0000EA 90r00r04         [24]  298 	mov	dptr,#__modulong_a_1_1
+      0000ED EB               [12]  299 	mov	a,r3
+      0000EE C3               [12]  300 	clr	c
+      0000EF 95*00            [12]  301 	subb	a,__modulong_sloc0_1_0
+      0000F1 F0               [24]  302 	movx	@dptr,a
+      0000F2 EC               [12]  303 	mov	a,r4
+      0000F3 95*01            [12]  304 	subb	a,(__modulong_sloc0_1_0 + 1)
+      0000F5 A3               [24]  305 	inc	dptr
+      0000F6 F0               [24]  306 	movx	@dptr,a
+      0000F7 ED               [12]  307 	mov	a,r5
+      0000F8 95*02            [12]  308 	subb	a,(__modulong_sloc0_1_0 + 2)
+      0000FA A3               [24]  309 	inc	dptr
+      0000FB F0               [24]  310 	movx	@dptr,a
+      0000FC EE               [12]  311 	mov	a,r6
+      0000FD 95*03            [12]  312 	subb	a,(__modulong_sloc0_1_0 + 3)
+      0000FF A3               [24]  313 	inc	dptr
+      000100 F0               [24]  314 	movx	@dptr,a
+      000101                        315 00107$:
+                                    316 ;	_modulong.c:358: b >>= 1;
+      000101 90r00r00         [24]  317 	mov	dptr,#__modulong_PARM_2
+      000104 E0               [24]  318 	movx	a,@dptr
+      000105 FB               [12]  319 	mov	r3,a
+      000106 A3               [24]  320 	inc	dptr
+      000107 E0               [24]  321 	movx	a,@dptr
+      000108 FC               [12]  322 	mov	r4,a
+      000109 A3               [24]  323 	inc	dptr
+      00010A E0               [24]  324 	movx	a,@dptr
+      00010B FD               [12]  325 	mov	r5,a
+      00010C A3               [24]  326 	inc	dptr
+      00010D E0               [24]  327 	movx	a,@dptr
+      00010E C3               [12]  328 	clr	c
+      00010F 13               [12]  329 	rrc	a
+      000110 FE               [12]  330 	mov	r6,a
+      000111 ED               [12]  331 	mov	a,r5
+      000112 13               [12]  332 	rrc	a
+      000113 FD               [12]  333 	mov	r5,a
+      000114 EC               [12]  334 	mov	a,r4
+      000115 13               [12]  335 	rrc	a
+      000116 FC               [12]  336 	mov	r4,a
+      000117 EB               [12]  337 	mov	a,r3
+      000118 13               [12]  338 	rrc	a
+      000119 FB               [12]  339 	mov	r3,a
+      00011A 90r00r00         [24]  340 	mov	dptr,#__modulong_PARM_2
+      00011D F0               [24]  341 	movx	@dptr,a
+      00011E EC               [12]  342 	mov	a,r4
+      00011F A3               [24]  343 	inc	dptr
+      000120 F0               [24]  344 	movx	@dptr,a
+      000121 ED               [12]  345 	mov	a,r5
+      000122 A3               [24]  346 	inc	dptr
+      000123 F0               [24]  347 	movx	@dptr,a
+      000124 EE               [12]  348 	mov	a,r6
+      000125 A3               [24]  349 	inc	dptr
+      000126 F0               [24]  350 	movx	@dptr,a
+                                    351 ;	_modulong.c:360: while (count--);
+      000127 8F 06            [24]  352 	mov	ar6,r7
+      000129 1F               [12]  353 	dec	r7
+      00012A EE               [12]  354 	mov	a,r6
+      00012B 70 8E            [24]  355 	jnz	00108$
+                                    356 ;	_modulong.c:362: return a;
+      00012D 90r00r04         [24]  357 	mov	dptr,#__modulong_a_1_1
+      000130 E0               [24]  358 	movx	a,@dptr
+      000131 FC               [12]  359 	mov	r4,a
+      000132 A3               [24]  360 	inc	dptr
+      000133 E0               [24]  361 	movx	a,@dptr
+      000134 FD               [12]  362 	mov	r5,a
+      000135 A3               [24]  363 	inc	dptr
+      000136 E0               [24]  364 	movx	a,@dptr
+      000137 FE               [12]  365 	mov	r6,a
+      000138 A3               [24]  366 	inc	dptr
+      000139 E0               [24]  367 	movx	a,@dptr
+      00013A 8C 82            [24]  368 	mov	dpl,r4
+      00013C 8D 83            [24]  369 	mov	dph,r5
+      00013E 8E F0            [24]  370 	mov	b,r6
+      000140 22               [24]  371 	ret
+                                    372 	.area CSEG    (CODE)
+                                    373 	.area CONST   (CODE)
+                                    374 	.area XINIT   (CODE)
+                                    375 	.area CABS    (ABS,CODE)

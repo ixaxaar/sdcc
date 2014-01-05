@@ -1,0 +1,269 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                                      4 ; This file was generated Wed Nov 27 12:28:00 2013
+                                      5 ;--------------------------------------------------------
+                                      6 	.module _strpbrk
+                                      7 	.optsdcc -mmcs51 --model-huge
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl _strchr
+                                     13 	.globl _strpbrk_PARM_2
+                                     14 	.globl _strpbrk
+                                     15 ;--------------------------------------------------------
+                                     16 ; special function registers
+                                     17 ;--------------------------------------------------------
+                                     18 	.area RSEG    (ABS,DATA)
+      000000                         19 	.org 0x0000
+                                     20 ;--------------------------------------------------------
+                                     21 ; special function bits
+                                     22 ;--------------------------------------------------------
+                                     23 	.area RSEG    (ABS,DATA)
+      000000                         24 	.org 0x0000
+                                     25 ;--------------------------------------------------------
+                                     26 ; overlayable register banks
+                                     27 ;--------------------------------------------------------
+                                     28 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         29 	.ds 8
+                                     30 ;--------------------------------------------------------
+                                     31 ; internal ram data
+                                     32 ;--------------------------------------------------------
+                                     33 	.area DSEG    (DATA)
+      000000                         34 _strpbrk_sloc0_1_0:
+      000000                         35 	.ds 3
+      000003                         36 _strpbrk_sloc1_1_0:
+      000003                         37 	.ds 3
+                                     38 ;--------------------------------------------------------
+                                     39 ; overlayable items in internal ram 
+                                     40 ;--------------------------------------------------------
+                                     41 ;--------------------------------------------------------
+                                     42 ; indirectly addressable internal ram data
+                                     43 ;--------------------------------------------------------
+                                     44 	.area ISEG    (DATA)
+                                     45 ;--------------------------------------------------------
+                                     46 ; absolute internal ram data
+                                     47 ;--------------------------------------------------------
+                                     48 	.area IABS    (ABS,DATA)
+                                     49 	.area IABS    (ABS,DATA)
+                                     50 ;--------------------------------------------------------
+                                     51 ; bit data
+                                     52 ;--------------------------------------------------------
+                                     53 	.area BSEG    (BIT)
+                                     54 ;--------------------------------------------------------
+                                     55 ; paged external ram data
+                                     56 ;--------------------------------------------------------
+                                     57 	.area PSEG    (PAG,XDATA)
+                                     58 ;--------------------------------------------------------
+                                     59 ; external ram data
+                                     60 ;--------------------------------------------------------
+                                     61 	.area XSEG    (XDATA)
+      000000                         62 _strpbrk_PARM_2:
+      000000                         63 	.ds 3
+      000003                         64 _strpbrk_string_1_21:
+      000003                         65 	.ds 3
+      000006                         66 _strpbrk_ret_1_22:
+      000006                         67 	.ds 3
+                                     68 ;--------------------------------------------------------
+                                     69 ; absolute external ram data
+                                     70 ;--------------------------------------------------------
+                                     71 	.area XABS    (ABS,XDATA)
+                                     72 ;--------------------------------------------------------
+                                     73 ; external initialized ram data
+                                     74 ;--------------------------------------------------------
+                                     75 	.area XISEG   (XDATA)
+                                     76 	.area HOME    (CODE)
+                                     77 	.area GSINIT0 (CODE)
+                                     78 	.area GSINIT1 (CODE)
+                                     79 	.area GSINIT2 (CODE)
+                                     80 	.area GSINIT3 (CODE)
+                                     81 	.area GSINIT4 (CODE)
+                                     82 	.area GSINIT5 (CODE)
+                                     83 	.area GSINIT  (CODE)
+                                     84 	.area GSFINAL (CODE)
+                                     85 	.area CSEG    (CODE)
+                                     86 ;--------------------------------------------------------
+                                     87 ; global & static initialisations
+                                     88 ;--------------------------------------------------------
+                                     89 	.area HOME    (CODE)
+                                     90 	.area GSINIT  (CODE)
+                                     91 	.area GSFINAL (CODE)
+                                     92 	.area GSINIT  (CODE)
+                                     93 ;--------------------------------------------------------
+                                     94 ; Home
+                                     95 ;--------------------------------------------------------
+                                     96 	.area HOME    (CODE)
+                                     97 	.area HOME    (CODE)
+                                     98 ;--------------------------------------------------------
+                                     99 ; code
+                                    100 ;--------------------------------------------------------
+                                    101 	.area CSEG    (CODE)
+                                    102 ;------------------------------------------------------------
+                                    103 ;Allocation info for local variables in function 'strpbrk'
+                                    104 ;------------------------------------------------------------
+                                    105 ;ch                        Allocated to registers r3 
+                                    106 ;sloc0                     Allocated with name '_strpbrk_sloc0_1_0'
+                                    107 ;sloc1                     Allocated with name '_strpbrk_sloc1_1_0'
+                                    108 ;control                   Allocated with name '_strpbrk_PARM_2'
+                                    109 ;string                    Allocated with name '_strpbrk_string_1_21'
+                                    110 ;ret                       Allocated with name '_strpbrk_ret_1_22'
+                                    111 ;p                         Allocated with name '_strpbrk_p_2_23'
+                                    112 ;------------------------------------------------------------
+                                    113 ;	_strpbrk.c:31: char * strpbrk (
+                                    114 ;	-----------------------------------------
+                                    115 ;	 function strpbrk
+                                    116 ;	-----------------------------------------
+      000000                        117 _strpbrk:
+                           000007   118 	ar7 = 0x07
+                           000006   119 	ar6 = 0x06
+                           000005   120 	ar5 = 0x05
+                           000004   121 	ar4 = 0x04
+                           000003   122 	ar3 = 0x03
+                           000002   123 	ar2 = 0x02
+                           000001   124 	ar1 = 0x01
+                           000000   125 	ar0 = 0x00
+      000000 AF F0            [24]  126 	mov	r7,b
+      000002 AE 83            [24]  127 	mov	r6,dph
+      000004 E5 82            [12]  128 	mov	a,dpl
+      000006 90r00r03         [24]  129 	mov	dptr,#_strpbrk_string_1_21
+      000009 F0               [24]  130 	movx	@dptr,a
+      00000A EE               [12]  131 	mov	a,r6
+      00000B A3               [24]  132 	inc	dptr
+      00000C F0               [24]  133 	movx	@dptr,a
+      00000D EF               [12]  134 	mov	a,r7
+      00000E A3               [24]  135 	inc	dptr
+      00000F F0               [24]  136 	movx	@dptr,a
+                                    137 ;	_strpbrk.c:36: char *ret = NULL;
+      000010 90r00r06         [24]  138 	mov	dptr,#_strpbrk_ret_1_22
+      000013 E4               [12]  139 	clr	a
+      000014 F0               [24]  140 	movx	@dptr,a
+      000015 A3               [24]  141 	inc	dptr
+      000016 F0               [24]  142 	movx	@dptr,a
+      000017 A3               [24]  143 	inc	dptr
+      000018 F0               [24]  144 	movx	@dptr,a
+                                    145 ;	_strpbrk.c:39: while (ch = *control) {
+      000019 90r00r00         [24]  146 	mov	dptr,#_strpbrk_PARM_2
+      00001C E0               [24]  147 	movx	a,@dptr
+      00001D FD               [12]  148 	mov	r5,a
+      00001E A3               [24]  149 	inc	dptr
+      00001F E0               [24]  150 	movx	a,@dptr
+      000020 FE               [12]  151 	mov	r6,a
+      000021 A3               [24]  152 	inc	dptr
+      000022 E0               [24]  153 	movx	a,@dptr
+      000023 FF               [12]  154 	mov	r7,a
+      000024                        155 00105$:
+      000024 8D 82            [24]  156 	mov	dpl,r5
+      000026 8E 83            [24]  157 	mov	dph,r6
+      000028 8F F0            [24]  158 	mov	b,r7
+      00002A 12r00r00         [24]  159 	lcall	__gptrget
+      00002D FC               [12]  160 	mov	r4,a
+      00002E FB               [12]  161 	mov	r3,a
+      00002F 70 03            [24]  162 	jnz	00123$
+      000031 02r00rC2         [24]  163 	ljmp	00107$
+      000034                        164 00123$:
+                                    165 ;	_strpbrk.c:40: char * p = strchr(string, ch);
+      000034 90r00r03         [24]  166 	mov	dptr,#_strpbrk_string_1_21
+      000037 E0               [24]  167 	movx	a,@dptr
+      000038 F9               [12]  168 	mov	r1,a
+      000039 A3               [24]  169 	inc	dptr
+      00003A E0               [24]  170 	movx	a,@dptr
+      00003B FA               [12]  171 	mov	r2,a
+      00003C A3               [24]  172 	inc	dptr
+      00003D E0               [24]  173 	movx	a,@dptr
+      00003E FC               [12]  174 	mov	r4,a
+      00003F 90r00r00         [24]  175 	mov	dptr,#_strchr_PARM_2
+      000042 EB               [12]  176 	mov	a,r3
+      000043 F0               [24]  177 	movx	@dptr,a
+      000044 89 82            [24]  178 	mov	dpl,r1
+      000046 8A 83            [24]  179 	mov	dph,r2
+      000048 8C F0            [24]  180 	mov	b,r4
+      00004A C0 07            [24]  181 	push	ar7
+      00004C C0 06            [24]  182 	push	ar6
+      00004E C0 05            [24]  183 	push	ar5
+      000050 78r00            [12]  184 	mov	r0,#_strchr
+      000052 79s00            [12]  185 	mov	r1,#(_strchr >> 8)
+      000054 7As00            [12]  186 	mov	r2,#(_strchr >> 16)
+      000056 12r00r00         [24]  187 	lcall	__sdcc_banked_call
+      000059 AA 82            [24]  188 	mov	r2,dpl
+      00005B AB 83            [24]  189 	mov	r3,dph
+      00005D AC F0            [24]  190 	mov	r4,b
+      00005F D0 05            [24]  191 	pop	ar5
+      000061 D0 06            [24]  192 	pop	ar6
+      000063 D0 07            [24]  193 	pop	ar7
+                                    194 ;	_strpbrk.c:41: if (p != NULL && (ret == NULL || p < ret)) {
+      000065 EA               [12]  195 	mov	a,r2
+      000066 4B               [12]  196 	orl	a,r3
+      000067 60 51            [24]  197 	jz	00102$
+      000069 90r00r06         [24]  198 	mov	dptr,#_strpbrk_ret_1_22
+      00006C E0               [24]  199 	movx	a,@dptr
+      00006D F5*00            [12]  200 	mov	_strpbrk_sloc0_1_0,a
+      00006F A3               [24]  201 	inc	dptr
+      000070 E0               [24]  202 	movx	a,@dptr
+      000071 F5*01            [12]  203 	mov	(_strpbrk_sloc0_1_0 + 1),a
+      000073 A3               [24]  204 	inc	dptr
+      000074 E0               [24]  205 	movx	a,@dptr
+      000075 F5*02            [12]  206 	mov	(_strpbrk_sloc0_1_0 + 2),a
+      000077 E5*00            [12]  207 	mov	a,_strpbrk_sloc0_1_0
+      000079 45*01            [12]  208 	orl	a,(_strpbrk_sloc0_1_0 + 1)
+      00007B 60 32            [24]  209 	jz	00101$
+      00007D C0 05            [24]  210 	push	ar5
+      00007F C0 06            [24]  211 	push	ar6
+      000081 C0 07            [24]  212 	push	ar7
+      000083 8A*03            [24]  213 	mov	_strpbrk_sloc1_1_0,r2
+      000085 8B*04            [24]  214 	mov	(_strpbrk_sloc1_1_0 + 1),r3
+      000087 8C*05            [24]  215 	mov	(_strpbrk_sloc1_1_0 + 2),r4
+      000089 AD*00            [24]  216 	mov	r5,_strpbrk_sloc0_1_0
+      00008B AE*01            [24]  217 	mov	r6,(_strpbrk_sloc0_1_0 + 1)
+      00008D AF*02            [24]  218 	mov	r7,(_strpbrk_sloc0_1_0 + 2)
+      00008F C0 05            [24]  219 	push	ar5
+      000091 C0 06            [24]  220 	push	ar6
+      000093 C0 07            [24]  221 	push	ar7
+      000095 85*03 82         [24]  222 	mov	dpl,_strpbrk_sloc1_1_0
+      000098 85*04 83         [24]  223 	mov	dph,(_strpbrk_sloc1_1_0 + 1)
+      00009B 85*05 F0         [24]  224 	mov	b,(_strpbrk_sloc1_1_0 + 2)
+      00009E 12r00r00         [24]  225 	lcall	___gptr_cmp
+      0000A1 15 81            [12]  226 	dec	sp
+      0000A3 15 81            [12]  227 	dec	sp
+      0000A5 15 81            [12]  228 	dec	sp
+      0000A7 D0 07            [24]  229 	pop	ar7
+      0000A9 D0 06            [24]  230 	pop	ar6
+      0000AB D0 05            [24]  231 	pop	ar5
+      0000AD 50 0B            [24]  232 	jnc	00102$
+      0000AF                        233 00101$:
+                                    234 ;	_strpbrk.c:42: ret = p;
+      0000AF 90r00r06         [24]  235 	mov	dptr,#_strpbrk_ret_1_22
+      0000B2 EA               [12]  236 	mov	a,r2
+      0000B3 F0               [24]  237 	movx	@dptr,a
+      0000B4 EB               [12]  238 	mov	a,r3
+      0000B5 A3               [24]  239 	inc	dptr
+      0000B6 F0               [24]  240 	movx	@dptr,a
+      0000B7 EC               [12]  241 	mov	a,r4
+      0000B8 A3               [24]  242 	inc	dptr
+      0000B9 F0               [24]  243 	movx	@dptr,a
+      0000BA                        244 00102$:
+                                    245 ;	_strpbrk.c:44: control++;
+      0000BA 0D               [12]  246 	inc	r5
+      0000BB BD 00 01         [24]  247 	cjne	r5,#0x00,00127$
+      0000BE 0E               [12]  248 	inc	r6
+      0000BF                        249 00127$:
+      0000BF 02r00r24         [24]  250 	ljmp	00105$
+      0000C2                        251 00107$:
+                                    252 ;	_strpbrk.c:47: return (ret);
+      0000C2 90r00r06         [24]  253 	mov	dptr,#_strpbrk_ret_1_22
+      0000C5 E0               [24]  254 	movx	a,@dptr
+      0000C6 FD               [12]  255 	mov	r5,a
+      0000C7 A3               [24]  256 	inc	dptr
+      0000C8 E0               [24]  257 	movx	a,@dptr
+      0000C9 FE               [12]  258 	mov	r6,a
+      0000CA A3               [24]  259 	inc	dptr
+      0000CB E0               [24]  260 	movx	a,@dptr
+      0000CC FF               [12]  261 	mov	r7,a
+      0000CD 8D 82            [24]  262 	mov	dpl,r5
+      0000CF 8E 83            [24]  263 	mov	dph,r6
+      0000D1 8F F0            [24]  264 	mov	b,r7
+      0000D3 02r00r00         [24]  265 	ljmp	__sdcc_banked_ret
+                                    266 	.area CSEG    (CODE)
+                                    267 	.area CONST   (CODE)
+                                    268 	.area XINIT   (CODE)
+                                    269 	.area CABS    (ABS,CODE)

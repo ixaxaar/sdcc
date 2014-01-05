@@ -1,0 +1,101 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                              4 ; This file was generated Wed Nov 27 12:28:30 2013
+                              5 ;--------------------------------------------------------
+                              6 	.module vprintf
+                              7 	.optsdcc -mtlcs90
+                              8 	
+                              9 ;--------------------------------------------------------
+                             10 ; Public variables in this module
+                             11 ;--------------------------------------------------------
+                             12 	.globl _putchar
+                             13 	.globl __print_format
+                             14 	.globl _vprintf
+                             15 	.globl _printf
+                             16 ;--------------------------------------------------------
+                             17 ; ram data
+                             18 ;--------------------------------------------------------
+                             19 	.area _DATA
+                             20 ;--------------------------------------------------------
+                             21 ; ram data
+                             22 ;--------------------------------------------------------
+                             23 	.area _INITIALIZED
+                             24 ;--------------------------------------------------------
+                             25 ; absolute external ram data
+                             26 ;--------------------------------------------------------
+                             27 	.area _DABS (ABS)
+                             28 ;--------------------------------------------------------
+                             29 ; global & static initialisations
+                             30 ;--------------------------------------------------------
+                             31 	.area _HOME
+                             32 	.area _GSINIT
+                             33 	.area _GSFINAL
+                             34 	.area _GSINIT
+                             35 ;--------------------------------------------------------
+                             36 ; Home
+                             37 ;--------------------------------------------------------
+                             38 	.area _HOME
+                             39 	.area _HOME
+                             40 ;--------------------------------------------------------
+                             41 ; code
+                             42 ;--------------------------------------------------------
+                             43 	.area _CODE
+                             44 ;../vprintf.c:34: put_char_to_stdout (char c, void* p) _REENTRANT
+                             45 ;	---------------------------------
+                             46 ; Function put_char_to_stdout
+                             47 ; ---------------------------------
+   0000                      48 _put_char_to_stdout:
+                             49 ;../vprintf.c:37: putchar (c);
+   0000 3A 02 00      [13]   50 	ld	hl, #2+0
+   0003 FE 70         [ 7]   51 	add	hl, sp
+   0005 E2 2E         [10]   52 	ld	a, (hl)
+   0007 56            [ 7]   53 	push	af
+   0008 96            [ 7]   54 	inc	sp
+   0009 1Cr00r00      [ 4]   55 	call	_putchar
+   000C 96            [ 7]   56 	inc	sp
+   000D 1E            [ 7]   57 	ret
+                             58 ;../vprintf.c:41: vprintf (const char *format, va_list ap)
+                             59 ;	---------------------------------
+                             60 ; Function vprintf
+                             61 ; ---------------------------------
+   000E                      62 _vprintf_start::
+   000E                      63 _vprintf:
+                             64 ;../vprintf.c:43: return _print_format (put_char_to_stdout, NULL, format, ap);
+   000E F2 04 4A      [10]   65 	ld	hl, 4 (sp)
+   0011 52            [ 4]   66 	push	hl
+   0012 F2 04 4A      [10]   67 	ld	hl, 4 (sp)
+   0015 52            [ 4]   68 	push	hl
+   0016 3A 00 00      [13]   69 	ld	hl,#0x0000
+   0019 52            [ 4]   70 	push	hl
+   001A 3Ar00r00      [13]   71 	ld	hl,#_put_char_to_stdout
+   001D 52            [ 4]   72 	push	hl
+   001E 1Cr00r00      [ 4]   73 	call	__print_format
+   0021 16 08 00      [ 7]   74 	add	sp, #8
+   0024 1E            [ 7]   75 	ret
+   0025                      76 _vprintf_end::
+                             77 ;../vprintf.c:47: printf (const char *format, ...)
+                             78 ;	---------------------------------
+                             79 ; Function printf
+                             80 ; ---------------------------------
+   0025                      81 _printf_start::
+   0025                      82 _printf:
+                             83 ;../vprintf.c:52: va_start (arg, format);
+   0025 3A 04 00      [13]   84 	ld	hl,#0x0002+1+1
+   0028 FE 70         [ 7]   85 	add	hl,sp
+                             86 ;../vprintf.c:53: i = _print_format (put_char_to_stdout, NULL, format, arg);
+   002A 52            [ 4]   87 	push	hl
+   002B F2 04 4A      [10]   88 	ld	hl, 4 (sp)
+   002E 52            [ 4]   89 	push	hl
+   002F 3A 00 00      [13]   90 	ld	hl,#0x0000
+   0032 52            [ 4]   91 	push	hl
+   0033 3Ar00r00      [13]   92 	ld	hl,#_put_char_to_stdout
+   0036 52            [ 4]   93 	push	hl
+   0037 1Cr00r00      [ 4]   94 	call	__print_format
+   003A 16 08 00      [ 7]   95 	add	sp, #8
+                             96 ;../vprintf.c:56: return i;
+   003D 1E            [ 7]   97 	ret
+   003E                      98 _printf_end::
+                             99 	.area _CODE
+                            100 	.area _INITIALIZER
+                            101 	.area _CABS (ABS)

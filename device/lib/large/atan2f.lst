@@ -1,0 +1,508 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                                      4 ; This file was generated Wed Nov 27 12:27:56 2013
+                                      5 ;--------------------------------------------------------
+                                      6 	.module atan2f
+                                      7 	.optsdcc -mmcs51 --model-large
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl _fabsf
+                                     13 	.globl _atanf
+                                     14 	.globl _atan2f_PARM_2
+                                     15 	.globl _atan2f
+                                     16 ;--------------------------------------------------------
+                                     17 ; special function registers
+                                     18 ;--------------------------------------------------------
+                                     19 	.area RSEG    (ABS,DATA)
+      000000                         20 	.org 0x0000
+                                     21 ;--------------------------------------------------------
+                                     22 ; special function bits
+                                     23 ;--------------------------------------------------------
+                                     24 	.area RSEG    (ABS,DATA)
+      000000                         25 	.org 0x0000
+                                     26 ;--------------------------------------------------------
+                                     27 ; overlayable register banks
+                                     28 ;--------------------------------------------------------
+                                     29 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         30 	.ds 8
+                                     31 ;--------------------------------------------------------
+                                     32 ; internal ram data
+                                     33 ;--------------------------------------------------------
+                                     34 	.area DSEG    (DATA)
+      000000                         35 _atan2f_sloc0_1_0:
+      000000                         36 	.ds 4
+      000004                         37 _atan2f_sloc1_1_0:
+      000004                         38 	.ds 4
+                                     39 ;--------------------------------------------------------
+                                     40 ; overlayable items in internal ram 
+                                     41 ;--------------------------------------------------------
+                                     42 ;--------------------------------------------------------
+                                     43 ; indirectly addressable internal ram data
+                                     44 ;--------------------------------------------------------
+                                     45 	.area ISEG    (DATA)
+                                     46 ;--------------------------------------------------------
+                                     47 ; absolute internal ram data
+                                     48 ;--------------------------------------------------------
+                                     49 	.area IABS    (ABS,DATA)
+                                     50 	.area IABS    (ABS,DATA)
+                                     51 ;--------------------------------------------------------
+                                     52 ; bit data
+                                     53 ;--------------------------------------------------------
+                                     54 	.area BSEG    (BIT)
+                                     55 ;--------------------------------------------------------
+                                     56 ; paged external ram data
+                                     57 ;--------------------------------------------------------
+                                     58 	.area PSEG    (PAG,XDATA)
+                                     59 ;--------------------------------------------------------
+                                     60 ; external ram data
+                                     61 ;--------------------------------------------------------
+                                     62 	.area XSEG    (XDATA)
+      000000                         63 _atan2f_PARM_2:
+      000000                         64 	.ds 4
+      000004                         65 _atan2f_x_1_23:
+      000004                         66 	.ds 4
+      000008                         67 _atan2f_r_1_24:
+      000008                         68 	.ds 4
+                                     69 ;--------------------------------------------------------
+                                     70 ; absolute external ram data
+                                     71 ;--------------------------------------------------------
+                                     72 	.area XABS    (ABS,XDATA)
+                                     73 ;--------------------------------------------------------
+                                     74 ; external initialized ram data
+                                     75 ;--------------------------------------------------------
+                                     76 	.area XISEG   (XDATA)
+                                     77 	.area HOME    (CODE)
+                                     78 	.area GSINIT0 (CODE)
+                                     79 	.area GSINIT1 (CODE)
+                                     80 	.area GSINIT2 (CODE)
+                                     81 	.area GSINIT3 (CODE)
+                                     82 	.area GSINIT4 (CODE)
+                                     83 	.area GSINIT5 (CODE)
+                                     84 	.area GSINIT  (CODE)
+                                     85 	.area GSFINAL (CODE)
+                                     86 	.area CSEG    (CODE)
+                                     87 ;--------------------------------------------------------
+                                     88 ; global & static initialisations
+                                     89 ;--------------------------------------------------------
+                                     90 	.area HOME    (CODE)
+                                     91 	.area GSINIT  (CODE)
+                                     92 	.area GSFINAL (CODE)
+                                     93 	.area GSINIT  (CODE)
+                                     94 ;--------------------------------------------------------
+                                     95 ; Home
+                                     96 ;--------------------------------------------------------
+                                     97 	.area HOME    (CODE)
+                                     98 	.area HOME    (CODE)
+                                     99 ;--------------------------------------------------------
+                                    100 ; code
+                                    101 ;--------------------------------------------------------
+                                    102 	.area CSEG    (CODE)
+                                    103 ;------------------------------------------------------------
+                                    104 ;Allocation info for local variables in function 'atan2f'
+                                    105 ;------------------------------------------------------------
+                                    106 ;sloc0                     Allocated with name '_atan2f_sloc0_1_0'
+                                    107 ;sloc1                     Allocated with name '_atan2f_sloc1_1_0'
+                                    108 ;y                         Allocated with name '_atan2f_PARM_2'
+                                    109 ;x                         Allocated with name '_atan2f_x_1_23'
+                                    110 ;r                         Allocated with name '_atan2f_r_1_24'
+                                    111 ;------------------------------------------------------------
+                                    112 ;	atan2f.c:34: float atan2f(const float x, const float y)
+                                    113 ;	-----------------------------------------
+                                    114 ;	 function atan2f
+                                    115 ;	-----------------------------------------
+      000000                        116 _atan2f:
+                           000007   117 	ar7 = 0x07
+                           000006   118 	ar6 = 0x06
+                           000005   119 	ar5 = 0x05
+                           000004   120 	ar4 = 0x04
+                           000003   121 	ar3 = 0x03
+                           000002   122 	ar2 = 0x02
+                           000001   123 	ar1 = 0x01
+                           000000   124 	ar0 = 0x00
+      000000 AF 82            [24]  125 	mov	r7,dpl
+      000002 AE 83            [24]  126 	mov	r6,dph
+      000004 AD F0            [24]  127 	mov	r5,b
+      000006 FC               [12]  128 	mov	r4,a
+      000007 90r00r04         [24]  129 	mov	dptr,#_atan2f_x_1_23
+      00000A EF               [12]  130 	mov	a,r7
+      00000B F0               [24]  131 	movx	@dptr,a
+      00000C EE               [12]  132 	mov	a,r6
+      00000D A3               [24]  133 	inc	dptr
+      00000E F0               [24]  134 	movx	@dptr,a
+      00000F ED               [12]  135 	mov	a,r5
+      000010 A3               [24]  136 	inc	dptr
+      000011 F0               [24]  137 	movx	@dptr,a
+      000012 EC               [12]  138 	mov	a,r4
+      000013 A3               [24]  139 	inc	dptr
+      000014 F0               [24]  140 	movx	@dptr,a
+                                    141 ;	atan2f.c:38: if ((x==0.0) && (y==0.0))
+      000015 90r00r04         [24]  142 	mov	dptr,#_atan2f_x_1_23
+      000018 E0               [24]  143 	movx	a,@dptr
+      000019 FC               [12]  144 	mov	r4,a
+      00001A A3               [24]  145 	inc	dptr
+      00001B E0               [24]  146 	movx	a,@dptr
+      00001C FD               [12]  147 	mov	r5,a
+      00001D A3               [24]  148 	inc	dptr
+      00001E E0               [24]  149 	movx	a,@dptr
+      00001F FE               [12]  150 	mov	r6,a
+      000020 A3               [24]  151 	inc	dptr
+      000021 E0               [24]  152 	movx	a,@dptr
+      000022 FF               [12]  153 	mov	r7,a
+      000023 8C F0            [24]  154 	mov	b,r4
+      000025 ED               [12]  155 	mov	a,r5
+      000026 42 F0            [12]  156 	orl	b,a
+      000028 EE               [12]  157 	mov	a,r6
+      000029 42 F0            [12]  158 	orl	b,a
+      00002B EF               [12]  159 	mov	a,r7
+      00002C 54 7F            [12]  160 	anl	a,#0x7F
+      00002E 45 F0            [12]  161 	orl	a,b
+      000030 70 2D            [24]  162 	jnz	00102$
+      000032 90r00r00         [24]  163 	mov	dptr,#_atan2f_PARM_2
+      000035 E0               [24]  164 	movx	a,@dptr
+      000036 F8               [12]  165 	mov	r0,a
+      000037 A3               [24]  166 	inc	dptr
+      000038 E0               [24]  167 	movx	a,@dptr
+      000039 F9               [12]  168 	mov	r1,a
+      00003A A3               [24]  169 	inc	dptr
+      00003B E0               [24]  170 	movx	a,@dptr
+      00003C FA               [12]  171 	mov	r2,a
+      00003D A3               [24]  172 	inc	dptr
+      00003E E0               [24]  173 	movx	a,@dptr
+      00003F FB               [12]  174 	mov	r3,a
+      000040 88 F0            [24]  175 	mov	b,r0
+      000042 E9               [12]  176 	mov	a,r1
+      000043 42 F0            [12]  177 	orl	b,a
+      000045 EA               [12]  178 	mov	a,r2
+      000046 42 F0            [12]  179 	orl	b,a
+      000048 EB               [12]  180 	mov	a,r3
+      000049 54 7F            [12]  181 	anl	a,#0x7F
+      00004B 45 F0            [12]  182 	orl	a,b
+      00004D 70 10            [24]  183 	jnz	00102$
+                                    184 ;	atan2f.c:40: errno=EDOM;
+      00004F 90r00r00         [24]  185 	mov	dptr,#_errno
+      000052 74 21            [12]  186 	mov	a,#0x21
+      000054 F0               [24]  187 	movx	@dptr,a
+      000055 E4               [12]  188 	clr	a
+      000056 A3               [24]  189 	inc	dptr
+      000057 F0               [24]  190 	movx	@dptr,a
+                                    191 ;	atan2f.c:41: return 0.0;
+      000058 90 00 00         [24]  192 	mov	dptr,#(0x00&0x00ff)
+      00005B E4               [12]  193 	clr	a
+      00005C F5 F0            [12]  194 	mov	b,a
+      00005E 22               [24]  195 	ret
+      00005F                        196 00102$:
+                                    197 ;	atan2f.c:44: if(fabsf(y)>=fabsf(x))
+      00005F 90r00r00         [24]  198 	mov	dptr,#_atan2f_PARM_2
+      000062 E0               [24]  199 	movx	a,@dptr
+      000063 F5*00            [12]  200 	mov	_atan2f_sloc0_1_0,a
+      000065 A3               [24]  201 	inc	dptr
+      000066 E0               [24]  202 	movx	a,@dptr
+      000067 F5*01            [12]  203 	mov	(_atan2f_sloc0_1_0 + 1),a
+      000069 A3               [24]  204 	inc	dptr
+      00006A E0               [24]  205 	movx	a,@dptr
+      00006B F5*02            [12]  206 	mov	(_atan2f_sloc0_1_0 + 2),a
+      00006D A3               [24]  207 	inc	dptr
+      00006E E0               [24]  208 	movx	a,@dptr
+      00006F F5*03            [12]  209 	mov	(_atan2f_sloc0_1_0 + 3),a
+      000071 85*00 82         [24]  210 	mov	dpl,_atan2f_sloc0_1_0
+      000074 85*01 83         [24]  211 	mov	dph,(_atan2f_sloc0_1_0 + 1)
+      000077 85*02 F0         [24]  212 	mov	b,(_atan2f_sloc0_1_0 + 2)
+      00007A C0 07            [24]  213 	push	ar7
+      00007C C0 06            [24]  214 	push	ar6
+      00007E C0 05            [24]  215 	push	ar5
+      000080 C0 04            [24]  216 	push	ar4
+      000082 12r00r00         [24]  217 	lcall	_fabsf
+      000085 85 82*04         [24]  218 	mov	_atan2f_sloc1_1_0,dpl
+      000088 85 83*05         [24]  219 	mov	(_atan2f_sloc1_1_0 + 1),dph
+      00008B 85 F0*06         [24]  220 	mov	(_atan2f_sloc1_1_0 + 2),b
+      00008E F5*07            [12]  221 	mov	(_atan2f_sloc1_1_0 + 3),a
+      000090 D0 04            [24]  222 	pop	ar4
+      000092 D0 05            [24]  223 	pop	ar5
+      000094 D0 06            [24]  224 	pop	ar6
+      000096 D0 07            [24]  225 	pop	ar7
+      000098 8C 82            [24]  226 	mov	dpl,r4
+      00009A 8D 83            [24]  227 	mov	dph,r5
+      00009C 8E F0            [24]  228 	mov	b,r6
+      00009E EF               [12]  229 	mov	a,r7
+      00009F C0 07            [24]  230 	push	ar7
+      0000A1 C0 06            [24]  231 	push	ar6
+      0000A3 C0 05            [24]  232 	push	ar5
+      0000A5 C0 04            [24]  233 	push	ar4
+      0000A7 12r00r00         [24]  234 	lcall	_fabsf
+      0000AA A8 82            [24]  235 	mov	r0,dpl
+      0000AC A9 83            [24]  236 	mov	r1,dph
+      0000AE AA F0            [24]  237 	mov	r2,b
+      0000B0 FB               [12]  238 	mov	r3,a
+      0000B1 C0 00            [24]  239 	push	ar0
+      0000B3 C0 01            [24]  240 	push	ar1
+      0000B5 C0 02            [24]  241 	push	ar2
+      0000B7 C0 03            [24]  242 	push	ar3
+      0000B9 85*04 82         [24]  243 	mov	dpl,_atan2f_sloc1_1_0
+      0000BC 85*05 83         [24]  244 	mov	dph,(_atan2f_sloc1_1_0 + 1)
+      0000BF 85*06 F0         [24]  245 	mov	b,(_atan2f_sloc1_1_0 + 2)
+      0000C2 E5*07            [12]  246 	mov	a,(_atan2f_sloc1_1_0 + 3)
+      0000C4 12r00r00         [24]  247 	lcall	___fslt
+      0000C7 AB 82            [24]  248 	mov	r3,dpl
+      0000C9 E5 81            [12]  249 	mov	a,sp
+      0000CB 24 FC            [12]  250 	add	a,#0xfc
+      0000CD F5 81            [12]  251 	mov	sp,a
+      0000CF D0 04            [24]  252 	pop	ar4
+      0000D1 D0 05            [24]  253 	pop	ar5
+      0000D3 D0 06            [24]  254 	pop	ar6
+      0000D5 D0 07            [24]  255 	pop	ar7
+      0000D7 EB               [12]  256 	mov	a,r3
+      0000D8 60 03            [24]  257 	jz	00135$
+      0000DA 02r01rC2         [24]  258 	ljmp	00107$
+      0000DD                        259 00135$:
+                                    260 ;	atan2f.c:46: r=atanf(x/y);
+      0000DD C0 07            [24]  261 	push	ar7
+      0000DF C0 06            [24]  262 	push	ar6
+      0000E1 C0 05            [24]  263 	push	ar5
+      0000E3 C0 04            [24]  264 	push	ar4
+      0000E5 C0*00            [24]  265 	push	_atan2f_sloc0_1_0
+      0000E7 C0*01            [24]  266 	push	(_atan2f_sloc0_1_0 + 1)
+      0000E9 C0*02            [24]  267 	push	(_atan2f_sloc0_1_0 + 2)
+      0000EB C0*03            [24]  268 	push	(_atan2f_sloc0_1_0 + 3)
+      0000ED 8C 82            [24]  269 	mov	dpl,r4
+      0000EF 8D 83            [24]  270 	mov	dph,r5
+      0000F1 8E F0            [24]  271 	mov	b,r6
+      0000F3 EF               [12]  272 	mov	a,r7
+      0000F4 12r00r00         [24]  273 	lcall	___fsdiv
+      0000F7 A8 82            [24]  274 	mov	r0,dpl
+      0000F9 A9 83            [24]  275 	mov	r1,dph
+      0000FB AA F0            [24]  276 	mov	r2,b
+      0000FD FB               [12]  277 	mov	r3,a
+      0000FE E5 81            [12]  278 	mov	a,sp
+      000100 24 FC            [12]  279 	add	a,#0xfc
+      000102 F5 81            [12]  280 	mov	sp,a
+      000104 88 82            [24]  281 	mov	dpl,r0
+      000106 89 83            [24]  282 	mov	dph,r1
+      000108 8A F0            [24]  283 	mov	b,r2
+      00010A EB               [12]  284 	mov	a,r3
+      00010B 12r00r00         [24]  285 	lcall	_atanf
+      00010E 85 82*04         [24]  286 	mov	_atan2f_sloc1_1_0,dpl
+      000111 85 83*05         [24]  287 	mov	(_atan2f_sloc1_1_0 + 1),dph
+      000114 85 F0*06         [24]  288 	mov	(_atan2f_sloc1_1_0 + 2),b
+      000117 F5*07            [12]  289 	mov	(_atan2f_sloc1_1_0 + 3),a
+      000119 90r00r08         [24]  290 	mov	dptr,#_atan2f_r_1_24
+      00011C E5*04            [12]  291 	mov	a,_atan2f_sloc1_1_0
+      00011E F0               [24]  292 	movx	@dptr,a
+      00011F E5*05            [12]  293 	mov	a,(_atan2f_sloc1_1_0 + 1)
+      000121 A3               [24]  294 	inc	dptr
+      000122 F0               [24]  295 	movx	@dptr,a
+      000123 E5*06            [12]  296 	mov	a,(_atan2f_sloc1_1_0 + 2)
+      000125 A3               [24]  297 	inc	dptr
+      000126 F0               [24]  298 	movx	@dptr,a
+      000127 E5*07            [12]  299 	mov	a,(_atan2f_sloc1_1_0 + 3)
+      000129 A3               [24]  300 	inc	dptr
+      00012A F0               [24]  301 	movx	@dptr,a
+                                    302 ;	atan2f.c:47: if(y<0.0) r+=(x>=0?PI:-PI);
+      00012B E4               [12]  303 	clr	a
+      00012C C0 E0            [24]  304 	push	acc
+      00012E C0 E0            [24]  305 	push	acc
+      000130 C0 E0            [24]  306 	push	acc
+      000132 C0 E0            [24]  307 	push	acc
+      000134 85*00 82         [24]  308 	mov	dpl,_atan2f_sloc0_1_0
+      000137 85*01 83         [24]  309 	mov	dph,(_atan2f_sloc0_1_0 + 1)
+      00013A 85*02 F0         [24]  310 	mov	b,(_atan2f_sloc0_1_0 + 2)
+      00013D E5*03            [12]  311 	mov	a,(_atan2f_sloc0_1_0 + 3)
+      00013F 12r00r00         [24]  312 	lcall	___fslt
+      000142 AB 82            [24]  313 	mov	r3,dpl
+      000144 E5 81            [12]  314 	mov	a,sp
+      000146 24 FC            [12]  315 	add	a,#0xfc
+      000148 F5 81            [12]  316 	mov	sp,a
+      00014A D0 04            [24]  317 	pop	ar4
+      00014C D0 05            [24]  318 	pop	ar5
+      00014E D0 06            [24]  319 	pop	ar6
+      000150 D0 07            [24]  320 	pop	ar7
+      000152 EB               [12]  321 	mov	a,r3
+      000153 70 03            [24]  322 	jnz	00136$
+      000155 02r02r77         [24]  323 	ljmp	00108$
+      000158                        324 00136$:
+      000158 E4               [12]  325 	clr	a
+      000159 C0 E0            [24]  326 	push	acc
+      00015B C0 E0            [24]  327 	push	acc
+      00015D C0 E0            [24]  328 	push	acc
+      00015F C0 E0            [24]  329 	push	acc
+      000161 8C 82            [24]  330 	mov	dpl,r4
+      000163 8D 83            [24]  331 	mov	dph,r5
+      000165 8E F0            [24]  332 	mov	b,r6
+      000167 EF               [12]  333 	mov	a,r7
+      000168 12r00r00         [24]  334 	lcall	___fslt
+      00016B AB 82            [24]  335 	mov	r3,dpl
+      00016D E5 81            [12]  336 	mov	a,sp
+      00016F 24 FC            [12]  337 	add	a,#0xfc
+      000171 F5 81            [12]  338 	mov	sp,a
+      000173 EB               [12]  339 	mov	a,r3
+      000174 B4 01 00         [24]  340 	cjne	a,#0x01,00137$
+      000177                        341 00137$:
+      000177 E4               [12]  342 	clr	a
+      000178 33               [12]  343 	rlc	a
+      000179 FB               [12]  344 	mov	r3,a
+      00017A 60 0A            [24]  345 	jz	00111$
+      00017C 78 DB            [12]  346 	mov	r0,#0xDB
+      00017E 79 0F            [12]  347 	mov	r1,#0x0F
+      000180 7A 49            [12]  348 	mov	r2,#0x49
+      000182 7B 40            [12]  349 	mov	r3,#0x40
+      000184 80 08            [24]  350 	sjmp	00112$
+      000186                        351 00111$:
+      000186 78 DB            [12]  352 	mov	r0,#0xDB
+      000188 79 0F            [12]  353 	mov	r1,#0x0F
+      00018A 7A 49            [12]  354 	mov	r2,#0x49
+      00018C 7B C0            [12]  355 	mov	r3,#0xC0
+      00018E                        356 00112$:
+      00018E C0 00            [24]  357 	push	ar0
+      000190 C0 01            [24]  358 	push	ar1
+      000192 C0 02            [24]  359 	push	ar2
+      000194 C0 03            [24]  360 	push	ar3
+      000196 85*04 82         [24]  361 	mov	dpl,_atan2f_sloc1_1_0
+      000199 85*05 83         [24]  362 	mov	dph,(_atan2f_sloc1_1_0 + 1)
+      00019C 85*06 F0         [24]  363 	mov	b,(_atan2f_sloc1_1_0 + 2)
+      00019F E5*07            [12]  364 	mov	a,(_atan2f_sloc1_1_0 + 3)
+      0001A1 12r00r00         [24]  365 	lcall	___fsadd
+      0001A4 A8 82            [24]  366 	mov	r0,dpl
+      0001A6 A9 83            [24]  367 	mov	r1,dph
+      0001A8 AA F0            [24]  368 	mov	r2,b
+      0001AA FB               [12]  369 	mov	r3,a
+      0001AB E5 81            [12]  370 	mov	a,sp
+      0001AD 24 FC            [12]  371 	add	a,#0xfc
+      0001AF F5 81            [12]  372 	mov	sp,a
+      0001B1 90r00r08         [24]  373 	mov	dptr,#_atan2f_r_1_24
+      0001B4 E8               [12]  374 	mov	a,r0
+      0001B5 F0               [24]  375 	movx	@dptr,a
+      0001B6 E9               [12]  376 	mov	a,r1
+      0001B7 A3               [24]  377 	inc	dptr
+      0001B8 F0               [24]  378 	movx	@dptr,a
+      0001B9 EA               [12]  379 	mov	a,r2
+      0001BA A3               [24]  380 	inc	dptr
+      0001BB F0               [24]  381 	movx	@dptr,a
+      0001BC EB               [12]  382 	mov	a,r3
+      0001BD A3               [24]  383 	inc	dptr
+      0001BE F0               [24]  384 	movx	@dptr,a
+      0001BF 02r02r77         [24]  385 	ljmp	00108$
+      0001C2                        386 00107$:
+                                    387 ;	atan2f.c:51: r=-atanf(y/x);
+      0001C2 C0 07            [24]  388 	push	ar7
+      0001C4 C0 06            [24]  389 	push	ar6
+      0001C6 C0 05            [24]  390 	push	ar5
+      0001C8 C0 04            [24]  391 	push	ar4
+      0001CA C0 04            [24]  392 	push	ar4
+      0001CC C0 05            [24]  393 	push	ar5
+      0001CE C0 06            [24]  394 	push	ar6
+      0001D0 C0 07            [24]  395 	push	ar7
+      0001D2 85*00 82         [24]  396 	mov	dpl,_atan2f_sloc0_1_0
+      0001D5 85*01 83         [24]  397 	mov	dph,(_atan2f_sloc0_1_0 + 1)
+      0001D8 85*02 F0         [24]  398 	mov	b,(_atan2f_sloc0_1_0 + 2)
+      0001DB E5*03            [12]  399 	mov	a,(_atan2f_sloc0_1_0 + 3)
+      0001DD 12r00r00         [24]  400 	lcall	___fsdiv
+      0001E0 A8 82            [24]  401 	mov	r0,dpl
+      0001E2 A9 83            [24]  402 	mov	r1,dph
+      0001E4 AA F0            [24]  403 	mov	r2,b
+      0001E6 FB               [12]  404 	mov	r3,a
+      0001E7 E5 81            [12]  405 	mov	a,sp
+      0001E9 24 FC            [12]  406 	add	a,#0xfc
+      0001EB F5 81            [12]  407 	mov	sp,a
+      0001ED 88 82            [24]  408 	mov	dpl,r0
+      0001EF 89 83            [24]  409 	mov	dph,r1
+      0001F1 8A F0            [24]  410 	mov	b,r2
+      0001F3 EB               [12]  411 	mov	a,r3
+      0001F4 12r00r00         [24]  412 	lcall	_atanf
+      0001F7 A8 82            [24]  413 	mov	r0,dpl
+      0001F9 A9 83            [24]  414 	mov	r1,dph
+      0001FB AA F0            [24]  415 	mov	r2,b
+      0001FD FB               [12]  416 	mov	r3,a
+      0001FE D0 04            [24]  417 	pop	ar4
+      000200 D0 05            [24]  418 	pop	ar5
+      000202 D0 06            [24]  419 	pop	ar6
+      000204 D0 07            [24]  420 	pop	ar7
+      000206 EB               [12]  421 	mov	a,r3
+      000207 B2 E7            [12]  422 	cpl	acc.7
+      000209 FB               [12]  423 	mov	r3,a
+                                    424 ;	atan2f.c:52: r+=(x<0.0?-HALF_PI:HALF_PI);
+      00020A C0 03            [24]  425 	push	ar3
+      00020C C0 02            [24]  426 	push	ar2
+      00020E C0 01            [24]  427 	push	ar1
+      000210 C0 00            [24]  428 	push	ar0
+      000212 E4               [12]  429 	clr	a
+      000213 C0 E0            [24]  430 	push	acc
+      000215 C0 E0            [24]  431 	push	acc
+      000217 C0 E0            [24]  432 	push	acc
+      000219 C0 E0            [24]  433 	push	acc
+      00021B 8C 82            [24]  434 	mov	dpl,r4
+      00021D 8D 83            [24]  435 	mov	dph,r5
+      00021F 8E F0            [24]  436 	mov	b,r6
+      000221 EF               [12]  437 	mov	a,r7
+      000222 12r00r00         [24]  438 	lcall	___fslt
+      000225 AF 82            [24]  439 	mov	r7,dpl
+      000227 E5 81            [12]  440 	mov	a,sp
+      000229 24 FC            [12]  441 	add	a,#0xfc
+      00022B F5 81            [12]  442 	mov	sp,a
+      00022D D0 00            [24]  443 	pop	ar0
+      00022F D0 01            [24]  444 	pop	ar1
+      000231 D0 02            [24]  445 	pop	ar2
+      000233 D0 03            [24]  446 	pop	ar3
+      000235 EF               [12]  447 	mov	a,r7
+      000236 60 0A            [24]  448 	jz	00113$
+      000238 7C DB            [12]  449 	mov	r4,#0xDB
+      00023A 7D 0F            [12]  450 	mov	r5,#0x0F
+      00023C 7E C9            [12]  451 	mov	r6,#0xC9
+      00023E 7F BF            [12]  452 	mov	r7,#0xBF
+      000240 80 08            [24]  453 	sjmp	00114$
+      000242                        454 00113$:
+      000242 7C DB            [12]  455 	mov	r4,#0xDB
+      000244 7D 0F            [12]  456 	mov	r5,#0x0F
+      000246 7E C9            [12]  457 	mov	r6,#0xC9
+      000248 7F 3F            [12]  458 	mov	r7,#0x3F
+      00024A                        459 00114$:
+      00024A C0 04            [24]  460 	push	ar4
+      00024C C0 05            [24]  461 	push	ar5
+      00024E C0 06            [24]  462 	push	ar6
+      000250 C0 07            [24]  463 	push	ar7
+      000252 88 82            [24]  464 	mov	dpl,r0
+      000254 89 83            [24]  465 	mov	dph,r1
+      000256 8A F0            [24]  466 	mov	b,r2
+      000258 EB               [12]  467 	mov	a,r3
+      000259 12r00r00         [24]  468 	lcall	___fsadd
+      00025C AC 82            [24]  469 	mov	r4,dpl
+      00025E AD 83            [24]  470 	mov	r5,dph
+      000260 AE F0            [24]  471 	mov	r6,b
+      000262 FF               [12]  472 	mov	r7,a
+      000263 E5 81            [12]  473 	mov	a,sp
+      000265 24 FC            [12]  474 	add	a,#0xfc
+      000267 F5 81            [12]  475 	mov	sp,a
+      000269 90r00r08         [24]  476 	mov	dptr,#_atan2f_r_1_24
+      00026C EC               [12]  477 	mov	a,r4
+      00026D F0               [24]  478 	movx	@dptr,a
+      00026E ED               [12]  479 	mov	a,r5
+      00026F A3               [24]  480 	inc	dptr
+      000270 F0               [24]  481 	movx	@dptr,a
+      000271 EE               [12]  482 	mov	a,r6
+      000272 A3               [24]  483 	inc	dptr
+      000273 F0               [24]  484 	movx	@dptr,a
+      000274 EF               [12]  485 	mov	a,r7
+      000275 A3               [24]  486 	inc	dptr
+      000276 F0               [24]  487 	movx	@dptr,a
+      000277                        488 00108$:
+                                    489 ;	atan2f.c:54: return r;
+      000277 90r00r08         [24]  490 	mov	dptr,#_atan2f_r_1_24
+      00027A E0               [24]  491 	movx	a,@dptr
+      00027B FC               [12]  492 	mov	r4,a
+      00027C A3               [24]  493 	inc	dptr
+      00027D E0               [24]  494 	movx	a,@dptr
+      00027E FD               [12]  495 	mov	r5,a
+      00027F A3               [24]  496 	inc	dptr
+      000280 E0               [24]  497 	movx	a,@dptr
+      000281 FE               [12]  498 	mov	r6,a
+      000282 A3               [24]  499 	inc	dptr
+      000283 E0               [24]  500 	movx	a,@dptr
+      000284 8C 82            [24]  501 	mov	dpl,r4
+      000286 8D 83            [24]  502 	mov	dph,r5
+      000288 8E F0            [24]  503 	mov	b,r6
+      00028A 22               [24]  504 	ret
+                                    505 	.area CSEG    (CODE)
+                                    506 	.area CONST   (CODE)
+                                    507 	.area XINIT   (CODE)
+                                    508 	.area CABS    (ABS,CODE)

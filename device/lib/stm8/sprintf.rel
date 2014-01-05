@@ -1,0 +1,39 @@
+XH3
+H A areas 4 global symbols
+M sprintf
+S __print_format Ref000000
+S .__.ABS. Def000000
+A _CODE size 0 flags 0 addr 0
+A DATA size 0 flags 0 addr 0
+A INITIALIZED size 0 flags 0 addr 0
+A DABS size 0 flags 8 addr 0
+A HOME size 0 flags 0 addr 0
+A GSINIT size 0 flags 0 addr 0
+A GSFINAL size 0 flags 0 addr 0
+A CODE size 50 flags 0 addr 0
+S _vsprintf Def000015
+S _sprintf Def000030
+A INITIALIZER size 0 flags 0 addr 0
+A CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 00 07
+T 00 00 00 52 02 16 06 93 FE 1F 01 1E 01 5C 90 FF
+R 00 00 00 07
+T 00 00 0D 1E 01 7B 05 F7 5B 02 81
+R 00 00 00 07
+T 00 00 15
+R 00 00 00 07
+T 00 00 15 96 1C 00 03 16 07 90 89 16 07 90 89 89
+R 00 00 00 07
+T 00 00 22 AE 00 00 89 CD 00 00 5B 08 16 03 90 7F
+R 00 00 00 07 00 04 00 07 02 08 00 00
+T 00 00 2F 81
+R 00 00 00 07
+T 00 00 30
+R 00 00 00 07
+T 00 00 30 96 1C 00 05 5C 5C 90 96 72 A9 00 03 89
+R 00 00 00 07
+T 00 00 3D 1E 07 89 90 89 AE 00 00 89 CD 00 00 5B
+R 00 00 00 07 00 09 00 07 02 0D 00 00
+T 00 00 4A 08 16 03 90 7F 81
+R 00 00 00 07

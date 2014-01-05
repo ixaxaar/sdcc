@@ -1,0 +1,34 @@
+XL2
+H 1 areas 5 global symbols
+S .__.ABS. Def0000
+A _CODE size 22 flags 0 addr 0
+S __mulint_rrx_s Def0000
+S __mulint_rrx_hds Def0006
+S __mul16 Def000A
+S __muluchar_rrx_hds Def0006
+T 00 00
+R 00 00 00 00
+T 00 00 F2 02 4A F2 04 49
+R 00 00 00 00
+T 06 00
+R 00 00 00 00
+T 06 00
+R 00 00 00 00
+T 06 00 FC 30 FD 31
+R 00 00 00 00
+T 0A 00
+R 00 00 00 00
+T 0A 00 FE 65 2D F8 66 30 10 CE 05 30 08 21
+R 00 00 00 00
+T 16 00
+R 00 00 00 00
+T 16 00 FA 70
+R 00 00 00 00
+T 18 00
+R 00 00 00 00
+T 18 00 F9 A2 A2 CF 02 F9 70
+R 00 00 00 00
+T 1F 00
+R 00 00 00 00
+T 1F 00 18 F5 1E
+R 00 00 00 00

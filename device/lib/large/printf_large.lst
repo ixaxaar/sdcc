@@ -1,0 +1,1726 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                                      4 ; This file was generated Wed Nov 27 12:27:57 2013
+                                      5 ;--------------------------------------------------------
+                                      6 	.module printf_large
+                                      7 	.optsdcc -mmcs51 --model-large
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl _strlen
+                                     13 	.globl __print_format_PARM_4
+                                     14 	.globl __print_format_PARM_3
+                                     15 	.globl __print_format_PARM_2
+                                     16 	.globl __print_format
+                                     17 ;--------------------------------------------------------
+                                     18 ; special function registers
+                                     19 ;--------------------------------------------------------
+                                     20 	.area RSEG    (ABS,DATA)
+      000000                         21 	.org 0x0000
+                                     22 ;--------------------------------------------------------
+                                     23 ; special function bits
+                                     24 ;--------------------------------------------------------
+                                     25 	.area RSEG    (ABS,DATA)
+      000000                         26 	.org 0x0000
+                                     27 ;--------------------------------------------------------
+                                     28 ; overlayable register banks
+                                     29 ;--------------------------------------------------------
+                                     30 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         31 	.ds 8
+                                     32 ;--------------------------------------------------------
+                                     33 ; internal ram data
+                                     34 ;--------------------------------------------------------
+                                     35 	.area DSEG    (DATA)
+      000000                         36 __print_format_sloc0_1_0:
+      000000                         37 	.ds 1
+      000001                         38 __print_format_sloc1_1_0:
+      000001                         39 	.ds 3
+      000004                         40 __print_format_sloc2_1_0:
+      000004                         41 	.ds 2
+                                     42 ;--------------------------------------------------------
+                                     43 ; overlayable items in internal ram 
+                                     44 ;--------------------------------------------------------
+                                     45 	.area	OSEG    (OVR,DATA)
+      000000                         46 _calculate_digit_i_1_49:
+      000000                         47 	.ds 1
+                                     48 ;--------------------------------------------------------
+                                     49 ; indirectly addressable internal ram data
+                                     50 ;--------------------------------------------------------
+                                     51 	.area ISEG    (DATA)
+                                     52 ;--------------------------------------------------------
+                                     53 ; absolute internal ram data
+                                     54 ;--------------------------------------------------------
+                                     55 	.area IABS    (ABS,DATA)
+                                     56 	.area IABS    (ABS,DATA)
+                                     57 ;--------------------------------------------------------
+                                     58 ; bit data
+                                     59 ;--------------------------------------------------------
+                                     60 	.area BSEG    (BIT)
+      000000                         61 _lower_case:
+      000000                         62 	.ds 1
+      000001                         63 __print_format_left_justify_1_53:
+      000001                         64 	.ds 1
+      000002                         65 __print_format_zero_padding_1_53:
+      000002                         66 	.ds 1
+      000003                         67 __print_format_prefix_sign_1_53:
+      000003                         68 	.ds 1
+      000004                         69 __print_format_prefix_space_1_53:
+      000004                         70 	.ds 1
+      000005                         71 __print_format_signed_argument_1_53:
+      000005                         72 	.ds 1
+      000006                         73 __print_format_char_argument_1_53:
+      000006                         74 	.ds 1
+      000007                         75 __print_format_long_argument_1_53:
+      000007                         76 	.ds 1
+      000008                         77 __print_format_float_argument_1_53:
+      000008                         78 	.ds 1
+      000009                         79 __print_format_lsd_1_53:
+      000009                         80 	.ds 1
+                                     81 ;--------------------------------------------------------
+                                     82 ; paged external ram data
+                                     83 ;--------------------------------------------------------
+                                     84 	.area PSEG    (PAG,XDATA)
+                                     85 ;--------------------------------------------------------
+                                     86 ; external ram data
+                                     87 ;--------------------------------------------------------
+                                     88 	.area XSEG    (XDATA)
+      000000                         89 _output_char:
+      000000                         90 	.ds 2
+      000002                         91 _p:
+      000002                         92 	.ds 3
+      000005                         93 _value:
+      000005                         94 	.ds 5
+      00000A                         95 _charsOutputted:
+      00000A                         96 	.ds 2
+      00000C                         97 __output_char_c_1_41:
+      00000C                         98 	.ds 1
+      00000D                         99 _output_digit_n_1_43:
+      00000D                        100 	.ds 1
+      00000E                        101 _output_2digits_b_1_46:
+      00000E                        102 	.ds 1
+      00000F                        103 _calculate_digit_radix_1_48:
+      00000F                        104 	.ds 1
+      000010                        105 __print_format_PARM_2:
+      000010                        106 	.ds 3
+      000013                        107 __print_format_PARM_3:
+      000013                        108 	.ds 3
+      000016                        109 __print_format_PARM_4:
+      000016                        110 	.ds 1
+      000017                        111 __print_format_pfn_1_52:
+      000017                        112 	.ds 2
+      000019                        113 __print_format_radix_1_53:
+      000019                        114 	.ds 1
+      00001A                        115 __print_format_width_1_53:
+      00001A                        116 	.ds 1
+      00001B                        117 __print_format_decimals_1_53:
+      00001B                        118 	.ds 1
+      00001C                        119 __print_format_length_1_53:
+      00001C                        120 	.ds 1
+      00001D                        121 __print_format_c_1_53:
+      00001D                        122 	.ds 1
+      00001E                        123 __print_format_store_4_74:
+      00001E                        124 	.ds 6
+      000024                        125 __print_format_pstore_4_74:
+      000024                        126 	.ds 2
+                                    127 ;--------------------------------------------------------
+                                    128 ; absolute external ram data
+                                    129 ;--------------------------------------------------------
+                                    130 	.area XABS    (ABS,XDATA)
+                                    131 ;--------------------------------------------------------
+                                    132 ; external initialized ram data
+                                    133 ;--------------------------------------------------------
+                                    134 	.area XISEG   (XDATA)
+                                    135 	.area HOME    (CODE)
+                                    136 	.area GSINIT0 (CODE)
+                                    137 	.area GSINIT1 (CODE)
+                                    138 	.area GSINIT2 (CODE)
+                                    139 	.area GSINIT3 (CODE)
+                                    140 	.area GSINIT4 (CODE)
+                                    141 	.area GSINIT5 (CODE)
+                                    142 	.area GSINIT  (CODE)
+                                    143 	.area GSFINAL (CODE)
+                                    144 	.area CSEG    (CODE)
+                                    145 ;--------------------------------------------------------
+                                    146 ; global & static initialisations
+                                    147 ;--------------------------------------------------------
+                                    148 	.area HOME    (CODE)
+                                    149 	.area GSINIT  (CODE)
+                                    150 	.area GSFINAL (CODE)
+                                    151 	.area GSINIT  (CODE)
+                                    152 ;--------------------------------------------------------
+                                    153 ; Home
+                                    154 ;--------------------------------------------------------
+                                    155 	.area HOME    (CODE)
+                                    156 	.area HOME    (CODE)
+                                    157 ;--------------------------------------------------------
+                                    158 ; code
+                                    159 ;--------------------------------------------------------
+                                    160 	.area CSEG    (CODE)
+                                    161 ;------------------------------------------------------------
+                                    162 ;Allocation info for local variables in function '_output_char'
+                                    163 ;------------------------------------------------------------
+                                    164 ;c                         Allocated with name '__output_char_c_1_41'
+                                    165 ;------------------------------------------------------------
+                                    166 ;	printf_large.c:105: _output_char (unsigned char c)
+                                    167 ;	-----------------------------------------
+                                    168 ;	 function _output_char
+                                    169 ;	-----------------------------------------
+      000000                        170 __output_char:
+                           000007   171 	ar7 = 0x07
+                           000006   172 	ar6 = 0x06
+                           000005   173 	ar5 = 0x05
+                           000004   174 	ar4 = 0x04
+                           000003   175 	ar3 = 0x03
+                           000002   176 	ar2 = 0x02
+                           000001   177 	ar1 = 0x01
+                           000000   178 	ar0 = 0x00
+      000000 E5 82            [12]  179 	mov	a,dpl
+      000002 90r00r0C         [24]  180 	mov	dptr,#__output_char_c_1_41
+      000005 F0               [24]  181 	movx	@dptr,a
+                                    182 ;	printf_large.c:107: output_char( c, p );
+      000006 E0               [24]  183 	movx	a,@dptr
+      000007 FF               [12]  184 	mov	r7,a
+      000008 90r00r02         [24]  185 	mov	dptr,#_p
+      00000B E0               [24]  186 	movx	a,@dptr
+      00000C C0 E0            [24]  187 	push	acc
+      00000E A3               [24]  188 	inc	dptr
+      00000F E0               [24]  189 	movx	a,@dptr
+      000010 C0 E0            [24]  190 	push	acc
+      000012 A3               [24]  191 	inc	dptr
+      000013 E0               [24]  192 	movx	a,@dptr
+      000014 C0 E0            [24]  193 	push	acc
+      000016 12r00r1B         [24]  194 	lcall	00103$
+      000019 80 0D            [24]  195 	sjmp	00104$
+      00001B                        196 00103$:
+      00001B 90r00r00         [24]  197 	mov	dptr,#_output_char
+      00001E E0               [24]  198 	movx	a,@dptr
+      00001F C0 E0            [24]  199 	push	acc
+      000021 A3               [24]  200 	inc	dptr
+      000022 E0               [24]  201 	movx	a,@dptr
+      000023 C0 E0            [24]  202 	push	acc
+      000025 8F 82            [24]  203 	mov	dpl,r7
+      000027 22               [24]  204 	ret
+      000028                        205 00104$:
+      000028 15 81            [12]  206 	dec	sp
+      00002A 15 81            [12]  207 	dec	sp
+      00002C 15 81            [12]  208 	dec	sp
+                                    209 ;	printf_large.c:108: charsOutputted++;
+      00002E 90r00r0A         [24]  210 	mov	dptr,#_charsOutputted
+      000031 E0               [24]  211 	movx	a,@dptr
+      000032 24 01            [12]  212 	add	a,#0x01
+      000034 F0               [24]  213 	movx	@dptr,a
+      000035 A3               [24]  214 	inc	dptr
+      000036 E0               [24]  215 	movx	a,@dptr
+      000037 34 00            [12]  216 	addc	a,#0x00
+      000039 F0               [24]  217 	movx	@dptr,a
+      00003A 22               [24]  218 	ret
+                                    219 ;------------------------------------------------------------
+                                    220 ;Allocation info for local variables in function 'output_digit'
+                                    221 ;------------------------------------------------------------
+                                    222 ;c                         Allocated to registers r7 
+                                    223 ;n                         Allocated with name '_output_digit_n_1_43'
+                                    224 ;------------------------------------------------------------
+                                    225 ;	printf_large.c:130: output_digit (unsigned char n)
+                                    226 ;	-----------------------------------------
+                                    227 ;	 function output_digit
+                                    228 ;	-----------------------------------------
+      00003B                        229 _output_digit:
+      00003B E5 82            [12]  230 	mov	a,dpl
+      00003D 90r00r0D         [24]  231 	mov	dptr,#_output_digit_n_1_43
+      000040 F0               [24]  232 	movx	@dptr,a
+                                    233 ;	printf_large.c:132: register unsigned char c = n + (unsigned char)'0';
+      000041 E0               [24]  234 	movx	a,@dptr
+                                    235 ;	printf_large.c:134: if (c > (unsigned char)'9')
+      000042 24 30            [12]  236 	add	a,#0x30
+      000044 FF               [12]  237 	mov	r7,a
+      000045 24 C6            [12]  238 	add	a,#0xff - 0x39
+      000047 50 0A            [24]  239 	jnc	00104$
+                                    240 ;	printf_large.c:136: c += (unsigned char)('A' - '0' - 10);
+      000049 74 07            [12]  241 	mov	a,#0x07
+      00004B 2F               [12]  242 	add	a,r7
+      00004C FF               [12]  243 	mov	r7,a
+                                    244 ;	printf_large.c:137: if (lower_case)
+      00004D 30*00 03         [24]  245 	jnb	_lower_case,00104$
+                                    246 ;	printf_large.c:138: c = tolower(c);
+      000050 43 07 20         [24]  247 	orl	ar7,#0x20
+      000053                        248 00104$:
+                                    249 ;	printf_large.c:140: _output_char( c );
+      000053 8F 82            [24]  250 	mov	dpl,r7
+      000055 02r00r00         [24]  251 	ljmp	__output_char
+                                    252 ;------------------------------------------------------------
+                                    253 ;Allocation info for local variables in function 'output_2digits'
+                                    254 ;------------------------------------------------------------
+                                    255 ;b                         Allocated with name '_output_2digits_b_1_46'
+                                    256 ;------------------------------------------------------------
+                                    257 ;	printf_large.c:157: output_2digits (unsigned char b)
+                                    258 ;	-----------------------------------------
+                                    259 ;	 function output_2digits
+                                    260 ;	-----------------------------------------
+      000058                        261 _output_2digits:
+      000058 E5 82            [12]  262 	mov	a,dpl
+      00005A 90r00r0E         [24]  263 	mov	dptr,#_output_2digits_b_1_46
+      00005D F0               [24]  264 	movx	@dptr,a
+                                    265 ;	printf_large.c:159: output_digit( b>>4   );
+      00005E E0               [24]  266 	movx	a,@dptr
+      00005F FF               [12]  267 	mov	r7,a
+      000060 C4               [12]  268 	swap	a
+      000061 54 0F            [12]  269 	anl	a,#0x0F
+      000063 F5 82            [12]  270 	mov	dpl,a
+      000065 C0 07            [24]  271 	push	ar7
+      000067 12r00r3B         [24]  272 	lcall	_output_digit
+      00006A D0 07            [24]  273 	pop	ar7
+                                    274 ;	printf_large.c:160: output_digit( b&0x0F );
+      00006C 53 07 0F         [24]  275 	anl	ar7,#0x0F
+      00006F 8F 82            [24]  276 	mov	dpl,r7
+      000071 02r00r3B         [24]  277 	ljmp	_output_digit
+                                    278 ;------------------------------------------------------------
+                                    279 ;Allocation info for local variables in function 'calculate_digit'
+                                    280 ;------------------------------------------------------------
+                                    281 ;radix                     Allocated with name '_calculate_digit_radix_1_48'
+                                    282 ;ul                        Allocated to registers r4 r5 r6 r7 
+                                    283 ;b4                        Allocated to registers r3 
+                                    284 ;i                         Allocated with name '_calculate_digit_i_1_49'
+                                    285 ;------------------------------------------------------------
+                                    286 ;	printf_large.c:189: calculate_digit (unsigned char radix)
+                                    287 ;	-----------------------------------------
+                                    288 ;	 function calculate_digit
+                                    289 ;	-----------------------------------------
+      000074                        290 _calculate_digit:
+      000074 E5 82            [12]  291 	mov	a,dpl
+      000076 90r00r0F         [24]  292 	mov	dptr,#_calculate_digit_radix_1_48
+      000079 F0               [24]  293 	movx	@dptr,a
+                                    294 ;	printf_large.c:191: register unsigned long ul = value.ul;
+      00007A 90r00r05         [24]  295 	mov	dptr,#_value
+      00007D E0               [24]  296 	movx	a,@dptr
+      00007E FC               [12]  297 	mov	r4,a
+      00007F A3               [24]  298 	inc	dptr
+      000080 E0               [24]  299 	movx	a,@dptr
+      000081 FD               [12]  300 	mov	r5,a
+      000082 A3               [24]  301 	inc	dptr
+      000083 E0               [24]  302 	movx	a,@dptr
+      000084 FE               [12]  303 	mov	r6,a
+      000085 A3               [24]  304 	inc	dptr
+      000086 E0               [24]  305 	movx	a,@dptr
+      000087 FF               [12]  306 	mov	r7,a
+                                    307 ;	printf_large.c:192: register unsigned char b4 = value.byte[4];
+      000088 90r00r09         [24]  308 	mov	dptr,#(_value + 0x0004)
+      00008B E0               [24]  309 	movx	a,@dptr
+      00008C FB               [12]  310 	mov	r3,a
+                                    311 ;	printf_large.c:195: do
+      00008D 90r00r0F         [24]  312 	mov	dptr,#_calculate_digit_radix_1_48
+      000090 E0               [24]  313 	movx	a,@dptr
+      000091 FA               [12]  314 	mov	r2,a
+      000092 75*00 20         [24]  315 	mov	_calculate_digit_i_1_49,#0x20
+      000095                        316 00103$:
+                                    317 ;	printf_large.c:197: b4 = (b4 << 1);
+      000095 EB               [12]  318 	mov	a,r3
+      000096 2B               [12]  319 	add	a,r3
+      000097 FB               [12]  320 	mov	r3,a
+                                    321 ;	printf_large.c:198: b4 |= (ul >> 31) & 0x01;
+      000098 EF               [12]  322 	mov	a,r7
+      000099 23               [12]  323 	rl	a
+      00009A 54 01            [12]  324 	anl	a,#0x01
+      00009C F8               [12]  325 	mov	r0,a
+      00009D 8B 01            [24]  326 	mov	ar1,r3
+      00009F 49               [12]  327 	orl	a,r1
+      0000A0 FB               [12]  328 	mov	r3,a
+                                    329 ;	printf_large.c:199: ul <<= 1;
+      0000A1 EC               [12]  330 	mov	a,r4
+      0000A2 2C               [12]  331 	add	a,r4
+      0000A3 FC               [12]  332 	mov	r4,a
+      0000A4 ED               [12]  333 	mov	a,r5
+      0000A5 33               [12]  334 	rlc	a
+      0000A6 FD               [12]  335 	mov	r5,a
+      0000A7 EE               [12]  336 	mov	a,r6
+      0000A8 33               [12]  337 	rlc	a
+      0000A9 FE               [12]  338 	mov	r6,a
+      0000AA EF               [12]  339 	mov	a,r7
+      0000AB 33               [12]  340 	rlc	a
+      0000AC FF               [12]  341 	mov	r7,a
+                                    342 ;	printf_large.c:201: if (radix <= b4 )
+      0000AD C3               [12]  343 	clr	c
+      0000AE EB               [12]  344 	mov	a,r3
+      0000AF 9A               [12]  345 	subb	a,r2
+      0000B0 40 07            [24]  346 	jc	00104$
+                                    347 ;	printf_large.c:203: b4 -= radix;
+      0000B2 EB               [12]  348 	mov	a,r3
+      0000B3 C3               [12]  349 	clr	c
+      0000B4 9A               [12]  350 	subb	a,r2
+      0000B5 FB               [12]  351 	mov	r3,a
+                                    352 ;	printf_large.c:204: ul |= 1;
+      0000B6 43 04 01         [24]  353 	orl	ar4,#0x01
+      0000B9                        354 00104$:
+                                    355 ;	printf_large.c:206: } while (--i);
+      0000B9 D5*00 D9         [24]  356 	djnz	_calculate_digit_i_1_49,00103$
+                                    357 ;	printf_large.c:207: value.ul = ul;
+      0000BC 90r00r05         [24]  358 	mov	dptr,#_value
+      0000BF EC               [12]  359 	mov	a,r4
+      0000C0 F0               [24]  360 	movx	@dptr,a
+      0000C1 ED               [12]  361 	mov	a,r5
+      0000C2 A3               [24]  362 	inc	dptr
+      0000C3 F0               [24]  363 	movx	@dptr,a
+      0000C4 EE               [12]  364 	mov	a,r6
+      0000C5 A3               [24]  365 	inc	dptr
+      0000C6 F0               [24]  366 	movx	@dptr,a
+      0000C7 EF               [12]  367 	mov	a,r7
+      0000C8 A3               [24]  368 	inc	dptr
+      0000C9 F0               [24]  369 	movx	@dptr,a
+                                    370 ;	printf_large.c:208: value.byte[4] = b4;
+      0000CA 90r00r09         [24]  371 	mov	dptr,#(_value + 0x0004)
+      0000CD EB               [12]  372 	mov	a,r3
+      0000CE F0               [24]  373 	movx	@dptr,a
+      0000CF 22               [24]  374 	ret
+                                    375 ;------------------------------------------------------------
+                                    376 ;Allocation info for local variables in function '_print_format'
+                                    377 ;------------------------------------------------------------
+                                    378 ;sloc0                     Allocated with name '__print_format_sloc0_1_0'
+                                    379 ;sloc1                     Allocated with name '__print_format_sloc1_1_0'
+                                    380 ;sloc2                     Allocated with name '__print_format_sloc2_1_0'
+                                    381 ;pvoid                     Allocated with name '__print_format_PARM_2'
+                                    382 ;format                    Allocated with name '__print_format_PARM_3'
+                                    383 ;ap                        Allocated with name '__print_format_PARM_4'
+                                    384 ;pfn                       Allocated with name '__print_format_pfn_1_52'
+                                    385 ;radix                     Allocated with name '__print_format_radix_1_53'
+                                    386 ;width                     Allocated with name '__print_format_width_1_53'
+                                    387 ;decimals                  Allocated with name '__print_format_decimals_1_53'
+                                    388 ;length                    Allocated with name '__print_format_length_1_53'
+                                    389 ;c                         Allocated with name '__print_format_c_1_53'
+                                    390 ;memtype                   Allocated with name '__print_format_memtype_5_70'
+                                    391 ;store                     Allocated with name '__print_format_store_4_74'
+                                    392 ;pstore                    Allocated with name '__print_format_pstore_4_74'
+                                    393 ;------------------------------------------------------------
+                                    394 ;	printf_large.c:434: _print_format (pfn_outputchar pfn, void* pvoid, const char *format, va_list ap)
+                                    395 ;	-----------------------------------------
+                                    396 ;	 function _print_format
+                                    397 ;	-----------------------------------------
+      0000D0                        398 __print_format:
+      0000D0 AF 83            [24]  399 	mov	r7,dph
+      0000D2 E5 82            [12]  400 	mov	a,dpl
+      0000D4 90r00r17         [24]  401 	mov	dptr,#__print_format_pfn_1_52
+      0000D7 F0               [24]  402 	movx	@dptr,a
+      0000D8 EF               [12]  403 	mov	a,r7
+      0000D9 A3               [24]  404 	inc	dptr
+      0000DA F0               [24]  405 	movx	@dptr,a
+                                    406 ;	printf_large.c:461: output_char = pfn;
+      0000DB 90r00r17         [24]  407 	mov	dptr,#__print_format_pfn_1_52
+      0000DE E0               [24]  408 	movx	a,@dptr
+      0000DF FE               [12]  409 	mov	r6,a
+      0000E0 A3               [24]  410 	inc	dptr
+      0000E1 E0               [24]  411 	movx	a,@dptr
+      0000E2 FF               [12]  412 	mov	r7,a
+      0000E3 90r00r00         [24]  413 	mov	dptr,#_output_char
+      0000E6 EE               [12]  414 	mov	a,r6
+      0000E7 F0               [24]  415 	movx	@dptr,a
+      0000E8 EF               [12]  416 	mov	a,r7
+      0000E9 A3               [24]  417 	inc	dptr
+      0000EA F0               [24]  418 	movx	@dptr,a
+                                    419 ;	printf_large.c:462: p = pvoid;
+      0000EB 90r00r10         [24]  420 	mov	dptr,#__print_format_PARM_2
+      0000EE E0               [24]  421 	movx	a,@dptr
+      0000EF FD               [12]  422 	mov	r5,a
+      0000F0 A3               [24]  423 	inc	dptr
+      0000F1 E0               [24]  424 	movx	a,@dptr
+      0000F2 FE               [12]  425 	mov	r6,a
+      0000F3 A3               [24]  426 	inc	dptr
+      0000F4 E0               [24]  427 	movx	a,@dptr
+      0000F5 FF               [12]  428 	mov	r7,a
+      0000F6 90r00r02         [24]  429 	mov	dptr,#_p
+      0000F9 ED               [12]  430 	mov	a,r5
+      0000FA F0               [24]  431 	movx	@dptr,a
+      0000FB EE               [12]  432 	mov	a,r6
+      0000FC A3               [24]  433 	inc	dptr
+      0000FD F0               [24]  434 	movx	@dptr,a
+      0000FE EF               [12]  435 	mov	a,r7
+      0000FF A3               [24]  436 	inc	dptr
+      000100 F0               [24]  437 	movx	@dptr,a
+                                    438 ;	printf_large.c:466: charsOutputted = 0;
+      000101 90r00r0A         [24]  439 	mov	dptr,#_charsOutputted
+      000104 E4               [12]  440 	clr	a
+      000105 F0               [24]  441 	movx	@dptr,a
+      000106 A3               [24]  442 	inc	dptr
+      000107 F0               [24]  443 	movx	@dptr,a
+                                    444 ;	printf_large.c:475: while( c=*format++ )
+      000108                        445 00243$:
+      000108 90r00r13         [24]  446 	mov	dptr,#__print_format_PARM_3
+      00010B E0               [24]  447 	movx	a,@dptr
+      00010C FD               [12]  448 	mov	r5,a
+      00010D A3               [24]  449 	inc	dptr
+      00010E E0               [24]  450 	movx	a,@dptr
+      00010F FE               [12]  451 	mov	r6,a
+      000110 A3               [24]  452 	inc	dptr
+      000111 E0               [24]  453 	movx	a,@dptr
+      000112 FF               [12]  454 	mov	r7,a
+      000113 8D 82            [24]  455 	mov	dpl,r5
+      000115 8E 83            [24]  456 	mov	dph,r6
+      000117 8F F0            [24]  457 	mov	b,r7
+      000119 12r00r00         [24]  458 	lcall	__gptrget
+      00011C FC               [12]  459 	mov	r4,a
+      00011D 90r00r13         [24]  460 	mov	dptr,#__print_format_PARM_3
+      000120 74 01            [12]  461 	mov	a,#0x01
+      000122 2D               [12]  462 	add	a,r5
+      000123 F0               [24]  463 	movx	@dptr,a
+      000124 E4               [12]  464 	clr	a
+      000125 3E               [12]  465 	addc	a,r6
+      000126 A3               [24]  466 	inc	dptr
+      000127 F0               [24]  467 	movx	@dptr,a
+      000128 EF               [12]  468 	mov	a,r7
+      000129 A3               [24]  469 	inc	dptr
+      00012A F0               [24]  470 	movx	@dptr,a
+      00012B EC               [12]  471 	mov	a,r4
+      00012C 70 03            [24]  472 	jnz	00500$
+      00012E 02r07rA7         [24]  473 	ljmp	00245$
+      000131                        474 00500$:
+                                    475 ;	printf_large.c:477: if ( c=='%' )
+      000131 BC 25 02         [24]  476 	cjne	r4,#0x25,00501$
+      000134 80 03            [24]  477 	sjmp	00502$
+      000136                        478 00501$:
+      000136 02r07r9F         [24]  479 	ljmp	00241$
+      000139                        480 00502$:
+                                    481 ;	printf_large.c:479: left_justify    = 0;
+      000139 C2*01            [12]  482 	clr	__print_format_left_justify_1_53
+                                    483 ;	printf_large.c:480: zero_padding    = 0;
+      00013B C2*02            [12]  484 	clr	__print_format_zero_padding_1_53
+                                    485 ;	printf_large.c:481: prefix_sign     = 0;
+      00013D C2*03            [12]  486 	clr	__print_format_prefix_sign_1_53
+                                    487 ;	printf_large.c:482: prefix_space    = 0;
+      00013F C2*04            [12]  488 	clr	__print_format_prefix_space_1_53
+                                    489 ;	printf_large.c:483: signed_argument = 0;
+      000141 C2*05            [12]  490 	clr	__print_format_signed_argument_1_53
+                                    491 ;	printf_large.c:484: char_argument   = 0;
+      000143 C2*06            [12]  492 	clr	__print_format_char_argument_1_53
+                                    493 ;	printf_large.c:485: long_argument   = 0;
+      000145 C2*07            [12]  494 	clr	__print_format_long_argument_1_53
+                                    495 ;	printf_large.c:486: float_argument  = 0;
+      000147 C2*08            [12]  496 	clr	__print_format_float_argument_1_53
+                                    497 ;	printf_large.c:487: radix           = 0;
+      000149 90r00r19         [24]  498 	mov	dptr,#__print_format_radix_1_53
+      00014C E4               [12]  499 	clr	a
+      00014D F0               [24]  500 	movx	@dptr,a
+                                    501 ;	printf_large.c:488: width           = 0;
+      00014E 90r00r1A         [24]  502 	mov	dptr,#__print_format_width_1_53
+      000151 F0               [24]  503 	movx	@dptr,a
+                                    504 ;	printf_large.c:489: decimals        = -1;
+      000152 90r00r1B         [24]  505 	mov	dptr,#__print_format_decimals_1_53
+      000155 14               [12]  506 	dec	a
+      000156 F0               [24]  507 	movx	@dptr,a
+                                    508 ;	printf_large.c:491: get_conversion_spec:
+      000157 90r00r13         [24]  509 	mov	dptr,#__print_format_PARM_3
+      00015A E0               [24]  510 	movx	a,@dptr
+      00015B FD               [12]  511 	mov	r5,a
+      00015C A3               [24]  512 	inc	dptr
+      00015D E0               [24]  513 	movx	a,@dptr
+      00015E FE               [12]  514 	mov	r6,a
+      00015F A3               [24]  515 	inc	dptr
+      000160 E0               [24]  516 	movx	a,@dptr
+      000161 FF               [12]  517 	mov	r7,a
+      000162                        518 00101$:
+                                    519 ;	printf_large.c:493: c = *format++;
+      000162 8D 82            [24]  520 	mov	dpl,r5
+      000164 8E 83            [24]  521 	mov	dph,r6
+      000166 8F F0            [24]  522 	mov	b,r7
+      000168 12r00r00         [24]  523 	lcall	__gptrget
+      00016B FB               [12]  524 	mov	r3,a
+      00016C A3               [24]  525 	inc	dptr
+      00016D AD 82            [24]  526 	mov	r5,dpl
+      00016F AE 83            [24]  527 	mov	r6,dph
+      000171 90r00r13         [24]  528 	mov	dptr,#__print_format_PARM_3
+      000174 ED               [12]  529 	mov	a,r5
+      000175 F0               [24]  530 	movx	@dptr,a
+      000176 EE               [12]  531 	mov	a,r6
+      000177 A3               [24]  532 	inc	dptr
+      000178 F0               [24]  533 	movx	@dptr,a
+      000179 EF               [12]  534 	mov	a,r7
+      00017A A3               [24]  535 	inc	dptr
+      00017B F0               [24]  536 	movx	@dptr,a
+      00017C 90r00r1D         [24]  537 	mov	dptr,#__print_format_c_1_53
+      00017F EB               [12]  538 	mov	a,r3
+      000180 F0               [24]  539 	movx	@dptr,a
+                                    540 ;	printf_large.c:495: if (c=='%')
+      000181 BB 25 08         [24]  541 	cjne	r3,#0x25,00103$
+                                    542 ;	printf_large.c:497: OUTPUT_CHAR(c, p);
+      000184 8B 82            [24]  543 	mov	dpl,r3
+      000186 12r00r00         [24]  544 	lcall	__output_char
+                                    545 ;	printf_large.c:498: continue;
+      000189 02r01r08         [24]  546 	ljmp	00243$
+      00018C                        547 00103$:
+                                    548 ;	printf_large.c:501: if (isdigit(c))
+      00018C 8B 02            [24]  549 	mov	ar2,r3
+      00018E BA 30 00         [24]  550 	cjne	r2,#0x30,00505$
+      000191                        551 00505$:
+      000191 40 3A            [24]  552 	jc	00110$
+      000193 EA               [12]  553 	mov	a,r2
+      000194 24 C6            [12]  554 	add	a,#0xff - 0x39
+      000196 40 35            [24]  555 	jc	00110$
+                                    556 ;	printf_large.c:503: if (decimals==-1)
+      000198 90r00r1B         [24]  557 	mov	dptr,#__print_format_decimals_1_53
+      00019B E0               [24]  558 	movx	a,@dptr
+      00019C FA               [12]  559 	mov	r2,a
+      00019D BA FF 1F         [24]  560 	cjne	r2,#0xFF,00107$
+                                    561 ;	printf_large.c:505: width = 10*width + c - '0';
+      0001A0 C0 05            [24]  562 	push	ar5
+      0001A2 C0 06            [24]  563 	push	ar6
+      0001A4 C0 07            [24]  564 	push	ar7
+      0001A6 90r00r1A         [24]  565 	mov	dptr,#__print_format_width_1_53
+      0001A9 E0               [24]  566 	movx	a,@dptr
+      0001AA 75 F0 0A         [24]  567 	mov	b,#0x0A
+      0001AD A4               [48]  568 	mul	ab
+      0001AE 2B               [12]  569 	add	a,r3
+      0001AF 24 D0            [12]  570 	add	a,#0xD0
+      0001B1 F0               [24]  571 	movx	@dptr,a
+                                    572 ;	printf_large.c:506: if (width == 0)
+      0001B2 E0               [24]  573 	movx	a,@dptr
+      0001B3 D0 07            [24]  574 	pop	ar7
+      0001B5 D0 06            [24]  575 	pop	ar6
+      0001B7 D0 05            [24]  576 	pop	ar5
+      0001B9 70 A7            [24]  577 	jnz	00101$
+                                    578 ;	printf_large.c:509: zero_padding = 1;
+      0001BB D2*02            [12]  579 	setb	__print_format_zero_padding_1_53
+      0001BD 80 A3            [24]  580 	sjmp	00101$
+      0001BF                        581 00107$:
+                                    582 ;	printf_large.c:514: decimals = 10*decimals + c - '0';
+      0001BF EA               [12]  583 	mov	a,r2
+      0001C0 75 F0 0A         [24]  584 	mov	b,#0x0A
+      0001C3 A4               [48]  585 	mul	ab
+      0001C4 2B               [12]  586 	add	a,r3
+      0001C5 24 D0            [12]  587 	add	a,#0xD0
+      0001C7 90r00r1B         [24]  588 	mov	dptr,#__print_format_decimals_1_53
+      0001CA F0               [24]  589 	movx	@dptr,a
+                                    590 ;	printf_large.c:516: goto get_conversion_spec;
+      0001CB 80 95            [24]  591 	sjmp	00101$
+      0001CD                        592 00110$:
+                                    593 ;	printf_large.c:519: if (c=='.')
+      0001CD 90r00r1D         [24]  594 	mov	dptr,#__print_format_c_1_53
+      0001D0 E0               [24]  595 	movx	a,@dptr
+      0001D1 FB               [12]  596 	mov	r3,a
+      0001D2 BB 2E 15         [24]  597 	cjne	r3,#0x2E,00115$
+                                    598 ;	printf_large.c:521: if (decimals==-1)
+      0001D5 90r00r1B         [24]  599 	mov	dptr,#__print_format_decimals_1_53
+      0001D8 E0               [24]  600 	movx	a,@dptr
+      0001D9 FA               [12]  601 	mov	r2,a
+      0001DA BA FF 02         [24]  602 	cjne	r2,#0xFF,00513$
+      0001DD 80 03            [24]  603 	sjmp	00514$
+      0001DF                        604 00513$:
+      0001DF 02r01r62         [24]  605 	ljmp	00101$
+      0001E2                        606 00514$:
+                                    607 ;	printf_large.c:522: decimals=0;
+      0001E2 90r00r1B         [24]  608 	mov	dptr,#__print_format_decimals_1_53
+      0001E5 E4               [12]  609 	clr	a
+      0001E6 F0               [24]  610 	movx	@dptr,a
+                                    611 ;	printf_large.c:525: goto get_conversion_spec;
+      0001E7 02r01r62         [24]  612 	ljmp	00101$
+      0001EA                        613 00115$:
+                                    614 ;	printf_large.c:528: if (islower(c))
+      0001EA 8B 02            [24]  615 	mov	ar2,r3
+      0001EC BA 61 00         [24]  616 	cjne	r2,#0x61,00515$
+      0001EF                        617 00515$:
+      0001EF 40 10            [24]  618 	jc	00117$
+      0001F1 EA               [12]  619 	mov	a,r2
+      0001F2 24 85            [12]  620 	add	a,#0xff - 0x7A
+      0001F4 40 0B            [24]  621 	jc	00117$
+                                    622 ;	printf_large.c:530: c = toupper(c);
+      0001F6 90r00r1D         [24]  623 	mov	dptr,#__print_format_c_1_53
+      0001F9 74 DF            [12]  624 	mov	a,#0xDF
+      0001FB 5B               [12]  625 	anl	a,r3
+      0001FC F0               [24]  626 	movx	@dptr,a
+                                    627 ;	printf_large.c:531: lower_case = 1;
+      0001FD D2*00            [12]  628 	setb	_lower_case
+      0001FF 80 02            [24]  629 	sjmp	00118$
+      000201                        630 00117$:
+                                    631 ;	printf_large.c:534: lower_case = 0;
+      000201 C2*00            [12]  632 	clr	_lower_case
+      000203                        633 00118$:
+                                    634 ;	printf_large.c:536: switch( c )
+      000203 90r00r1D         [24]  635 	mov	dptr,#__print_format_c_1_53
+      000206 E0               [24]  636 	movx	a,@dptr
+      000207 FB               [12]  637 	mov	r3,a
+      000208 BB 20 02         [24]  638 	cjne	r3,#0x20,00518$
+      00020B 80 6D            [24]  639 	sjmp	00122$
+      00020D                        640 00518$:
+      00020D BB 2B 02         [24]  641 	cjne	r3,#0x2B,00519$
+      000210 80 63            [24]  642 	sjmp	00121$
+      000212                        643 00519$:
+      000212 BB 2D 02         [24]  644 	cjne	r3,#0x2D,00520$
+      000215 80 59            [24]  645 	sjmp	00120$
+      000217                        646 00520$:
+      000217 BB 42 02         [24]  647 	cjne	r3,#0x42,00521$
+      00021A 80 63            [24]  648 	sjmp	00123$
+      00021C                        649 00521$:
+      00021C BB 43 02         [24]  650 	cjne	r3,#0x43,00522$
+      00021F 80 68            [24]  651 	sjmp	00129$
+      000221                        652 00522$:
+      000221 BB 44 03         [24]  653 	cjne	r3,#0x44,00523$
+      000224 02r04r4C         [24]  654 	ljmp	00166$
+      000227                        655 00523$:
+      000227 BB 46 03         [24]  656 	cjne	r3,#0x46,00524$
+      00022A 02r04r6E         [24]  657 	ljmp	00170$
+      00022D                        658 00524$:
+      00022D BB 48 03         [24]  659 	cjne	r3,#0x48,00525$
+      000230 02r01r62         [24]  660 	ljmp	00101$
+      000233                        661 00525$:
+      000233 BB 49 03         [24]  662 	cjne	r3,#0x49,00526$
+      000236 02r04r4C         [24]  663 	ljmp	00166$
+      000239                        664 00526$:
+      000239 BB 4A 03         [24]  665 	cjne	r3,#0x4A,00527$
+      00023C 02r01r62         [24]  666 	ljmp	00101$
+      00023F                        667 00527$:
+      00023F BB 4C 02         [24]  668 	cjne	r3,#0x4C,00528$
+      000242 80 40            [24]  669 	sjmp	00128$
+      000244                        670 00528$:
+      000244 BB 4F 03         [24]  671 	cjne	r3,#0x4F,00529$
+      000247 02r04r56         [24]  672 	ljmp	00167$
+      00024A                        673 00529$:
+      00024A BB 50 03         [24]  674 	cjne	r3,#0x50,00530$
+      00024D 02r03rBB         [24]  675 	ljmp	00152$
+      000250                        676 00530$:
+      000250 BB 53 02         [24]  677 	cjne	r3,#0x53,00531$
+      000253 80 6A            [24]  678 	sjmp	00133$
+      000255                        679 00531$:
+      000255 BB 54 03         [24]  680 	cjne	r3,#0x54,00532$
+      000258 02r01r62         [24]  681 	ljmp	00101$
+      00025B                        682 00532$:
+      00025B BB 55 03         [24]  683 	cjne	r3,#0x55,00533$
+      00025E 02r04r5E         [24]  684 	ljmp	00168$
+      000261                        685 00533$:
+      000261 BB 58 03         [24]  686 	cjne	r3,#0x58,00534$
+      000264 02r04r66         [24]  687 	ljmp	00169$
+      000267                        688 00534$:
+      000267 BB 5A 03         [24]  689 	cjne	r3,#0x5A,00535$
+      00026A 02r01r62         [24]  690 	ljmp	00101$
+      00026D                        691 00535$:
+      00026D 02r04r72         [24]  692 	ljmp	00171$
+                                    693 ;	printf_large.c:538: case '-':
+      000270                        694 00120$:
+                                    695 ;	printf_large.c:539: left_justify = 1;
+      000270 D2*01            [12]  696 	setb	__print_format_left_justify_1_53
+                                    697 ;	printf_large.c:540: goto get_conversion_spec;
+      000272 02r01r62         [24]  698 	ljmp	00101$
+                                    699 ;	printf_large.c:541: case '+':
+      000275                        700 00121$:
+                                    701 ;	printf_large.c:542: prefix_sign = 1;
+      000275 D2*03            [12]  702 	setb	__print_format_prefix_sign_1_53
+                                    703 ;	printf_large.c:543: goto get_conversion_spec;
+      000277 02r01r62         [24]  704 	ljmp	00101$
+                                    705 ;	printf_large.c:544: case ' ':
+      00027A                        706 00122$:
+                                    707 ;	printf_large.c:545: prefix_space = 1;
+      00027A D2*04            [12]  708 	setb	__print_format_prefix_space_1_53
+                                    709 ;	printf_large.c:546: goto get_conversion_spec;
+      00027C 02r01r62         [24]  710 	ljmp	00101$
+                                    711 ;	printf_large.c:547: case 'B': /* byte */
+      00027F                        712 00123$:
+                                    713 ;	printf_large.c:548: char_argument = 1;
+      00027F D2*06            [12]  714 	setb	__print_format_char_argument_1_53
+                                    715 ;	printf_large.c:549: goto get_conversion_spec;
+      000281 02r01r62         [24]  716 	ljmp	00101$
+                                    717 ;	printf_large.c:556: case 'L': /* long */
+      000284                        718 00128$:
+                                    719 ;	printf_large.c:557: long_argument = 1;
+      000284 D2*07            [12]  720 	setb	__print_format_long_argument_1_53
+                                    721 ;	printf_large.c:558: goto get_conversion_spec;
+      000286 02r01r62         [24]  722 	ljmp	00101$
+                                    723 ;	printf_large.c:560: case 'C':
+      000289                        724 00129$:
+                                    725 ;	printf_large.c:561: if( char_argument )
+      000289 30*06 11         [24]  726 	jnb	__print_format_char_argument_1_53,00131$
+                                    727 ;	printf_large.c:562: c = va_arg(ap,char);
+      00028C 90r00r16         [24]  728 	mov	dptr,#__print_format_PARM_4
+      00028F E0               [24]  729 	movx	a,@dptr
+      000290 FF               [12]  730 	mov	r7,a
+      000291 1F               [12]  731 	dec	r7
+      000292 EF               [12]  732 	mov	a,r7
+      000293 F0               [24]  733 	movx	@dptr,a
+      000294 8F 01            [24]  734 	mov	ar1,r7
+      000296 90r00r1D         [24]  735 	mov	dptr,#__print_format_c_1_53
+      000299 E7               [12]  736 	mov	a,@r1
+      00029A F0               [24]  737 	movx	@dptr,a
+      00029B 80 16            [24]  738 	sjmp	00132$
+      00029D                        739 00131$:
+                                    740 ;	printf_large.c:564: c = va_arg(ap,int);
+      00029D 90r00r16         [24]  741 	mov	dptr,#__print_format_PARM_4
+      0002A0 E0               [24]  742 	movx	a,@dptr
+      0002A1 FF               [12]  743 	mov	r7,a
+      0002A2 1F               [12]  744 	dec	r7
+      0002A3 1F               [12]  745 	dec	r7
+      0002A4 EF               [12]  746 	mov	a,r7
+      0002A5 F0               [24]  747 	movx	@dptr,a
+      0002A6 8F 01            [24]  748 	mov	ar1,r7
+      0002A8 87 06            [24]  749 	mov	ar6,@r1
+      0002AA 09               [12]  750 	inc	r1
+      0002AB 87 07            [24]  751 	mov	ar7,@r1
+      0002AD 19               [12]  752 	dec	r1
+      0002AE 90r00r1D         [24]  753 	mov	dptr,#__print_format_c_1_53
+      0002B1 EE               [12]  754 	mov	a,r6
+      0002B2 F0               [24]  755 	movx	@dptr,a
+      0002B3                        756 00132$:
+                                    757 ;	printf_large.c:565: OUTPUT_CHAR( c, p );
+      0002B3 90r00r1D         [24]  758 	mov	dptr,#__print_format_c_1_53
+      0002B6 E0               [24]  759 	movx	a,@dptr
+      0002B7 F5 82            [12]  760 	mov	dpl,a
+      0002B9 12r00r00         [24]  761 	lcall	__output_char
+                                    762 ;	printf_large.c:566: break;
+      0002BC 02r04r7E         [24]  763 	ljmp	00172$
+                                    764 ;	printf_large.c:568: case 'S':
+      0002BF                        765 00133$:
+                                    766 ;	printf_large.c:569: PTR = va_arg(ap,ptr_t);
+      0002BF 90r00r16         [24]  767 	mov	dptr,#__print_format_PARM_4
+      0002C2 E0               [24]  768 	movx	a,@dptr
+      0002C3 FF               [12]  769 	mov	r7,a
+      0002C4 1F               [12]  770 	dec	r7
+      0002C5 1F               [12]  771 	dec	r7
+      0002C6 1F               [12]  772 	dec	r7
+      0002C7 EF               [12]  773 	mov	a,r7
+      0002C8 F0               [24]  774 	movx	@dptr,a
+      0002C9 8F 01            [24]  775 	mov	ar1,r7
+      0002CB 87 05            [24]  776 	mov	ar5,@r1
+      0002CD 09               [12]  777 	inc	r1
+      0002CE 87 06            [24]  778 	mov	ar6,@r1
+      0002D0 09               [12]  779 	inc	r1
+      0002D1 87 07            [24]  780 	mov	ar7,@r1
+      0002D3 19               [12]  781 	dec	r1
+      0002D4 19               [12]  782 	dec	r1
+      0002D5 90r00r05         [24]  783 	mov	dptr,#_value
+      0002D8 ED               [12]  784 	mov	a,r5
+      0002D9 F0               [24]  785 	movx	@dptr,a
+      0002DA EE               [12]  786 	mov	a,r6
+      0002DB A3               [24]  787 	inc	dptr
+      0002DC F0               [24]  788 	movx	@dptr,a
+      0002DD EF               [12]  789 	mov	a,r7
+      0002DE A3               [24]  790 	inc	dptr
+      0002DF F0               [24]  791 	movx	@dptr,a
+                                    792 ;	printf_large.c:582: length = strlen(PTR);
+      0002E0 8D 82            [24]  793 	mov	dpl,r5
+      0002E2 8E 83            [24]  794 	mov	dph,r6
+      0002E4 8F F0            [24]  795 	mov	b,r7
+      0002E6 12r00r00         [24]  796 	lcall	_strlen
+      0002E9 AE 82            [24]  797 	mov	r6,dpl
+                                    798 ;	printf_large.c:584: if ( decimals == -1 )
+      0002EB 90r00r1B         [24]  799 	mov	dptr,#__print_format_decimals_1_53
+      0002EE E0               [24]  800 	movx	a,@dptr
+      0002EF FF               [12]  801 	mov	r7,a
+      0002F0 BF FF 05         [24]  802 	cjne	r7,#0xFF,00135$
+                                    803 ;	printf_large.c:586: decimals = length;
+      0002F3 90r00r1B         [24]  804 	mov	dptr,#__print_format_decimals_1_53
+      0002F6 EE               [12]  805 	mov	a,r6
+      0002F7 F0               [24]  806 	movx	@dptr,a
+      0002F8                        807 00135$:
+                                    808 ;	printf_large.c:588: if ( ( !left_justify ) && (length < width) )
+      0002F8 20*01 2E         [24]  809 	jb	__print_format_left_justify_1_53,00289$
+      0002FB 90r00r1A         [24]  810 	mov	dptr,#__print_format_width_1_53
+      0002FE E0               [24]  811 	movx	a,@dptr
+      0002FF FF               [12]  812 	mov	r7,a
+      000300 C3               [12]  813 	clr	c
+      000301 EE               [12]  814 	mov	a,r6
+      000302 9F               [12]  815 	subb	a,r7
+      000303 50 24            [24]  816 	jnc	00289$
+                                    817 ;	printf_large.c:590: width -= length;
+      000305 90r00r1A         [24]  818 	mov	dptr,#__print_format_width_1_53
+      000308 EF               [12]  819 	mov	a,r7
+      000309 C3               [12]  820 	clr	c
+      00030A 9E               [12]  821 	subb	a,r6
+      00030B F0               [24]  822 	movx	@dptr,a
+                                    823 ;	printf_large.c:591: while( width-- != 0 )
+      00030C E0               [24]  824 	movx	a,@dptr
+      00030D FF               [12]  825 	mov	r7,a
+      00030E                        826 00136$:
+      00030E 8F 05            [24]  827 	mov	ar5,r7
+      000310 1F               [12]  828 	dec	r7
+      000311 ED               [12]  829 	mov	a,r5
+      000312 60 10            [24]  830 	jz	00329$
+                                    831 ;	printf_large.c:593: OUTPUT_CHAR( ' ', p );
+      000314 75 82 20         [24]  832 	mov	dpl,#0x20
+      000317 C0 07            [24]  833 	push	ar7
+      000319 C0 06            [24]  834 	push	ar6
+      00031B 12r00r00         [24]  835 	lcall	__output_char
+      00031E D0 06            [24]  836 	pop	ar6
+      000320 D0 07            [24]  837 	pop	ar7
+                                    838 ;	printf_large.c:597: while ( (c = *PTR)  && (decimals-- > 0))
+      000322 80 EA            [24]  839 	sjmp	00136$
+      000324                        840 00329$:
+      000324 90r00r1A         [24]  841 	mov	dptr,#__print_format_width_1_53
+      000327 EF               [12]  842 	mov	a,r7
+      000328 F0               [24]  843 	movx	@dptr,a
+      000329                        844 00289$:
+      000329 90r00r1B         [24]  845 	mov	dptr,#__print_format_decimals_1_53
+      00032C E0               [24]  846 	movx	a,@dptr
+      00032D FF               [12]  847 	mov	r7,a
+      00032E                        848 00143$:
+      00032E C0 06            [24]  849 	push	ar6
+      000330 90r00r05         [24]  850 	mov	dptr,#_value
+      000333 E0               [24]  851 	movx	a,@dptr
+      000334 FA               [12]  852 	mov	r2,a
+      000335 A3               [24]  853 	inc	dptr
+      000336 E0               [24]  854 	movx	a,@dptr
+      000337 FD               [12]  855 	mov	r5,a
+      000338 A3               [24]  856 	inc	dptr
+      000339 E0               [24]  857 	movx	a,@dptr
+      00033A FE               [12]  858 	mov	r6,a
+      00033B 8A 82            [24]  859 	mov	dpl,r2
+      00033D 8D 83            [24]  860 	mov	dph,r5
+      00033F 8E F0            [24]  861 	mov	b,r6
+      000341 12r00r00         [24]  862 	lcall	__gptrget
+      000344 F5*00            [12]  863 	mov	__print_format_sloc0_1_0,a
+      000346 D0 06            [24]  864 	pop	ar6
+      000348 E5*00            [12]  865 	mov	a,__print_format_sloc0_1_0
+      00034A 60 3E            [24]  866 	jz	00145$
+      00034C 8F 05            [24]  867 	mov	ar5,r7
+      00034E 1F               [12]  868 	dec	r7
+      00034F C3               [12]  869 	clr	c
+      000350 74 80            [12]  870 	mov	a,#(0x00 ^ 0x80)
+      000352 8D F0            [24]  871 	mov	b,r5
+      000354 63 F0 80         [24]  872 	xrl	b,#0x80
+      000357 95 F0            [12]  873 	subb	a,b
+      000359 50 2F            [24]  874 	jnc	00145$
+                                    875 ;	printf_large.c:599: OUTPUT_CHAR( c, p );
+      00035B C0 06            [24]  876 	push	ar6
+      00035D 85*00 82         [24]  877 	mov	dpl,__print_format_sloc0_1_0
+      000360 C0 07            [24]  878 	push	ar7
+      000362 C0 06            [24]  879 	push	ar6
+      000364 12r00r00         [24]  880 	lcall	__output_char
+      000367 D0 06            [24]  881 	pop	ar6
+      000369 D0 07            [24]  882 	pop	ar7
+                                    883 ;	printf_large.c:600: PTR++;
+      00036B 90r00r05         [24]  884 	mov	dptr,#_value
+      00036E E0               [24]  885 	movx	a,@dptr
+      00036F FA               [12]  886 	mov	r2,a
+      000370 A3               [24]  887 	inc	dptr
+      000371 E0               [24]  888 	movx	a,@dptr
+      000372 FD               [12]  889 	mov	r5,a
+      000373 A3               [24]  890 	inc	dptr
+      000374 E0               [24]  891 	movx	a,@dptr
+      000375 FE               [12]  892 	mov	r6,a
+      000376 0A               [12]  893 	inc	r2
+      000377 BA 00 01         [24]  894 	cjne	r2,#0x00,00544$
+      00037A 0D               [12]  895 	inc	r5
+      00037B                        896 00544$:
+      00037B 90r00r05         [24]  897 	mov	dptr,#_value
+      00037E EA               [12]  898 	mov	a,r2
+      00037F F0               [24]  899 	movx	@dptr,a
+      000380 ED               [12]  900 	mov	a,r5
+      000381 A3               [24]  901 	inc	dptr
+      000382 F0               [24]  902 	movx	@dptr,a
+      000383 EE               [12]  903 	mov	a,r6
+      000384 A3               [24]  904 	inc	dptr
+      000385 F0               [24]  905 	movx	@dptr,a
+      000386 D0 06            [24]  906 	pop	ar6
+      000388 80 A4            [24]  907 	sjmp	00143$
+      00038A                        908 00145$:
+                                    909 ;	printf_large.c:603: if ( left_justify && (length < width))
+      00038A 20*01 03         [24]  910 	jb	__print_format_left_justify_1_53,00545$
+      00038D 02r04r7E         [24]  911 	ljmp	00172$
+      000390                        912 00545$:
+      000390 90r00r1A         [24]  913 	mov	dptr,#__print_format_width_1_53
+      000393 E0               [24]  914 	movx	a,@dptr
+      000394 FF               [12]  915 	mov	r7,a
+      000395 C3               [12]  916 	clr	c
+      000396 EE               [12]  917 	mov	a,r6
+      000397 9F               [12]  918 	subb	a,r7
+      000398 40 03            [24]  919 	jc	00546$
+      00039A 02r04r7E         [24]  920 	ljmp	00172$
+      00039D                        921 00546$:
+                                    922 ;	printf_large.c:605: width -= length;
+      00039D 90r00r1A         [24]  923 	mov	dptr,#__print_format_width_1_53
+      0003A0 EF               [12]  924 	mov	a,r7
+      0003A1 C3               [12]  925 	clr	c
+      0003A2 9E               [12]  926 	subb	a,r6
+      0003A3 F0               [24]  927 	movx	@dptr,a
+                                    928 ;	printf_large.c:606: while( width-- != 0 )
+      0003A4 E0               [24]  929 	movx	a,@dptr
+      0003A5 FF               [12]  930 	mov	r7,a
+      0003A6                        931 00146$:
+      0003A6 8F 06            [24]  932 	mov	ar6,r7
+      0003A8 1F               [12]  933 	dec	r7
+      0003A9 EE               [12]  934 	mov	a,r6
+      0003AA 70 03            [24]  935 	jnz	00547$
+      0003AC 02r04r79         [24]  936 	ljmp	00331$
+      0003AF                        937 00547$:
+                                    938 ;	printf_large.c:608: OUTPUT_CHAR( ' ', p );
+      0003AF 75 82 20         [24]  939 	mov	dpl,#0x20
+      0003B2 C0 07            [24]  940 	push	ar7
+      0003B4 12r00r00         [24]  941 	lcall	__output_char
+      0003B7 D0 07            [24]  942 	pop	ar7
+                                    943 ;	printf_large.c:613: case 'P':
+      0003B9 80 EB            [24]  944 	sjmp	00146$
+      0003BB                        945 00152$:
+                                    946 ;	printf_large.c:614: PTR = va_arg(ap,ptr_t);
+      0003BB 90r00r16         [24]  947 	mov	dptr,#__print_format_PARM_4
+      0003BE E0               [24]  948 	movx	a,@dptr
+      0003BF FE               [12]  949 	mov	r6,a
+      0003C0 1E               [12]  950 	dec	r6
+      0003C1 1E               [12]  951 	dec	r6
+      0003C2 1E               [12]  952 	dec	r6
+      0003C3 EE               [12]  953 	mov	a,r6
+      0003C4 F0               [24]  954 	movx	@dptr,a
+      0003C5 8E 01            [24]  955 	mov	ar1,r6
+      0003C7 87 02            [24]  956 	mov	ar2,@r1
+      0003C9 09               [12]  957 	inc	r1
+      0003CA 87 05            [24]  958 	mov	ar5,@r1
+      0003CC 09               [12]  959 	inc	r1
+      0003CD 87 06            [24]  960 	mov	ar6,@r1
+      0003CF 19               [12]  961 	dec	r1
+      0003D0 19               [12]  962 	dec	r1
+      0003D1 90r00r05         [24]  963 	mov	dptr,#_value
+      0003D4 EA               [12]  964 	mov	a,r2
+      0003D5 F0               [24]  965 	movx	@dptr,a
+      0003D6 ED               [12]  966 	mov	a,r5
+      0003D7 A3               [24]  967 	inc	dptr
+      0003D8 F0               [24]  968 	movx	@dptr,a
+      0003D9 EE               [12]  969 	mov	a,r6
+      0003DA A3               [24]  970 	inc	dptr
+      0003DB F0               [24]  971 	movx	@dptr,a
+                                    972 ;	printf_large.c:637: unsigned char memtype = value.byte[2];
+      0003DC 90r00r07         [24]  973 	mov	dptr,#(_value + 0x0002)
+      0003DF E0               [24]  974 	movx	a,@dptr
+      0003E0 FE               [12]  975 	mov	r6,a
+                                    976 ;	printf_large.c:638: if (memtype >= 0x80)
+      0003E1 BE 80 00         [24]  977 	cjne	r6,#0x80,00548$
+      0003E4                        978 00548$:
+      0003E4 40 08            [24]  979 	jc	00160$
+                                    980 ;	printf_large.c:639: c = 'C';
+      0003E6 90r00r1D         [24]  981 	mov	dptr,#__print_format_c_1_53
+      0003E9 74 43            [12]  982 	mov	a,#0x43
+      0003EB F0               [24]  983 	movx	@dptr,a
+      0003EC 80 20            [24]  984 	sjmp	00161$
+      0003EE                        985 00160$:
+                                    986 ;	printf_large.c:640: else if (memtype >= 0x60)
+      0003EE BE 60 00         [24]  987 	cjne	r6,#0x60,00550$
+      0003F1                        988 00550$:
+      0003F1 40 08            [24]  989 	jc	00157$
+                                    990 ;	printf_large.c:641: c = 'P';
+      0003F3 90r00r1D         [24]  991 	mov	dptr,#__print_format_c_1_53
+      0003F6 74 50            [12]  992 	mov	a,#0x50
+      0003F8 F0               [24]  993 	movx	@dptr,a
+      0003F9 80 13            [24]  994 	sjmp	00161$
+      0003FB                        995 00157$:
+                                    996 ;	printf_large.c:642: else if (memtype >= 0x40)
+      0003FB BE 40 00         [24]  997 	cjne	r6,#0x40,00552$
+      0003FE                        998 00552$:
+      0003FE 40 08            [24]  999 	jc	00154$
+                                   1000 ;	printf_large.c:643: c = 'I';
+      000400 90r00r1D         [24] 1001 	mov	dptr,#__print_format_c_1_53
+      000403 74 49            [12] 1002 	mov	a,#0x49
+      000405 F0               [24] 1003 	movx	@dptr,a
+      000406 80 06            [24] 1004 	sjmp	00161$
+      000408                       1005 00154$:
+                                   1006 ;	printf_large.c:645: c = 'X';
+      000408 90r00r1D         [24] 1007 	mov	dptr,#__print_format_c_1_53
+      00040B 74 58            [12] 1008 	mov	a,#0x58
+      00040D F0               [24] 1009 	movx	@dptr,a
+      00040E                       1010 00161$:
+                                   1011 ;	printf_large.c:647: OUTPUT_CHAR(c, p);
+      00040E 90r00r1D         [24] 1012 	mov	dptr,#__print_format_c_1_53
+      000411 E0               [24] 1013 	movx	a,@dptr
+      000412 FE               [12] 1014 	mov	r6,a
+      000413 F5 82            [12] 1015 	mov	dpl,a
+      000415 C0 06            [24] 1016 	push	ar6
+      000417 12r00r00         [24] 1017 	lcall	__output_char
+                                   1018 ;	printf_large.c:648: OUTPUT_CHAR(':', p);
+      00041A 75 82 3A         [24] 1019 	mov	dpl,#0x3A
+      00041D 12r00r00         [24] 1020 	lcall	__output_char
+                                   1021 ;	printf_large.c:649: OUTPUT_CHAR('0', p);
+      000420 75 82 30         [24] 1022 	mov	dpl,#0x30
+      000423 12r00r00         [24] 1023 	lcall	__output_char
+                                   1024 ;	printf_large.c:650: OUTPUT_CHAR('x', p);
+      000426 75 82 78         [24] 1025 	mov	dpl,#0x78
+      000429 12r00r00         [24] 1026 	lcall	__output_char
+      00042C D0 06            [24] 1027 	pop	ar6
+                                   1028 ;	printf_large.c:651: if ((c != 'I' /* idata */) &&
+      00042E BE 49 02         [24] 1029 	cjne	r6,#0x49,00554$
+      000431 80 0E            [24] 1030 	sjmp	00163$
+      000433                       1031 00554$:
+                                   1032 ;	printf_large.c:652: (c != 'P' /* pdata */))
+      000433 BE 50 02         [24] 1033 	cjne	r6,#0x50,00555$
+      000436 80 09            [24] 1034 	sjmp	00163$
+      000438                       1035 00555$:
+                                   1036 ;	printf_large.c:654: OUTPUT_2DIGITS( value.byte[1] );
+      000438 90r00r06         [24] 1037 	mov	dptr,#(_value + 0x0001)
+      00043B E0               [24] 1038 	movx	a,@dptr
+      00043C F5 82            [12] 1039 	mov	dpl,a
+      00043E 12r00r58         [24] 1040 	lcall	_output_2digits
+      000441                       1041 00163$:
+                                   1042 ;	printf_large.c:656: OUTPUT_2DIGITS( value.byte[0] );
+      000441 90r00r05         [24] 1043 	mov	dptr,#_value
+      000444 E0               [24] 1044 	movx	a,@dptr
+      000445 F5 82            [12] 1045 	mov	dpl,a
+      000447 12r00r58         [24] 1046 	lcall	_output_2digits
+                                   1047 ;	printf_large.c:663: break;
+                                   1048 ;	printf_large.c:666: case 'I':
+      00044A 80 32            [24] 1049 	sjmp	00172$
+      00044C                       1050 00166$:
+                                   1051 ;	printf_large.c:667: signed_argument = 1;
+      00044C D2*05            [12] 1052 	setb	__print_format_signed_argument_1_53
+                                   1053 ;	printf_large.c:668: radix = 10;
+      00044E 90r00r19         [24] 1054 	mov	dptr,#__print_format_radix_1_53
+      000451 74 0A            [12] 1055 	mov	a,#0x0A
+      000453 F0               [24] 1056 	movx	@dptr,a
+                                   1057 ;	printf_large.c:669: break;
+                                   1058 ;	printf_large.c:671: case 'O':
+      000454 80 28            [24] 1059 	sjmp	00172$
+      000456                       1060 00167$:
+                                   1061 ;	printf_large.c:672: radix = 8;
+      000456 90r00r19         [24] 1062 	mov	dptr,#__print_format_radix_1_53
+      000459 74 08            [12] 1063 	mov	a,#0x08
+      00045B F0               [24] 1064 	movx	@dptr,a
+                                   1065 ;	printf_large.c:673: break;
+                                   1066 ;	printf_large.c:675: case 'U':
+      00045C 80 20            [24] 1067 	sjmp	00172$
+      00045E                       1068 00168$:
+                                   1069 ;	printf_large.c:676: radix = 10;
+      00045E 90r00r19         [24] 1070 	mov	dptr,#__print_format_radix_1_53
+      000461 74 0A            [12] 1071 	mov	a,#0x0A
+      000463 F0               [24] 1072 	movx	@dptr,a
+                                   1073 ;	printf_large.c:677: break;
+                                   1074 ;	printf_large.c:679: case 'X':
+      000464 80 18            [24] 1075 	sjmp	00172$
+      000466                       1076 00169$:
+                                   1077 ;	printf_large.c:680: radix = 16;
+      000466 90r00r19         [24] 1078 	mov	dptr,#__print_format_radix_1_53
+      000469 74 10            [12] 1079 	mov	a,#0x10
+      00046B F0               [24] 1080 	movx	@dptr,a
+                                   1081 ;	printf_large.c:681: break;
+                                   1082 ;	printf_large.c:683: case 'F':
+      00046C 80 10            [24] 1083 	sjmp	00172$
+      00046E                       1084 00170$:
+                                   1085 ;	printf_large.c:684: float_argument=1;
+      00046E D2*08            [12] 1086 	setb	__print_format_float_argument_1_53
+                                   1087 ;	printf_large.c:685: break;
+                                   1088 ;	printf_large.c:687: default:
+      000470 80 0C            [24] 1089 	sjmp	00172$
+      000472                       1090 00171$:
+                                   1091 ;	printf_large.c:689: OUTPUT_CHAR( c, p );
+      000472 8B 82            [24] 1092 	mov	dpl,r3
+      000474 12r00r00         [24] 1093 	lcall	__output_char
+                                   1094 ;	printf_large.c:872: return charsOutputted;
+                                   1095 ;	printf_large.c:691: }
+      000477 80 05            [24] 1096 	sjmp	00172$
+      000479                       1097 00331$:
+      000479 90r00r1A         [24] 1098 	mov	dptr,#__print_format_width_1_53
+      00047C EF               [12] 1099 	mov	a,r7
+      00047D F0               [24] 1100 	movx	@dptr,a
+      00047E                       1101 00172$:
+                                   1102 ;	printf_large.c:693: if (float_argument)
+      00047E 30*08 74         [24] 1103 	jnb	__print_format_float_argument_1_53,00238$
+                                   1104 ;	printf_large.c:695: value.f = va_arg(ap, float);
+      000481 90r00r16         [24] 1105 	mov	dptr,#__print_format_PARM_4
+      000484 E0               [24] 1106 	movx	a,@dptr
+      000485 FF               [12] 1107 	mov	r7,a
+      000486 1F               [12] 1108 	dec	r7
+      000487 1F               [12] 1109 	dec	r7
+      000488 1F               [12] 1110 	dec	r7
+      000489 1F               [12] 1111 	dec	r7
+      00048A EF               [12] 1112 	mov	a,r7
+      00048B F0               [24] 1113 	movx	@dptr,a
+      00048C 8F 01            [24] 1114 	mov	ar1,r7
+      00048E 87 03            [24] 1115 	mov	ar3,@r1
+      000490 09               [12] 1116 	inc	r1
+      000491 87 05            [24] 1117 	mov	ar5,@r1
+      000493 09               [12] 1118 	inc	r1
+      000494 87 06            [24] 1119 	mov	ar6,@r1
+      000496 09               [12] 1120 	inc	r1
+      000497 87 07            [24] 1121 	mov	ar7,@r1
+      000499 19               [12] 1122 	dec	r1
+      00049A 19               [12] 1123 	dec	r1
+      00049B 19               [12] 1124 	dec	r1
+      00049C 90r00r05         [24] 1125 	mov	dptr,#_value
+      00049F EB               [12] 1126 	mov	a,r3
+      0004A0 F0               [24] 1127 	movx	@dptr,a
+      0004A1 ED               [12] 1128 	mov	a,r5
+      0004A2 A3               [24] 1129 	inc	dptr
+      0004A3 F0               [24] 1130 	movx	@dptr,a
+      0004A4 EE               [12] 1131 	mov	a,r6
+      0004A5 A3               [24] 1132 	inc	dptr
+      0004A6 F0               [24] 1133 	movx	@dptr,a
+      0004A7 EF               [12] 1134 	mov	a,r7
+      0004A8 A3               [24] 1135 	inc	dptr
+      0004A9 F0               [24] 1136 	movx	@dptr,a
+                                   1137 ;	printf_large.c:697: PTR="<NO FLOAT>";
+      0004AA 90r00r05         [24] 1138 	mov	dptr,#_value
+      0004AD 74r00            [12] 1139 	mov	a,#__str_0
+      0004AF F0               [24] 1140 	movx	@dptr,a
+      0004B0 74s00            [12] 1141 	mov	a,#(__str_0 >> 8)
+      0004B2 A3               [24] 1142 	inc	dptr
+      0004B3 F0               [24] 1143 	movx	@dptr,a
+      0004B4 74 80            [12] 1144 	mov	a,#0x80
+      0004B6 A3               [24] 1145 	inc	dptr
+      0004B7 F0               [24] 1146 	movx	@dptr,a
+                                   1147 ;	printf_large.c:698: while (c=*PTR++)
+      0004B8                       1148 00173$:
+      0004B8 90r00r05         [24] 1149 	mov	dptr,#_value
+      0004BB E0               [24] 1150 	movx	a,@dptr
+      0004BC F5*01            [12] 1151 	mov	__print_format_sloc1_1_0,a
+      0004BE A3               [24] 1152 	inc	dptr
+      0004BF E0               [24] 1153 	movx	a,@dptr
+      0004C0 F5*02            [12] 1154 	mov	(__print_format_sloc1_1_0 + 1),a
+      0004C2 A3               [24] 1155 	inc	dptr
+      0004C3 E0               [24] 1156 	movx	a,@dptr
+      0004C4 F5*03            [12] 1157 	mov	(__print_format_sloc1_1_0 + 2),a
+      0004C6 74 01            [12] 1158 	mov	a,#0x01
+      0004C8 25*01            [12] 1159 	add	a,__print_format_sloc1_1_0
+      0004CA FA               [12] 1160 	mov	r2,a
+      0004CB E4               [12] 1161 	clr	a
+      0004CC 35*02            [12] 1162 	addc	a,(__print_format_sloc1_1_0 + 1)
+      0004CE FB               [12] 1163 	mov	r3,a
+      0004CF AF*03            [24] 1164 	mov	r7,(__print_format_sloc1_1_0 + 2)
+      0004D1 90r00r05         [24] 1165 	mov	dptr,#_value
+      0004D4 EA               [12] 1166 	mov	a,r2
+      0004D5 F0               [24] 1167 	movx	@dptr,a
+      0004D6 EB               [12] 1168 	mov	a,r3
+      0004D7 A3               [24] 1169 	inc	dptr
+      0004D8 F0               [24] 1170 	movx	@dptr,a
+      0004D9 EF               [12] 1171 	mov	a,r7
+      0004DA A3               [24] 1172 	inc	dptr
+      0004DB F0               [24] 1173 	movx	@dptr,a
+      0004DC 85*01 82         [24] 1174 	mov	dpl,__print_format_sloc1_1_0
+      0004DF 85*02 83         [24] 1175 	mov	dph,(__print_format_sloc1_1_0 + 1)
+      0004E2 85*03 F0         [24] 1176 	mov	b,(__print_format_sloc1_1_0 + 2)
+      0004E5 12r00r00         [24] 1177 	lcall	__gptrget
+      0004E8 FF               [12] 1178 	mov	r7,a
+      0004E9 70 03            [24] 1179 	jnz	00557$
+      0004EB 02r01r08         [24] 1180 	ljmp	00243$
+      0004EE                       1181 00557$:
+                                   1182 ;	printf_large.c:700: OUTPUT_CHAR (c, p);
+      0004EE 8F 82            [24] 1183 	mov	dpl,r7
+      0004F0 12r00r00         [24] 1184 	lcall	__output_char
+      0004F3 80 C3            [24] 1185 	sjmp	00173$
+      0004F5                       1186 00238$:
+                                   1187 ;	printf_large.c:718: else if (radix != 0)
+      0004F5 90r00r19         [24] 1188 	mov	dptr,#__print_format_radix_1_53
+      0004F8 E0               [24] 1189 	movx	a,@dptr
+      0004F9 F5*01            [12] 1190 	mov	__print_format_sloc1_1_0,a
+      0004FB 70 03            [24] 1191 	jnz	00558$
+      0004FD 02r01r08         [24] 1192 	ljmp	00243$
+      000500                       1193 00558$:
+                                   1194 ;	printf_large.c:726: if (char_argument)
+      000500 30*06 47         [24] 1195 	jnb	__print_format_char_argument_1_53,00184$
+                                   1196 ;	printf_large.c:728: value.l = va_arg(ap, char);
+      000503 90r00r16         [24] 1197 	mov	dptr,#__print_format_PARM_4
+      000506 E0               [24] 1198 	movx	a,@dptr
+      000507 FE               [12] 1199 	mov	r6,a
+      000508 1E               [12] 1200 	dec	r6
+      000509 EE               [12] 1201 	mov	a,r6
+      00050A F0               [24] 1202 	movx	@dptr,a
+      00050B 8E 01            [24] 1203 	mov	ar1,r6
+      00050D E7               [12] 1204 	mov	a,@r1
+      00050E FE               [12] 1205 	mov	r6,a
+      00050F 33               [12] 1206 	rlc	a
+      000510 95 E0            [12] 1207 	subb	a,acc
+      000512 FD               [12] 1208 	mov	r5,a
+      000513 FB               [12] 1209 	mov	r3,a
+      000514 FA               [12] 1210 	mov	r2,a
+      000515 90r00r05         [24] 1211 	mov	dptr,#_value
+      000518 EE               [12] 1212 	mov	a,r6
+      000519 F0               [24] 1213 	movx	@dptr,a
+      00051A ED               [12] 1214 	mov	a,r5
+      00051B A3               [24] 1215 	inc	dptr
+      00051C F0               [24] 1216 	movx	@dptr,a
+      00051D EB               [12] 1217 	mov	a,r3
+      00051E A3               [24] 1218 	inc	dptr
+      00051F F0               [24] 1219 	movx	@dptr,a
+      000520 EA               [12] 1220 	mov	a,r2
+      000521 A3               [24] 1221 	inc	dptr
+      000522 F0               [24] 1222 	movx	@dptr,a
+                                   1223 ;	printf_large.c:729: if (!signed_argument)
+      000523 30*05 03         [24] 1224 	jnb	__print_format_signed_argument_1_53,00560$
+      000526 02r05rBE         [24] 1225 	ljmp	00185$
+      000529                       1226 00560$:
+                                   1227 ;	printf_large.c:731: value.l &= 0xFF;
+      000529 90r00r05         [24] 1228 	mov	dptr,#_value
+      00052C E0               [24] 1229 	movx	a,@dptr
+      00052D FA               [12] 1230 	mov	r2,a
+      00052E A3               [24] 1231 	inc	dptr
+      00052F E0               [24] 1232 	movx	a,@dptr
+      000530 A3               [24] 1233 	inc	dptr
+      000531 E0               [24] 1234 	movx	a,@dptr
+      000532 A3               [24] 1235 	inc	dptr
+      000533 E0               [24] 1236 	movx	a,@dptr
+      000534 7B 00            [12] 1237 	mov	r3,#0x00
+      000536 7D 00            [12] 1238 	mov	r5,#0x00
+      000538 7E 00            [12] 1239 	mov	r6,#0x00
+      00053A 90r00r05         [24] 1240 	mov	dptr,#_value
+      00053D EA               [12] 1241 	mov	a,r2
+      00053E F0               [24] 1242 	movx	@dptr,a
+      00053F EB               [12] 1243 	mov	a,r3
+      000540 A3               [24] 1244 	inc	dptr
+      000541 F0               [24] 1245 	movx	@dptr,a
+      000542 ED               [12] 1246 	mov	a,r5
+      000543 A3               [24] 1247 	inc	dptr
+      000544 F0               [24] 1248 	movx	@dptr,a
+      000545 EE               [12] 1249 	mov	a,r6
+      000546 A3               [24] 1250 	inc	dptr
+      000547 F0               [24] 1251 	movx	@dptr,a
+      000548 80 74            [24] 1252 	sjmp	00185$
+      00054A                       1253 00184$:
+                                   1254 ;	printf_large.c:734: else if (long_argument)
+      00054A 30*07 2B         [24] 1255 	jnb	__print_format_long_argument_1_53,00181$
+                                   1256 ;	printf_large.c:736: value.l = va_arg(ap, long);
+      00054D 90r00r16         [24] 1257 	mov	dptr,#__print_format_PARM_4
+      000550 E0               [24] 1258 	movx	a,@dptr
+      000551 FE               [12] 1259 	mov	r6,a
+      000552 1E               [12] 1260 	dec	r6
+      000553 1E               [12] 1261 	dec	r6
+      000554 1E               [12] 1262 	dec	r6
+      000555 1E               [12] 1263 	dec	r6
+      000556 EE               [12] 1264 	mov	a,r6
+      000557 F0               [24] 1265 	movx	@dptr,a
+      000558 8E 01            [24] 1266 	mov	ar1,r6
+      00055A 87 02            [24] 1267 	mov	ar2,@r1
+      00055C 09               [12] 1268 	inc	r1
+      00055D 87 03            [24] 1269 	mov	ar3,@r1
+      00055F 09               [12] 1270 	inc	r1
+      000560 87 05            [24] 1271 	mov	ar5,@r1
+      000562 09               [12] 1272 	inc	r1
+      000563 87 06            [24] 1273 	mov	ar6,@r1
+      000565 19               [12] 1274 	dec	r1
+      000566 19               [12] 1275 	dec	r1
+      000567 19               [12] 1276 	dec	r1
+      000568 90r00r05         [24] 1277 	mov	dptr,#_value
+      00056B EA               [12] 1278 	mov	a,r2
+      00056C F0               [24] 1279 	movx	@dptr,a
+      00056D EB               [12] 1280 	mov	a,r3
+      00056E A3               [24] 1281 	inc	dptr
+      00056F F0               [24] 1282 	movx	@dptr,a
+      000570 ED               [12] 1283 	mov	a,r5
+      000571 A3               [24] 1284 	inc	dptr
+      000572 F0               [24] 1285 	movx	@dptr,a
+      000573 EE               [12] 1286 	mov	a,r6
+      000574 A3               [24] 1287 	inc	dptr
+      000575 F0               [24] 1288 	movx	@dptr,a
+      000576 80 46            [24] 1289 	sjmp	00185$
+      000578                       1290 00181$:
+                                   1291 ;	printf_large.c:740: value.l = va_arg(ap, int);
+      000578 90r00r16         [24] 1292 	mov	dptr,#__print_format_PARM_4
+      00057B E0               [24] 1293 	movx	a,@dptr
+      00057C FE               [12] 1294 	mov	r6,a
+      00057D 1E               [12] 1295 	dec	r6
+      00057E 1E               [12] 1296 	dec	r6
+      00057F EE               [12] 1297 	mov	a,r6
+      000580 F0               [24] 1298 	movx	@dptr,a
+      000581 8E 01            [24] 1299 	mov	ar1,r6
+      000583 87 05            [24] 1300 	mov	ar5,@r1
+      000585 09               [12] 1301 	inc	r1
+      000586 87 06            [24] 1302 	mov	ar6,@r1
+      000588 19               [12] 1303 	dec	r1
+      000589 EE               [12] 1304 	mov	a,r6
+      00058A 33               [12] 1305 	rlc	a
+      00058B 95 E0            [12] 1306 	subb	a,acc
+      00058D FB               [12] 1307 	mov	r3,a
+      00058E FA               [12] 1308 	mov	r2,a
+      00058F 90r00r05         [24] 1309 	mov	dptr,#_value
+      000592 ED               [12] 1310 	mov	a,r5
+      000593 F0               [24] 1311 	movx	@dptr,a
+      000594 EE               [12] 1312 	mov	a,r6
+      000595 A3               [24] 1313 	inc	dptr
+      000596 F0               [24] 1314 	movx	@dptr,a
+      000597 EB               [12] 1315 	mov	a,r3
+      000598 A3               [24] 1316 	inc	dptr
+      000599 F0               [24] 1317 	movx	@dptr,a
+      00059A EA               [12] 1318 	mov	a,r2
+      00059B A3               [24] 1319 	inc	dptr
+      00059C F0               [24] 1320 	movx	@dptr,a
+                                   1321 ;	printf_large.c:741: if (!signed_argument)
+      00059D 20*05 1E         [24] 1322 	jb	__print_format_signed_argument_1_53,00185$
+                                   1323 ;	printf_large.c:743: value.l &= 0xFFFF;
+      0005A0 90r00r05         [24] 1324 	mov	dptr,#_value
+      0005A3 E0               [24] 1325 	movx	a,@dptr
+      0005A4 FA               [12] 1326 	mov	r2,a
+      0005A5 A3               [24] 1327 	inc	dptr
+      0005A6 E0               [24] 1328 	movx	a,@dptr
+      0005A7 FB               [12] 1329 	mov	r3,a
+      0005A8 A3               [24] 1330 	inc	dptr
+      0005A9 E0               [24] 1331 	movx	a,@dptr
+      0005AA A3               [24] 1332 	inc	dptr
+      0005AB E0               [24] 1333 	movx	a,@dptr
+      0005AC 7D 00            [12] 1334 	mov	r5,#0x00
+      0005AE 7E 00            [12] 1335 	mov	r6,#0x00
+      0005B0 90r00r05         [24] 1336 	mov	dptr,#_value
+      0005B3 EA               [12] 1337 	mov	a,r2
+      0005B4 F0               [24] 1338 	movx	@dptr,a
+      0005B5 EB               [12] 1339 	mov	a,r3
+      0005B6 A3               [24] 1340 	inc	dptr
+      0005B7 F0               [24] 1341 	movx	@dptr,a
+      0005B8 ED               [12] 1342 	mov	a,r5
+      0005B9 A3               [24] 1343 	inc	dptr
+      0005BA F0               [24] 1344 	movx	@dptr,a
+      0005BB EE               [12] 1345 	mov	a,r6
+      0005BC A3               [24] 1346 	inc	dptr
+      0005BD F0               [24] 1347 	movx	@dptr,a
+      0005BE                       1348 00185$:
+                                   1349 ;	printf_large.c:747: if ( signed_argument )
+      0005BE 30*05 3E         [24] 1350 	jnb	__print_format_signed_argument_1_53,00190$
+                                   1351 ;	printf_large.c:749: if (value.l < 0)
+      0005C1 90r00r05         [24] 1352 	mov	dptr,#_value
+      0005C4 E0               [24] 1353 	movx	a,@dptr
+      0005C5 FA               [12] 1354 	mov	r2,a
+      0005C6 A3               [24] 1355 	inc	dptr
+      0005C7 E0               [24] 1356 	movx	a,@dptr
+      0005C8 FB               [12] 1357 	mov	r3,a
+      0005C9 A3               [24] 1358 	inc	dptr
+      0005CA E0               [24] 1359 	movx	a,@dptr
+      0005CB FD               [12] 1360 	mov	r5,a
+      0005CC A3               [24] 1361 	inc	dptr
+      0005CD E0               [24] 1362 	movx	a,@dptr
+      0005CE FE               [12] 1363 	mov	r6,a
+      0005CF 30 E7 2B         [24] 1364 	jnb	acc.7,00187$
+                                   1365 ;	printf_large.c:750: value.l = -value.l;
+      0005D2 90r00r05         [24] 1366 	mov	dptr,#_value
+      0005D5 E0               [24] 1367 	movx	a,@dptr
+      0005D6 FA               [12] 1368 	mov	r2,a
+      0005D7 A3               [24] 1369 	inc	dptr
+      0005D8 E0               [24] 1370 	movx	a,@dptr
+      0005D9 FB               [12] 1371 	mov	r3,a
+      0005DA A3               [24] 1372 	inc	dptr
+      0005DB E0               [24] 1373 	movx	a,@dptr
+      0005DC FD               [12] 1374 	mov	r5,a
+      0005DD A3               [24] 1375 	inc	dptr
+      0005DE E0               [24] 1376 	movx	a,@dptr
+      0005DF FE               [12] 1377 	mov	r6,a
+      0005E0 C3               [12] 1378 	clr	c
+      0005E1 E4               [12] 1379 	clr	a
+      0005E2 9A               [12] 1380 	subb	a,r2
+      0005E3 FA               [12] 1381 	mov	r2,a
+      0005E4 E4               [12] 1382 	clr	a
+      0005E5 9B               [12] 1383 	subb	a,r3
+      0005E6 FB               [12] 1384 	mov	r3,a
+      0005E7 E4               [12] 1385 	clr	a
+      0005E8 9D               [12] 1386 	subb	a,r5
+      0005E9 FD               [12] 1387 	mov	r5,a
+      0005EA E4               [12] 1388 	clr	a
+      0005EB 9E               [12] 1389 	subb	a,r6
+      0005EC FE               [12] 1390 	mov	r6,a
+      0005ED 90r00r05         [24] 1391 	mov	dptr,#_value
+      0005F0 EA               [12] 1392 	mov	a,r2
+      0005F1 F0               [24] 1393 	movx	@dptr,a
+      0005F2 EB               [12] 1394 	mov	a,r3
+      0005F3 A3               [24] 1395 	inc	dptr
+      0005F4 F0               [24] 1396 	movx	@dptr,a
+      0005F5 ED               [12] 1397 	mov	a,r5
+      0005F6 A3               [24] 1398 	inc	dptr
+      0005F7 F0               [24] 1399 	movx	@dptr,a
+      0005F8 EE               [12] 1400 	mov	a,r6
+      0005F9 A3               [24] 1401 	inc	dptr
+      0005FA F0               [24] 1402 	movx	@dptr,a
+      0005FB 80 02            [24] 1403 	sjmp	00190$
+      0005FD                       1404 00187$:
+                                   1405 ;	printf_large.c:752: signed_argument = 0;
+      0005FD C2*05            [12] 1406 	clr	__print_format_signed_argument_1_53
+      0005FF                       1407 00190$:
+                                   1408 ;	printf_large.c:756: lsd = 1;
+      0005FF D2*09            [12] 1409 	setb	__print_format_lsd_1_53
+                                   1410 ;	printf_large.c:758: do {
+      000601 75*04r23         [24] 1411 	mov	__print_format_sloc2_1_0,#(__print_format_store_4_74 + 0x0005)
+      000604 75*05s00         [24] 1412 	mov	(__print_format_sloc2_1_0 + 1),#((__print_format_store_4_74 + 0x0005) >> 8)
+      000607 75*00 00         [24] 1413 	mov	__print_format_sloc0_1_0,#0x00
+      00060A                       1414 00194$:
+                                   1415 ;	printf_large.c:759: value.byte[4] = 0;
+      00060A 90r00r09         [24] 1416 	mov	dptr,#(_value + 0x0004)
+      00060D E4               [12] 1417 	clr	a
+      00060E F0               [24] 1418 	movx	@dptr,a
+                                   1419 ;	printf_large.c:763: calculate_digit(radix);
+      00060F 85*01 82         [24] 1420 	mov	dpl,__print_format_sloc1_1_0
+      000612 12r00r74         [24] 1421 	lcall	_calculate_digit
+                                   1422 ;	printf_large.c:765: if (!lsd)
+      000615 20*09 23         [24] 1423 	jb	__print_format_lsd_1_53,00192$
+                                   1424 ;	printf_large.c:767: *pstore = (value.byte[4] << 4) | (value.byte[4] >> 4) | *pstore;
+      000618 90r00r09         [24] 1425 	mov	dptr,#(_value + 0x0004)
+      00061B E0               [24] 1426 	movx	a,@dptr
+      00061C C4               [12] 1427 	swap	a
+      00061D FA               [12] 1428 	mov	r2,a
+      00061E 85*04 82         [24] 1429 	mov	dpl,__print_format_sloc2_1_0
+      000621 85*05 83         [24] 1430 	mov	dph,(__print_format_sloc2_1_0 + 1)
+      000624 E0               [24] 1431 	movx	a,@dptr
+      000625 FF               [12] 1432 	mov	r7,a
+      000626 42 02            [12] 1433 	orl	ar2,a
+      000628 85*04 82         [24] 1434 	mov	dpl,__print_format_sloc2_1_0
+      00062B 85*05 83         [24] 1435 	mov	dph,(__print_format_sloc2_1_0 + 1)
+      00062E EA               [12] 1436 	mov	a,r2
+      00062F F0               [24] 1437 	movx	@dptr,a
+                                   1438 ;	printf_large.c:768: pstore--;
+      000630 15*04            [12] 1439 	dec	__print_format_sloc2_1_0
+      000632 74 FF            [12] 1440 	mov	a,#0xFF
+      000634 B5*04 02         [24] 1441 	cjne	a,__print_format_sloc2_1_0,00566$
+      000637 15*05            [12] 1442 	dec	(__print_format_sloc2_1_0 + 1)
+      000639                       1443 00566$:
+      000639 80 0C            [24] 1444 	sjmp	00193$
+      00063B                       1445 00192$:
+                                   1446 ;	printf_large.c:772: *pstore = value.byte[4];
+      00063B 90r00r09         [24] 1447 	mov	dptr,#(_value + 0x0004)
+      00063E E0               [24] 1448 	movx	a,@dptr
+      00063F FA               [12] 1449 	mov	r2,a
+      000640 85*04 82         [24] 1450 	mov	dpl,__print_format_sloc2_1_0
+      000643 85*05 83         [24] 1451 	mov	dph,(__print_format_sloc2_1_0 + 1)
+      000646 F0               [24] 1452 	movx	@dptr,a
+      000647                       1453 00193$:
+                                   1454 ;	printf_large.c:774: length++;
+      000647 05*00            [12] 1455 	inc	__print_format_sloc0_1_0
+                                   1456 ;	printf_large.c:775: lsd = !lsd;
+      000649 B2*09            [12] 1457 	cpl	__print_format_lsd_1_53
+                                   1458 ;	printf_large.c:776: } while( value.ul );
+      00064B 90r00r05         [24] 1459 	mov	dptr,#_value
+      00064E E0               [24] 1460 	movx	a,@dptr
+      00064F FA               [12] 1461 	mov	r2,a
+      000650 A3               [24] 1462 	inc	dptr
+      000651 E0               [24] 1463 	movx	a,@dptr
+      000652 FB               [12] 1464 	mov	r3,a
+      000653 A3               [24] 1465 	inc	dptr
+      000654 E0               [24] 1466 	movx	a,@dptr
+      000655 FE               [12] 1467 	mov	r6,a
+      000656 A3               [24] 1468 	inc	dptr
+      000657 E0               [24] 1469 	movx	a,@dptr
+      000658 FF               [12] 1470 	mov	r7,a
+      000659 EA               [12] 1471 	mov	a,r2
+      00065A 4B               [12] 1472 	orl	a,r3
+      00065B 4E               [12] 1473 	orl	a,r6
+      00065C 4F               [12] 1474 	orl	a,r7
+      00065D 70 AB            [24] 1475 	jnz	00194$
+                                   1476 ;	printf_large.c:778: if (width == 0)
+      00065F 90r00r24         [24] 1477 	mov	dptr,#__print_format_pstore_4_74
+      000662 E5*04            [12] 1478 	mov	a,__print_format_sloc2_1_0
+      000664 F0               [24] 1479 	movx	@dptr,a
+      000665 E5*05            [12] 1480 	mov	a,(__print_format_sloc2_1_0 + 1)
+      000667 A3               [24] 1481 	inc	dptr
+      000668 F0               [24] 1482 	movx	@dptr,a
+      000669 90r00r1C         [24] 1483 	mov	dptr,#__print_format_length_1_53
+      00066C E5*00            [12] 1484 	mov	a,__print_format_sloc0_1_0
+      00066E F0               [24] 1485 	movx	@dptr,a
+      00066F 90r00r1A         [24] 1486 	mov	dptr,#__print_format_width_1_53
+      000672 E0               [24] 1487 	movx	a,@dptr
+      000673 FF               [12] 1488 	mov	r7,a
+      000674 70 06            [24] 1489 	jnz	00198$
+                                   1490 ;	printf_large.c:783: width = 1;
+      000676 90r00r1A         [24] 1491 	mov	dptr,#__print_format_width_1_53
+      000679 74 01            [12] 1492 	mov	a,#0x01
+      00067B F0               [24] 1493 	movx	@dptr,a
+      00067C                       1494 00198$:
+                                   1495 ;	printf_large.c:787: if (!zero_padding && !left_justify)
+      00067C 20*02 27         [24] 1496 	jb	__print_format_zero_padding_1_53,00203$
+      00067F 20*01 24         [24] 1497 	jb	__print_format_left_justify_1_53,00203$
+                                   1498 ;	printf_large.c:789: while ( width > (unsigned char) (length+1) )
+      000682 E5*00            [12] 1499 	mov	a,__print_format_sloc0_1_0
+      000684 04               [12] 1500 	inc	a
+      000685 FF               [12] 1501 	mov	r7,a
+      000686 90r00r1A         [24] 1502 	mov	dptr,#__print_format_width_1_53
+      000689 E0               [24] 1503 	movx	a,@dptr
+      00068A FE               [12] 1504 	mov	r6,a
+      00068B                       1505 00199$:
+      00068B C3               [12] 1506 	clr	c
+      00068C EF               [12] 1507 	mov	a,r7
+      00068D 9E               [12] 1508 	subb	a,r6
+      00068E 50 11            [24] 1509 	jnc	00333$
+                                   1510 ;	printf_large.c:791: OUTPUT_CHAR( ' ', p );
+      000690 75 82 20         [24] 1511 	mov	dpl,#0x20
+      000693 C0 07            [24] 1512 	push	ar7
+      000695 C0 06            [24] 1513 	push	ar6
+      000697 12r00r00         [24] 1514 	lcall	__output_char
+      00069A D0 06            [24] 1515 	pop	ar6
+      00069C D0 07            [24] 1516 	pop	ar7
+                                   1517 ;	printf_large.c:792: width--;
+      00069E 1E               [12] 1518 	dec	r6
+      00069F 80 EA            [24] 1519 	sjmp	00199$
+      0006A1                       1520 00333$:
+      0006A1 90r00r1A         [24] 1521 	mov	dptr,#__print_format_width_1_53
+      0006A4 EE               [12] 1522 	mov	a,r6
+      0006A5 F0               [24] 1523 	movx	@dptr,a
+      0006A6                       1524 00203$:
+                                   1525 ;	printf_large.c:796: if (signed_argument) // this now means the original value was negative
+      0006A6 30*05 0E         [24] 1526 	jnb	__print_format_signed_argument_1_53,00213$
+                                   1527 ;	printf_large.c:798: OUTPUT_CHAR( '-', p );
+      0006A9 75 82 2D         [24] 1528 	mov	dpl,#0x2D
+      0006AC 12r00r00         [24] 1529 	lcall	__output_char
+                                   1530 ;	printf_large.c:800: width--;
+      0006AF 90r00r1A         [24] 1531 	mov	dptr,#__print_format_width_1_53
+      0006B2 E0               [24] 1532 	movx	a,@dptr
+      0006B3 14               [12] 1533 	dec	a
+      0006B4 F0               [24] 1534 	movx	@dptr,a
+      0006B5 80 27            [24] 1535 	sjmp	00214$
+      0006B7                       1536 00213$:
+                                   1537 ;	printf_large.c:802: else if (length != 0)
+      0006B7 90r00r1C         [24] 1538 	mov	dptr,#__print_format_length_1_53
+      0006BA E0               [24] 1539 	movx	a,@dptr
+      0006BB FF               [12] 1540 	mov	r7,a
+      0006BC 60 20            [24] 1541 	jz	00214$
+                                   1542 ;	printf_large.c:805: if (prefix_sign)
+      0006BE 30*03 0E         [24] 1543 	jnb	__print_format_prefix_sign_1_53,00208$
+                                   1544 ;	printf_large.c:807: OUTPUT_CHAR( '+', p );
+      0006C1 75 82 2B         [24] 1545 	mov	dpl,#0x2B
+      0006C4 12r00r00         [24] 1546 	lcall	__output_char
+                                   1547 ;	printf_large.c:809: width--;
+      0006C7 90r00r1A         [24] 1548 	mov	dptr,#__print_format_width_1_53
+      0006CA E0               [24] 1549 	movx	a,@dptr
+      0006CB 14               [12] 1550 	dec	a
+      0006CC F0               [24] 1551 	movx	@dptr,a
+      0006CD 80 0F            [24] 1552 	sjmp	00214$
+      0006CF                       1553 00208$:
+                                   1554 ;	printf_large.c:811: else if (prefix_space)
+      0006CF 30*04 0C         [24] 1555 	jnb	__print_format_prefix_space_1_53,00214$
+                                   1556 ;	printf_large.c:813: OUTPUT_CHAR( ' ', p );
+      0006D2 75 82 20         [24] 1557 	mov	dpl,#0x20
+      0006D5 12r00r00         [24] 1558 	lcall	__output_char
+                                   1559 ;	printf_large.c:815: width--;
+      0006D8 90r00r1A         [24] 1560 	mov	dptr,#__print_format_width_1_53
+      0006DB E0               [24] 1561 	movx	a,@dptr
+      0006DC 14               [12] 1562 	dec	a
+      0006DD F0               [24] 1563 	movx	@dptr,a
+      0006DE                       1564 00214$:
+                                   1565 ;	printf_large.c:820: if (!left_justify)
+      0006DE 20*01 2A         [24] 1566 	jb	__print_format_left_justify_1_53,00222$
+                                   1567 ;	printf_large.c:822: while ( width-- > length )
+      0006E1 90r00r1C         [24] 1568 	mov	dptr,#__print_format_length_1_53
+      0006E4 E0               [24] 1569 	movx	a,@dptr
+      0006E5 FF               [12] 1570 	mov	r7,a
+      0006E6 90r00r1A         [24] 1571 	mov	dptr,#__print_format_width_1_53
+      0006E9 E0               [24] 1572 	movx	a,@dptr
+      0006EA FE               [12] 1573 	mov	r6,a
+      0006EB                       1574 00215$:
+      0006EB 8E 05            [24] 1575 	mov	ar5,r6
+      0006ED 1E               [12] 1576 	dec	r6
+      0006EE C3               [12] 1577 	clr	c
+      0006EF EF               [12] 1578 	mov	a,r7
+      0006F0 9D               [12] 1579 	subb	a,r5
+      0006F1 50 36            [24] 1580 	jnc	00334$
+                                   1581 ;	printf_large.c:824: OUTPUT_CHAR( zero_padding ? '0' : ' ', p );
+      0006F3 30*02 04         [24] 1582 	jnb	__print_format_zero_padding_1_53,00248$
+      0006F6 7D 30            [12] 1583 	mov	r5,#0x30
+      0006F8 80 02            [24] 1584 	sjmp	00249$
+      0006FA                       1585 00248$:
+      0006FA 7D 20            [12] 1586 	mov	r5,#0x20
+      0006FC                       1587 00249$:
+      0006FC 8D 82            [24] 1588 	mov	dpl,r5
+      0006FE C0 07            [24] 1589 	push	ar7
+      000700 C0 06            [24] 1590 	push	ar6
+      000702 12r00r00         [24] 1591 	lcall	__output_char
+      000705 D0 06            [24] 1592 	pop	ar6
+      000707 D0 07            [24] 1593 	pop	ar7
+      000709 80 E0            [24] 1594 	sjmp	00215$
+      00070B                       1595 00222$:
+                                   1596 ;	printf_large.c:830: if (width > length)
+      00070B 90r00r1A         [24] 1597 	mov	dptr,#__print_format_width_1_53
+      00070E E0               [24] 1598 	movx	a,@dptr
+      00070F FF               [12] 1599 	mov	r7,a
+      000710 90r00r1C         [24] 1600 	mov	dptr,#__print_format_length_1_53
+      000713 E0               [24] 1601 	movx	a,@dptr
+      000714 FD               [12] 1602 	mov	r5,a
+      000715 C3               [12] 1603 	clr	c
+      000716 9F               [12] 1604 	subb	a,r7
+      000717 50 09            [24] 1605 	jnc	00219$
+                                   1606 ;	printf_large.c:831: width -= length;
+      000719 90r00r1A         [24] 1607 	mov	dptr,#__print_format_width_1_53
+      00071C EF               [12] 1608 	mov	a,r7
+      00071D C3               [12] 1609 	clr	c
+      00071E 9D               [12] 1610 	subb	a,r5
+      00071F F0               [24] 1611 	movx	@dptr,a
+      000720 80 0C            [24] 1612 	sjmp	00326$
+      000722                       1613 00219$:
+                                   1614 ;	printf_large.c:833: width = 0;
+      000722 90r00r1A         [24] 1615 	mov	dptr,#__print_format_width_1_53
+      000725 E4               [12] 1616 	clr	a
+      000726 F0               [24] 1617 	movx	@dptr,a
+                                   1618 ;	printf_large.c:872: return charsOutputted;
+                                   1619 ;	printf_large.c:837: while( length-- )
+      000727 80 05            [24] 1620 	sjmp	00326$
+      000729                       1621 00334$:
+      000729 90r00r1A         [24] 1622 	mov	dptr,#__print_format_width_1_53
+      00072C EE               [12] 1623 	mov	a,r6
+      00072D F0               [24] 1624 	movx	@dptr,a
+      00072E                       1625 00326$:
+      00072E 90r00r24         [24] 1626 	mov	dptr,#__print_format_pstore_4_74
+      000731 E0               [24] 1627 	movx	a,@dptr
+      000732 FE               [12] 1628 	mov	r6,a
+      000733 A3               [24] 1629 	inc	dptr
+      000734 E0               [24] 1630 	movx	a,@dptr
+      000735 FF               [12] 1631 	mov	r7,a
+      000736 90r00r1C         [24] 1632 	mov	dptr,#__print_format_length_1_53
+      000739 E0               [24] 1633 	movx	a,@dptr
+      00073A FD               [12] 1634 	mov	r5,a
+      00073B                       1635 00227$:
+      00073B 8D 03            [24] 1636 	mov	ar3,r5
+      00073D 1D               [12] 1637 	dec	r5
+      00073E EB               [12] 1638 	mov	a,r3
+      00073F 60 3E            [24] 1639 	jz	00229$
+                                   1640 ;	printf_large.c:839: lsd = !lsd;
+      000741 B2*09            [12] 1641 	cpl	__print_format_lsd_1_53
+                                   1642 ;	printf_large.c:840: if (!lsd)
+      000743 20*09 14         [24] 1643 	jb	__print_format_lsd_1_53,00225$
+                                   1644 ;	printf_large.c:842: pstore++;
+      000746 0E               [12] 1645 	inc	r6
+      000747 BE 00 01         [24] 1646 	cjne	r6,#0x00,00582$
+      00074A 0F               [12] 1647 	inc	r7
+      00074B                       1648 00582$:
+                                   1649 ;	printf_large.c:843: value.byte[4] = *pstore >> 4;
+      00074B 8E 82            [24] 1650 	mov	dpl,r6
+      00074D 8F 83            [24] 1651 	mov	dph,r7
+      00074F E0               [24] 1652 	movx	a,@dptr
+      000750 C4               [12] 1653 	swap	a
+      000751 54 0F            [12] 1654 	anl	a,#0x0F
+      000753 FB               [12] 1655 	mov	r3,a
+      000754 90r00r09         [24] 1656 	mov	dptr,#(_value + 0x0004)
+      000757 F0               [24] 1657 	movx	@dptr,a
+      000758 80 0E            [24] 1658 	sjmp	00226$
+      00075A                       1659 00225$:
+                                   1660 ;	printf_large.c:847: value.byte[4] = *pstore & 0x0F;
+      00075A 8E 82            [24] 1661 	mov	dpl,r6
+      00075C 8F 83            [24] 1662 	mov	dph,r7
+      00075E E0               [24] 1663 	movx	a,@dptr
+      00075F FB               [12] 1664 	mov	r3,a
+      000760 53 03 0F         [24] 1665 	anl	ar3,#0x0F
+      000763 90r00r09         [24] 1666 	mov	dptr,#(_value + 0x0004)
+      000766 EB               [12] 1667 	mov	a,r3
+      000767 F0               [24] 1668 	movx	@dptr,a
+      000768                       1669 00226$:
+                                   1670 ;	printf_large.c:853: output_digit( value.byte[4] );
+      000768 90r00r09         [24] 1671 	mov	dptr,#(_value + 0x0004)
+      00076B E0               [24] 1672 	movx	a,@dptr
+      00076C F5 82            [12] 1673 	mov	dpl,a
+      00076E C0 07            [24] 1674 	push	ar7
+      000770 C0 06            [24] 1675 	push	ar6
+      000772 C0 05            [24] 1676 	push	ar5
+      000774 12r00r3B         [24] 1677 	lcall	_output_digit
+      000777 D0 05            [24] 1678 	pop	ar5
+      000779 D0 06            [24] 1679 	pop	ar6
+      00077B D0 07            [24] 1680 	pop	ar7
+      00077D 80 BC            [24] 1681 	sjmp	00227$
+      00077F                       1682 00229$:
+                                   1683 ;	printf_large.c:856: if (left_justify)
+      00077F 20*01 03         [24] 1684 	jb	__print_format_left_justify_1_53,00583$
+      000782 02r01r08         [24] 1685 	ljmp	00243$
+      000785                       1686 00583$:
+                                   1687 ;	printf_large.c:858: while (width-- > 0)
+      000785 90r00r1A         [24] 1688 	mov	dptr,#__print_format_width_1_53
+      000788 E0               [24] 1689 	movx	a,@dptr
+      000789 FF               [12] 1690 	mov	r7,a
+      00078A                       1691 00230$:
+      00078A 8F 06            [24] 1692 	mov	ar6,r7
+      00078C 1F               [12] 1693 	dec	r7
+      00078D EE               [12] 1694 	mov	a,r6
+      00078E 70 03            [24] 1695 	jnz	00584$
+      000790 02r01r08         [24] 1696 	ljmp	00243$
+      000793                       1697 00584$:
+                                   1698 ;	printf_large.c:860: OUTPUT_CHAR(' ', p);
+      000793 75 82 20         [24] 1699 	mov	dpl,#0x20
+      000796 C0 07            [24] 1700 	push	ar7
+      000798 12r00r00         [24] 1701 	lcall	__output_char
+      00079B D0 07            [24] 1702 	pop	ar7
+      00079D 80 EB            [24] 1703 	sjmp	00230$
+      00079F                       1704 00241$:
+                                   1705 ;	printf_large.c:868: OUTPUT_CHAR( c, p );
+      00079F 8C 82            [24] 1706 	mov	dpl,r4
+      0007A1 12r00r00         [24] 1707 	lcall	__output_char
+      0007A4 02r01r08         [24] 1708 	ljmp	00243$
+      0007A7                       1709 00245$:
+                                   1710 ;	printf_large.c:872: return charsOutputted;
+      0007A7 90r00r0A         [24] 1711 	mov	dptr,#_charsOutputted
+      0007AA E0               [24] 1712 	movx	a,@dptr
+      0007AB FE               [12] 1713 	mov	r6,a
+      0007AC A3               [24] 1714 	inc	dptr
+      0007AD E0               [24] 1715 	movx	a,@dptr
+      0007AE 8E 82            [24] 1716 	mov	dpl,r6
+      0007B0 F5 83            [12] 1717 	mov	dph,a
+      0007B2 22               [24] 1718 	ret
+                                   1719 	.area CSEG    (CODE)
+                                   1720 	.area CONST   (CODE)
+      000000                       1721 __str_0:
+      000000 3C 4E 4F 20 46 4C 4F  1722 	.ascii "<NO FLOAT>"
+             41 54 3E
+      00000A 00                    1723 	.db 0x00
+                                   1724 	.area XINIT   (CODE)
+                                   1725 	.area CABS    (ABS,CODE)

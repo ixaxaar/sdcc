@@ -1,0 +1,50 @@
+XL2
+H 9 areas 5 global symbols
+M _fs2schar
+O -mtlcs90
+S ___fs2slong Ref0000
+S .__.ABS. Def0000
+A _CODE size 0 flags 0 addr 0
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 4F flags 0 addr 0
+S ___fs2schar_start Def0000
+S ___fs2schar_end Def004F
+S ___fs2schar Def0000
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 04 00
+T 00 00
+R 00 00 04 00
+T 00 00 54 3C 00 00 FE 14 F2 06 4A 52 F2 06 4A 52
+R 00 00 04 00
+T 0E 00 1C 00 00 16 04 00 FD 31 FC 30 21 6A 7F 20
+R 00 00 04 00 02 03 00 00
+T 1C 00 6B 00 23 6B 00 22 A2 0E A3 6B 80 C7 04 35
+R 00 00 04 00
+T 2A 00 7F C8 20
+R 00 00 04 00
+T 2D 00
+R 00 00 04 00
+T 2D 00 36 80 F9 67 36 FF F8 63 36 FF FB 63 36 FF
+R 00 00 04 00
+T 3B 00 FA 63 EB 43 00 CC 6D 80
+R 00 00 04 00 00 05 04 00
+T 43 00
+R 00 00 04 00
+T 43 00 EB 4B 00 C5 35 80 C8 02
+R 00 00 04 00 00 03 04 00
+T 4B 00
+R 00 00 04 00
+T 4B 00 F9 35
+R 00 00 04 00
+T 4D 00
+R 00 00 04 00
+T 4D 00 5C 1E
+R 00 00 04 00
+T 4F 00
+R 00 00 04 00

@@ -1,0 +1,48 @@
+XL2
+H 9 areas 9 global symbols
+M _ispunct
+O -mtlcs90
+S _isspace Ref0000
+S _isdigit Ref0000
+S .__.ABS. Def0000
+S _islower Ref0000
+S _isupper Ref0000
+S _isprint Ref0000
+A _CODE size 66 flags 0 addr 0
+S _ispunct Def0000
+S _ispunct_start Def0000
+S _ispunct_end Def0066
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 00 00
+T 00 00
+R 00 00 00 00
+T 00 00 3A 02 00 FE 70 E2 2E 56 96 1C 00 00 96 25
+R 00 00 00 00 02 0C 05 00
+T 0E 00 FE 66 EB 63 00 C6 3A 02 00 FE 70 E2 2E 56
+R 00 00 00 00 00 05 00 00
+T 1C 00 96 1C 00 00 96 25 FE 66 EB 63 00 CE 3A
+R 00 00 00 00 02 04 03 00 00 0B 00 00
+T 29 00 02 00 FE 70 E2 2E 56 96 1C 00 00 96 25 FE
+R 00 00 00 00 02 0B 04 00
+T 37 00 66 EB 63 00 CE 3A 02 00 FE 70 E2 2E 56 96
+R 00 00 00 00 00 04 00 00
+T 45 00 1C 00 00 96 25 FE 66 CE 15 3A 02 00 FE 70
+R 00 00 00 00 02 03 00 00
+T 53 00 E2 2E 56 96 1C 00 00 96 25 FE 66 CE 03 35
+R 00 00 00 00 02 07 01 00
+T 61 00 01 1E
+R 00 00 00 00
+T 63 00
+R 00 00 00 00
+T 63 00 35 00 1E
+R 00 00 00 00
+T 66 00
+R 00 00 00 00

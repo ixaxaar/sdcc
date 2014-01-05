@@ -1,0 +1,86 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Toshiba TLCS90), page 1.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  2710 L
+    .__.ABS.                                                    =  0000 G
+    .__.CPU.                                                    =  0000 L
+    .__.H$L.                                                    =  0000 L
+  0 _CheckTime                                                     0053 R
+  0 _RtcRead                                                       0000 GR
+  0 _RtcRead_end                                                   0003 GR
+  0 _RtcRead_start                                                 0000 GR
+  2 ___day                                                         0024 GR
+  2 ___month                                                       000C GR
+    __divulong_rrx_s                                               **** GX
+    __modsint_rrx_s                                                **** GX
+    __modulong_rrx_s                                               **** GX
+    __mullong_rrx_s                                                **** GX
+  0 __str_0                                                        018A R
+  0 __str_1                                                        06FE R
+  0 __str_10                                                       0722 R
+  0 __str_11                                                       0726 R
+  0 __str_12                                                       072A R
+  0 __str_13                                                       072E R
+  0 __str_14                                                       0732 R
+  0 __str_15                                                       0736 R
+  0 __str_16                                                       073A R
+  0 __str_17                                                       073E R
+  0 __str_18                                                       0742 R
+  0 __str_19                                                       0746 R
+  0 __str_2                                                        0702 R
+  0 __str_3                                                        0706 R
+  0 __str_4                                                        070A R
+  0 __str_5                                                        070E R
+  0 __str_6                                                        0712 R
+  0 __str_7                                                        0716 R
+  0 __str_8                                                        071A R
+  0 __str_9                                                        071E R
+  7 __xinit____day                                                 0024 R
+  7 __xinit____month                                               000C R
+  7 __xinit__monthDays                                             0000 R
+  1 _ascTimeBuffer                                                 0000 R
+  0 _asctime                                                       00D7 GR
+  0 _asctime_end                                                   018A GR
+  0 _asctime_start                                                 00D7 GR
+  0 _ctime                                                         01A9 GR
+  0 _ctime_end                                                     01BC GR
+  0 _ctime_start                                                   01A9 GR
+  0 _gmtime                                                        01C8 GR
+  0 _gmtime_end                                                    0492 GR
+  0 _gmtime_start                                                  01C8 GR
+  1 _lastTime                                                      0020 R
+  0 _localtime                                                     01BC GR
+  0 _localtime_end                                                 01C8 GR
+  0 _localtime_start                                               01BC GR
+  0 _mktime                                                        0492 GR
+  0 _mktime_end                                                    06FE GR
+  0 _mktime_start                                                  0492 GR
+  2 _monthDays                                                     0000 R
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Toshiba TLCS90), page 2.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+    _sprintf                                                       **** GX
+  0 _time                                                          0003 GR
+  0 _time_end                                                      0053 GR
+  0 _time_start                                                    0003 GR
+
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Toshiba TLCS90), page 3.
+Hexadecimal [16-Bits]
+
+Area Table
+
+   0 _CODE                                      size  74A   flags    0
+   1 _DATA                                      size   2C   flags    0
+   2 _INITIALIZED                               size   32   flags    0
+   3 _DABS                                      size    0   flags    8
+   4 _HOME                                      size    0   flags    0
+   5 _GSINIT                                    size    0   flags    0
+   6 _GSFINAL                                   size    0   flags    0
+   7 _INITIALIZER                               size   32   flags    0
+   8 _CABS                                      size    0   flags    8
+

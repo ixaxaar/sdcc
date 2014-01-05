@@ -1,0 +1,28 @@
+XL2
+H 9 areas 5 global symbols
+M tanf
+O -mtlcs90
+S _tancotf Ref0000
+S .__.ABS. Def0000
+A _CODE size 13 flags 0 addr 0
+S _tanf Def0000
+S _tanf_start Def0000
+S _tanf_end Def0013
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 00 00
+T 00 00
+R 00 00 00 00
+T 00 00 FE 65 56 96 F2 05 4A 52 F2 05 4A 52 1C
+R 00 00 00 00
+T 0D 00 00 00 16 05 00 1E
+R 00 00 00 00 02 02 00 00
+T 13 00
+R 00 00 00 00

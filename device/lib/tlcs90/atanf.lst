@@ -1,0 +1,374 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                              4 ; This file was generated Wed Nov 27 12:28:22 2013
+                              5 ;--------------------------------------------------------
+                              6 	.module atanf
+                              7 	.optsdcc -mtlcs90
+                              8 	
+                              9 ;--------------------------------------------------------
+                             10 ; Public variables in this module
+                             11 ;--------------------------------------------------------
+                             12 	.globl _fabsf
+                             13 	.globl _atanf
+                             14 ;--------------------------------------------------------
+                             15 ; ram data
+                             16 ;--------------------------------------------------------
+                             17 	.area _DATA
+                             18 ;--------------------------------------------------------
+                             19 ; ram data
+                             20 ;--------------------------------------------------------
+                             21 	.area _INITIALIZED
+                             22 ;--------------------------------------------------------
+                             23 ; absolute external ram data
+                             24 ;--------------------------------------------------------
+                             25 	.area _DABS (ABS)
+                             26 ;--------------------------------------------------------
+                             27 ; global & static initialisations
+                             28 ;--------------------------------------------------------
+                             29 	.area _HOME
+                             30 	.area _GSINIT
+                             31 	.area _GSFINAL
+                             32 	.area _GSINIT
+                             33 ;--------------------------------------------------------
+                             34 ; Home
+                             35 ;--------------------------------------------------------
+                             36 	.area _HOME
+                             37 	.area _HOME
+                             38 ;--------------------------------------------------------
+                             39 ; code
+                             40 ;--------------------------------------------------------
+                             41 	.area _CODE
+                             42 ;../atanf.c:55: float atanf(const float x) _FLOAT_FUNC_REENTRANT
+                             43 ;	---------------------------------
+                             44 ; Function atanf
+                             45 ; ---------------------------------
+   0000                      46 _atanf_start::
+   0000                      47 _atanf:
+   0000 54            [ 4]   48 	push	ix
+   0001 3C 00 00      [ 4]   49 	ld	ix,#0
+   0004 FE 14         [ 7]   50 	add	ix,sp
+   0006 16 F2 FF      [ 7]   51 	add	sp, #-14
+                             52 ;../atanf.c:58: int n=0;
+   0009 3A 00 00      [13]   53 	ld	hl,#0x0000
+   000C E6 52         [ 7]   54 	ex	(sp), hl
+                             55 ;../atanf.c:61: f=fabsf(x);
+   000E F2 14 4A      [10]   56 	ld	hl, 20 (sp)
+   0011 52            [ 4]   57 	push	hl
+   0012 F2 14 4A      [10]   58 	ld	hl, 20 (sp)
+   0015 52            [ 4]   59 	push	hl
+   0016 1Cr00r00      [ 4]   60 	call	_fabsf
+   0019 16 04 00      [ 7]   61 	add	sp, #4
+   001C F4 F8 25      [17]   62 	ld	-8 (ix),l
+   001F F4 F9 24      [17]   63 	ld	-7 (ix),h
+   0022 F4 FA 23      [17]   64 	ld	-6 (ix),e
+   0025 F4 FB 22      [17]   65 	ld	-5 (ix),d
+                             66 ;../atanf.c:62: if(f>1.0)
+   0028 3A 80 3F      [13]   67 	ld	hl,#0x3F80
+   002B 52            [ 4]   68 	push	hl
+   002C 3A 00 00      [13]   69 	ld	hl,#0x0000
+   002F 52            [ 4]   70 	push	hl
+   0030 F2 0C 4A      [10]   71 	ld	hl, 12 (sp)
+   0033 52            [ 4]   72 	push	hl
+   0034 F2 0C 4A      [10]   73 	ld	hl, 12 (sp)
+   0037 52            [ 4]   74 	push	hl
+   0038 1Cr00r00      [ 4]   75 	call	___fsgt
+   003B 16 08 00      [ 7]   76 	add	sp, #8
+   003E 25            [ 4]   77 	ld	a,l
+   003F FE 66         [ 7]   78 	or	a, a
+   0041 C6 27         [ 7]   79 	jr	Z,00102$
+                             80 ;../atanf.c:64: f=1.0/f;
+   0043 F2 08 4A      [10]   81 	ld	hl, 8 (sp)
+   0046 52            [ 4]   82 	push	hl
+   0047 F2 08 4A      [10]   83 	ld	hl, 8 (sp)
+   004A 52            [ 4]   84 	push	hl
+   004B 3A 80 3F      [13]   85 	ld	hl,#0x3F80
+   004E 52            [ 4]   86 	push	hl
+   004F 3A 00 00      [13]   87 	ld	hl,#0x0000
+   0052 52            [ 4]   88 	push	hl
+   0053 1Cr00r00      [ 4]   89 	call	___fsdiv
+   0056 16 08 00      [ 7]   90 	add	sp, #8
+   0059 F4 F8 25      [17]   91 	ld	-8 (ix),l
+   005C F4 F9 24      [17]   92 	ld	-7 (ix),h
+   005F F4 FA 23      [17]   93 	ld	-6 (ix),e
+   0062 F4 FB 22      [17]   94 	ld	-5 (ix),d
+                             95 ;../atanf.c:65: n=2;
+   0065 3A 02 00      [13]   96 	ld	hl,#0x0002
+   0068 E6 52         [ 7]   97 	ex	(sp), hl
+   006A                      98 00102$:
+                             99 ;../atanf.c:67: if(f>K1)
+   006A 3A 89 3E      [13]  100 	ld	hl,#0x3E89
+   006D 52            [ 4]  101 	push	hl
+   006E 3A A3 30      [13]  102 	ld	hl,#0x30A3
+   0071 52            [ 4]  103 	push	hl
+   0072 F2 0C 4A      [10]  104 	ld	hl, 12 (sp)
+   0075 52            [ 4]  105 	push	hl
+   0076 F2 0C 4A      [10]  106 	ld	hl, 12 (sp)
+   0079 52            [ 4]  107 	push	hl
+   007A 1Cr00r00      [ 4]  108 	call	___fsgt
+   007D 16 08 00      [ 7]  109 	add	sp, #8
+   0080 25            [ 4]  110 	ld	a,l
+   0081 FE 66         [ 7]  111 	or	a, a
+   0083 EBr0Cr01 C6   [ 4]  112 	jp	Z,00104$
+                            113 ;../atanf.c:69: f=((K2*f-1.0)+f)/(K3+f);
+   0087 F2 08 4A      [10]  114 	ld	hl, 8 (sp)
+   008A 52            [ 4]  115 	push	hl
+   008B F2 08 4A      [10]  116 	ld	hl, 8 (sp)
+   008E 52            [ 4]  117 	push	hl
+   008F 3A 3B 3F      [13]  118 	ld	hl,#0x3F3B
+   0092 52            [ 4]  119 	push	hl
+   0093 3A AF 67      [13]  120 	ld	hl,#0x67AF
+   0096 52            [ 4]  121 	push	hl
+   0097 1Cr00r00      [ 4]  122 	call	___fsmul
+   009A 16 08 00      [ 7]  123 	add	sp, #8
+   009D FD 31               124 	ld	c,l
+   009F FC 30         [17]  125 	ld	b,h
+   00A1 3A 80 3F      [13]  126 	ld	hl,#0x3F80
+   00A4 52            [ 4]  127 	push	hl
+   00A5 3A 00 00      [13]  128 	ld	hl,#0x0000
+   00A8 52            [ 4]  129 	push	hl
+   00A9 51            [ 4]  130 	push	de
+   00AA 50            [ 4]  131 	push	bc
+   00AB 1Cr00r00      [ 4]  132 	call	___fssub
+   00AE 16 08 00      [ 7]  133 	add	sp, #8
+   00B1 FD 31               134 	ld	c,l
+   00B3 FC 30         [17]  135 	ld	b,h
+   00B5 F2 08 4A      [10]  136 	ld	hl, 8 (sp)
+   00B8 52            [ 4]  137 	push	hl
+   00B9 F2 08 4A      [10]  138 	ld	hl, 8 (sp)
+   00BC 52            [ 4]  139 	push	hl
+   00BD 51            [ 4]  140 	push	de
+   00BE 50            [ 4]  141 	push	bc
+   00BF 1Cr00r00      [ 4]  142 	call	___fsadd
+   00C2 16 08 00      [ 7]  143 	add	sp, #8
+   00C5 F4 FF 22      [17]  144 	ld	-1 (ix),d
+   00C8 F4 FE 23      [17]  145 	ld	-2 (ix),e
+   00CB F4 FD 24      [17]  146 	ld	-3 (ix),h
+   00CE F4 FC 25      [17]  147 	ld	-4 (ix),l
+   00D1 3A DD 3F      [13]  148 	ld	hl,#0x3FDD
+   00D4 52            [ 4]  149 	push	hl
+   00D5 3A D7 B3      [13]  150 	ld	hl,#0xB3D7
+   00D8 52            [ 4]  151 	push	hl
+   00D9 F2 0C 4A      [10]  152 	ld	hl, 12 (sp)
+   00DC 52            [ 4]  153 	push	hl
+   00DD F2 0C 4A      [10]  154 	ld	hl, 12 (sp)
+   00E0 52            [ 4]  155 	push	hl
+   00E1 1Cr00r00      [ 4]  156 	call	___fsadd
+   00E4 16 08 00      [ 7]  157 	add	sp, #8
+   00E7 08            [ 4]  158 	ex	de, hl
+   00E8 52            [ 4]  159 	push	hl
+   00E9 51            [ 4]  160 	push	de
+   00EA F2 10 4A      [10]  161 	ld	hl, 16 (sp)
+   00ED 52            [ 4]  162 	push	hl
+   00EE F2 10 4A      [10]  163 	ld	hl, 16 (sp)
+   00F1 52            [ 4]  164 	push	hl
+   00F2 1Cr00r00      [ 4]  165 	call	___fsdiv
+   00F5 16 08 00      [ 7]  166 	add	sp, #8
+   00F8 F4 F8 25      [17]  167 	ld	-8 (ix),l
+   00FB F4 F9 24      [17]  168 	ld	-7 (ix),h
+   00FE F4 FA 23      [17]  169 	ld	-6 (ix),e
+   0101 F4 FB 22      [17]  170 	ld	-5 (ix),d
+                            171 ;../atanf.c:73: n++;
+   0104 F0 F2 87      [11]  172 	inc	-14 (ix)
+   0107 CE 03         [ 7]  173 	jr	NZ,00134$
+   0109 F0 F3 87      [11]  174 	inc	-13 (ix)
+   010C                     175 00134$:
+   010C                     176 00104$:
+                            177 ;../atanf.c:75: if(fabsf(f)<EPS) r=f;
+   010C F2 08 4A      [10]  178 	ld	hl, 8 (sp)
+   010F 52            [ 4]  179 	push	hl
+   0110 F2 08 4A      [10]  180 	ld	hl, 8 (sp)
+   0113 52            [ 4]  181 	push	hl
+   0114 1Cr00r00      [ 4]  182 	call	_fabsf
+   0117 16 04 00      [ 7]  183 	add	sp, #4
+   011A FD 31               184 	ld	c,l
+   011C FC 30         [17]  185 	ld	b,h
+   011E 3A 80 39      [13]  186 	ld	hl,#0x3980
+   0121 52            [ 4]  187 	push	hl
+   0122 3A 00 00      [13]  188 	ld	hl,#0x0000
+   0125 52            [ 4]  189 	push	hl
+   0126 51            [ 4]  190 	push	de
+   0127 50            [ 4]  191 	push	bc
+   0128 1Cr00r00      [ 4]  192 	call	___fslt
+   012B 16 08 00      [ 7]  193 	add	sp, #8
+   012E 25            [ 4]  194 	ld	a,l
+   012F FE 66         [ 7]  195 	or	a, a
+   0131 C6 0F         [ 7]  196 	jr	Z,00106$
+   0133 F0 F8 29      [11]  197 	ld	c,-8 (ix)
+   0136 F0 F9 28      [11]  198 	ld	b,-7 (ix)
+   0139 F0 FA 2B      [11]  199 	ld	e,-6 (ix)
+   013C F0 FB 2A      [11]  200 	ld	d,-5 (ix)
+   013F 1ArFEr01      [ 7]  201 	jp	00107$
+   0142                     202 00106$:
+                            203 ;../atanf.c:78: g=f*f;
+   0142 F2 08 4A      [10]  204 	ld	hl, 8 (sp)
+   0145 52            [ 4]  205 	push	hl
+   0146 F2 08 4A      [10]  206 	ld	hl, 8 (sp)
+   0149 52            [ 4]  207 	push	hl
+   014A F2 0C 4A      [10]  208 	ld	hl, 12 (sp)
+   014D 52            [ 4]  209 	push	hl
+   014E F2 0C 4A      [10]  210 	ld	hl, 12 (sp)
+   0151 52            [ 4]  211 	push	hl
+   0152 1Cr00r00      [ 4]  212 	call	___fsmul
+   0155 16 08 00      [ 7]  213 	add	sp, #8
+   0158 F4 F4 25      [17]  214 	ld	-12 (ix),l
+   015B F4 F5 24      [17]  215 	ld	-11 (ix),h
+   015E F4 F6 23      [17]  216 	ld	-10 (ix),e
+   0161 F4 F7 22      [17]  217 	ld	-9 (ix),d
+                            218 ;../atanf.c:79: r=f+P(g,f)/Q(g);
+   0164 F2 04 4A      [10]  219 	ld	hl, 4 (sp)
+   0167 52            [ 4]  220 	push	hl
+   0168 F2 04 4A      [10]  221 	ld	hl, 4 (sp)
+   016B 52            [ 4]  222 	push	hl
+   016C 3A 50 BD      [13]  223 	ld	hl,#0xBD50
+   016F 52            [ 4]  224 	push	hl
+   0170 3A 91 86      [13]  225 	ld	hl,#0x8691
+   0173 52            [ 4]  226 	push	hl
+   0174 1Cr00r00      [ 4]  227 	call	___fsmul
+   0177 16 08 00      [ 7]  228 	add	sp, #8
+   017A FD 31               229 	ld	c,l
+   017C FC 30         [17]  230 	ld	b,h
+   017E 3A F1 BE      [13]  231 	ld	hl,#0xBEF1
+   0181 52            [ 4]  232 	push	hl
+   0182 3A F6 10      [13]  233 	ld	hl,#0x10F6
+   0185 52            [ 4]  234 	push	hl
+   0186 51            [ 4]  235 	push	de
+   0187 50            [ 4]  236 	push	bc
+   0188 1Cr00r00      [ 4]  237 	call	___fsadd
+   018B 16 08 00      [ 7]  238 	add	sp, #8
+   018E FD 31               239 	ld	c,l
+   0190 FC 30         [17]  240 	ld	b,h
+   0192 F2 04 4A      [10]  241 	ld	hl, 4 (sp)
+   0195 52            [ 4]  242 	push	hl
+   0196 F2 04 4A      [10]  243 	ld	hl, 4 (sp)
+   0199 52            [ 4]  244 	push	hl
+   019A 51            [ 4]  245 	push	de
+   019B 50            [ 4]  246 	push	bc
+   019C 1Cr00r00      [ 4]  247 	call	___fsmul
+   019F 16 08 00      [ 7]  248 	add	sp, #8
+   01A2 FD 31               249 	ld	c,l
+   01A4 FC 30         [17]  250 	ld	b,h
+   01A6 F2 08 4A      [10]  251 	ld	hl, 8 (sp)
+   01A9 52            [ 4]  252 	push	hl
+   01AA F2 08 4A      [10]  253 	ld	hl, 8 (sp)
+   01AD 52            [ 4]  254 	push	hl
+   01AE 51            [ 4]  255 	push	de
+   01AF 50            [ 4]  256 	push	bc
+   01B0 1Cr00r00      [ 4]  257 	call	___fsmul
+   01B3 16 08 00      [ 7]  258 	add	sp, #8
+   01B6 F4 FF 22      [17]  259 	ld	-1 (ix),d
+   01B9 F4 FE 23      [17]  260 	ld	-2 (ix),e
+   01BC F4 FD 24      [17]  261 	ld	-3 (ix),h
+   01BF F4 FC 25      [17]  262 	ld	-4 (ix),l
+   01C2 3A B4 3F      [13]  263 	ld	hl,#0x3FB4
+   01C5 52            [ 4]  264 	push	hl
+   01C6 3A D3 CC      [13]  265 	ld	hl,#0xCCD3
+   01C9 52            [ 4]  266 	push	hl
+   01CA F2 08 4A      [10]  267 	ld	hl, 8 (sp)
+   01CD 52            [ 4]  268 	push	hl
+   01CE F2 08 4A      [10]  269 	ld	hl, 8 (sp)
+   01D1 52            [ 4]  270 	push	hl
+   01D2 1Cr00r00      [ 4]  271 	call	___fsadd
+   01D5 16 08 00      [ 7]  272 	add	sp, #8
+   01D8 08            [ 4]  273 	ex	de, hl
+   01D9 52            [ 4]  274 	push	hl
+   01DA 51            [ 4]  275 	push	de
+   01DB F2 10 4A      [10]  276 	ld	hl, 16 (sp)
+   01DE 52            [ 4]  277 	push	hl
+   01DF F2 10 4A      [10]  278 	ld	hl, 16 (sp)
+   01E2 52            [ 4]  279 	push	hl
+   01E3 1Cr00r00      [ 4]  280 	call	___fsdiv
+   01E6 16 08 00      [ 7]  281 	add	sp, #8
+   01E9 08            [ 4]  282 	ex	de, hl
+   01EA 52            [ 4]  283 	push	hl
+   01EB 51            [ 4]  284 	push	de
+   01EC F2 0C 4A      [10]  285 	ld	hl, 12 (sp)
+   01EF 52            [ 4]  286 	push	hl
+   01F0 F2 0C 4A      [10]  287 	ld	hl, 12 (sp)
+   01F3 52            [ 4]  288 	push	hl
+   01F4 1Cr00r00      [ 4]  289 	call	___fsadd
+   01F7 16 08 00      [ 7]  290 	add	sp, #8
+   01FA FD 31               291 	ld	c,l
+   01FC FC 30         [17]  292 	ld	b,h
+   01FE                     293 00107$:
+                            294 ;../atanf.c:81: if(n>1) r=-r;
+   01FE 36 01         [10]  295 	ld	a,#0x01
+   0200 F0 F2 67      [11]  296 	cp	a, -14 (ix)
+   0203 36 00         [10]  297 	ld	a,#0x00
+   0205 F0 F3 63      [11]  298 	sbc	a, -13 (ix)
+   0208 EBr0Er02 CC   [ 4]  299 	jp	PO, 00135$
+   020C 6D 80         [ 4]  300 	xor	a, #0x80
+   020E                     301 00135$:
+   020E EBr16r02 CD   [ 4]  302 	jp	P,00109$
+   0212 22            [16]  303 	ld	a,d
+   0213 6D 80         [ 4]  304 	xor	a,#0x80
+   0215 2A            [16]  305 	ld	d,a
+   0216                     306 00109$:
+                            307 ;../atanf.c:82: r+=a[n];
+   0216 5A            [ 4]  308 	pop	hl
+   0217 52            [ 4]  309 	push	hl
+   0218 FA 70         [10]  310 	add	hl, hl
+   021A FA 70         [10]  311 	add	hl, hl
+   021C 36r75         [10]  312 	ld	a,#<(_atanf_a_1_24)
+   021E FD 60               313 	add	a, l
+   0220 2D            [ 4]  314 	ld	l,a
+   0221 36s02         [10]  315 	ld	a,#>(_atanf_a_1_24)
+   0223 FC 61         [17]  316 	adc	a, h
+   0225 2C            [ 4]  317 	ld	h,a
+   0226 51            [ 4]  318 	push	de
+   0227 50            [ 4]  319 	push	bc
+   0228 08            [ 4]  320 	ex	de,hl
+   0229 3A 0E 00      [13]  321 	ld	hl, #0x000E
+   022C FE 70         [ 7]  322 	add	hl, sp
+   022E 08            [ 4]  323 	ex	de, hl
+   022F 38 04 00      [12]  324 	ld	bc, #0x0004
+   0232 FE 59         [ 7]  325 	ldir
+   0234 58            [ 4]  326 	pop	bc
+   0235 59            [ 4]  327 	pop	de
+   0236 F2 0C 4A      [10]  328 	ld	hl, 12 (sp)
+   0239 52            [ 4]  329 	push	hl
+   023A F2 0C 4A      [10]  330 	ld	hl, 12 (sp)
+   023D 52            [ 4]  331 	push	hl
+   023E 51            [ 4]  332 	push	de
+   023F 50            [ 4]  333 	push	bc
+   0240 1Cr00r00      [ 4]  334 	call	___fsadd
+   0243 16 08 00      [ 7]  335 	add	sp, #8
+   0246 FD 30               336 	ld	b,l
+   0248 FC 31         [17]  337 	ld	c,h
+                            338 ;../atanf.c:83: if(x<0.0) r=-r;
+   024A 50            [ 4]  339 	push	bc
+   024B 51            [ 4]  340 	push	de
+   024C 3A 00 00      [13]  341 	ld	hl,#0x0000
+   024F 52            [ 4]  342 	push	hl
+   0250 3A 00 00      [13]  343 	ld	hl,#0x0000
+   0253 52            [ 4]  344 	push	hl
+   0254 F2 1C 4A      [10]  345 	ld	hl, 28 (sp)
+   0257 52            [ 4]  346 	push	hl
+   0258 F2 1C 4A      [10]  347 	ld	hl, 28 (sp)
+   025B 52            [ 4]  348 	push	hl
+   025C 1Cr00r00      [ 4]  349 	call	___fslt
+   025F 16 08 00      [ 7]  350 	add	sp, #8
+   0262 25            [ 4]  351 	ld	a,l
+   0263 59            [ 4]  352 	pop	de
+   0264 58            [ 4]  353 	pop	bc
+   0265 FE 66         [ 7]  354 	or	a, a
+   0267 C6 04         [ 7]  355 	jr	Z,00111$
+   0269 22            [16]  356 	ld	a,d
+   026A 6D 80         [ 4]  357 	xor	a,#0x80
+   026C 2A            [16]  358 	ld	d,a
+   026D                     359 00111$:
+                            360 ;../atanf.c:84: return r;
+   026D F8 35         [11]  361 	ld	l,b
+   026F F9 34         [ 6]  362 	ld	h,c
+   0271 FC 3E         [17]  363 	ld	sp, ix
+   0273 5C            [ 4]  364 	pop	ix
+   0274 1E            [ 7]  365 	ret
+   0275                     366 _atanf_end::
+   0275                     367 _atanf_a_1_24:
+   0275 00 00 00 00         368 	.byte #0x00,#0x00,#0x00,#0x00	;  0.000000e+00
+   0279 92 0A 06 3F         369 	.byte #0x92,#0x0A,#0x06,#0x3F	;  5.235988e-01
+   027D DB 0F C9 3F         370 	.byte #0xDB,#0x0F,#0xC9,#0x3F	;  1.570796e+00
+   0281 92 0A 86 3F         371 	.byte #0x92,#0x0A,#0x86,#0x3F	;  1.047198e+00
+                            372 	.area _CODE
+                            373 	.area _INITIALIZER
+                            374 	.area _CABS (ABS)

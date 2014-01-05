@@ -1,0 +1,40 @@
+XL2
+H 9 areas 5 global symbols
+M assert
+O -mtlcs90
+S .__.ABS. Def0000
+S _printf Ref0000
+A _CODE size 42 flags 0 addr 0
+S __assert Def0000
+S __assert_start Def0000
+S __assert_end Def0018
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 00 00
+T 00 00
+R 00 00 00 00
+T 00 00 39 18 00 F2 04 4A 52 F2 08 4A 52 F2 06 4A
+R 00 00 00 00 00 03 00 00
+T 0E 00 52 51 1C 00 00 16 08 00
+R 00 00 00 00 02 05 01 00
+T 16 00
+R 00 00 00 00
+T 16 00 C8 FE
+R 00 00 00 00
+T 18 00
+R 00 00 00 00
+T 18 00
+R 00 00 00 00
+T 18 00 41 73 73 65 72 74 28 25 73 29 20 66 61 69
+R 00 00 00 00
+T 26 00 6C 65 64 20 61 74 20 6C 69 6E 65 20 25 75
+R 00 00 00 00
+T 34 00 20 69 6E 20 66 69 6C 65 20 25 73 2E 0A 00
+R 00 00 00 00

@@ -1,0 +1,28 @@
+XL2
+H 9 areas 5 global symbols
+M _schar2fs
+O -mtlcs90
+S ___slong2fs Ref0000
+S .__.ABS. Def0000
+A _CODE size 0 flags 0 addr 0
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 18 flags 0 addr 0
+S ___schar2fs_start Def0000
+S ___schar2fs_end Def0018
+S ___schar2fs Def0000
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 04 00
+T 00 00
+R 00 00 04 00
+T 00 00 3D 02 00 FE 15 E5 2D E5 2E A2 FE 63 2C 2B
+R 00 00 04 00
+T 0E 00 2A 51 52 1C 00 00 16 04 00 1E
+R 00 00 04 00 02 06 00 00
+T 18 00
+R 00 00 04 00

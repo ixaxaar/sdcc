@@ -1,0 +1,35 @@
+XL2
+H 9 areas 4 global symbols
+M labs
+O -mtlcs90
+S .__.ABS. Def0000
+A _CODE size 33 flags 0 addr 0
+S _labs Def0000
+S _labs_start Def0000
+S _labs_end Def0033
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 00 00
+T 00 00
+R 00 00 00 00
+T 00 00 3D 02 00 FE 15 F1 03 AF C6 18 FE 65 E5 62
+R 00 00 00 00
+T 0E 00 2D 36 00 F1 01 63 2C 36 00 F1 02 63 2B 36
+R 00 00 00 00
+T 1C 00 00 F1 03 63 2A 1E
+R 00 00 00 00
+T 22 00
+R 00 00 00 00
+T 22 00 3D 02 00 FE 15 E5 2D F1 01 2C F1 02 2B F1
+R 00 00 00 00
+T 30 00 03 2A 1E
+R 00 00 00 00
+T 33 00
+R 00 00 00 00

@@ -1,0 +1,208 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                                      4 ; This file was generated Wed Nov 27 12:27:57 2013
+                                      5 ;--------------------------------------------------------
+                                      6 	.module _memcpy
+                                      7 	.optsdcc -mmcs51 --model-large
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl _memcpy_PARM_3
+                                     13 	.globl _memcpy_PARM_2
+                                     14 	.globl _memcpy
+                                     15 ;--------------------------------------------------------
+                                     16 ; special function registers
+                                     17 ;--------------------------------------------------------
+                                     18 	.area RSEG    (ABS,DATA)
+      000000                         19 	.org 0x0000
+                                     20 ;--------------------------------------------------------
+                                     21 ; special function bits
+                                     22 ;--------------------------------------------------------
+                                     23 	.area RSEG    (ABS,DATA)
+      000000                         24 	.org 0x0000
+                                     25 ;--------------------------------------------------------
+                                     26 ; overlayable register banks
+                                     27 ;--------------------------------------------------------
+                                     28 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         29 	.ds 8
+                                     30 ;--------------------------------------------------------
+                                     31 ; internal ram data
+                                     32 ;--------------------------------------------------------
+                                     33 	.area DSEG    (DATA)
+                                     34 ;--------------------------------------------------------
+                                     35 ; overlayable items in internal ram 
+                                     36 ;--------------------------------------------------------
+                                     37 	.area	OSEG    (OVR,DATA)
+      000000                         38 _memcpy_sloc0_1_0:
+      000000                         39 	.ds 3
+      000003                         40 _memcpy_sloc1_1_0:
+      000003                         41 	.ds 2
+                                     42 ;--------------------------------------------------------
+                                     43 ; indirectly addressable internal ram data
+                                     44 ;--------------------------------------------------------
+                                     45 	.area ISEG    (DATA)
+                                     46 ;--------------------------------------------------------
+                                     47 ; absolute internal ram data
+                                     48 ;--------------------------------------------------------
+                                     49 	.area IABS    (ABS,DATA)
+                                     50 	.area IABS    (ABS,DATA)
+                                     51 ;--------------------------------------------------------
+                                     52 ; bit data
+                                     53 ;--------------------------------------------------------
+                                     54 	.area BSEG    (BIT)
+                                     55 ;--------------------------------------------------------
+                                     56 ; paged external ram data
+                                     57 ;--------------------------------------------------------
+                                     58 	.area PSEG    (PAG,XDATA)
+                                     59 ;--------------------------------------------------------
+                                     60 ; external ram data
+                                     61 ;--------------------------------------------------------
+                                     62 	.area XSEG    (XDATA)
+      000000                         63 _memcpy_PARM_2:
+      000000                         64 	.ds 3
+      000003                         65 _memcpy_PARM_3:
+      000003                         66 	.ds 2
+      000005                         67 _memcpy_dst_1_21:
+      000005                         68 	.ds 3
+                                     69 ;--------------------------------------------------------
+                                     70 ; absolute external ram data
+                                     71 ;--------------------------------------------------------
+                                     72 	.area XABS    (ABS,XDATA)
+                                     73 ;--------------------------------------------------------
+                                     74 ; external initialized ram data
+                                     75 ;--------------------------------------------------------
+                                     76 	.area XISEG   (XDATA)
+                                     77 	.area HOME    (CODE)
+                                     78 	.area GSINIT0 (CODE)
+                                     79 	.area GSINIT1 (CODE)
+                                     80 	.area GSINIT2 (CODE)
+                                     81 	.area GSINIT3 (CODE)
+                                     82 	.area GSINIT4 (CODE)
+                                     83 	.area GSINIT5 (CODE)
+                                     84 	.area GSINIT  (CODE)
+                                     85 	.area GSFINAL (CODE)
+                                     86 	.area CSEG    (CODE)
+                                     87 ;--------------------------------------------------------
+                                     88 ; global & static initialisations
+                                     89 ;--------------------------------------------------------
+                                     90 	.area HOME    (CODE)
+                                     91 	.area GSINIT  (CODE)
+                                     92 	.area GSFINAL (CODE)
+                                     93 	.area GSINIT  (CODE)
+                                     94 ;--------------------------------------------------------
+                                     95 ; Home
+                                     96 ;--------------------------------------------------------
+                                     97 	.area HOME    (CODE)
+                                     98 	.area HOME    (CODE)
+                                     99 ;--------------------------------------------------------
+                                    100 ; code
+                                    101 ;--------------------------------------------------------
+                                    102 	.area CSEG    (CODE)
+                                    103 ;------------------------------------------------------------
+                                    104 ;Allocation info for local variables in function 'memcpy'
+                                    105 ;------------------------------------------------------------
+                                    106 ;src                       Allocated with name '_memcpy_PARM_2'
+                                    107 ;acount                    Allocated with name '_memcpy_PARM_3'
+                                    108 ;dst                       Allocated with name '_memcpy_dst_1_21'
+                                    109 ;ret                       Allocated with name '_memcpy_ret_1_22'
+                                    110 ;d                         Allocated with name '_memcpy_d_1_22'
+                                    111 ;s                         Allocated with name '_memcpy_s_1_22'
+                                    112 ;sloc0                     Allocated with name '_memcpy_sloc0_1_0'
+                                    113 ;sloc1                     Allocated with name '_memcpy_sloc1_1_0'
+                                    114 ;------------------------------------------------------------
+                                    115 ;	_memcpy.c:36: void * memcpy (
+                                    116 ;	-----------------------------------------
+                                    117 ;	 function memcpy
+                                    118 ;	-----------------------------------------
+      000000                        119 _memcpy:
+                           000007   120 	ar7 = 0x07
+                           000006   121 	ar6 = 0x06
+                           000005   122 	ar5 = 0x05
+                           000004   123 	ar4 = 0x04
+                           000003   124 	ar3 = 0x03
+                           000002   125 	ar2 = 0x02
+                           000001   126 	ar1 = 0x01
+                           000000   127 	ar0 = 0x00
+      000000 AF F0            [24]  128 	mov	r7,b
+      000002 AE 83            [24]  129 	mov	r6,dph
+      000004 E5 82            [12]  130 	mov	a,dpl
+      000006 90r00r05         [24]  131 	mov	dptr,#_memcpy_dst_1_21
+      000009 F0               [24]  132 	movx	@dptr,a
+      00000A EE               [12]  133 	mov	a,r6
+      00000B A3               [24]  134 	inc	dptr
+      00000C F0               [24]  135 	movx	@dptr,a
+      00000D EF               [12]  136 	mov	a,r7
+      00000E A3               [24]  137 	inc	dptr
+      00000F F0               [24]  138 	movx	@dptr,a
+                                    139 ;	_memcpy.c:42: void * ret = dst;
+      000010 90r00r05         [24]  140 	mov	dptr,#_memcpy_dst_1_21
+      000013 E0               [24]  141 	movx	a,@dptr
+      000014 F5*00            [12]  142 	mov	_memcpy_sloc0_1_0,a
+      000016 A3               [24]  143 	inc	dptr
+      000017 E0               [24]  144 	movx	a,@dptr
+      000018 F5*01            [12]  145 	mov	(_memcpy_sloc0_1_0 + 1),a
+      00001A A3               [24]  146 	inc	dptr
+      00001B E0               [24]  147 	movx	a,@dptr
+      00001C F5*02            [12]  148 	mov	(_memcpy_sloc0_1_0 + 2),a
+                                    149 ;	_memcpy.c:43: char * d = dst;
+      00001E AA*00            [24]  150 	mov	r2,_memcpy_sloc0_1_0
+      000020 AB*01            [24]  151 	mov	r3,(_memcpy_sloc0_1_0 + 1)
+      000022 AC*02            [24]  152 	mov	r4,(_memcpy_sloc0_1_0 + 2)
+                                    153 ;	_memcpy.c:44: char * s = src;
+      000024 90r00r00         [24]  154 	mov	dptr,#_memcpy_PARM_2
+      000027 E0               [24]  155 	movx	a,@dptr
+      000028 F8               [12]  156 	mov	r0,a
+      000029 A3               [24]  157 	inc	dptr
+      00002A E0               [24]  158 	movx	a,@dptr
+      00002B F9               [12]  159 	mov	r1,a
+      00002C A3               [24]  160 	inc	dptr
+      00002D E0               [24]  161 	movx	a,@dptr
+      00002E FF               [12]  162 	mov	r7,a
+                                    163 ;	_memcpy.c:49: while (acount--) {
+      00002F 90r00r03         [24]  164 	mov	dptr,#_memcpy_PARM_3
+      000032 E0               [24]  165 	movx	a,@dptr
+      000033 F5*03            [12]  166 	mov	_memcpy_sloc1_1_0,a
+      000035 A3               [24]  167 	inc	dptr
+      000036 E0               [24]  168 	movx	a,@dptr
+      000037 F5*04            [12]  169 	mov	(_memcpy_sloc1_1_0 + 1),a
+      000039                        170 00101$:
+      000039 AD*03            [24]  171 	mov	r5,_memcpy_sloc1_1_0
+      00003B AE*04            [24]  172 	mov	r6,(_memcpy_sloc1_1_0 + 1)
+      00003D 15*03            [12]  173 	dec	_memcpy_sloc1_1_0
+      00003F 74 FF            [12]  174 	mov	a,#0xFF
+      000041 B5*03 02         [24]  175 	cjne	a,_memcpy_sloc1_1_0,00113$
+      000044 15*04            [12]  176 	dec	(_memcpy_sloc1_1_0 + 1)
+      000046                        177 00113$:
+      000046 ED               [12]  178 	mov	a,r5
+      000047 4E               [12]  179 	orl	a,r6
+      000048 60 20            [24]  180 	jz	00103$
+                                    181 ;	_memcpy.c:50: *d++ = *s++;
+      00004A 88 82            [24]  182 	mov	dpl,r0
+      00004C 89 83            [24]  183 	mov	dph,r1
+      00004E 8F F0            [24]  184 	mov	b,r7
+      000050 12r00r00         [24]  185 	lcall	__gptrget
+      000053 FE               [12]  186 	mov	r6,a
+      000054 A3               [24]  187 	inc	dptr
+      000055 A8 82            [24]  188 	mov	r0,dpl
+      000057 A9 83            [24]  189 	mov	r1,dph
+      000059 8A 82            [24]  190 	mov	dpl,r2
+      00005B 8B 83            [24]  191 	mov	dph,r3
+      00005D 8C F0            [24]  192 	mov	b,r4
+      00005F EE               [12]  193 	mov	a,r6
+      000060 12r00r00         [24]  194 	lcall	__gptrput
+      000063 A3               [24]  195 	inc	dptr
+      000064 AA 82            [24]  196 	mov	r2,dpl
+      000066 AB 83            [24]  197 	mov	r3,dph
+      000068 80 CF            [24]  198 	sjmp	00101$
+      00006A                        199 00103$:
+                                    200 ;	_memcpy.c:53: return(ret);
+      00006A 85*00 82         [24]  201 	mov	dpl,_memcpy_sloc0_1_0
+      00006D 85*01 83         [24]  202 	mov	dph,(_memcpy_sloc0_1_0 + 1)
+      000070 85*02 F0         [24]  203 	mov	b,(_memcpy_sloc0_1_0 + 2)
+      000073 22               [24]  204 	ret
+                                    205 	.area CSEG    (CODE)
+                                    206 	.area CONST   (CODE)
+                                    207 	.area XINIT   (CODE)
+                                    208 	.area CABS    (ABS,CODE)

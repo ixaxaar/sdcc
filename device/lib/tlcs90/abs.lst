@@ -1,0 +1,61 @@
+                              1 ;--------------------------------------------------------------------------
+                              2 ;  abs.s
+                              3 ;
+                              4 ;  Copyright (C) 2010, Philipp Klaus Krause
+                              5 ;
+                              6 ;  This library is free software; you can redistribute it and/or modify it
+                              7 ;  under the terms of the GNU General Public License as published by the
+                              8 ;  Free Software Foundation; either version 2, or (at your option) any
+                              9 ;  later version.
+                             10 ;
+                             11 ;  This library is distributed in the hope that it will be useful,
+                             12 ;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                             13 ;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+                             14 ;  GNU General Public License for more details.
+                             15 ;
+                             16 ;  You should have received a copy of the GNU General Public License 
+                             17 ;  along with this library; see the file COPYING. If not, write to the
+                             18 ;  Free Software Foundation, 51 Franklin Street, Fifth Floor, Boston,
+                             19 ;   MA 02110-1301, USA.
+                             20 ;
+                             21 ;  As a special exception, if you link this library with other files,
+                             22 ;  some of which are compiled with SDCC, to produce an executable,
+                             23 ;  this library does not by itself cause the resulting executable to
+                             24 ;  be covered by the GNU General Public License. This exception does
+                             25 ;  not however invalidate any other reasons why the executable file
+                             26 ;   might be covered by the GNU General Public License.
+                             27 ;--------------------------------------------------------------------------
+                             28 
+                             29 	.area   _CODE
+                             30 
+                             31 	.globl _abs
+                             32 
+                             33 ; 12B; 86T for nonnegative arguments, 78T for negative.
+   0000                      34 _abs:
+   0000 5A            [ 4]   35 	pop	hl
+   0001 59            [ 4]   36 	pop	de
+   0002 51            [ 4]   37 	push	de
+   0003 52            [ 4]   38 	push	hl
+   0004 FE 65         [ 7]   39 	xor	a, a
+   0006 2D            [ 4]   40 	ld	l, a
+   0007 2C            [ 4]   41 	ld	h, a
+   0008 F9 73         [ 6]   42 	sbc	hl, de
+   000A FE DD         [ 7]   43 	ret	P
+   000C 08            [ 4]   44 	ex	de, hl
+   000D 1E            [ 7]   45 	ret
+                             46 
+                             47 ; 14B; 59T for nonegative arguments, 94T for negative:
+                             48 ;_abs:
+                             49 ;	pop	de
+                             50 ;	pop	hl
+                             51 ;	push	hl
+                             52 ;	push	de
+                             53 ;	bit	7, h
+                             54 ;	ret	Z
+                             55 ;	xor	a, a
+                             56 ;	ld	e, a
+                             57 ;	ld	d, a
+                             58 ;	ex	de, hl
+                             59 ;	sbc	hl, de
+                             60 ;	ret
+                             61 

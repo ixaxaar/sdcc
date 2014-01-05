@@ -1,0 +1,18 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Toshiba TLCS90), page 1.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+    .__.$$$.=  2710 L   |     .__.ABS.=  0000 G   |     .__.CPU.=  0000 L
+    .__.H$L.=  0000 L   |     __mul16    **** GX  |   0 __mulsch   003F GR
+  0 __mulsch   0035 GR  |   0 __mulsuc   0019 GR  |   0 __muluch   0000 GR
+  0 __mulusc   0027 GR  |   0 muluchar   0010 R   |   0 muluchar   0016 R
+  0 signexte   0046 R
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Toshiba TLCS90), page 2.
+Hexadecimal [16-Bits]
+
+Area Table
+
+   0 _CODE      size   4E   flags    0
+

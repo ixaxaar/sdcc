@@ -1,0 +1,35 @@
+XL2
+H 9 areas 4 global symbols
+M _memset
+O -mtlcs90
+S .__.ABS. Def0000
+A _CODE size 25 flags 0 addr 0
+S _memset_end Def0025
+S _memset Def0000
+S _memset_start Def0000
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 00 00
+T 00 00
+R 00 00 00 00
+T 00 00 54 3C 00 00 FE 14 F2 04 4A 08 F2 08 4A 08
+R 00 00 00 00
+T 0E 00
+R 00 00 00 00
+T 0E 00 FB 30 FA 31 99 21 F8 66 C6 08 F0 06 2E EA
+R 00 00 00 00
+T 1C 00 26 92 C8 EE
+R 00 00 00 00
+T 20 00
+R 00 00 00 00
+T 20 00 F2 04 4A 5C 1E
+R 00 00 00 00
+T 25 00
+R 00 00 00 00

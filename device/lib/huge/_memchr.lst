@@ -1,0 +1,229 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                                      4 ; This file was generated Wed Nov 27 12:28:01 2013
+                                      5 ;--------------------------------------------------------
+                                      6 	.module _memchr
+                                      7 	.optsdcc -mmcs51 --model-huge
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl _memchr_PARM_3
+                                     13 	.globl _memchr_PARM_2
+                                     14 	.globl _memchr
+                                     15 ;--------------------------------------------------------
+                                     16 ; special function registers
+                                     17 ;--------------------------------------------------------
+                                     18 	.area RSEG    (ABS,DATA)
+      000000                         19 	.org 0x0000
+                                     20 ;--------------------------------------------------------
+                                     21 ; special function bits
+                                     22 ;--------------------------------------------------------
+                                     23 	.area RSEG    (ABS,DATA)
+      000000                         24 	.org 0x0000
+                                     25 ;--------------------------------------------------------
+                                     26 ; overlayable register banks
+                                     27 ;--------------------------------------------------------
+                                     28 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         29 	.ds 8
+                                     30 ;--------------------------------------------------------
+                                     31 ; internal ram data
+                                     32 ;--------------------------------------------------------
+                                     33 	.area DSEG    (DATA)
+                                     34 ;--------------------------------------------------------
+                                     35 ; overlayable items in internal ram 
+                                     36 ;--------------------------------------------------------
+                                     37 	.area	OSEG    (OVR,DATA)
+      000000                         38 _memchr_sloc0_1_0:
+      000000                         39 	.ds 3
+                                     40 ;--------------------------------------------------------
+                                     41 ; indirectly addressable internal ram data
+                                     42 ;--------------------------------------------------------
+                                     43 	.area ISEG    (DATA)
+                                     44 ;--------------------------------------------------------
+                                     45 ; absolute internal ram data
+                                     46 ;--------------------------------------------------------
+                                     47 	.area IABS    (ABS,DATA)
+                                     48 	.area IABS    (ABS,DATA)
+                                     49 ;--------------------------------------------------------
+                                     50 ; bit data
+                                     51 ;--------------------------------------------------------
+                                     52 	.area BSEG    (BIT)
+                                     53 ;--------------------------------------------------------
+                                     54 ; paged external ram data
+                                     55 ;--------------------------------------------------------
+                                     56 	.area PSEG    (PAG,XDATA)
+                                     57 ;--------------------------------------------------------
+                                     58 ; external ram data
+                                     59 ;--------------------------------------------------------
+                                     60 	.area XSEG    (XDATA)
+      000000                         61 _memchr_PARM_2:
+      000000                         62 	.ds 2
+      000002                         63 _memchr_PARM_3:
+      000002                         64 	.ds 2
+      000004                         65 _memchr_s_1_21:
+      000004                         66 	.ds 3
+                                     67 ;--------------------------------------------------------
+                                     68 ; absolute external ram data
+                                     69 ;--------------------------------------------------------
+                                     70 	.area XABS    (ABS,XDATA)
+                                     71 ;--------------------------------------------------------
+                                     72 ; external initialized ram data
+                                     73 ;--------------------------------------------------------
+                                     74 	.area XISEG   (XDATA)
+                                     75 	.area HOME    (CODE)
+                                     76 	.area GSINIT0 (CODE)
+                                     77 	.area GSINIT1 (CODE)
+                                     78 	.area GSINIT2 (CODE)
+                                     79 	.area GSINIT3 (CODE)
+                                     80 	.area GSINIT4 (CODE)
+                                     81 	.area GSINIT5 (CODE)
+                                     82 	.area GSINIT  (CODE)
+                                     83 	.area GSFINAL (CODE)
+                                     84 	.area CSEG    (CODE)
+                                     85 ;--------------------------------------------------------
+                                     86 ; global & static initialisations
+                                     87 ;--------------------------------------------------------
+                                     88 	.area HOME    (CODE)
+                                     89 	.area GSINIT  (CODE)
+                                     90 	.area GSFINAL (CODE)
+                                     91 	.area GSINIT  (CODE)
+                                     92 ;--------------------------------------------------------
+                                     93 ; Home
+                                     94 ;--------------------------------------------------------
+                                     95 	.area HOME    (CODE)
+                                     96 	.area HOME    (CODE)
+                                     97 ;--------------------------------------------------------
+                                     98 ; code
+                                     99 ;--------------------------------------------------------
+                                    100 	.area CSEG    (CODE)
+                                    101 ;------------------------------------------------------------
+                                    102 ;Allocation info for local variables in function 'memchr'
+                                    103 ;------------------------------------------------------------
+                                    104 ;c                         Allocated with name '_memchr_PARM_2'
+                                    105 ;n                         Allocated with name '_memchr_PARM_3'
+                                    106 ;s                         Allocated with name '_memchr_s_1_21'
+                                    107 ;p                         Allocated with name '_memchr_p_1_22'
+                                    108 ;end                       Allocated with name '_memchr_end_1_22'
+                                    109 ;sloc0                     Allocated with name '_memchr_sloc0_1_0'
+                                    110 ;------------------------------------------------------------
+                                    111 ;	_memchr.c:31: void *memchr(const void *s, int c, size_t n)
+                                    112 ;	-----------------------------------------
+                                    113 ;	 function memchr
+                                    114 ;	-----------------------------------------
+      000000                        115 _memchr:
+                           000007   116 	ar7 = 0x07
+                           000006   117 	ar6 = 0x06
+                           000005   118 	ar5 = 0x05
+                           000004   119 	ar4 = 0x04
+                           000003   120 	ar3 = 0x03
+                           000002   121 	ar2 = 0x02
+                           000001   122 	ar1 = 0x01
+                           000000   123 	ar0 = 0x00
+      000000 AF F0            [24]  124 	mov	r7,b
+      000002 AE 83            [24]  125 	mov	r6,dph
+      000004 E5 82            [12]  126 	mov	a,dpl
+      000006 90r00r04         [24]  127 	mov	dptr,#_memchr_s_1_21
+      000009 F0               [24]  128 	movx	@dptr,a
+      00000A EE               [12]  129 	mov	a,r6
+      00000B A3               [24]  130 	inc	dptr
+      00000C F0               [24]  131 	movx	@dptr,a
+      00000D EF               [12]  132 	mov	a,r7
+      00000E A3               [24]  133 	inc	dptr
+      00000F F0               [24]  134 	movx	@dptr,a
+                                    135 ;	_memchr.c:33: unsigned char *p = (unsigned char *)s;
+      000010 90r00r04         [24]  136 	mov	dptr,#_memchr_s_1_21
+      000013 E0               [24]  137 	movx	a,@dptr
+      000014 FD               [12]  138 	mov	r5,a
+      000015 A3               [24]  139 	inc	dptr
+      000016 E0               [24]  140 	movx	a,@dptr
+      000017 FE               [12]  141 	mov	r6,a
+      000018 A3               [24]  142 	inc	dptr
+      000019 E0               [24]  143 	movx	a,@dptr
+      00001A FF               [12]  144 	mov	r7,a
+                                    145 ;	_memchr.c:34: unsigned char *end = p + n;
+      00001B 90r00r02         [24]  146 	mov	dptr,#_memchr_PARM_3
+      00001E E0               [24]  147 	movx	a,@dptr
+      00001F FB               [12]  148 	mov	r3,a
+      000020 A3               [24]  149 	inc	dptr
+      000021 E0               [24]  150 	movx	a,@dptr
+      000022 FC               [12]  151 	mov	r4,a
+      000023 EB               [12]  152 	mov	a,r3
+      000024 2D               [12]  153 	add	a,r5
+      000025 FB               [12]  154 	mov	r3,a
+      000026 EC               [12]  155 	mov	a,r4
+      000027 3E               [12]  156 	addc	a,r6
+      000028 FA               [12]  157 	mov	r2,a
+      000029 8F 04            [24]  158 	mov	ar4,r7
+                                    159 ;	_memchr.c:38: return(0);
+      00002B 90r00r00         [24]  160 	mov	dptr,#_memchr_PARM_2
+      00002E E0               [24]  161 	movx	a,@dptr
+      00002F F8               [12]  162 	mov	r0,a
+      000030 A3               [24]  163 	inc	dptr
+      000031 E0               [24]  164 	movx	a,@dptr
+      000032 F9               [12]  165 	mov	r1,a
+      000033 8D*00            [24]  166 	mov	_memchr_sloc0_1_0,r5
+      000035 8E*01            [24]  167 	mov	(_memchr_sloc0_1_0 + 1),r6
+      000037 8F*02            [24]  168 	mov	(_memchr_sloc0_1_0 + 2),r7
+      000039                        169 00105$:
+                                    170 ;	_memchr.c:35: for(; p != end; p++)
+      000039 C0*00            [24]  171 	push	_memchr_sloc0_1_0
+      00003B C0*01            [24]  172 	push	(_memchr_sloc0_1_0 + 1)
+      00003D C0*02            [24]  173 	push	(_memchr_sloc0_1_0 + 2)
+      00003F 8B 82            [24]  174 	mov	dpl,r3
+      000041 8A 83            [24]  175 	mov	dph,r2
+      000043 8C F0            [24]  176 	mov	b,r4
+      000045 12r00r00         [24]  177 	lcall	___gptr_cmp
+      000048 15 81            [12]  178 	dec	sp
+      00004A 15 81            [12]  179 	dec	sp
+      00004C 15 81            [12]  180 	dec	sp
+      00004E 60 44            [24]  181 	jz	00103$
+                                    182 ;	_memchr.c:36: if(*p == c)
+      000050 C0 03            [24]  183 	push	ar3
+      000052 C0 02            [24]  184 	push	ar2
+      000054 C0 04            [24]  185 	push	ar4
+      000056 85*00 82         [24]  186 	mov	dpl,_memchr_sloc0_1_0
+      000059 85*01 83         [24]  187 	mov	dph,(_memchr_sloc0_1_0 + 1)
+      00005C 85*02 F0         [24]  188 	mov	b,(_memchr_sloc0_1_0 + 2)
+      00005F 12r00r00         [24]  189 	lcall	__gptrget
+      000062 FC               [12]  190 	mov	r4,a
+      000063 7B 00            [12]  191 	mov	r3,#0x00
+      000065 B5 00 06         [24]  192 	cjne	a,ar0,00119$
+      000068 EB               [12]  193 	mov	a,r3
+      000069 B5 01 02         [24]  194 	cjne	a,ar1,00119$
+      00006C 80 08            [24]  195 	sjmp	00120$
+      00006E                        196 00119$:
+      00006E D0 04            [24]  197 	pop	ar4
+      000070 D0 02            [24]  198 	pop	ar2
+      000072 D0 03            [24]  199 	pop	ar3
+      000074 80 14            [24]  200 	sjmp	00106$
+      000076                        201 00120$:
+      000076 D0 04            [24]  202 	pop	ar4
+      000078 D0 02            [24]  203 	pop	ar2
+      00007A D0 03            [24]  204 	pop	ar3
+                                    205 ;	_memchr.c:37: return((void *)p);
+      00007C AD*00            [24]  206 	mov	r5,_memchr_sloc0_1_0
+      00007E AE*01            [24]  207 	mov	r6,(_memchr_sloc0_1_0 + 1)
+      000080 AF*02            [24]  208 	mov	r7,(_memchr_sloc0_1_0 + 2)
+      000082 8D 82            [24]  209 	mov	dpl,r5
+      000084 8E 83            [24]  210 	mov	dph,r6
+      000086 8F F0            [24]  211 	mov	b,r7
+      000088 80 10            [24]  212 	sjmp	00107$
+      00008A                        213 00106$:
+                                    214 ;	_memchr.c:35: for(; p != end; p++)
+      00008A 05*00            [12]  215 	inc	_memchr_sloc0_1_0
+      00008C E4               [12]  216 	clr	a
+      00008D B5*00 A9         [24]  217 	cjne	a,_memchr_sloc0_1_0,00105$
+      000090 05*01            [12]  218 	inc	(_memchr_sloc0_1_0 + 1)
+      000092 80 A5            [24]  219 	sjmp	00105$
+      000094                        220 00103$:
+                                    221 ;	_memchr.c:38: return(0);
+      000094 90 00 00         [24]  222 	mov	dptr,#0x0000
+      000097 75 F0 00         [24]  223 	mov	b,#0x00
+      00009A                        224 00107$:
+      00009A 02r00r00         [24]  225 	ljmp	__sdcc_banked_ret
+                                    226 	.area CSEG    (CODE)
+                                    227 	.area CONST   (CODE)
+                                    228 	.area XINIT   (CODE)
+                                    229 	.area CABS    (ABS,CODE)

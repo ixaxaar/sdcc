@@ -1,0 +1,67 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 1.
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  002710 L
+    .__.ABS.                                                    =  000000 G
+    .__.CPU.                                                    =  000000 L
+    .__.H$L.                                                    =  000001 L
+  7 _CheckTime                                                     00003C R
+  7 _RtcRead                                                       000000 GR
+  2 ___day                                                         000024 GR
+  2 ___month                                                       00000C GR
+    __divulong                                                     ****** GX
+    __modsint                                                      ****** GX
+    __modulong                                                     ****** GX
+    __mullong                                                      ****** GX
+  7 __str_0                                                        0004F4 R
+  7 __str_1                                                        000513 R
+  7 __str_10                                                       000537 R
+  7 __str_11                                                       00053B R
+  7 __str_12                                                       00053F R
+  7 __str_13                                                       000543 R
+  7 __str_14                                                       000547 R
+  7 __str_15                                                       00054B R
+  7 __str_16                                                       00054F R
+  7 __str_17                                                       000553 R
+  7 __str_18                                                       000557 R
+  7 __str_19                                                       00055B R
+  7 __str_2                                                        000517 R
+  7 __str_3                                                        00051B R
+  7 __str_4                                                        00051F R
+  7 __str_5                                                        000523 R
+  7 __str_6                                                        000527 R
+  7 __str_7                                                        00052B R
+  7 __str_8                                                        00052F R
+  7 __str_9                                                        000533 R
+  8 __xinit____day                                                 000024 R
+  8 __xinit____month                                               00000C R
+  8 __xinit__monthDays                                             000000 R
+  1 _ascTimeBuffer                                                 000000 R
+  7 _asctime                                                       00009A GR
+  7 _ctime                                                         00011B GR
+  7 _gmtime                                                        000133 GR
+  1 _lastTime                                                      000020 R
+  7 _localtime                                                     00012A GR
+  7 _mktime                                                        000347 GR
+  2 _monthDays                                                     000000 R
+    _sprintf                                                       ****** GX
+  7 _time                                                          000002 GR
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8), page 2.
+Hexadecimal [24-Bits]
+
+Area Table
+
+   0 _CODE                                      size      0   flags    0
+   1 DATA                                       size     2C   flags    0
+   2 INITIALIZED                                size     32   flags    0
+   3 DABS                                       size      0   flags    8
+   4 HOME                                       size      0   flags    0
+   5 GSINIT                                     size      0   flags    0
+   6 GSFINAL                                    size      0   flags    0
+   7 CODE                                       size    55F   flags    0
+   8 INITIALIZER                                size     32   flags    0
+   9 CABS                                       size      0   flags    8
+

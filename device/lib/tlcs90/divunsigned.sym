@@ -1,0 +1,19 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Toshiba TLCS90), page 1.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+    .__.$$$.=  2710 L   |     .__.ABS.=  0000 G   |     .__.CPU.=  0000 L
+    .__.H$L.=  0000 L   |   0 .atmost7   001D R   |   0 .dvloop    0038 R
+  0 .dvloop7   0021 R   |   0 .moretha   002F R   |   0 .nodrop    0040 R
+  0 .nodrop7   0028 R   |   0 __divu16   0016 GR  |   0 __divu8    0012 GR
+  0 __divuch   0012 GR  |   0 __divuch   0008 GR  |   0 __divuin   0016 GR
+  0 __divuin   0000 GR
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Toshiba TLCS90), page 2.
+Hexadecimal [16-Bits]
+
+Area Table
+
+   0 _CODE      size   4B   flags    0
+

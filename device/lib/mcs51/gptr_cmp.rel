@@ -1,0 +1,31 @@
+XH3
+H B areas 2 global symbols
+S .__.ABS. Def000000
+A _CODE size 0 flags 0 addr 0
+A HOME size 2E flags 20 addr 0
+S ___gptr_cmp Def000000
+A GSINIT0 size 0 flags 20 addr 0
+A GSINIT1 size 0 flags 20 addr 0
+A GSINIT2 size 0 flags 20 addr 0
+A GSINIT3 size 0 flags 20 addr 0
+A GSINIT4 size 0 flags 20 addr 0
+A GSINIT5 size 0 flags 20 addr 0
+A GSINIT size 0 flags 20 addr 0
+A GSFINAL size 0 flags 20 addr 0
+A CSEG size 0 flags 20 addr 0
+T 00 00 00
+R 00 00 00 01
+T 00 00 00 E5 81 24 FC C3 C8 C0 E0 C0 82 E6 08 46
+R 00 00 00 01
+T 00 00 0D 70 06 E5 82 45 83 60 12
+R 00 00 00 01
+T 00 00 15
+R 00 00 00 01
+T 00 00 15 18 E5 82 96 F5 82 08 E5 83 96 42 82 08
+R 00 00 00 01
+T 00 00 22 E5 F0 96 45 82
+R 00 00 00 01
+T 00 00 27
+R 00 00 00 01
+T 00 00 27 D0 82 C8 D0 E0 C8 22
+R 00 00 00 01

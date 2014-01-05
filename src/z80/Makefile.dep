@@ -1,0 +1,60 @@
+gen.o: gen.c z80.h ../common.h ../SDCCglobl.h ../SDCCset.h \
+ ../../sdccconf.h ../SDCCerr.h ../SDCCmem.h ../../support/util/dbuf.h \
+ ../SDCCast.h ../SDCCsymt.h ../SDCChasht.h ../SDCCval.h ../SDCCy.h \
+ ../SDCCbitv.h ../SDCCicode.h ../SDCClabel.h ../SDCCBBlock.h \
+ ../SDCCloop.h ../SDCCcse.h ../SDCCcflow.h ../SDCCdflow.h ../SDCClrange.h \
+ ../SDCCptropt.h ../SDCCopt.h ../SDCCglue.h ../SDCCpeeph.h ../SDCCgen.h \
+ ../SDCCicode.h ../SDCCdebug.h ../SDCCutil.h ../SDCCasm.h ../SDCCsystem.h \
+ ../port.h ../SDCCargs.h ../../support/util/newalloc.h ralloc.h \
+ ../SDCCBBlock.h gen.h peep.h support.h ../../support/util/dbuf_string.h \
+ ../../support/util/dbuf.h
+main.o: main.c z80.h ../common.h ../SDCCglobl.h ../SDCCset.h \
+ ../../sdccconf.h ../SDCCerr.h ../SDCCmem.h ../../support/util/dbuf.h \
+ ../SDCCast.h ../SDCCsymt.h ../SDCChasht.h ../SDCCval.h ../SDCCy.h \
+ ../SDCCbitv.h ../SDCCicode.h ../SDCClabel.h ../SDCCBBlock.h \
+ ../SDCCloop.h ../SDCCcse.h ../SDCCcflow.h ../SDCCdflow.h ../SDCClrange.h \
+ ../SDCCptropt.h ../SDCCopt.h ../SDCCglue.h ../SDCCpeeph.h ../SDCCgen.h \
+ ../SDCCicode.h ../SDCCdebug.h ../SDCCutil.h ../SDCCasm.h ../SDCCsystem.h \
+ ../port.h ../SDCCargs.h ../../support/util/newalloc.h ralloc.h \
+ ../SDCCBBlock.h gen.h peep.h support.h ../SDCCsystem.h ../SDCCutil.h \
+ ../SDCCargs.h ../../support/util/dbuf_string.h ../../support/util/dbuf.h \
+ peeph.rul peeph-z80.rul peeph-r2k.rul peeph-tlcs90.rul peeph-gbz80.rul \
+ mappings.i
+peep.o: peep.c ../common.h ../SDCCglobl.h ../SDCCset.h ../../sdccconf.h \
+ ../SDCCerr.h ../SDCCmem.h ../../support/util/dbuf.h ../SDCCast.h \
+ ../SDCCsymt.h ../SDCChasht.h ../SDCCval.h ../SDCCy.h ../SDCCbitv.h \
+ ../SDCCicode.h ../SDCClabel.h ../SDCCBBlock.h ../SDCCloop.h ../SDCCcse.h \
+ ../SDCCcflow.h ../SDCCdflow.h ../SDCClrange.h ../SDCCptropt.h \
+ ../SDCCopt.h ../SDCCglue.h ../SDCCpeeph.h ../SDCCgen.h ../SDCCicode.h \
+ ../SDCCdebug.h ../SDCCutil.h ../SDCCasm.h ../SDCCsystem.h ../port.h \
+ ../SDCCargs.h ../../support/util/newalloc.h z80.h ralloc.h \
+ ../SDCCBBlock.h gen.h peep.h support.h ../SDCCglobl.h ../SDCCpeeph.h
+ralloc.o: ralloc.c z80.h ../common.h ../SDCCglobl.h ../SDCCset.h \
+ ../../sdccconf.h ../SDCCerr.h ../SDCCmem.h ../../support/util/dbuf.h \
+ ../SDCCast.h ../SDCCsymt.h ../SDCChasht.h ../SDCCval.h ../SDCCy.h \
+ ../SDCCbitv.h ../SDCCicode.h ../SDCClabel.h ../SDCCBBlock.h \
+ ../SDCCloop.h ../SDCCcse.h ../SDCCcflow.h ../SDCCdflow.h ../SDCClrange.h \
+ ../SDCCptropt.h ../SDCCopt.h ../SDCCglue.h ../SDCCpeeph.h ../SDCCgen.h \
+ ../SDCCicode.h ../SDCCdebug.h ../SDCCutil.h ../SDCCasm.h ../SDCCsystem.h \
+ ../port.h ../SDCCargs.h ../../support/util/newalloc.h ralloc.h \
+ ../SDCCBBlock.h gen.h peep.h support.h ../../support/util/dbuf_string.h \
+ ../../support/util/dbuf.h
+support.o: support.c z80.h ../common.h ../SDCCglobl.h ../SDCCset.h \
+ ../../sdccconf.h ../SDCCerr.h ../SDCCmem.h ../../support/util/dbuf.h \
+ ../SDCCast.h ../SDCCsymt.h ../SDCChasht.h ../SDCCval.h ../SDCCy.h \
+ ../SDCCbitv.h ../SDCCicode.h ../SDCClabel.h ../SDCCBBlock.h \
+ ../SDCCloop.h ../SDCCcse.h ../SDCCcflow.h ../SDCCdflow.h ../SDCClrange.h \
+ ../SDCCptropt.h ../SDCCopt.h ../SDCCglue.h ../SDCCpeeph.h ../SDCCgen.h \
+ ../SDCCicode.h ../SDCCdebug.h ../SDCCutil.h ../SDCCasm.h ../SDCCsystem.h \
+ ../port.h ../SDCCargs.h ../../support/util/newalloc.h ralloc.h \
+ ../SDCCBBlock.h gen.h peep.h support.h
+ralloc2.o: ralloc2.cc ../SDCCralloc.hpp ../common.h ../SDCCglobl.h \
+ ../SDCCset.h ../../sdccconf.h ../SDCCerr.h ../SDCCmem.h \
+ ../../support/util/dbuf.h ../SDCCast.h ../SDCCsymt.h ../SDCChasht.h \
+ ../SDCCval.h ../SDCCy.h ../SDCCbitv.h ../SDCCicode.h ../SDCClabel.h \
+ ../SDCCBBlock.h ../SDCCloop.h ../SDCCcse.h ../SDCCcflow.h ../SDCCdflow.h \
+ ../SDCClrange.h ../SDCCptropt.h ../SDCCopt.h ../SDCCglue.h \
+ ../SDCCpeeph.h ../SDCCgen.h ../SDCCicode.h ../SDCCdebug.h ../SDCCutil.h \
+ ../SDCCasm.h ../SDCCsystem.h ../port.h ../SDCCargs.h \
+ ../../support/util/newalloc.h ../SDCCtree_dec.hpp ../SDCCbtree.h z80.h \
+ ../common.h ralloc.h ../SDCCBBlock.h gen.h peep.h support.h

@@ -1,0 +1,90 @@
+                                      1 ;--------------------------------------------------------------------------
+                                      2 ;  crtxpush.asm :- C run-time: push registers (not R0) to xstack
+                                      3 ;
+                                      4 ;  Copyright (C) 2009, Maarten Brock
+                                      5 ;
+                                      6 ;  This library is free software; you can redistribute it and/or modify it
+                                      7 ;  under the terms of the GNU General Public License as published by the
+                                      8 ;  Free Software Foundation; either version 2, or (at your option) any
+                                      9 ;  later version.
+                                     10 ;
+                                     11 ;  This library is distributed in the hope that it will be useful,
+                                     12 ;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                                     13 ;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+                                     14 ;  GNU General Public License for more details.
+                                     15 ;
+                                     16 ;  You should have received a copy of the GNU General Public License 
+                                     17 ;  along with this library; see the file COPYING. If not, write to the
+                                     18 ;  Free Software Foundation, 51 Franklin Street, Fifth Floor, Boston,
+                                     19 ;   MA 02110-1301, USA.
+                                     20 ;
+                                     21 ;  As a special exception, if you link this library with other files,
+                                     22 ;  some of which are compiled with SDCC, to produce an executable,
+                                     23 ;  this library does not by itself cause the resulting executable to
+                                     24 ;  be covered by the GNU General Public License. This exception does
+                                     25 ;  not however invalidate any other reasons why the executable file
+                                     26 ;  might be covered by the GNU General Public License.
+                                     27 ;--------------------------------------------------------------------------
+                                     28 
+                                     29 ;--------------------------------------------------------
+                                     30 ; overlayable bit register bank
+                                     31 ;--------------------------------------------------------
+                                     32 	.area BIT_BANK	(REL,OVR,DATA)
+      000000                         33 bits:
+      000000                         34 	.ds 1
+                                     35 
+                           000000    36 	ar0 = 0x00
+                           000001    37 	ar1 = 0x01
+                                     38 
+                                     39 	.area HOME    (CODE)
+                                     40 
+                                     41 ; Push registers r1..r7 & bits on xstack
+                                     42 ; Expect allocation size in ACC and mask in B
+      000000                         43 ___sdcc_xpush_regs::
+      000000 25*00            [12]   44 	add	a,_spx
+      000002 F5*00            [12]   45 	mov	_spx,a
+      000004 C8               [12]   46 	xch	a,r0
+      000005                         47 ___sdcc_xpush::
+      000005 C0 E0            [24]   48 	push	acc
+      000007 10 F0 04         [24]   49 	jbc	B.0,00100$	;if B(0)=0 then
+      00000A E5*00            [12]   50 	mov	a,bits		;push bits
+      00000C 18               [12]   51 	dec	r0
+      00000D F2               [24]   52 	movx	@r0,a
+      00000E                         53 00100$:
+      00000E 10 F1 03         [24]   54 	jbc	B.1,00101$	;if B(1)=0 then
+      000011 E9               [12]   55 	mov	a,r1		;push R1
+      000012 18               [12]   56 	dec	r0
+      000013 F2               [24]   57 	movx	@r0,a
+      000014                         58 00101$:
+      000014 10 F2 03         [24]   59 	jbc	B.2,00102$	;if B(2)=0 then
+      000017 EA               [12]   60 	mov	a,r2		;push R2
+      000018 18               [12]   61 	dec	r0
+      000019 F2               [24]   62 	movx	@r0,a
+      00001A                         63 00102$:
+      00001A 10 F3 03         [24]   64 	jbc	B.3,00103$	;if B(3)=0 then
+      00001D EB               [12]   65 	mov	a,r3		;push R3
+      00001E 18               [12]   66 	dec	r0
+      00001F F2               [24]   67 	movx	@r0,a
+      000020                         68 00103$:
+      000020 10 F4 03         [24]   69 	jbc	B.4,00104$	;if B(4)=0 then
+      000023 EC               [12]   70 	mov	a,r4		;push R4
+      000024 18               [12]   71 	dec	r0
+      000025 F2               [24]   72 	movx	@r0,a
+      000026                         73 00104$:
+      000026 10 F5 03         [24]   74 	jbc	B.5,00105$	;if B(5)=0 then
+      000029 ED               [12]   75 	mov	a,r5		;push R5
+      00002A 18               [12]   76 	dec	r0
+      00002B F2               [24]   77 	movx	@r0,a
+      00002C                         78 00105$:
+      00002C 10 F6 03         [24]   79 	jbc	B.6,00106$	;if B(6)=0 then
+      00002F EE               [12]   80 	mov	a,r6		;push R6
+      000030 18               [12]   81 	dec	r0
+      000031 F2               [24]   82 	movx	@r0,a
+      000032                         83 00106$:
+      000032 10 F7 03         [24]   84 	jbc	B.7,00107$	;if B(7)=0 then
+      000035 EF               [12]   85 	mov	a,r7		;push R7
+      000036 18               [12]   86 	dec	r0
+      000037 F2               [24]   87 	movx	@r0,a
+      000038                         88 00107$:
+      000038 D0 00            [24]   89 	pop	ar0
+      00003A 22               [24]   90 	ret

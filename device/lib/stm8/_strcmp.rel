@@ -1,0 +1,35 @@
+XH3
+H A areas 2 global symbols
+M _strcmp
+S .__.ABS. Def000000
+A _CODE size 0 flags 0 addr 0
+A DATA size 0 flags 0 addr 0
+A INITIALIZED size 0 flags 0 addr 0
+A DABS size 0 flags 8 addr 0
+A HOME size 0 flags 0 addr 0
+A GSINIT size 0 flags 0 addr 0
+A GSFINAL size 0 flags 0 addr 0
+A CODE size 48 flags 0 addr 0
+S _strcmp Def000000
+A INITIALIZER size 0 flags 0 addr 0
+A CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 00 07
+T 00 00 00 52 0B 16 0E 17 03 16 10 17 01
+R 00 00 00 07
+T 00 00 0A
+R 00 00 00 07
+T 00 00 0A 1E 03 F6 97 9F 49 4F A2 00 95 16 01 90
+R 00 00 00 07
+T 00 00 17 F6 6B 0B 7B 0B 6B 08 7B 08 49 4F A2 00
+R 00 00 00 07
+T 00 00 24 6B 07 72 F0 07 1F 05 1E 05 26 14 0D 0B
+R 00 00 00 07
+T 00 00 31 27 10 1E 03 5C 1F 09 16 09 17 03 1E 01
+R 00 00 00 07
+T 00 00 3E 5C 1F 01 20 C7
+R 00 00 00 07
+T 00 00 43
+R 00 00 00 07
+T 00 00 43 1E 05 5B 0B 81
+R 00 00 00 07

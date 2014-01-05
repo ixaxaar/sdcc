@@ -1,0 +1,387 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                              4 ; This file was generated Wed Nov 27 12:28:23 2013
+                              5 ;--------------------------------------------------------
+                              6 	.module _mullong
+                              7 	.optsdcc -mtlcs90
+                              8 	
+                              9 ;--------------------------------------------------------
+                             10 ; Public variables in this module
+                             11 ;--------------------------------------------------------
+                             12 	.globl __mullong
+                             13 ;--------------------------------------------------------
+                             14 ; ram data
+                             15 ;--------------------------------------------------------
+                             16 	.area _DATA
+                             17 ;--------------------------------------------------------
+                             18 ; ram data
+                             19 ;--------------------------------------------------------
+                             20 	.area _INITIALIZED
+                             21 ;--------------------------------------------------------
+                             22 ; absolute external ram data
+                             23 ;--------------------------------------------------------
+                             24 	.area _DABS (ABS)
+                             25 ;--------------------------------------------------------
+                             26 ; global & static initialisations
+                             27 ;--------------------------------------------------------
+                             28 	.area _HOME
+                             29 	.area _GSINIT
+                             30 	.area _GSFINAL
+                             31 	.area _GSINIT
+                             32 ;--------------------------------------------------------
+                             33 ; Home
+                             34 ;--------------------------------------------------------
+                             35 	.area _HOME
+                             36 	.area _HOME
+                             37 ;--------------------------------------------------------
+                             38 ; code
+                             39 ;--------------------------------------------------------
+                             40 	.area _CODE
+                             41 ;../_mullong.c:734: _mullong (long a, long b)
+                             42 ;	---------------------------------
+                             43 ; Function _mullong
+                             44 ; ---------------------------------
+   0000                      45 __mullong_start::
+   0000                      46 __mullong:
+   0000 54            [ 4]   47 	push	ix
+   0001 3C 00 00      [ 4]   48 	ld	ix,#0
+   0004 FE 14         [ 7]   49 	add	ix,sp
+   0006 16 F2 FF      [ 7]   50 	add	sp, #-14
+                             51 ;../_mullong.c:738: t.i.hi = bcast(a)->b.b0 * bcast(b)->b.b2;           // A
+   0009 3A 00 00      [13]   52 	ld	hl,#0x0000
+   000C FE 70         [ 7]   53 	add	hl,sp
+   000E F6 0C 42      [ 7]   54 	ld	12 (sp), hl
+   0011 08            [ 4]   55 	ex	de, hl
+   0012 F2 0C 4A      [10]   56 	ld	hl, 12 (sp)
+   0015 08            [ 4]   57 	ex	de, hl
+   0016 91            [ 4]   58 	inc	de
+   0017 91            [ 4]   59 	inc	de
+   0018 3A 12 00      [13]   60 	ld	hl,#0x0012
+   001B FE 70         [ 7]   61 	add	hl,sp
+   001D F6 0A 42      [ 7]   62 	ld	10 (sp), hl
+   0020 F2 0A 4A      [10]   63 	ld	hl, 10 (sp)
+   0023 E2 29         [10]   64 	ld	c,(hl)
+   0025 3A 16 00      [13]   65 	ld	hl,#0x0016
+   0028 FE 70         [ 7]   66 	add	hl,sp
+   002A F6 04 42      [ 7]   67 	ld	4 (sp), hl
+   002D F2 04 4A      [10]   68 	ld	hl, 4 (sp)
+   0030 92            [ 4]   69 	inc	hl
+   0031 92            [ 4]   70 	inc	hl
+   0032 E2 2E         [10]   71 	ld	a,(hl)
+   0034 51            [ 4]   72 	push	de
+   0035 2B            [ 6]   73 	ld	e,a
+   0036 F9 34         [ 6]   74 	ld	h,c
+   0038 35 00         [11]   75 	ld	l, #0x00
+   003A FD 32                76 	ld	d, l
+   003C 30 08         [12]   77 	ld	b, #0x08
+   003E                      78 00103$:
+   003E FA 70         [10]   79 	add	hl,hl
+   0040 CF 02         [11]   80 	jr	NC,00104$
+   0042 F9 70         [ 6]   81 	add	hl,de
+   0044                      82 00104$:
+   0044 18 F8         [12]   83 	djnz	00103$
+   0046 59            [ 4]   84 	pop	de
+   0047 FD 31                85 	ld	c,l
+   0049 FC 30         [17]   86 	ld	b,h
+   004B 21            [10]   87 	ld	a,c
+   004C E9 26         [ 4]   88 	ld	(de),a
+   004E 91            [ 4]   89 	inc	de
+   004F 20            [12]   90 	ld	a,b
+   0050 E9 26         [ 4]   91 	ld	(de),a
+                             92 ;../_mullong.c:739: t.i.lo = bcast(a)->b.b0 * bcast(b)->b.b0;           // A
+   0052 F2 0A 4A      [10]   93 	ld	hl, 10 (sp)
+   0055 E2 2B         [10]   94 	ld	e,(hl)
+   0057 F2 04 4A      [10]   95 	ld	hl, 4 (sp)
+   005A E2 2C         [10]   96 	ld	h, (hl)
+   005C 35 00         [11]   97 	ld	l, #0x00
+   005E FD 32                98 	ld	d, l
+   0060 30 08         [12]   99 	ld	b, #0x08
+   0062                     100 00105$:
+   0062 FA 70         [10]  101 	add	hl,hl
+   0064 CF 02         [11]  102 	jr	NC,00106$
+   0066 F9 70         [ 6]  103 	add	hl,de
+   0068                     104 00106$:
+   0068 18 F8         [12]  105 	djnz	00105$
+   006A 08            [ 4]  106 	ex	de,hl
+   006B F2 0C 4A      [10]  107 	ld	hl, 12 (sp)
+   006E EA 23         [10]  108 	ld	(hl),e
+   0070 92            [ 4]  109 	inc	hl
+   0071 EA 22         [10]  110 	ld	(hl),d
+                            111 ;../_mullong.c:740: t.b.b3 += bcast(a)->b.b3 * bcast(b)->b.b0;          // G
+   0073 3A 03 00      [13]  112 	ld	hl,#0x0003
+   0076 FE 70         [ 7]  113 	add	hl,sp
+   0078 F6 0C 42      [ 7]  114 	ld	12 (sp), hl
+   007B F2 0C 4A      [10]  115 	ld	hl, 12 (sp)
+   007E E2 29         [10]  116 	ld	c,(hl)
+   0080 F2 0A 4A      [10]  117 	ld	hl, 10 (sp)
+   0083 92            [ 4]  118 	inc	hl
+   0084 92            [ 4]  119 	inc	hl
+   0085 92            [ 4]  120 	inc	hl
+   0086 E2 2B         [10]  121 	ld	e,(hl)
+   0088 F2 04 4A      [10]  122 	ld	hl, 4 (sp)
+   008B E2 2C         [10]  123 	ld	h,(hl)
+   008D 35 00         [11]  124 	ld	l, #0x00
+   008F FD 32               125 	ld	d, l
+   0091 30 08         [12]  126 	ld	b, #0x08
+   0093                     127 00107$:
+   0093 FA 70         [10]  128 	add	hl,hl
+   0095 CF 02         [11]  129 	jr	NC,00108$
+   0097 F9 70         [ 6]  130 	add	hl,de
+   0099                     131 00108$:
+   0099 18 F8         [12]  132 	djnz	00107$
+   009B 21            [10]  133 	ld	a,c
+   009C FD 60               134 	add	a, l
+   009E F2 0C 4A      [10]  135 	ld	hl, 12 (sp)
+   00A1 EA 26         [10]  136 	ld	(hl),a
+                            137 ;../_mullong.c:741: t.b.b3 += bcast(a)->b.b2 * bcast(b)->b.b1;          // F
+   00A3 F2 0C 4A      [10]  138 	ld	hl, 12 (sp)
+   00A6 E2 29         [10]  139 	ld	c,(hl)
+   00A8 F2 0A 4A      [10]  140 	ld	hl, 10 (sp)
+   00AB 92            [ 4]  141 	inc	hl
+   00AC 92            [ 4]  142 	inc	hl
+   00AD E2 2B         [10]  143 	ld	e,(hl)
+   00AF F2 04 4A      [10]  144 	ld	hl, 4 (sp)
+   00B2 92            [ 4]  145 	inc	hl
+   00B3 E2 2C         [10]  146 	ld	h,(hl)
+   00B5 35 00         [11]  147 	ld	l, #0x00
+   00B7 FD 32               148 	ld	d, l
+   00B9 30 08         [12]  149 	ld	b, #0x08
+   00BB                     150 00109$:
+   00BB FA 70         [10]  151 	add	hl,hl
+   00BD CF 02         [11]  152 	jr	NC,00110$
+   00BF F9 70         [ 6]  153 	add	hl,de
+   00C1                     154 00110$:
+   00C1 18 F8         [12]  155 	djnz	00109$
+   00C3 21            [10]  156 	ld	a,c
+   00C4 FD 60               157 	add	a, l
+   00C6 F2 0C 4A      [10]  158 	ld	hl, 12 (sp)
+   00C9 EA 26         [10]  159 	ld	(hl),a
+                            160 ;../_mullong.c:742: t.i.hi += bcast(a)->b.b2 * bcast(b)->b.b0;          // E <- b lost in .lst
+   00CB 3A 02 00      [13]  161 	ld	hl,#0x0002
+   00CE FE 70         [ 7]  162 	add	hl,sp
+   00D0 F6 0C 42      [ 7]  163 	ld	12 (sp), hl
+   00D3 F2 0C 4A      [10]  164 	ld	hl, 12 (sp)
+   00D6 E2 29         [10]  165 	ld	c,(hl)
+   00D8 92            [ 4]  166 	inc	hl
+   00D9 E2 28         [10]  167 	ld	b,(hl)
+   00DB F2 0A 4A      [10]  168 	ld	hl, 10 (sp)
+   00DE 92            [ 4]  169 	inc	hl
+   00DF 92            [ 4]  170 	inc	hl
+   00E0 E2 2B         [10]  171 	ld	e,(hl)
+   00E2 F2 04 4A      [10]  172 	ld	hl, 4 (sp)
+   00E5 E2 2C         [10]  173 	ld	h,(hl)
+   00E7 50            [ 4]  174 	push	bc
+   00E8 35 00         [11]  175 	ld	l, #0x00
+   00EA FD 32               176 	ld	d, l
+   00EC 30 08         [12]  177 	ld	b, #0x08
+   00EE                     178 00111$:
+   00EE FA 70         [10]  179 	add	hl,hl
+   00F0 CF 02         [11]  180 	jr	NC,00112$
+   00F2 F9 70         [ 6]  181 	add	hl,de
+   00F4                     182 00112$:
+   00F4 18 F8         [12]  183 	djnz	00111$
+   00F6 58            [ 4]  184 	pop	bc
+   00F7 F8 70         [11]  185 	add	hl,bc
+   00F9 FD 32               186 	ld	d,l
+   00FB FC 33         [17]  187 	ld	e,h
+   00FD F2 0C 4A      [10]  188 	ld	hl, 12 (sp)
+   0100 EA 22         [10]  189 	ld	(hl),d
+   0102 92            [ 4]  190 	inc	hl
+   0103 EA 23         [10]  191 	ld	(hl),e
+                            192 ;../_mullong.c:744: t.i.hi += bcast(a)->b.b1 * bcast(b)->b.b1;          // D <- b lost in .lst
+   0105 F2 0C 4A      [10]  193 	ld	hl, 12 (sp)
+   0108 E2 29         [10]  194 	ld	c,(hl)
+   010A 92            [ 4]  195 	inc	hl
+   010B E2 28         [10]  196 	ld	b,(hl)
+   010D F2 0A 4A      [10]  197 	ld	hl, 10 (sp)
+   0110 92            [ 4]  198 	inc	hl
+   0111 E2 2B         [10]  199 	ld	e,(hl)
+   0113 F2 04 4A      [10]  200 	ld	hl, 4 (sp)
+   0116 92            [ 4]  201 	inc	hl
+   0117 E2 2C         [10]  202 	ld	h,(hl)
+   0119 50            [ 4]  203 	push	bc
+   011A 35 00         [11]  204 	ld	l, #0x00
+   011C FD 32               205 	ld	d, l
+   011E 30 08         [12]  206 	ld	b, #0x08
+   0120                     207 00113$:
+   0120 FA 70         [10]  208 	add	hl,hl
+   0122 CF 02         [11]  209 	jr	NC,00114$
+   0124 F9 70         [ 6]  210 	add	hl,de
+   0126                     211 00114$:
+   0126 18 F8         [12]  212 	djnz	00113$
+   0128 58            [ 4]  213 	pop	bc
+   0129 F8 70         [11]  214 	add	hl,bc
+   012B FD 32               215 	ld	d,l
+   012D FC 33         [17]  216 	ld	e,h
+   012F F2 0C 4A      [10]  217 	ld	hl, 12 (sp)
+   0132 EA 22         [10]  218 	ld	(hl),d
+   0134 92            [ 4]  219 	inc	hl
+   0135 EA 23         [10]  220 	ld	(hl),e
+                            221 ;../_mullong.c:746: bcast(a)->bi.b3 = bcast(a)->b.b1 * bcast(b)->b.b2;  // C
+   0137 F2 0A 4A      [10]  222 	ld	hl, 10 (sp)
+   013A 92            [ 4]  223 	inc	hl
+   013B 92            [ 4]  224 	inc	hl
+   013C 92            [ 4]  225 	inc	hl
+   013D F6 0C 42      [ 7]  226 	ld	12 (sp), hl
+   0140 F2 0A 4A      [10]  227 	ld	hl, 10 (sp)
+   0143 92            [ 4]  228 	inc	hl
+   0144 E2 2B         [10]  229 	ld	e,(hl)
+   0146 F2 04 4A      [10]  230 	ld	hl, 4 (sp)
+   0149 92            [ 4]  231 	inc	hl
+   014A 92            [ 4]  232 	inc	hl
+   014B E2 2C         [10]  233 	ld	h,(hl)
+   014D 35 00         [11]  234 	ld	l, #0x00
+   014F FD 32               235 	ld	d, l
+   0151 30 08         [12]  236 	ld	b, #0x08
+   0153                     237 00115$:
+   0153 FA 70         [10]  238 	add	hl,hl
+   0155 CF 02         [11]  239 	jr	NC,00116$
+   0157 F9 70         [ 6]  240 	add	hl,de
+   0159                     241 00116$:
+   0159 18 F8         [12]  242 	djnz	00115$
+   015B FD 32               243 	ld	d,l
+   015D F2 0C 4A      [10]  244 	ld	hl, 12 (sp)
+   0160 EA 22         [10]  245 	ld	(hl),d
+                            246 ;../_mullong.c:747: bcast(a)->bi.i12 = bcast(a)->b.b1 * bcast(b)->b.b0; // C
+   0162 F2 0A 4A      [10]  247 	ld	hl, 10 (sp)
+   0165 92            [ 4]  248 	inc	hl
+   0166 F6 0C 42      [ 7]  249 	ld	12 (sp), hl
+   0169 F2 0A 4A      [10]  250 	ld	hl, 10 (sp)
+   016C 92            [ 4]  251 	inc	hl
+   016D E2 2B         [10]  252 	ld	e,(hl)
+   016F F2 04 4A      [10]  253 	ld	hl, 4 (sp)
+   0172 E2 2C         [10]  254 	ld	h,(hl)
+   0174 35 00         [11]  255 	ld	l, #0x00
+   0176 FD 32               256 	ld	d, l
+   0178 30 08         [12]  257 	ld	b, #0x08
+   017A                     258 00117$:
+   017A FA 70         [10]  259 	add	hl,hl
+   017C CF 02         [11]  260 	jr	NC,00118$
+   017E F9 70         [ 6]  261 	add	hl,de
+   0180                     262 00118$:
+   0180 18 F8         [12]  263 	djnz	00117$
+   0182 08            [ 4]  264 	ex	de,hl
+   0183 F2 0C 4A      [10]  265 	ld	hl, 12 (sp)
+   0186 EA 23         [10]  266 	ld	(hl),e
+   0188 92            [ 4]  267 	inc	hl
+   0189 EA 22         [10]  268 	ld	(hl),d
+                            269 ;../_mullong.c:749: bcast(b)->bi.b3 = bcast(a)->b.b0 * bcast(b)->b.b3;  // B
+   018B F2 04 4A      [10]  270 	ld	hl, 4 (sp)
+   018E 92            [ 4]  271 	inc	hl
+   018F 92            [ 4]  272 	inc	hl
+   0190 92            [ 4]  273 	inc	hl
+   0191 F6 0C 42      [ 7]  274 	ld	12 (sp), hl
+   0194 F2 0A 4A      [10]  275 	ld	hl, 10 (sp)
+   0197 E2 2B         [10]  276 	ld	e,(hl)
+   0199 F2 04 4A      [10]  277 	ld	hl, 4 (sp)
+   019C 92            [ 4]  278 	inc	hl
+   019D 92            [ 4]  279 	inc	hl
+   019E 92            [ 4]  280 	inc	hl
+   019F E2 2E         [10]  281 	ld	a,(hl)
+   01A1 2C            [ 4]  282 	ld	h,a
+   01A2 35 00         [11]  283 	ld	l, #0x00
+   01A4 FD 32               284 	ld	d, l
+   01A6 30 08         [12]  285 	ld	b, #0x08
+   01A8                     286 00119$:
+   01A8 FA 70         [10]  287 	add	hl,hl
+   01AA CF 02         [11]  288 	jr	NC,00120$
+   01AC F9 70         [ 6]  289 	add	hl,de
+   01AE                     290 00120$:
+   01AE 18 F8         [12]  291 	djnz	00119$
+   01B0 FD 32               292 	ld	d,l
+   01B2 F2 0C 4A      [10]  293 	ld	hl, 12 (sp)
+   01B5 EA 22         [10]  294 	ld	(hl),d
+                            295 ;../_mullong.c:750: bcast(b)->bi.i12 = bcast(a)->b.b0 * bcast(b)->b.b1; // B
+   01B7 F2 04 4A      [10]  296 	ld	hl, 4 (sp)
+   01BA 92            [ 4]  297 	inc	hl
+   01BB F6 0C 42      [ 7]  298 	ld	12 (sp), hl
+   01BE F2 0A 4A      [10]  299 	ld	hl, 10 (sp)
+   01C1 E2 2B         [10]  300 	ld	e,(hl)
+   01C3 F2 04 4A      [10]  301 	ld	hl, 4 (sp)
+   01C6 92            [ 4]  302 	inc	hl
+   01C7 E2 2C         [10]  303 	ld	h,(hl)
+   01C9 35 00         [11]  304 	ld	l, #0x00
+   01CB FD 32               305 	ld	d, l
+   01CD 30 08         [12]  306 	ld	b, #0x08
+   01CF                     307 00121$:
+   01CF FA 70         [10]  308 	add	hl,hl
+   01D1 CF 02         [11]  309 	jr	NC,00122$
+   01D3 F9 70         [ 6]  310 	add	hl,de
+   01D5                     311 00122$:
+   01D5 18 F8         [12]  312 	djnz	00121$
+   01D7 08            [ 4]  313 	ex	de,hl
+   01D8 F2 0C 4A      [10]  314 	ld	hl, 12 (sp)
+   01DB EA 23         [10]  315 	ld	(hl),e
+   01DD 92            [ 4]  316 	inc	hl
+   01DE EA 22         [10]  317 	ld	(hl),d
+                            318 ;../_mullong.c:752: bcast(b)->bi.b0 = 0;                                // B
+   01E0 F2 04 4A      [10]  319 	ld	hl, 4 (sp)
+   01E3 EA 37 00      [10]  320 	ld	(hl),#0x00
+                            321 ;../_mullong.c:753: bcast(a)->bi.b0 = 0;                                // C
+   01E6 F2 0A 4A      [10]  322 	ld	hl, 10 (sp)
+   01E9 EA 37 00      [10]  323 	ld	(hl),#0x00
+                            324 ;../_mullong.c:754: t.l += a;
+   01EC 3A 00 00      [13]  325 	ld	hl,#0x0000
+   01EF FE 70         [ 7]  326 	add	hl,sp
+   01F1 08            [ 4]  327 	ex	de,hl
+   01F2 51            [ 4]  328 	push	de
+   01F3 3A 08 00      [13]  329 	ld	hl, #0x0008
+   01F6 FE 70         [ 7]  330 	add	hl, sp
+   01F8 08            [ 4]  331 	ex	de, hl
+   01F9 38 04 00      [12]  332 	ld	bc, #0x0004
+   01FC FE 59         [ 7]  333 	ldir
+   01FE 59            [ 4]  334 	pop	de
+   01FF F0 04 2C      [11]  335 	ld	h,4 (ix)
+   0202 F0 05 2D      [11]  336 	ld	l,5 (ix)
+   0205 F0 06 29      [11]  337 	ld	c,6 (ix)
+   0208 F0 07 28      [11]  338 	ld	b,7 (ix)
+   020B F0 F8 2E      [11]  339 	ld	a,-8 (ix)
+   020E FC 60         [17]  340 	add	a, h
+   0210 F4 F8 26      [17]  341 	ld	-8 (ix),a
+   0213 F0 F9 2E      [11]  342 	ld	a,-7 (ix)
+   0216 FD 61               343 	adc	a, l
+   0218 F4 F9 26      [17]  344 	ld	-7 (ix),a
+   021B F0 FA 2E      [11]  345 	ld	a,-6 (ix)
+   021E F9 61         [ 6]  346 	adc	a, c
+   0220 F4 FA 26      [17]  347 	ld	-6 (ix),a
+   0223 F0 FB 2E      [11]  348 	ld	a,-5 (ix)
+   0226 F8 61         [11]  349 	adc	a, b
+   0228 F4 FB 26      [17]  350 	ld	-5 (ix),a
+   022B 51            [ 4]  351 	push	de
+   022C 3A 08 00      [13]  352 	ld	hl, #0x0008
+   022F FE 70         [ 7]  353 	add	hl, sp
+   0231 38 04 00      [12]  354 	ld	bc, #0x0004
+   0234 FE 59         [ 7]  355 	ldir
+                            356 ;../_mullong.c:756: return t.l + b;
+   0236 5A            [ 4]  357 	pop	hl
+   0237 E2 2E         [10]  358 	ld	a,(hl)
+   0239 92            [ 4]  359 	inc	hl
+   023A E2 2E         [10]  360 	ld	a,(hl)
+   023C 92            [ 4]  361 	inc	hl
+   023D E2 2E         [10]  362 	ld	a,(hl)
+   023F 92            [ 4]  363 	inc	hl
+   0240 E2 2E         [10]  364 	ld	a,(hl)
+   0242 F0 08 2D      [11]  365 	ld	l,8 (ix)
+   0245 F0 09 2C      [11]  366 	ld	h,9 (ix)
+   0248 F0 0A 2B      [11]  367 	ld	e,10 (ix)
+   024B F0 0B 2A      [11]  368 	ld	d,11 (ix)
+   024E F0 F8 2E      [11]  369 	ld	a,-8 (ix)
+   0251 FD 60               370 	add	a, l
+   0253 2D            [ 4]  371 	ld	l,a
+   0254 F0 F9 2E      [11]  372 	ld	a,-7 (ix)
+   0257 FC 61         [17]  373 	adc	a, h
+   0259 2C            [ 4]  374 	ld	h,a
+   025A F0 FA 2E      [11]  375 	ld	a,-6 (ix)
+   025D FB 61         [ 4]  376 	adc	a, e
+   025F 2B            [ 6]  377 	ld	e,a
+   0260 F0 FB 2E      [11]  378 	ld	a,-5 (ix)
+   0263 FA 61         [10]  379 	adc	a, d
+   0265 2A            [16]  380 	ld	d,a
+   0266 FC 3E         [17]  381 	ld	sp, ix
+   0268 5C            [ 4]  382 	pop	ix
+   0269 1E            [ 7]  383 	ret
+   026A                     384 __mullong_end::
+                            385 	.area _CODE
+                            386 	.area _INITIALIZER
+                            387 	.area _CABS (ABS)

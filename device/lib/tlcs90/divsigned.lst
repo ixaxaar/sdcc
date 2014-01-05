@@ -1,0 +1,133 @@
+                              1 ;--------------------------------------------------------------------------
+                              2 ;  divsigned.s
+                              3 ;
+                              4 ;  Copyright (C) 2000-2010, Michael Hope, Philipp Klaus Krause
+                              5 ;
+                              6 ;  This library is free software; you can redistribute it and/or modify it
+                              7 ;  under the terms of the GNU General Public License as published by the
+                              8 ;  Free Software Foundation; either version 2, or (at your option) any
+                              9 ;  later version.
+                             10 ;
+                             11 ;  This library is distributed in the hope that it will be useful,
+                             12 ;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                             13 ;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+                             14 ;  GNU General Public License for more details.
+                             15 ;
+                             16 ;  You should have received a copy of the GNU General Public License 
+                             17 ;  along with this library; see the file COPYING. If not, write to the
+                             18 ;  Free Software Foundation, 51 Franklin Street, Fifth Floor, Boston,
+                             19 ;   MA 02110-1301, USA.
+                             20 ;
+                             21 ;  As a special exception, if you link this library with other files,
+                             22 ;  some of which are compiled with SDCC, to produce an executable,
+                             23 ;  this library does not by itself cause the resulting executable to
+                             24 ;  be covered by the GNU General Public License. This exception does
+                             25 ;  not however invalidate any other reasons why the executable file
+                             26 ;   might be covered by the GNU General Public License.
+                             27 ;--------------------------------------------------------------------------
+                             28 
+                             29         .area   _CODE
+                             30 
+   0000                      31 __divsint_rrx_s::
+   0000 F2 02 4A      [10]   32         ld	hl, 2 (sp)
+   0003 F2 04 49      [10]   33         ld	de, 4 (sp)
+                             34 
+   0006 1Ar1Dr00      [ 7]   35         jp      __div16
+                             36 
+   0009                      37 __divschar_rrx_s::
+   0009 3A 03 00      [13]   38         ld      hl, #2+1
+   000C FE 70         [ 7]   39         add     hl, sp
+                             40 
+   000E E2 2B         [10]   41         ld      e, (hl)
+   0010 9A            [ 4]   42         dec     hl
+   0011 E2 2D         [10]   43         ld      l, (hl)
+                             44 
+                             45         ;; Fall through
+   0013                      46 __divschar_rrx_hds::
+   0013                      47 __div8::
+   0013 25            [ 4]   48         ld      a, l            ; Sign extend
+   0014 A0            [ 4]   49         rlca
+   0015 FE 63         [ 7]   50         sbc     a, a
+   0017 2C            [ 4]   51         ld      h, a
+   0018                      52 __div_signexte::
+   0018 23            [ 6]   53         ld      a, e            ; Sign extend
+   0019 A0            [ 4]   54         rlca
+   001A FE 63         [ 7]   55         sbc     a, a
+   001C 2A            [16]   56         ld      d, a
+                             57         ; Fall through to __div16
+                             58 
+                             59         ;; signed 16-bit division
+                             60         ;;
+                             61         ;; Entry conditions
+                             62         ;;   HL = dividend
+                             63         ;;   DE = divisor
+                             64         ;;
+                             65         ;; Exit conditions
+                             66         ;;   HL = quotient
+                             67         ;;   DE = remainder
+                             68         ;;
+                             69         ;; Register used: AF,B,DE,HL
+   001D                      70 __divsint_rrx_hds::
+   001D                      71 __div16::
+                             72         ;; Determine sign of quotient by xor-ing high bytes of dividend
+                             73         ;;  and divisor. Quotient is positive if signs are the same, negative
+                             74         ;;  if signs are different
+                             75         ;; Remainder has same sign as dividend
+   001D 24            [ 4]   76         ld      a, h            ; Get high byte of dividend
+   001E FA 65         [10]   77         xor     a, d            ; Xor with high byte of divisor
+   0020 A2            [ 4]   78         rla                     ; Sign of quotient goes into the carry
+   0021 24            [ 4]   79         ld      a, h            ; Get high byte of dividend
+   0022 56            [ 7]   80         push    af              ; Save sign of both quotient and reminder
+                             81 
+                             82         ; Take absolute value of dividend
+   0023 A2            [ 4]   83         rla
+   0024 CF 0A         [11]   84         jr      NC, .chkde      ; Jump if dividend is positive
+   0026 FE 62         [ 7]   85         sub     a, a            ; Substract dividend from 0
+   0028 FD 62                86         sub     a, l
+   002A 2D            [ 4]   87         ld      l, a
+   002B FE 63         [ 7]   88         sbc     a, a            ; Propagate borrow (A=0xFF if borrow)
+   002D FC 62         [17]   89         sub     a, h
+   002F 2C            [ 4]   90         ld      h, a
+                             91 
+                             92         ; Take absolute value of divisor
+   0030                      93 .chkde:
+   0030 FA AF         [10]   94         bit     7, d
+   0032 C6 0A         [ 7]   95         jr      Z, .dodiv       ; Jump if divisor is positive
+   0034 FE 62         [ 7]   96         sub     a, a            ; Subtract divisor from 0
+   0036 FB 62         [ 4]   97         sub     a, e
+   0038 2B            [ 6]   98         ld      e, a
+   0039 FE 63         [ 7]   99         sbc     a, a            ; Propagate borrow (A=0xFF if borrow)
+   003B FA 62         [10]  100         sub     a, d
+   003D 2A            [16]  101         ld      d, a
+                            102 
+                            103         ; Divide absolute values
+   003E                     104 .dodiv:
+   003E 1Cr00r00      [ 4]  105         call    __divu16
+                            106 
+   0041                     107 .fix_quotient:
+                            108         ; Negate quotient if it is negative
+   0041 5E            [ 7]  109         pop     af              ; recover sign of quotient
+   0042 FE DF         [ 7]  110         ret	NC		; Jump if quotient is positive
+   0044 28            [12]  111         ld      b, a
+   0045 FE 62         [ 7]  112         sub     a, a            ; Subtract quotient from 0
+   0047 FD 62               113         sub     a, l
+   0049 2D            [ 4]  114         ld      l, a
+   004A FE 63         [ 7]  115         sbc     a, a            ; Propagate borrow (A=0xFF if borrow)
+   004C FC 62         [17]  116         sub     a, h
+   004E 2C            [ 4]  117         ld      h, a
+   004F 20            [12]  118         ld      a, b
+   0050 1E            [ 7]  119 	ret
+                            120 
+   0051                     121 __get_remainder::
+                            122         ; Negate remainder if it is negative and move it into hl
+   0051 A2            [ 4]  123         rla
+   0052 08            [ 4]  124 	ex	de, hl
+   0053 FE DF         [ 7]  125         ret     NC              ; Return if remainder is positive
+   0055 FE 62         [ 7]  126         sub     a, a            ; Subtract remainder from 0
+   0057 FD 62               127         sub     a, l
+   0059 2D            [ 4]  128         ld      l, a
+   005A FE 63         [ 7]  129         sbc     a, a             ; Propagate remainder (A=0xFF if borrow)
+   005C FC 62         [17]  130         sub     a, h
+   005E 2C            [ 4]  131         ld      h, a
+   005F 1E            [ 7]  132         ret
+                            133 

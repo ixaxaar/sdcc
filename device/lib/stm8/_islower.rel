@@ -1,0 +1,29 @@
+XH3
+H A areas 2 global symbols
+M _islower
+S .__.ABS. Def000000
+A _CODE size 0 flags 0 addr 0
+A DATA size 0 flags 0 addr 0
+A INITIALIZED size 0 flags 0 addr 0
+A DABS size 0 flags 8 addr 0
+A HOME size 0 flags 0 addr 0
+A GSINIT size 0 flags 0 addr 0
+A GSFINAL size 0 flags 0 addr 0
+A CODE size 12 flags 0 addr 0
+S _islower Def000000
+A INITIALIZER size 0 flags 0 addr 0
+A CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 00 07
+T 00 00 00 7B 03 A1 61 25 0A 7B 03 A1 7A 22 04 A6
+R 00 00 00 07
+T 00 00 0D 01 20 01
+R 00 00 00 07
+T 00 00 10
+R 00 00 00 07
+T 00 00 10 4F
+R 00 00 00 07
+T 00 00 11
+R 00 00 00 07
+T 00 00 11 81
+R 00 00 00 07

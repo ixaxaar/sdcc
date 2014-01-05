@@ -1,0 +1,272 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                                      4 ; This file was generated Wed Nov 27 12:27:56 2013
+                                      5 ;--------------------------------------------------------
+                                      6 	.module _divslong
+                                      7 	.optsdcc -mmcs51 --model-large
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl __divslong_PARM_2
+                                     13 	.globl __divslong
+                                     14 ;--------------------------------------------------------
+                                     15 ; special function registers
+                                     16 ;--------------------------------------------------------
+                                     17 	.area RSEG    (ABS,DATA)
+      000000                         18 	.org 0x0000
+                                     19 ;--------------------------------------------------------
+                                     20 ; special function bits
+                                     21 ;--------------------------------------------------------
+                                     22 	.area RSEG    (ABS,DATA)
+      000000                         23 	.org 0x0000
+                                     24 ;--------------------------------------------------------
+                                     25 ; overlayable register banks
+                                     26 ;--------------------------------------------------------
+                                     27 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         28 	.ds 8
+                                     29 ;--------------------------------------------------------
+                                     30 ; internal ram data
+                                     31 ;--------------------------------------------------------
+                                     32 	.area DSEG    (DATA)
+      000000                         33 __divslong_sloc0_1_0:
+      000000                         34 	.ds 4
+      000004                         35 __divslong_sloc1_1_0:
+      000004                         36 	.ds 4
+                                     37 ;--------------------------------------------------------
+                                     38 ; overlayable items in internal ram 
+                                     39 ;--------------------------------------------------------
+                                     40 ;--------------------------------------------------------
+                                     41 ; indirectly addressable internal ram data
+                                     42 ;--------------------------------------------------------
+                                     43 	.area ISEG    (DATA)
+                                     44 ;--------------------------------------------------------
+                                     45 ; absolute internal ram data
+                                     46 ;--------------------------------------------------------
+                                     47 	.area IABS    (ABS,DATA)
+                                     48 	.area IABS    (ABS,DATA)
+                                     49 ;--------------------------------------------------------
+                                     50 ; bit data
+                                     51 ;--------------------------------------------------------
+                                     52 	.area BSEG    (BIT)
+                                     53 ;--------------------------------------------------------
+                                     54 ; paged external ram data
+                                     55 ;--------------------------------------------------------
+                                     56 	.area PSEG    (PAG,XDATA)
+                                     57 ;--------------------------------------------------------
+                                     58 ; external ram data
+                                     59 ;--------------------------------------------------------
+                                     60 	.area XSEG    (XDATA)
+      000000                         61 __divslong_PARM_2:
+      000000                         62 	.ds 4
+      000004                         63 __divslong_x_1_1:
+      000004                         64 	.ds 4
+                                     65 ;--------------------------------------------------------
+                                     66 ; absolute external ram data
+                                     67 ;--------------------------------------------------------
+                                     68 	.area XABS    (ABS,XDATA)
+                                     69 ;--------------------------------------------------------
+                                     70 ; external initialized ram data
+                                     71 ;--------------------------------------------------------
+                                     72 	.area XISEG   (XDATA)
+                                     73 	.area HOME    (CODE)
+                                     74 	.area GSINIT0 (CODE)
+                                     75 	.area GSINIT1 (CODE)
+                                     76 	.area GSINIT2 (CODE)
+                                     77 	.area GSINIT3 (CODE)
+                                     78 	.area GSINIT4 (CODE)
+                                     79 	.area GSINIT5 (CODE)
+                                     80 	.area GSINIT  (CODE)
+                                     81 	.area GSFINAL (CODE)
+                                     82 	.area CSEG    (CODE)
+                                     83 ;--------------------------------------------------------
+                                     84 ; global & static initialisations
+                                     85 ;--------------------------------------------------------
+                                     86 	.area HOME    (CODE)
+                                     87 	.area GSINIT  (CODE)
+                                     88 	.area GSFINAL (CODE)
+                                     89 	.area GSINIT  (CODE)
+                                     90 ;--------------------------------------------------------
+                                     91 ; Home
+                                     92 ;--------------------------------------------------------
+                                     93 	.area HOME    (CODE)
+                                     94 	.area HOME    (CODE)
+                                     95 ;--------------------------------------------------------
+                                     96 ; code
+                                     97 ;--------------------------------------------------------
+                                     98 	.area CSEG    (CODE)
+                                     99 ;------------------------------------------------------------
+                                    100 ;Allocation info for local variables in function '_divslong'
+                                    101 ;------------------------------------------------------------
+                                    102 ;sloc0                     Allocated with name '__divslong_sloc0_1_0'
+                                    103 ;sloc1                     Allocated with name '__divslong_sloc1_1_0'
+                                    104 ;y                         Allocated with name '__divslong_PARM_2'
+                                    105 ;x                         Allocated with name '__divslong_x_1_1'
+                                    106 ;r                         Allocated with name '__divslong_r_1_2'
+                                    107 ;------------------------------------------------------------
+                                    108 ;	_divslong.c:259: _divslong (long x, long y)
+                                    109 ;	-----------------------------------------
+                                    110 ;	 function _divslong
+                                    111 ;	-----------------------------------------
+      000000                        112 __divslong:
+                           000007   113 	ar7 = 0x07
+                           000006   114 	ar6 = 0x06
+                           000005   115 	ar5 = 0x05
+                           000004   116 	ar4 = 0x04
+                           000003   117 	ar3 = 0x03
+                           000002   118 	ar2 = 0x02
+                           000001   119 	ar1 = 0x01
+                           000000   120 	ar0 = 0x00
+      000000 AF 82            [24]  121 	mov	r7,dpl
+      000002 AE 83            [24]  122 	mov	r6,dph
+      000004 AD F0            [24]  123 	mov	r5,b
+      000006 FC               [12]  124 	mov	r4,a
+      000007 90r00r04         [24]  125 	mov	dptr,#__divslong_x_1_1
+      00000A EF               [12]  126 	mov	a,r7
+      00000B F0               [24]  127 	movx	@dptr,a
+      00000C EE               [12]  128 	mov	a,r6
+      00000D A3               [24]  129 	inc	dptr
+      00000E F0               [24]  130 	movx	@dptr,a
+      00000F ED               [12]  131 	mov	a,r5
+      000010 A3               [24]  132 	inc	dptr
+      000011 F0               [24]  133 	movx	@dptr,a
+      000012 EC               [12]  134 	mov	a,r4
+      000013 A3               [24]  135 	inc	dptr
+      000014 F0               [24]  136 	movx	@dptr,a
+                                    137 ;	_divslong.c:263: r = (unsigned long)(x < 0 ? -x : x) / (unsigned long)(y < 0 ? -y : y);
+      000015 90r00r04         [24]  138 	mov	dptr,#__divslong_x_1_1
+      000018 E0               [24]  139 	movx	a,@dptr
+      000019 FC               [12]  140 	mov	r4,a
+      00001A A3               [24]  141 	inc	dptr
+      00001B E0               [24]  142 	movx	a,@dptr
+      00001C FD               [12]  143 	mov	r5,a
+      00001D A3               [24]  144 	inc	dptr
+      00001E E0               [24]  145 	movx	a,@dptr
+      00001F FE               [12]  146 	mov	r6,a
+      000020 A3               [24]  147 	inc	dptr
+      000021 E0               [24]  148 	movx	a,@dptr
+      000022 FF               [12]  149 	mov	r7,a
+      000023 33               [12]  150 	rlc	a
+      000024 E4               [12]  151 	clr	a
+      000025 33               [12]  152 	rlc	a
+      000026 FB               [12]  153 	mov	r3,a
+      000027 60 13            [24]  154 	jz	00106$
+      000029 C3               [12]  155 	clr	c
+      00002A E4               [12]  156 	clr	a
+      00002B 9C               [12]  157 	subb	a,r4
+      00002C F5*00            [12]  158 	mov	__divslong_sloc0_1_0,a
+      00002E E4               [12]  159 	clr	a
+      00002F 9D               [12]  160 	subb	a,r5
+      000030 F5*01            [12]  161 	mov	(__divslong_sloc0_1_0 + 1),a
+      000032 E4               [12]  162 	clr	a
+      000033 9E               [12]  163 	subb	a,r6
+      000034 F5*02            [12]  164 	mov	(__divslong_sloc0_1_0 + 2),a
+      000036 E4               [12]  165 	clr	a
+      000037 9F               [12]  166 	subb	a,r7
+      000038 F5*03            [12]  167 	mov	(__divslong_sloc0_1_0 + 3),a
+      00003A 80 08            [24]  168 	sjmp	00107$
+      00003C                        169 00106$:
+      00003C 8C*00            [24]  170 	mov	__divslong_sloc0_1_0,r4
+      00003E 8D*01            [24]  171 	mov	(__divslong_sloc0_1_0 + 1),r5
+      000040 8E*02            [24]  172 	mov	(__divslong_sloc0_1_0 + 2),r6
+      000042 8F*03            [24]  173 	mov	(__divslong_sloc0_1_0 + 3),r7
+      000044                        174 00107$:
+      000044 AC*00            [24]  175 	mov	r4,__divslong_sloc0_1_0
+      000046 AD*01            [24]  176 	mov	r5,(__divslong_sloc0_1_0 + 1)
+      000048 AE*02            [24]  177 	mov	r6,(__divslong_sloc0_1_0 + 2)
+      00004A AF*03            [24]  178 	mov	r7,(__divslong_sloc0_1_0 + 3)
+      00004C 90r00r00         [24]  179 	mov	dptr,#__divslong_PARM_2
+      00004F E0               [24]  180 	movx	a,@dptr
+      000050 F5*00            [12]  181 	mov	__divslong_sloc0_1_0,a
+      000052 A3               [24]  182 	inc	dptr
+      000053 E0               [24]  183 	movx	a,@dptr
+      000054 F5*01            [12]  184 	mov	(__divslong_sloc0_1_0 + 1),a
+      000056 A3               [24]  185 	inc	dptr
+      000057 E0               [24]  186 	movx	a,@dptr
+      000058 F5*02            [12]  187 	mov	(__divslong_sloc0_1_0 + 2),a
+      00005A A3               [24]  188 	inc	dptr
+      00005B E0               [24]  189 	movx	a,@dptr
+      00005C F5*03            [12]  190 	mov	(__divslong_sloc0_1_0 + 3),a
+      00005E 33               [12]  191 	rlc	a
+      00005F E4               [12]  192 	clr	a
+      000060 33               [12]  193 	rlc	a
+      000061 FA               [12]  194 	mov	r2,a
+      000062 60 17            [24]  195 	jz	00108$
+      000064 C3               [12]  196 	clr	c
+      000065 E4               [12]  197 	clr	a
+      000066 95*00            [12]  198 	subb	a,__divslong_sloc0_1_0
+      000068 F5*04            [12]  199 	mov	__divslong_sloc1_1_0,a
+      00006A E4               [12]  200 	clr	a
+      00006B 95*01            [12]  201 	subb	a,(__divslong_sloc0_1_0 + 1)
+      00006D F5*05            [12]  202 	mov	(__divslong_sloc1_1_0 + 1),a
+      00006F E4               [12]  203 	clr	a
+      000070 95*02            [12]  204 	subb	a,(__divslong_sloc0_1_0 + 2)
+      000072 F5*06            [12]  205 	mov	(__divslong_sloc1_1_0 + 2),a
+      000074 E4               [12]  206 	clr	a
+      000075 95*03            [12]  207 	subb	a,(__divslong_sloc0_1_0 + 3)
+      000077 F5*07            [12]  208 	mov	(__divslong_sloc1_1_0 + 3),a
+      000079 80 0C            [24]  209 	sjmp	00109$
+      00007B                        210 00108$:
+      00007B 85*00*04         [24]  211 	mov	__divslong_sloc1_1_0,__divslong_sloc0_1_0
+      00007E 85*01*05         [24]  212 	mov	(__divslong_sloc1_1_0 + 1),(__divslong_sloc0_1_0 + 1)
+      000081 85*02*06         [24]  213 	mov	(__divslong_sloc1_1_0 + 2),(__divslong_sloc0_1_0 + 2)
+      000084 85*03*07         [24]  214 	mov	(__divslong_sloc1_1_0 + 3),(__divslong_sloc0_1_0 + 3)
+      000087                        215 00109$:
+      000087 90r00r00         [24]  216 	mov	dptr,#__divulong_PARM_2
+      00008A E5*04            [12]  217 	mov	a,__divslong_sloc1_1_0
+      00008C F0               [24]  218 	movx	@dptr,a
+      00008D E5*05            [12]  219 	mov	a,(__divslong_sloc1_1_0 + 1)
+      00008F A3               [24]  220 	inc	dptr
+      000090 F0               [24]  221 	movx	@dptr,a
+      000091 E5*06            [12]  222 	mov	a,(__divslong_sloc1_1_0 + 2)
+      000093 A3               [24]  223 	inc	dptr
+      000094 F0               [24]  224 	movx	@dptr,a
+      000095 E5*07            [12]  225 	mov	a,(__divslong_sloc1_1_0 + 3)
+      000097 A3               [24]  226 	inc	dptr
+      000098 F0               [24]  227 	movx	@dptr,a
+                                    228 ;	_divslong.c:264: if ((x < 0) ^ (y < 0))
+      000099 8C 82            [24]  229 	mov	dpl,r4
+      00009B 8D 83            [24]  230 	mov	dph,r5
+      00009D 8E F0            [24]  231 	mov	b,r6
+      00009F EF               [12]  232 	mov	a,r7
+      0000A0 C0 03            [24]  233 	push	ar3
+      0000A2 C0 02            [24]  234 	push	ar2
+      0000A4 12r00r00         [24]  235 	lcall	__divulong
+      0000A7 AC 82            [24]  236 	mov	r4,dpl
+      0000A9 AD 83            [24]  237 	mov	r5,dph
+      0000AB AE F0            [24]  238 	mov	r6,b
+      0000AD FF               [12]  239 	mov	r7,a
+      0000AE D0 02            [24]  240 	pop	ar2
+      0000B0 D0 03            [24]  241 	pop	ar3
+      0000B2 EA               [12]  242 	mov	a,r2
+      0000B3 6B               [12]  243 	xrl	a,r3
+      0000B4 60 13            [24]  244 	jz	00102$
+                                    245 ;	_divslong.c:265: return -r;
+      0000B6 C3               [12]  246 	clr	c
+      0000B7 E4               [12]  247 	clr	a
+      0000B8 9C               [12]  248 	subb	a,r4
+      0000B9 F8               [12]  249 	mov	r0,a
+      0000BA E4               [12]  250 	clr	a
+      0000BB 9D               [12]  251 	subb	a,r5
+      0000BC F9               [12]  252 	mov	r1,a
+      0000BD E4               [12]  253 	clr	a
+      0000BE 9E               [12]  254 	subb	a,r6
+      0000BF FA               [12]  255 	mov	r2,a
+      0000C0 E4               [12]  256 	clr	a
+      0000C1 9F               [12]  257 	subb	a,r7
+      0000C2 88 82            [24]  258 	mov	dpl,r0
+      0000C4 89 83            [24]  259 	mov	dph,r1
+      0000C6 8A F0            [24]  260 	mov	b,r2
+      0000C8 22               [24]  261 	ret
+      0000C9                        262 00102$:
+                                    263 ;	_divslong.c:267: return r;
+      0000C9 8C 82            [24]  264 	mov	dpl,r4
+      0000CB 8D 83            [24]  265 	mov	dph,r5
+      0000CD 8E F0            [24]  266 	mov	b,r6
+      0000CF EF               [12]  267 	mov	a,r7
+      0000D0 22               [24]  268 	ret
+                                    269 	.area CSEG    (CODE)
+                                    270 	.area CONST   (CODE)
+                                    271 	.area XINIT   (CODE)
+                                    272 	.area CABS    (ABS,CODE)

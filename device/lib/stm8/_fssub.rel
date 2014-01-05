@@ -1,0 +1,26 @@
+XH3
+H A areas 3 global symbols
+M _fssub
+S .__.ABS. Def000000
+S ___fsadd Ref000000
+A _CODE size 0 flags 0 addr 0
+A DATA size 0 flags 0 addr 0
+A INITIALIZED size 0 flags 0 addr 0
+A DABS size 0 flags 8 addr 0
+A HOME size 0 flags 0 addr 0
+A GSINIT size 0 flags 0 addr 0
+A GSFINAL size 0 flags 0 addr 0
+A CODE size 28 flags 0 addr 0
+S ___fssub Def000000
+A INITIALIZER size 0 flags 0 addr 0
+A CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 00 07
+T 00 00 00 52 04 16 09 7B 08 95 7B 07 A8 80 6B 01
+R 00 00 00 07
+T 00 00 0D 9E 1E 0D 89 1E 0D 89 90 89 88 7B 08 88
+R 00 00 00 07
+T 00 00 1A CD 00 00 5B 08 90 9E A8 80 90 95 5B 04
+R 00 00 00 07 02 04 00 01
+T 00 00 27 81
+R 00 00 00 07

@@ -1,0 +1,20 @@
+XL2
+H 4 areas 4 global symbols
+S .__.ABS. Def0000
+S __sdcc_heap_init Ref0000
+A _CODE size 0 flags 0 addr 0
+A _GSINIT size 3 flags 0 addr 0
+A _HEAP size 3FF flags 0 addr 0
+S __sdcc_heap_start Def0000
+A _HEAP_END size 1 flags 0 addr 0
+S __sdcc_heap_end Def0000
+T 00 00 1C 00 00
+R 00 00 01 00 02 03 01 00
+T 00 00
+R 00 00 02 00
+T 00 00
+R 00 00 02 00
+T 00 00
+R 00 00 03 00
+T 00 00
+R 00 00 03 00

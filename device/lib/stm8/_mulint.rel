@@ -1,0 +1,31 @@
+XH3
+H A areas 2 global symbols
+M _mulint
+S .__.ABS. Def000000
+A _CODE size 0 flags 0 addr 0
+A DATA size 0 flags 0 addr 0
+A INITIALIZED size 0 flags 0 addr 0
+A DABS size 0 flags 8 addr 0
+A HOME size 0 flags 0 addr 0
+A GSINIT size 0 flags 0 addr 0
+A GSFINAL size 0 flags 0 addr 0
+A CODE size 56 flags 0 addr 0
+S __mulint Def000000
+A INITIALIZER size 0 flags 0 addr 0
+A CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 00 07
+T 00 00 00 52 10 96 1C 00 13 1F 05 96 1C 00 15 1F
+R 00 00 00 07
+T 00 00 0D 03 96 5C 1F 09 1E 05 5C 1F 07 1E 07 F6
+R 00 00 00 07
+T 00 00 1A 90 97 1E 03 5C 1F 0D 1E 0D F6 90 42 1E
+R 00 00 00 07
+T 00 00 27 09 FF 96 5C 1F 0B 1E 0B F6 6B 10 1E 07
+R 00 00 00 07
+T 00 00 34 F6 97 16 03 90 F6 42 41 6B 0F 41 1E 05
+R 00 00 00 07
+T 00 00 41 F6 97 16 0D 90 F6 42 9F 1B 0F 1B 10 1E
+R 00 00 00 07
+T 00 00 4E 0B F7 96 5C FE 5B 10 81
+R 00 00 00 07

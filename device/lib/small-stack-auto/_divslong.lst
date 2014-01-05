@@ -1,0 +1,171 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                                      4 ; This file was generated Wed Nov 27 12:28:03 2013
+                                      5 ;--------------------------------------------------------
+                                      6 	.module _divslong
+                                      7 	.optsdcc -mmcs51 --model-small
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 ;--------------------------------------------------------
+                                     13 ; special function registers
+                                     14 ;--------------------------------------------------------
+                                     15 	.area RSEG    (ABS,DATA)
+      000000                         16 	.org 0x0000
+                                     17 ;--------------------------------------------------------
+                                     18 ; special function bits
+                                     19 ;--------------------------------------------------------
+                                     20 	.area RSEG    (ABS,DATA)
+      000000                         21 	.org 0x0000
+                                     22 ;--------------------------------------------------------
+                                     23 ; overlayable register banks
+                                     24 ;--------------------------------------------------------
+                                     25 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         26 	.ds 8
+                                     27 ;--------------------------------------------------------
+                                     28 ; internal ram data
+                                     29 ;--------------------------------------------------------
+                                     30 	.area DSEG    (DATA)
+                                     31 ;--------------------------------------------------------
+                                     32 ; overlayable items in internal ram 
+                                     33 ;--------------------------------------------------------
+                                     34 ;--------------------------------------------------------
+                                     35 ; indirectly addressable internal ram data
+                                     36 ;--------------------------------------------------------
+                                     37 	.area ISEG    (DATA)
+                                     38 ;--------------------------------------------------------
+                                     39 ; absolute internal ram data
+                                     40 ;--------------------------------------------------------
+                                     41 	.area IABS    (ABS,DATA)
+                                     42 	.area IABS    (ABS,DATA)
+                                     43 ;--------------------------------------------------------
+                                     44 ; bit data
+                                     45 ;--------------------------------------------------------
+                                     46 	.area BSEG    (BIT)
+                                     47 ;--------------------------------------------------------
+                                     48 ; paged external ram data
+                                     49 ;--------------------------------------------------------
+                                     50 	.area PSEG    (PAG,XDATA)
+                                     51 ;--------------------------------------------------------
+                                     52 ; external ram data
+                                     53 ;--------------------------------------------------------
+                                     54 	.area XSEG    (XDATA)
+                                     55 ;--------------------------------------------------------
+                                     56 ; absolute external ram data
+                                     57 ;--------------------------------------------------------
+                                     58 	.area XABS    (ABS,XDATA)
+                                     59 ;--------------------------------------------------------
+                                     60 ; external initialized ram data
+                                     61 ;--------------------------------------------------------
+                                     62 	.area XISEG   (XDATA)
+                                     63 	.area HOME    (CODE)
+                                     64 	.area GSINIT0 (CODE)
+                                     65 	.area GSINIT1 (CODE)
+                                     66 	.area GSINIT2 (CODE)
+                                     67 	.area GSINIT3 (CODE)
+                                     68 	.area GSINIT4 (CODE)
+                                     69 	.area GSINIT5 (CODE)
+                                     70 	.area GSINIT  (CODE)
+                                     71 	.area GSFINAL (CODE)
+                                     72 	.area CSEG    (CODE)
+                                     73 ;--------------------------------------------------------
+                                     74 ; global & static initialisations
+                                     75 ;--------------------------------------------------------
+                                     76 	.area HOME    (CODE)
+                                     77 	.area GSINIT  (CODE)
+                                     78 	.area GSFINAL (CODE)
+                                     79 	.area GSINIT  (CODE)
+                                     80 ;--------------------------------------------------------
+                                     81 ; Home
+                                     82 ;--------------------------------------------------------
+                                     83 	.area HOME    (CODE)
+                                     84 	.area HOME    (CODE)
+                                     85 ;--------------------------------------------------------
+                                     86 ; code
+                                     87 ;--------------------------------------------------------
+                                     88 	.area CSEG    (CODE)
+                                     89 ;------------------------------------------------------------
+                                     90 ;Allocation info for local variables in function '_divslong_dummy'
+                                     91 ;------------------------------------------------------------
+                                     92 ;	_divslong.c:158: _divslong_dummy (void) __naked
+                                     93 ;	-----------------------------------------
+                                     94 ;	 function _divslong_dummy
+                                     95 ;	-----------------------------------------
+      000000                         96 __divslong_dummy:
+                                     97 ;	naked function: no prologue.
+                                     98 ;	_divslong.c:253: __endasm;
+                                     99 	.globl __divslong
+      000000                        100 	__divslong:
+                                    101 ; r3 in acc
+      000000 FB               [12]  102 	mov r3,a ; save r3
+      000001 C2 D5            [12]  103 	clr F0 ; Flag 0 in PSW
+                                    104 ; available to user for general purpose
+      000003 30 E7 15         [24]  105 	jnb acc.7,a_not_negative
+      000006 D2 D5            [12]  106 	setb F0
+      000008 E4               [12]  107 	clr a
+      000009 C3               [12]  108 	clr c
+      00000A 95 82            [12]  109 	subb a,dpl
+      00000C F5 82            [12]  110 	mov dpl,a
+      00000E E4               [12]  111 	clr a
+      00000F 95 83            [12]  112 	subb a,dph
+      000011 F5 83            [12]  113 	mov dph,a
+      000013 E4               [12]  114 	clr a
+      000014 95 F0            [12]  115 	subb a,b
+      000016 F5 F0            [12]  116 	mov b,a
+      000018 E4               [12]  117 	clr a
+      000019 9B               [12]  118 	subb a,r3
+      00001A FB               [12]  119 	mov r3,a
+      00001B                        120 	a_not_negative:
+      00001B E5 81            [12]  121 	mov a,sp
+      00001D 24 FE            [12]  122 	add a,#-2 ; 2 bytes return address
+      00001F F8               [12]  123 	mov r0,a ; r0 points to y3
+      000020 E6               [12]  124 	mov a,@r0 ; y3
+      000021 30 E7 15         [24]  125 	jnb acc.7,b_not_negative
+      000024 B2 D5            [12]  126 	cpl F0
+      000026 18               [12]  127 	dec r0
+      000027 18               [12]  128 	dec r0
+      000028 18               [12]  129 	dec r0
+      000029 E4               [12]  130 	clr a
+      00002A C3               [12]  131 	clr c
+      00002B 96               [12]  132 	subb a,@r0 ; y0
+      00002C F6               [12]  133 	mov @r0,a
+      00002D E4               [12]  134 	clr a
+      00002E 08               [12]  135 	inc r0
+      00002F 96               [12]  136 	subb a,@r0 ; y1
+      000030 F6               [12]  137 	mov @r0,a
+      000031 E4               [12]  138 	clr a
+      000032 08               [12]  139 	inc r0
+      000033 96               [12]  140 	subb a,@r0 ; y2
+      000034 F6               [12]  141 	mov @r0,a
+      000035 E4               [12]  142 	clr a
+      000036 08               [12]  143 	inc r0
+      000037 96               [12]  144 	subb a,@r0 ; y3
+      000038 F6               [12]  145 	mov @r0,a
+      000039                        146 	b_not_negative:
+      000039 18               [12]  147 	dec r0
+      00003A 18               [12]  148 	dec r0
+      00003B 18               [12]  149 	dec r0 ; r0 points to y0
+      00003C 12r00r00         [24]  150 	lcall __divlong
+      00003F 30 D5 13         [24]  151 	jnb F0,not_negative
+      000042 FB               [12]  152 	mov r3,a ; save r3
+      000043 E4               [12]  153 	clr a
+      000044 C3               [12]  154 	clr c
+      000045 95 82            [12]  155 	subb a,dpl
+      000047 F5 82            [12]  156 	mov dpl,a
+      000049 E4               [12]  157 	clr a
+      00004A 95 83            [12]  158 	subb a,dph
+      00004C F5 83            [12]  159 	mov dph,a
+      00004E E4               [12]  160 	clr a
+      00004F 95 F0            [12]  161 	subb a,b
+      000051 F5 F0            [12]  162 	mov b,a
+      000053 E4               [12]  163 	clr a
+      000054 9B               [12]  164 	subb a,r3 ; r3 ends in acc
+      000055                        165 	not_negative:
+      000055 22               [24]  166 	ret
+                                    167 ;	naked function: no epilogue.
+                                    168 	.area CSEG    (CODE)
+                                    169 	.area CONST   (CODE)
+                                    170 	.area XINIT   (CODE)
+                                    171 	.area CABS    (ABS,CODE)

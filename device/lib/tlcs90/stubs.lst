@@ -1,0 +1,77 @@
+                              1 ;--------------------------------------------------------------------------
+                              2 ;  stubs.s
+                              3 ;
+                              4 ;  Copyright (C) 2001, Michael Hope
+                              5 ;
+                              6 ;  This library is free software; you can redistribute it and/or modify it
+                              7 ;  under the terms of the GNU General Public License as published by the
+                              8 ;  Free Software Foundation; either version 2, or (at your option) any
+                              9 ;  later version.
+                             10 ;
+                             11 ;  This library is distributed in the hope that it will be useful,
+                             12 ;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                             13 ;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+                             14 ;  GNU General Public License for more details.
+                             15 ;
+                             16 ;  You should have received a copy of the GNU General Public License 
+                             17 ;  along with this library; see the file COPYING. If not, write to the
+                             18 ;  Free Software Foundation, 51 Franklin Street, Fifth Floor, Boston,
+                             19 ;   MA 02110-1301, USA.
+                             20 ;
+                             21 ;  As a special exception, if you link this library with other files,
+                             22 ;  some of which are compiled with SDCC, to produce an executable,
+                             23 ;  this library does not by itself cause the resulting executable to
+                             24 ;  be covered by the GNU General Public License. This exception does
+                             25 ;  not however invalidate any other reasons why the executable file
+                             26 ;   might be covered by the GNU General Public License.
+                             27 ;--------------------------------------------------------------------------
+                             28 
+                             29 ; Just stubs - not copyrightable
+                             30 
+                             31         ;; Stubs to match between function names
+                             32         .area	_CODE
+                             33 
+                             34         .globl  __mullong
+                             35         .globl  __modslong
+                             36         .globl  __modulong
+                             37         .globl  __divslong
+                             38         .globl  __divulong
+                             39         .globl	__divschar_rrx_s
+                             40         .globl	__divuchar_rrx_s
+                             41         .globl	__divsuchar_rrx_s
+                             42         .globl	__divuschar_rrx_s
+                             43         .globl	__divsint_rrx_s
+                             44         .globl	__divuint_rrx_s
+                             45         .globl	__mulschar_rrx_s
+                             46         .globl	__muluchar_rrx_s
+                             47         .globl	__mulsuchar_rrx_s
+                             48         .globl	__muluschar_rrx_s
+                             49         .globl	__mulint_rrx_s
+                             50         .globl  __modschar_rrx_s
+                             51         .globl  __moduchar_rrx_s
+                             52         .globl  __modsuchar_rrx_s
+                             53         .globl  __moduschar_rrx_s
+                             54         .globl  __moduint_rrx_s
+                             55         .globl  __modsint_rrx_s
+                             56 
+   0000                      57 __mullong_rrx_s::
+   0000                      58 __mullong_rrf_s::
+   0000 1Ar00r00      [ 7]   59         jp      __mullong
+                             60 
+   0003                      61 __modslong_rrx_s::
+   0003                      62 __modslong_rrf_s::
+   0003 1Ar00r00      [ 7]   63         jp      __modslong
+                             64 
+   0006                      65 __modulong_rrx_s::
+   0006                      66 __modulong_rrf_s::
+   0006 1Ar00r00      [ 7]   67         jp      __modulong
+                             68 
+   0009                      69 __divslong_rrx_s::
+   0009                      70 __divslong_rrf_s::
+   0009 1Ar00r00      [ 7]   71         jp      __divslong
+                             72 
+   000C                      73 __divulong_rrx_s::
+   000C                      74 __divulong_rrf_s::
+   000C 1Ar00r00      [ 7]   75         jp      __divulong
+                             76 
+                             77 

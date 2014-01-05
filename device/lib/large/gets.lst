@@ -1,0 +1,278 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                                      4 ; This file was generated Wed Nov 27 12:27:57 2013
+                                      5 ;--------------------------------------------------------
+                                      6 	.module gets
+                                      7 	.optsdcc -mmcs51 --model-large
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl _putchar
+                                     13 	.globl _getchar
+                                     14 	.globl _gets
+                                     15 ;--------------------------------------------------------
+                                     16 ; special function registers
+                                     17 ;--------------------------------------------------------
+                                     18 	.area RSEG    (ABS,DATA)
+      000000                         19 	.org 0x0000
+                                     20 ;--------------------------------------------------------
+                                     21 ; special function bits
+                                     22 ;--------------------------------------------------------
+                                     23 	.area RSEG    (ABS,DATA)
+      000000                         24 	.org 0x0000
+                                     25 ;--------------------------------------------------------
+                                     26 ; overlayable register banks
+                                     27 ;--------------------------------------------------------
+                                     28 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         29 	.ds 8
+                                     30 ;--------------------------------------------------------
+                                     31 ; internal ram data
+                                     32 ;--------------------------------------------------------
+                                     33 	.area DSEG    (DATA)
+                                     34 ;--------------------------------------------------------
+                                     35 ; overlayable items in internal ram 
+                                     36 ;--------------------------------------------------------
+                                     37 ;--------------------------------------------------------
+                                     38 ; indirectly addressable internal ram data
+                                     39 ;--------------------------------------------------------
+                                     40 	.area ISEG    (DATA)
+                                     41 ;--------------------------------------------------------
+                                     42 ; absolute internal ram data
+                                     43 ;--------------------------------------------------------
+                                     44 	.area IABS    (ABS,DATA)
+                                     45 	.area IABS    (ABS,DATA)
+                                     46 ;--------------------------------------------------------
+                                     47 ; bit data
+                                     48 ;--------------------------------------------------------
+                                     49 	.area BSEG    (BIT)
+                                     50 ;--------------------------------------------------------
+                                     51 ; paged external ram data
+                                     52 ;--------------------------------------------------------
+                                     53 	.area PSEG    (PAG,XDATA)
+                                     54 ;--------------------------------------------------------
+                                     55 ; external ram data
+                                     56 ;--------------------------------------------------------
+                                     57 	.area XSEG    (XDATA)
+      000000                         58 _gets_s_1_12:
+      000000                         59 	.ds 3
+      000003                         60 _gets_count_1_13:
+      000003                         61 	.ds 2
+                                     62 ;--------------------------------------------------------
+                                     63 ; absolute external ram data
+                                     64 ;--------------------------------------------------------
+                                     65 	.area XABS    (ABS,XDATA)
+                                     66 ;--------------------------------------------------------
+                                     67 ; external initialized ram data
+                                     68 ;--------------------------------------------------------
+                                     69 	.area XISEG   (XDATA)
+                                     70 	.area HOME    (CODE)
+                                     71 	.area GSINIT0 (CODE)
+                                     72 	.area GSINIT1 (CODE)
+                                     73 	.area GSINIT2 (CODE)
+                                     74 	.area GSINIT3 (CODE)
+                                     75 	.area GSINIT4 (CODE)
+                                     76 	.area GSINIT5 (CODE)
+                                     77 	.area GSINIT  (CODE)
+                                     78 	.area GSFINAL (CODE)
+                                     79 	.area CSEG    (CODE)
+                                     80 ;--------------------------------------------------------
+                                     81 ; global & static initialisations
+                                     82 ;--------------------------------------------------------
+                                     83 	.area HOME    (CODE)
+                                     84 	.area GSINIT  (CODE)
+                                     85 	.area GSFINAL (CODE)
+                                     86 	.area GSINIT  (CODE)
+                                     87 ;--------------------------------------------------------
+                                     88 ; Home
+                                     89 ;--------------------------------------------------------
+                                     90 	.area HOME    (CODE)
+                                     91 	.area HOME    (CODE)
+                                     92 ;--------------------------------------------------------
+                                     93 ; code
+                                     94 ;--------------------------------------------------------
+                                     95 	.area CSEG    (CODE)
+                                     96 ;------------------------------------------------------------
+                                     97 ;Allocation info for local variables in function 'gets'
+                                     98 ;------------------------------------------------------------
+                                     99 ;s                         Allocated with name '_gets_s_1_12'
+                                    100 ;c                         Allocated with name '_gets_c_1_13'
+                                    101 ;count                     Allocated with name '_gets_count_1_13'
+                                    102 ;------------------------------------------------------------
+                                    103 ;	gets.c:32: gets (char *s)
+                                    104 ;	-----------------------------------------
+                                    105 ;	 function gets
+                                    106 ;	-----------------------------------------
+      000000                        107 _gets:
+                           000007   108 	ar7 = 0x07
+                           000006   109 	ar6 = 0x06
+                           000005   110 	ar5 = 0x05
+                           000004   111 	ar4 = 0x04
+                           000003   112 	ar3 = 0x03
+                           000002   113 	ar2 = 0x02
+                           000001   114 	ar1 = 0x01
+                           000000   115 	ar0 = 0x00
+      000000 AF F0            [24]  116 	mov	r7,b
+      000002 AE 83            [24]  117 	mov	r6,dph
+      000004 E5 82            [12]  118 	mov	a,dpl
+      000006 90r00r00         [24]  119 	mov	dptr,#_gets_s_1_12
+      000009 F0               [24]  120 	movx	@dptr,a
+      00000A EE               [12]  121 	mov	a,r6
+      00000B A3               [24]  122 	inc	dptr
+      00000C F0               [24]  123 	movx	@dptr,a
+      00000D EF               [12]  124 	mov	a,r7
+      00000E A3               [24]  125 	inc	dptr
+      00000F F0               [24]  126 	movx	@dptr,a
+                                    127 ;	gets.c:35: unsigned int count = 0;
+      000010 90r00r03         [24]  128 	mov	dptr,#_gets_count_1_13
+      000013 E4               [12]  129 	clr	a
+      000014 F0               [24]  130 	movx	@dptr,a
+      000015 A3               [24]  131 	inc	dptr
+      000016 F0               [24]  132 	movx	@dptr,a
+                                    133 ;	gets.c:37: while (1)
+      000017                        134 00109$:
+                                    135 ;	gets.c:39: c = getchar ();
+      000017 12r00r00         [24]  136 	lcall	_getchar
+      00001A AF 82            [24]  137 	mov	r7,dpl
+                                    138 ;	gets.c:40: switch(c)
+      00001C BF 08 02         [24]  139 	cjne	r7,#0x08,00128$
+      00001F 80 0A            [24]  140 	sjmp	00101$
+      000021                        141 00128$:
+      000021 BF 0A 02         [24]  142 	cjne	r7,#0x0A,00129$
+      000024 80 53            [24]  143 	sjmp	00105$
+      000026                        144 00129$:
+                                    145 ;	gets.c:42: case '\b': /* backspace */
+      000026 BF 0D 78         [24]  146 	cjne	r7,#0x0D,00106$
+      000029 80 4E            [24]  147 	sjmp	00105$
+      00002B                        148 00101$:
+                                    149 ;	gets.c:43: if (count)
+      00002B 90r00r03         [24]  150 	mov	dptr,#_gets_count_1_13
+      00002E E0               [24]  151 	movx	a,@dptr
+      00002F FD               [12]  152 	mov	r5,a
+      000030 A3               [24]  153 	inc	dptr
+      000031 E0               [24]  154 	movx	a,@dptr
+      000032 FE               [12]  155 	mov	r6,a
+      000033 4D               [12]  156 	orl	a,r5
+      000034 60 E1            [24]  157 	jz	00109$
+                                    158 ;	gets.c:45: putchar ('\b');
+      000036 75 82 08         [24]  159 	mov	dpl,#0x08
+      000039 C0 06            [24]  160 	push	ar6
+      00003B C0 05            [24]  161 	push	ar5
+      00003D 12r00r00         [24]  162 	lcall	_putchar
+                                    163 ;	gets.c:46: putchar (' ');
+      000040 75 82 20         [24]  164 	mov	dpl,#0x20
+      000043 12r00r00         [24]  165 	lcall	_putchar
+                                    166 ;	gets.c:47: putchar ('\b');
+      000046 75 82 08         [24]  167 	mov	dpl,#0x08
+      000049 12r00r00         [24]  168 	lcall	_putchar
+      00004C D0 05            [24]  169 	pop	ar5
+      00004E D0 06            [24]  170 	pop	ar6
+                                    171 ;	gets.c:48: --s;
+      000050 90r00r00         [24]  172 	mov	dptr,#_gets_s_1_12
+      000053 E0               [24]  173 	movx	a,@dptr
+      000054 24 FF            [12]  174 	add	a,#0xFF
+      000056 FA               [12]  175 	mov	r2,a
+      000057 A3               [24]  176 	inc	dptr
+      000058 E0               [24]  177 	movx	a,@dptr
+      000059 34 FF            [12]  178 	addc	a,#0xFF
+      00005B FB               [12]  179 	mov	r3,a
+      00005C A3               [24]  180 	inc	dptr
+      00005D E0               [24]  181 	movx	a,@dptr
+      00005E FC               [12]  182 	mov	r4,a
+      00005F 90r00r00         [24]  183 	mov	dptr,#_gets_s_1_12
+      000062 EA               [12]  184 	mov	a,r2
+      000063 F0               [24]  185 	movx	@dptr,a
+      000064 EB               [12]  186 	mov	a,r3
+      000065 A3               [24]  187 	inc	dptr
+      000066 F0               [24]  188 	movx	@dptr,a
+      000067 EC               [12]  189 	mov	a,r4
+      000068 A3               [24]  190 	inc	dptr
+      000069 F0               [24]  191 	movx	@dptr,a
+                                    192 ;	gets.c:49: --count;
+      00006A 1D               [12]  193 	dec	r5
+      00006B BD FF 01         [24]  194 	cjne	r5,#0xFF,00132$
+      00006E 1E               [12]  195 	dec	r6
+      00006F                        196 00132$:
+      00006F 90r00r03         [24]  197 	mov	dptr,#_gets_count_1_13
+      000072 ED               [12]  198 	mov	a,r5
+      000073 F0               [24]  199 	movx	@dptr,a
+      000074 EE               [12]  200 	mov	a,r6
+      000075 A3               [24]  201 	inc	dptr
+      000076 F0               [24]  202 	movx	@dptr,a
+                                    203 ;	gets.c:51: break;
+                                    204 ;	gets.c:54: case '\r': /* CR or LF */
+      000077 80 9E            [24]  205 	sjmp	00109$
+      000079                        206 00105$:
+                                    207 ;	gets.c:55: putchar ('\r');
+      000079 75 82 0D         [24]  208 	mov	dpl,#0x0D
+      00007C 12r00r00         [24]  209 	lcall	_putchar
+                                    210 ;	gets.c:56: putchar ('\n');
+      00007F 75 82 0A         [24]  211 	mov	dpl,#0x0A
+      000082 12r00r00         [24]  212 	lcall	_putchar
+                                    213 ;	gets.c:57: *s = 0;
+      000085 90r00r00         [24]  214 	mov	dptr,#_gets_s_1_12
+      000088 E0               [24]  215 	movx	a,@dptr
+      000089 FC               [12]  216 	mov	r4,a
+      00008A A3               [24]  217 	inc	dptr
+      00008B E0               [24]  218 	movx	a,@dptr
+      00008C FD               [12]  219 	mov	r5,a
+      00008D A3               [24]  220 	inc	dptr
+      00008E E0               [24]  221 	movx	a,@dptr
+      00008F FE               [12]  222 	mov	r6,a
+      000090 8C 82            [24]  223 	mov	dpl,r4
+      000092 8D 83            [24]  224 	mov	dph,r5
+      000094 8E F0            [24]  225 	mov	b,r6
+      000096 E4               [12]  226 	clr	a
+      000097 12r00r00         [24]  227 	lcall	__gptrput
+                                    228 ;	gets.c:58: return s;
+      00009A 8C 82            [24]  229 	mov	dpl,r4
+      00009C 8D 83            [24]  230 	mov	dph,r5
+      00009E 8E F0            [24]  231 	mov	b,r6
+                                    232 ;	gets.c:60: default:
+      0000A0 22               [24]  233 	ret
+      0000A1                        234 00106$:
+                                    235 ;	gets.c:61: *s++ = c;
+      0000A1 90r00r00         [24]  236 	mov	dptr,#_gets_s_1_12
+      0000A4 E0               [24]  237 	movx	a,@dptr
+      0000A5 FC               [12]  238 	mov	r4,a
+      0000A6 A3               [24]  239 	inc	dptr
+      0000A7 E0               [24]  240 	movx	a,@dptr
+      0000A8 FD               [12]  241 	mov	r5,a
+      0000A9 A3               [24]  242 	inc	dptr
+      0000AA E0               [24]  243 	movx	a,@dptr
+      0000AB FE               [12]  244 	mov	r6,a
+      0000AC 8C 82            [24]  245 	mov	dpl,r4
+      0000AE 8D 83            [24]  246 	mov	dph,r5
+      0000B0 8E F0            [24]  247 	mov	b,r6
+      0000B2 EF               [12]  248 	mov	a,r7
+      0000B3 12r00r00         [24]  249 	lcall	__gptrput
+      0000B6 90r00r00         [24]  250 	mov	dptr,#_gets_s_1_12
+      0000B9 74 01            [12]  251 	mov	a,#0x01
+      0000BB 2C               [12]  252 	add	a,r4
+      0000BC F0               [24]  253 	movx	@dptr,a
+      0000BD E4               [12]  254 	clr	a
+      0000BE 3D               [12]  255 	addc	a,r5
+      0000BF A3               [24]  256 	inc	dptr
+      0000C0 F0               [24]  257 	movx	@dptr,a
+      0000C1 EE               [12]  258 	mov	a,r6
+      0000C2 A3               [24]  259 	inc	dptr
+      0000C3 F0               [24]  260 	movx	@dptr,a
+                                    261 ;	gets.c:62: ++count;
+      0000C4 90r00r03         [24]  262 	mov	dptr,#_gets_count_1_13
+      0000C7 E0               [24]  263 	movx	a,@dptr
+      0000C8 24 01            [12]  264 	add	a,#0x01
+      0000CA F0               [24]  265 	movx	@dptr,a
+      0000CB A3               [24]  266 	inc	dptr
+      0000CC E0               [24]  267 	movx	a,@dptr
+      0000CD 34 00            [12]  268 	addc	a,#0x00
+      0000CF F0               [24]  269 	movx	@dptr,a
+                                    270 ;	gets.c:63: putchar (c);
+      0000D0 8F 82            [24]  271 	mov	dpl,r7
+      0000D2 12r00r00         [24]  272 	lcall	_putchar
+                                    273 ;	gets.c:65: }
+      0000D5 02r00r17         [24]  274 	ljmp	00109$
+                                    275 	.area CSEG    (CODE)
+                                    276 	.area CONST   (CODE)
+                                    277 	.area XINIT   (CODE)
+                                    278 	.area CABS    (ABS,CODE)

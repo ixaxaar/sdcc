@@ -1,0 +1,475 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                                      4 ; This file was generated Wed Nov 27 12:28:02 2013
+                                      5 ;--------------------------------------------------------
+                                      6 	.module _ltoa
+                                      7 	.optsdcc -mmcs51 --model-huge
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl __ltoa
+                                     13 	.globl __ultoa
+                                     14 	.globl __ltoa_PARM_3
+                                     15 	.globl __ltoa_PARM_2
+                                     16 	.globl __ultoa_PARM_3
+                                     17 	.globl __ultoa_PARM_2
+                                     18 ;--------------------------------------------------------
+                                     19 ; special function registers
+                                     20 ;--------------------------------------------------------
+                                     21 	.area RSEG    (ABS,DATA)
+      000000                         22 	.org 0x0000
+                                     23 ;--------------------------------------------------------
+                                     24 ; special function bits
+                                     25 ;--------------------------------------------------------
+                                     26 	.area RSEG    (ABS,DATA)
+      000000                         27 	.org 0x0000
+                                     28 ;--------------------------------------------------------
+                                     29 ; overlayable register banks
+                                     30 ;--------------------------------------------------------
+                                     31 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         32 	.ds 8
+                                     33 ;--------------------------------------------------------
+                                     34 ; internal ram data
+                                     35 ;--------------------------------------------------------
+                                     36 	.area DSEG    (DATA)
+      000000                         37 __ultoa_sloc0_1_0:
+      000000                         38 	.ds 4
+                                     39 ;--------------------------------------------------------
+                                     40 ; overlayable items in internal ram 
+                                     41 ;--------------------------------------------------------
+                                     42 ;--------------------------------------------------------
+                                     43 ; indirectly addressable internal ram data
+                                     44 ;--------------------------------------------------------
+                                     45 	.area ISEG    (DATA)
+                                     46 ;--------------------------------------------------------
+                                     47 ; absolute internal ram data
+                                     48 ;--------------------------------------------------------
+                                     49 	.area IABS    (ABS,DATA)
+                                     50 	.area IABS    (ABS,DATA)
+                                     51 ;--------------------------------------------------------
+                                     52 ; bit data
+                                     53 ;--------------------------------------------------------
+                                     54 	.area BSEG    (BIT)
+                                     55 ;--------------------------------------------------------
+                                     56 ; paged external ram data
+                                     57 ;--------------------------------------------------------
+                                     58 	.area PSEG    (PAG,XDATA)
+                                     59 ;--------------------------------------------------------
+                                     60 ; external ram data
+                                     61 ;--------------------------------------------------------
+                                     62 	.area XSEG    (XDATA)
+      000000                         63 __ultoa_PARM_2:
+      000000                         64 	.ds 3
+      000003                         65 __ultoa_PARM_3:
+      000003                         66 	.ds 1
+      000004                         67 __ultoa_value_1_1:
+      000004                         68 	.ds 4
+      000008                         69 __ultoa_buffer_1_2:
+      000008                         70 	.ds 32
+      000028                         71 __ultoa_c_2_3:
+      000028                         72 	.ds 1
+      000029                         73 __ltoa_PARM_2:
+      000029                         74 	.ds 3
+      00002C                         75 __ltoa_PARM_3:
+      00002C                         76 	.ds 1
+      00002D                         77 __ltoa_value_1_5:
+      00002D                         78 	.ds 4
+                                     79 ;--------------------------------------------------------
+                                     80 ; absolute external ram data
+                                     81 ;--------------------------------------------------------
+                                     82 	.area XABS    (ABS,XDATA)
+                                     83 ;--------------------------------------------------------
+                                     84 ; external initialized ram data
+                                     85 ;--------------------------------------------------------
+                                     86 	.area XISEG   (XDATA)
+                                     87 	.area HOME    (CODE)
+                                     88 	.area GSINIT0 (CODE)
+                                     89 	.area GSINIT1 (CODE)
+                                     90 	.area GSINIT2 (CODE)
+                                     91 	.area GSINIT3 (CODE)
+                                     92 	.area GSINIT4 (CODE)
+                                     93 	.area GSINIT5 (CODE)
+                                     94 	.area GSINIT  (CODE)
+                                     95 	.area GSFINAL (CODE)
+                                     96 	.area CSEG    (CODE)
+                                     97 ;--------------------------------------------------------
+                                     98 ; global & static initialisations
+                                     99 ;--------------------------------------------------------
+                                    100 	.area HOME    (CODE)
+                                    101 	.area GSINIT  (CODE)
+                                    102 	.area GSFINAL (CODE)
+                                    103 	.area GSINIT  (CODE)
+                                    104 ;--------------------------------------------------------
+                                    105 ; Home
+                                    106 ;--------------------------------------------------------
+                                    107 	.area HOME    (CODE)
+                                    108 	.area HOME    (CODE)
+                                    109 ;--------------------------------------------------------
+                                    110 ; code
+                                    111 ;--------------------------------------------------------
+                                    112 	.area CSEG    (CODE)
+                                    113 ;------------------------------------------------------------
+                                    114 ;Allocation info for local variables in function '_ultoa'
+                                    115 ;------------------------------------------------------------
+                                    116 ;sloc0                     Allocated with name '__ultoa_sloc0_1_0'
+                                    117 ;string                    Allocated with name '__ultoa_PARM_2'
+                                    118 ;radix                     Allocated with name '__ultoa_PARM_3'
+                                    119 ;value                     Allocated with name '__ultoa_value_1_1'
+                                    120 ;buffer                    Allocated with name '__ultoa_buffer_1_2'
+                                    121 ;index                     Allocated with name '__ultoa_index_1_2'
+                                    122 ;c                         Allocated with name '__ultoa_c_2_3'
+                                    123 ;------------------------------------------------------------
+                                    124 ;	_ltoa.c:56: void _ultoa(unsigned long value, char* string, unsigned char radix)
+                                    125 ;	-----------------------------------------
+                                    126 ;	 function _ultoa
+                                    127 ;	-----------------------------------------
+      000000                        128 __ultoa:
+                           000007   129 	ar7 = 0x07
+                           000006   130 	ar6 = 0x06
+                           000005   131 	ar5 = 0x05
+                           000004   132 	ar4 = 0x04
+                           000003   133 	ar3 = 0x03
+                           000002   134 	ar2 = 0x02
+                           000001   135 	ar1 = 0x01
+                           000000   136 	ar0 = 0x00
+      000000 AF 82            [24]  137 	mov	r7,dpl
+      000002 AE 83            [24]  138 	mov	r6,dph
+      000004 AD F0            [24]  139 	mov	r5,b
+      000006 FC               [12]  140 	mov	r4,a
+      000007 90r00r04         [24]  141 	mov	dptr,#__ultoa_value_1_1
+      00000A EF               [12]  142 	mov	a,r7
+      00000B F0               [24]  143 	movx	@dptr,a
+      00000C EE               [12]  144 	mov	a,r6
+      00000D A3               [24]  145 	inc	dptr
+      00000E F0               [24]  146 	movx	@dptr,a
+      00000F ED               [12]  147 	mov	a,r5
+      000010 A3               [24]  148 	inc	dptr
+      000011 F0               [24]  149 	movx	@dptr,a
+      000012 EC               [12]  150 	mov	a,r4
+      000013 A3               [24]  151 	inc	dptr
+      000014 F0               [24]  152 	movx	@dptr,a
+                                    153 ;	_ltoa.c:61: do {
+      000015 90r00r03         [24]  154 	mov	dptr,#__ultoa_PARM_3
+      000018 E0               [24]  155 	movx	a,@dptr
+      000019 FF               [12]  156 	mov	r7,a
+      00001A 7E 20            [12]  157 	mov	r6,#0x20
+      00001C                        158 00103$:
+                                    159 ;	_ltoa.c:62: unsigned char c = '0' + (value % radix);
+      00001C 90r00r04         [24]  160 	mov	dptr,#__ultoa_value_1_1
+      00001F E0               [24]  161 	movx	a,@dptr
+      000020 FA               [12]  162 	mov	r2,a
+      000021 A3               [24]  163 	inc	dptr
+      000022 E0               [24]  164 	movx	a,@dptr
+      000023 FB               [12]  165 	mov	r3,a
+      000024 A3               [24]  166 	inc	dptr
+      000025 E0               [24]  167 	movx	a,@dptr
+      000026 FC               [12]  168 	mov	r4,a
+      000027 A3               [24]  169 	inc	dptr
+      000028 E0               [24]  170 	movx	a,@dptr
+      000029 FD               [12]  171 	mov	r5,a
+      00002A 8F*00            [24]  172 	mov	__ultoa_sloc0_1_0,r7
+      00002C 75*01 00         [24]  173 	mov	(__ultoa_sloc0_1_0 + 1),#0x00
+      00002F 75*02 00         [24]  174 	mov	(__ultoa_sloc0_1_0 + 2),#0x00
+      000032 75*03 00         [24]  175 	mov	(__ultoa_sloc0_1_0 + 3),#0x00
+      000035 90r00r00         [24]  176 	mov	dptr,#__modulong_PARM_2
+      000038 E5*00            [12]  177 	mov	a,__ultoa_sloc0_1_0
+      00003A F0               [24]  178 	movx	@dptr,a
+      00003B E5*01            [12]  179 	mov	a,(__ultoa_sloc0_1_0 + 1)
+      00003D A3               [24]  180 	inc	dptr
+      00003E F0               [24]  181 	movx	@dptr,a
+      00003F E5*02            [12]  182 	mov	a,(__ultoa_sloc0_1_0 + 2)
+      000041 A3               [24]  183 	inc	dptr
+      000042 F0               [24]  184 	movx	@dptr,a
+      000043 E5*03            [12]  185 	mov	a,(__ultoa_sloc0_1_0 + 3)
+      000045 A3               [24]  186 	inc	dptr
+      000046 F0               [24]  187 	movx	@dptr,a
+      000047 8A 82            [24]  188 	mov	dpl,r2
+      000049 8B 83            [24]  189 	mov	dph,r3
+      00004B 8C F0            [24]  190 	mov	b,r4
+      00004D ED               [12]  191 	mov	a,r5
+      00004E C0 07            [24]  192 	push	ar7
+      000050 C0 06            [24]  193 	push	ar6
+      000052 12r00r00         [24]  194 	lcall	__modulong
+      000055 AA 82            [24]  195 	mov	r2,dpl
+      000057 AB 83            [24]  196 	mov	r3,dph
+      000059 D0 06            [24]  197 	pop	ar6
+      00005B D0 07            [24]  198 	pop	ar7
+      00005D 74 30            [12]  199 	mov	a,#0x30
+      00005F 2A               [12]  200 	add	a,r2
+      000060 FD               [12]  201 	mov	r5,a
+      000061 90r00r28         [24]  202 	mov	dptr,#__ultoa_c_2_3
+      000064 F0               [24]  203 	movx	@dptr,a
+                                    204 ;	_ltoa.c:63: if (c > (unsigned char)'9')
+      000065 8D 04            [24]  205 	mov	ar4,r5
+      000067 EC               [12]  206 	mov	a,r4
+      000068 24 C6            [12]  207 	add	a,#0xff - 0x39
+      00006A 50 07            [24]  208 	jnc	00102$
+                                    209 ;	_ltoa.c:64: c += 'A' - '9' - 1;
+      00006C 90r00r28         [24]  210 	mov	dptr,#__ultoa_c_2_3
+      00006F 74 07            [12]  211 	mov	a,#0x07
+      000071 2D               [12]  212 	add	a,r5
+      000072 F0               [24]  213 	movx	@dptr,a
+      000073                        214 00102$:
+                                    215 ;	_ltoa.c:65: buffer[--index] = c;
+      000073 1E               [12]  216 	dec	r6
+      000074 EE               [12]  217 	mov	a,r6
+      000075 24r08            [12]  218 	add	a,#__ultoa_buffer_1_2
+      000077 FC               [12]  219 	mov	r4,a
+      000078 E4               [12]  220 	clr	a
+      000079 34s00            [12]  221 	addc	a,#(__ultoa_buffer_1_2 >> 8)
+      00007B FD               [12]  222 	mov	r5,a
+      00007C 90r00r28         [24]  223 	mov	dptr,#__ultoa_c_2_3
+      00007F E0               [24]  224 	movx	a,@dptr
+      000080 8C 82            [24]  225 	mov	dpl,r4
+      000082 8D 83            [24]  226 	mov	dph,r5
+      000084 F0               [24]  227 	movx	@dptr,a
+                                    228 ;	_ltoa.c:66: value /= radix;
+      000085 90r00r04         [24]  229 	mov	dptr,#__ultoa_value_1_1
+      000088 E0               [24]  230 	movx	a,@dptr
+      000089 FA               [12]  231 	mov	r2,a
+      00008A A3               [24]  232 	inc	dptr
+      00008B E0               [24]  233 	movx	a,@dptr
+      00008C FB               [12]  234 	mov	r3,a
+      00008D A3               [24]  235 	inc	dptr
+      00008E E0               [24]  236 	movx	a,@dptr
+      00008F FC               [12]  237 	mov	r4,a
+      000090 A3               [24]  238 	inc	dptr
+      000091 E0               [24]  239 	movx	a,@dptr
+      000092 FD               [12]  240 	mov	r5,a
+      000093 90r00r00         [24]  241 	mov	dptr,#__divulong_PARM_2
+      000096 E5*00            [12]  242 	mov	a,__ultoa_sloc0_1_0
+      000098 F0               [24]  243 	movx	@dptr,a
+      000099 E5*01            [12]  244 	mov	a,(__ultoa_sloc0_1_0 + 1)
+      00009B A3               [24]  245 	inc	dptr
+      00009C F0               [24]  246 	movx	@dptr,a
+      00009D E5*02            [12]  247 	mov	a,(__ultoa_sloc0_1_0 + 2)
+      00009F A3               [24]  248 	inc	dptr
+      0000A0 F0               [24]  249 	movx	@dptr,a
+      0000A1 E5*03            [12]  250 	mov	a,(__ultoa_sloc0_1_0 + 3)
+      0000A3 A3               [24]  251 	inc	dptr
+      0000A4 F0               [24]  252 	movx	@dptr,a
+      0000A5 8A 82            [24]  253 	mov	dpl,r2
+      0000A7 8B 83            [24]  254 	mov	dph,r3
+      0000A9 8C F0            [24]  255 	mov	b,r4
+      0000AB ED               [12]  256 	mov	a,r5
+      0000AC C0 07            [24]  257 	push	ar7
+      0000AE C0 06            [24]  258 	push	ar6
+      0000B0 12r00r00         [24]  259 	lcall	__divulong
+      0000B3 AA 82            [24]  260 	mov	r2,dpl
+      0000B5 AB 83            [24]  261 	mov	r3,dph
+      0000B7 AC F0            [24]  262 	mov	r4,b
+      0000B9 FD               [12]  263 	mov	r5,a
+      0000BA D0 06            [24]  264 	pop	ar6
+      0000BC D0 07            [24]  265 	pop	ar7
+      0000BE 90r00r04         [24]  266 	mov	dptr,#__ultoa_value_1_1
+      0000C1 EA               [12]  267 	mov	a,r2
+      0000C2 F0               [24]  268 	movx	@dptr,a
+      0000C3 EB               [12]  269 	mov	a,r3
+      0000C4 A3               [24]  270 	inc	dptr
+      0000C5 F0               [24]  271 	movx	@dptr,a
+      0000C6 EC               [12]  272 	mov	a,r4
+      0000C7 A3               [24]  273 	inc	dptr
+      0000C8 F0               [24]  274 	movx	@dptr,a
+      0000C9 ED               [12]  275 	mov	a,r5
+      0000CA A3               [24]  276 	inc	dptr
+      0000CB F0               [24]  277 	movx	@dptr,a
+                                    278 ;	_ltoa.c:67: } while (value);
+      0000CC 90r00r04         [24]  279 	mov	dptr,#__ultoa_value_1_1
+      0000CF E0               [24]  280 	movx	a,@dptr
+      0000D0 FA               [12]  281 	mov	r2,a
+      0000D1 A3               [24]  282 	inc	dptr
+      0000D2 E0               [24]  283 	movx	a,@dptr
+      0000D3 FB               [12]  284 	mov	r3,a
+      0000D4 A3               [24]  285 	inc	dptr
+      0000D5 E0               [24]  286 	movx	a,@dptr
+      0000D6 FC               [12]  287 	mov	r4,a
+      0000D7 A3               [24]  288 	inc	dptr
+      0000D8 E0               [24]  289 	movx	a,@dptr
+      0000D9 FD               [12]  290 	mov	r5,a
+      0000DA EA               [12]  291 	mov	a,r2
+      0000DB 4B               [12]  292 	orl	a,r3
+      0000DC 4C               [12]  293 	orl	a,r4
+      0000DD 4D               [12]  294 	orl	a,r5
+      0000DE 60 03            [24]  295 	jz	00128$
+      0000E0 02r00r1C         [24]  296 	ljmp	00103$
+      0000E3                        297 00128$:
+                                    298 ;	_ltoa.c:69: do {
+      0000E3 90r00r00         [24]  299 	mov	dptr,#__ultoa_PARM_2
+      0000E6 E0               [24]  300 	movx	a,@dptr
+      0000E7 FC               [12]  301 	mov	r4,a
+      0000E8 A3               [24]  302 	inc	dptr
+      0000E9 E0               [24]  303 	movx	a,@dptr
+      0000EA FD               [12]  304 	mov	r5,a
+      0000EB A3               [24]  305 	inc	dptr
+      0000EC E0               [24]  306 	movx	a,@dptr
+      0000ED FF               [12]  307 	mov	r7,a
+      0000EE                        308 00106$:
+                                    309 ;	_ltoa.c:70: *string++ = buffer[index];
+      0000EE EE               [12]  310 	mov	a,r6
+      0000EF 24r08            [12]  311 	add	a,#__ultoa_buffer_1_2
+      0000F1 F5 82            [12]  312 	mov	dpl,a
+      0000F3 E4               [12]  313 	clr	a
+      0000F4 34s00            [12]  314 	addc	a,#(__ultoa_buffer_1_2 >> 8)
+      0000F6 F5 83            [12]  315 	mov	dph,a
+      0000F8 E0               [24]  316 	movx	a,@dptr
+      0000F9 FB               [12]  317 	mov	r3,a
+      0000FA 8C 82            [24]  318 	mov	dpl,r4
+      0000FC 8D 83            [24]  319 	mov	dph,r5
+      0000FE 8F F0            [24]  320 	mov	b,r7
+      000100 12r00r00         [24]  321 	lcall	__gptrput
+      000103 A3               [24]  322 	inc	dptr
+      000104 AC 82            [24]  323 	mov	r4,dpl
+      000106 AD 83            [24]  324 	mov	r5,dph
+                                    325 ;	_ltoa.c:71: } while ( ++index != NUMBER_OF_DIGITS );
+      000108 0E               [12]  326 	inc	r6
+      000109 BE 20 E2         [24]  327 	cjne	r6,#0x20,00106$
+                                    328 ;	_ltoa.c:73: *string = 0;  /* string terminator */
+      00010C 8C 82            [24]  329 	mov	dpl,r4
+      00010E 8D 83            [24]  330 	mov	dph,r5
+      000110 8F F0            [24]  331 	mov	b,r7
+      000112 E4               [12]  332 	clr	a
+      000113 12r00r00         [24]  333 	lcall	__gptrput
+      000116 02r00r00         [24]  334 	ljmp	__sdcc_banked_ret
+                                    335 ;------------------------------------------------------------
+                                    336 ;Allocation info for local variables in function '_ltoa'
+                                    337 ;------------------------------------------------------------
+                                    338 ;string                    Allocated with name '__ltoa_PARM_2'
+                                    339 ;radix                     Allocated with name '__ltoa_PARM_3'
+                                    340 ;value                     Allocated with name '__ltoa_value_1_5'
+                                    341 ;------------------------------------------------------------
+                                    342 ;	_ltoa.c:76: void _ltoa(long value, char* string, unsigned char radix)
+                                    343 ;	-----------------------------------------
+                                    344 ;	 function _ltoa
+                                    345 ;	-----------------------------------------
+      000119                        346 __ltoa:
+      000119 AF 82            [24]  347 	mov	r7,dpl
+      00011B AE 83            [24]  348 	mov	r6,dph
+      00011D AD F0            [24]  349 	mov	r5,b
+      00011F FC               [12]  350 	mov	r4,a
+      000120 90r00r2D         [24]  351 	mov	dptr,#__ltoa_value_1_5
+      000123 EF               [12]  352 	mov	a,r7
+      000124 F0               [24]  353 	movx	@dptr,a
+      000125 EE               [12]  354 	mov	a,r6
+      000126 A3               [24]  355 	inc	dptr
+      000127 F0               [24]  356 	movx	@dptr,a
+      000128 ED               [12]  357 	mov	a,r5
+      000129 A3               [24]  358 	inc	dptr
+      00012A F0               [24]  359 	movx	@dptr,a
+      00012B EC               [12]  360 	mov	a,r4
+      00012C A3               [24]  361 	inc	dptr
+      00012D F0               [24]  362 	movx	@dptr,a
+                                    363 ;	_ltoa.c:78: if (value < 0 && radix == 10) {
+      00012E 90r00r2D         [24]  364 	mov	dptr,#__ltoa_value_1_5
+      000131 E0               [24]  365 	movx	a,@dptr
+      000132 FC               [12]  366 	mov	r4,a
+      000133 A3               [24]  367 	inc	dptr
+      000134 E0               [24]  368 	movx	a,@dptr
+      000135 FD               [12]  369 	mov	r5,a
+      000136 A3               [24]  370 	inc	dptr
+      000137 E0               [24]  371 	movx	a,@dptr
+      000138 FE               [12]  372 	mov	r6,a
+      000139 A3               [24]  373 	inc	dptr
+      00013A E0               [24]  374 	movx	a,@dptr
+      00013B FF               [12]  375 	mov	r7,a
+      00013C 30 E7 3F         [24]  376 	jnb	acc.7,00102$
+      00013F 90r00r2C         [24]  377 	mov	dptr,#__ltoa_PARM_3
+      000142 E0               [24]  378 	movx	a,@dptr
+      000143 FB               [12]  379 	mov	r3,a
+      000144 BB 0A 37         [24]  380 	cjne	r3,#0x0A,00102$
+                                    381 ;	_ltoa.c:79: *string++ = '-';
+      000147 90r00r29         [24]  382 	mov	dptr,#__ltoa_PARM_2
+      00014A E0               [24]  383 	movx	a,@dptr
+      00014B F9               [12]  384 	mov	r1,a
+      00014C A3               [24]  385 	inc	dptr
+      00014D E0               [24]  386 	movx	a,@dptr
+      00014E FA               [12]  387 	mov	r2,a
+      00014F A3               [24]  388 	inc	dptr
+      000150 E0               [24]  389 	movx	a,@dptr
+      000151 FB               [12]  390 	mov	r3,a
+      000152 89 82            [24]  391 	mov	dpl,r1
+      000154 8A 83            [24]  392 	mov	dph,r2
+      000156 8B F0            [24]  393 	mov	b,r3
+      000158 74 2D            [12]  394 	mov	a,#0x2D
+      00015A 12r00r00         [24]  395 	lcall	__gptrput
+      00015D 90r00r29         [24]  396 	mov	dptr,#__ltoa_PARM_2
+      000160 74 01            [12]  397 	mov	a,#0x01
+      000162 29               [12]  398 	add	a,r1
+      000163 F0               [24]  399 	movx	@dptr,a
+      000164 E4               [12]  400 	clr	a
+      000165 3A               [12]  401 	addc	a,r2
+      000166 A3               [24]  402 	inc	dptr
+      000167 F0               [24]  403 	movx	@dptr,a
+      000168 EB               [12]  404 	mov	a,r3
+      000169 A3               [24]  405 	inc	dptr
+      00016A F0               [24]  406 	movx	@dptr,a
+                                    407 ;	_ltoa.c:80: value = -value;
+      00016B 90r00r2D         [24]  408 	mov	dptr,#__ltoa_value_1_5
+      00016E C3               [12]  409 	clr	c
+      00016F E4               [12]  410 	clr	a
+      000170 9C               [12]  411 	subb	a,r4
+      000171 F0               [24]  412 	movx	@dptr,a
+      000172 E4               [12]  413 	clr	a
+      000173 9D               [12]  414 	subb	a,r5
+      000174 A3               [24]  415 	inc	dptr
+      000175 F0               [24]  416 	movx	@dptr,a
+      000176 E4               [12]  417 	clr	a
+      000177 9E               [12]  418 	subb	a,r6
+      000178 A3               [24]  419 	inc	dptr
+      000179 F0               [24]  420 	movx	@dptr,a
+      00017A E4               [12]  421 	clr	a
+      00017B 9F               [12]  422 	subb	a,r7
+      00017C A3               [24]  423 	inc	dptr
+      00017D F0               [24]  424 	movx	@dptr,a
+      00017E                        425 00102$:
+                                    426 ;	_ltoa.c:82: _ultoa(value, string, radix);
+      00017E 90r00r2D         [24]  427 	mov	dptr,#__ltoa_value_1_5
+      000181 E0               [24]  428 	movx	a,@dptr
+      000182 FC               [12]  429 	mov	r4,a
+      000183 A3               [24]  430 	inc	dptr
+      000184 E0               [24]  431 	movx	a,@dptr
+      000185 FD               [12]  432 	mov	r5,a
+      000186 A3               [24]  433 	inc	dptr
+      000187 E0               [24]  434 	movx	a,@dptr
+      000188 FE               [12]  435 	mov	r6,a
+      000189 A3               [24]  436 	inc	dptr
+      00018A E0               [24]  437 	movx	a,@dptr
+      00018B FF               [12]  438 	mov	r7,a
+      00018C 90r00r29         [24]  439 	mov	dptr,#__ltoa_PARM_2
+      00018F E0               [24]  440 	movx	a,@dptr
+      000190 F9               [12]  441 	mov	r1,a
+      000191 A3               [24]  442 	inc	dptr
+      000192 E0               [24]  443 	movx	a,@dptr
+      000193 FA               [12]  444 	mov	r2,a
+      000194 A3               [24]  445 	inc	dptr
+      000195 E0               [24]  446 	movx	a,@dptr
+      000196 FB               [12]  447 	mov	r3,a
+      000197 90r00r2C         [24]  448 	mov	dptr,#__ltoa_PARM_3
+      00019A E0               [24]  449 	movx	a,@dptr
+      00019B F8               [12]  450 	mov	r0,a
+      00019C 90r00r00         [24]  451 	mov	dptr,#__ultoa_PARM_2
+      00019F E9               [12]  452 	mov	a,r1
+      0001A0 F0               [24]  453 	movx	@dptr,a
+      0001A1 EA               [12]  454 	mov	a,r2
+      0001A2 A3               [24]  455 	inc	dptr
+      0001A3 F0               [24]  456 	movx	@dptr,a
+      0001A4 EB               [12]  457 	mov	a,r3
+      0001A5 A3               [24]  458 	inc	dptr
+      0001A6 F0               [24]  459 	movx	@dptr,a
+      0001A7 90r00r03         [24]  460 	mov	dptr,#__ultoa_PARM_3
+      0001AA E8               [12]  461 	mov	a,r0
+      0001AB F0               [24]  462 	movx	@dptr,a
+      0001AC 8C 82            [24]  463 	mov	dpl,r4
+      0001AE 8D 83            [24]  464 	mov	dph,r5
+      0001B0 8E F0            [24]  465 	mov	b,r6
+      0001B2 EF               [12]  466 	mov	a,r7
+      0001B3 78r00            [12]  467 	mov	r0,#__ultoa
+      0001B5 79s00            [12]  468 	mov	r1,#(__ultoa >> 8)
+      0001B7 7As00            [12]  469 	mov	r2,#(__ultoa >> 16)
+      0001B9 12r00r00         [24]  470 	lcall	__sdcc_banked_call
+      0001BC 02r00r00         [24]  471 	ljmp	__sdcc_banked_ret
+                                    472 	.area CSEG    (CODE)
+                                    473 	.area CONST   (CODE)
+                                    474 	.area XINIT   (CODE)
+                                    475 	.area CABS    (ABS,CODE)

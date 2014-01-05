@@ -1,0 +1,53 @@
+XH3
+H A areas 4 global symbols
+M _free
+S .__.ABS. Def000000
+A _CODE size 0 flags 0 addr 0
+A DATA size 2 flags 0 addr 0
+S __sdcc_prev_memheader Def000000
+A INITIALIZED size 0 flags 0 addr 0
+A DABS size 0 flags 8 addr 0
+A HOME size 0 flags 0 addr 0
+A GSINIT size 0 flags 0 addr 0
+A GSFINAL size 0 flags 0 addr 0
+A CODE size 48 flags 0 addr 0
+S _free Def000015
+S __sdcc_find_memheader Def000000
+A INITIALIZER size 0 flags 0 addr 0
+A CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 00 01
+T 00 00 00
+R 00 00 00 01
+T 00 00 00
+R 00 00 00 07
+T 00 00 00 1E 03 26 03 5F 20 0D
+R 00 00 00 07
+T 00 00 07
+R 00 00 00 07
+T 00 00 07 16 03 72 A2 00 06 93 EE 02 CF 00 00 93
+R 00 00 00 07 10 0D 00 01
+T 00 00 14
+R 00 00 00 07
+T 00 00 14 81
+R 00 00 00 07
+T 00 00 15
+R 00 00 00 07
+T 00 00 15 52 02 1E 05 27 2A 9B 1E 05 1D 00 06 1F
+R 00 00 00 07
+T 00 00 22 01 16 01 90 EE 02 90 5D 27 10 1E 01 FE
+R 00 00 00 07
+T 00 00 2F 90 FF 1E 01 FE 5D 27 0D 5C 5C FF 20 08
+R 00 00 00 07
+T 00 00 3C
+R 00 00 00 07
+T 00 00 3C 1E 01 1C 00 04 6F 01 7F
+R 00 00 00 07
+T 00 00 44
+R 00 00 00 07
+T 00 00 44 9A
+R 00 00 00 07
+T 00 00 45
+R 00 00 00 07
+T 00 00 45 5B 02 81
+R 00 00 00 07

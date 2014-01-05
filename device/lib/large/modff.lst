@@ -1,0 +1,211 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                                      4 ; This file was generated Wed Nov 27 12:27:56 2013
+                                      5 ;--------------------------------------------------------
+                                      6 	.module modff
+                                      7 	.optsdcc -mmcs51 --model-large
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl _modff_PARM_2
+                                     13 	.globl _modff
+                                     14 ;--------------------------------------------------------
+                                     15 ; special function registers
+                                     16 ;--------------------------------------------------------
+                                     17 	.area RSEG    (ABS,DATA)
+      000000                         18 	.org 0x0000
+                                     19 ;--------------------------------------------------------
+                                     20 ; special function bits
+                                     21 ;--------------------------------------------------------
+                                     22 	.area RSEG    (ABS,DATA)
+      000000                         23 	.org 0x0000
+                                     24 ;--------------------------------------------------------
+                                     25 ; overlayable register banks
+                                     26 ;--------------------------------------------------------
+                                     27 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         28 	.ds 8
+                                     29 ;--------------------------------------------------------
+                                     30 ; internal ram data
+                                     31 ;--------------------------------------------------------
+                                     32 	.area DSEG    (DATA)
+      000000                         33 _modff_sloc0_1_0:
+      000000                         34 	.ds 3
+                                     35 ;--------------------------------------------------------
+                                     36 ; overlayable items in internal ram 
+                                     37 ;--------------------------------------------------------
+                                     38 ;--------------------------------------------------------
+                                     39 ; indirectly addressable internal ram data
+                                     40 ;--------------------------------------------------------
+                                     41 	.area ISEG    (DATA)
+                                     42 ;--------------------------------------------------------
+                                     43 ; absolute internal ram data
+                                     44 ;--------------------------------------------------------
+                                     45 	.area IABS    (ABS,DATA)
+                                     46 	.area IABS    (ABS,DATA)
+                                     47 ;--------------------------------------------------------
+                                     48 ; bit data
+                                     49 ;--------------------------------------------------------
+                                     50 	.area BSEG    (BIT)
+                                     51 ;--------------------------------------------------------
+                                     52 ; paged external ram data
+                                     53 ;--------------------------------------------------------
+                                     54 	.area PSEG    (PAG,XDATA)
+                                     55 ;--------------------------------------------------------
+                                     56 ; external ram data
+                                     57 ;--------------------------------------------------------
+                                     58 	.area XSEG    (XDATA)
+      000000                         59 _modff_PARM_2:
+      000000                         60 	.ds 3
+      000003                         61 _modff_x_1_23:
+      000003                         62 	.ds 4
+                                     63 ;--------------------------------------------------------
+                                     64 ; absolute external ram data
+                                     65 ;--------------------------------------------------------
+                                     66 	.area XABS    (ABS,XDATA)
+                                     67 ;--------------------------------------------------------
+                                     68 ; external initialized ram data
+                                     69 ;--------------------------------------------------------
+                                     70 	.area XISEG   (XDATA)
+                                     71 	.area HOME    (CODE)
+                                     72 	.area GSINIT0 (CODE)
+                                     73 	.area GSINIT1 (CODE)
+                                     74 	.area GSINIT2 (CODE)
+                                     75 	.area GSINIT3 (CODE)
+                                     76 	.area GSINIT4 (CODE)
+                                     77 	.area GSINIT5 (CODE)
+                                     78 	.area GSINIT  (CODE)
+                                     79 	.area GSFINAL (CODE)
+                                     80 	.area CSEG    (CODE)
+                                     81 ;--------------------------------------------------------
+                                     82 ; global & static initialisations
+                                     83 ;--------------------------------------------------------
+                                     84 	.area HOME    (CODE)
+                                     85 	.area GSINIT  (CODE)
+                                     86 	.area GSFINAL (CODE)
+                                     87 	.area GSINIT  (CODE)
+                                     88 ;--------------------------------------------------------
+                                     89 ; Home
+                                     90 ;--------------------------------------------------------
+                                     91 	.area HOME    (CODE)
+                                     92 	.area HOME    (CODE)
+                                     93 ;--------------------------------------------------------
+                                     94 ; code
+                                     95 ;--------------------------------------------------------
+                                     96 	.area CSEG    (CODE)
+                                     97 ;------------------------------------------------------------
+                                     98 ;Allocation info for local variables in function 'modff'
+                                     99 ;------------------------------------------------------------
+                                    100 ;sloc0                     Allocated with name '_modff_sloc0_1_0'
+                                    101 ;y                         Allocated with name '_modff_PARM_2'
+                                    102 ;x                         Allocated with name '_modff_x_1_23'
+                                    103 ;------------------------------------------------------------
+                                    104 ;	modff.c:33: float modff(float x, float * y)
+                                    105 ;	-----------------------------------------
+                                    106 ;	 function modff
+                                    107 ;	-----------------------------------------
+      000000                        108 _modff:
+                           000007   109 	ar7 = 0x07
+                           000006   110 	ar6 = 0x06
+                           000005   111 	ar5 = 0x05
+                           000004   112 	ar4 = 0x04
+                           000003   113 	ar3 = 0x03
+                           000002   114 	ar2 = 0x02
+                           000001   115 	ar1 = 0x01
+                           000000   116 	ar0 = 0x00
+      000000 AF 82            [24]  117 	mov	r7,dpl
+      000002 AE 83            [24]  118 	mov	r6,dph
+      000004 AD F0            [24]  119 	mov	r5,b
+      000006 FC               [12]  120 	mov	r4,a
+      000007 90r00r03         [24]  121 	mov	dptr,#_modff_x_1_23
+      00000A EF               [12]  122 	mov	a,r7
+      00000B F0               [24]  123 	movx	@dptr,a
+      00000C EE               [12]  124 	mov	a,r6
+      00000D A3               [24]  125 	inc	dptr
+      00000E F0               [24]  126 	movx	@dptr,a
+      00000F ED               [12]  127 	mov	a,r5
+      000010 A3               [24]  128 	inc	dptr
+      000011 F0               [24]  129 	movx	@dptr,a
+      000012 EC               [12]  130 	mov	a,r4
+      000013 A3               [24]  131 	inc	dptr
+      000014 F0               [24]  132 	movx	@dptr,a
+                                    133 ;	modff.c:35: *y=(long)x;
+      000015 90r00r00         [24]  134 	mov	dptr,#_modff_PARM_2
+      000018 E0               [24]  135 	movx	a,@dptr
+      000019 F5*00            [12]  136 	mov	_modff_sloc0_1_0,a
+      00001B A3               [24]  137 	inc	dptr
+      00001C E0               [24]  138 	movx	a,@dptr
+      00001D F5*01            [12]  139 	mov	(_modff_sloc0_1_0 + 1),a
+      00001F A3               [24]  140 	inc	dptr
+      000020 E0               [24]  141 	movx	a,@dptr
+      000021 F5*02            [12]  142 	mov	(_modff_sloc0_1_0 + 2),a
+      000023 90r00r03         [24]  143 	mov	dptr,#_modff_x_1_23
+      000026 E0               [24]  144 	movx	a,@dptr
+      000027 F9               [12]  145 	mov	r1,a
+      000028 A3               [24]  146 	inc	dptr
+      000029 E0               [24]  147 	movx	a,@dptr
+      00002A FA               [12]  148 	mov	r2,a
+      00002B A3               [24]  149 	inc	dptr
+      00002C E0               [24]  150 	movx	a,@dptr
+      00002D FB               [12]  151 	mov	r3,a
+      00002E A3               [24]  152 	inc	dptr
+      00002F E0               [24]  153 	movx	a,@dptr
+      000030 FC               [12]  154 	mov	r4,a
+      000031 89 82            [24]  155 	mov	dpl,r1
+      000033 8A 83            [24]  156 	mov	dph,r2
+      000035 8B F0            [24]  157 	mov	b,r3
+      000037 C0 04            [24]  158 	push	ar4
+      000039 C0 03            [24]  159 	push	ar3
+      00003B C0 02            [24]  160 	push	ar2
+      00003D C0 01            [24]  161 	push	ar1
+      00003F 12r00r00         [24]  162 	lcall	___fs2slong
+      000042 12r00r00         [24]  163 	lcall	___slong2fs
+      000045 A8 82            [24]  164 	mov	r0,dpl
+      000047 AD 83            [24]  165 	mov	r5,dph
+      000049 AE F0            [24]  166 	mov	r6,b
+      00004B FF               [12]  167 	mov	r7,a
+      00004C D0 01            [24]  168 	pop	ar1
+      00004E D0 02            [24]  169 	pop	ar2
+      000050 D0 03            [24]  170 	pop	ar3
+      000052 D0 04            [24]  171 	pop	ar4
+      000054 85*00 82         [24]  172 	mov	dpl,_modff_sloc0_1_0
+      000057 85*01 83         [24]  173 	mov	dph,(_modff_sloc0_1_0 + 1)
+      00005A 85*02 F0         [24]  174 	mov	b,(_modff_sloc0_1_0 + 2)
+      00005D E8               [12]  175 	mov	a,r0
+      00005E 12r00r00         [24]  176 	lcall	__gptrput
+      000061 A3               [24]  177 	inc	dptr
+      000062 ED               [12]  178 	mov	a,r5
+      000063 12r00r00         [24]  179 	lcall	__gptrput
+      000066 A3               [24]  180 	inc	dptr
+      000067 EE               [12]  181 	mov	a,r6
+      000068 12r00r00         [24]  182 	lcall	__gptrput
+      00006B A3               [24]  183 	inc	dptr
+      00006C EF               [12]  184 	mov	a,r7
+      00006D 12r00r00         [24]  185 	lcall	__gptrput
+                                    186 ;	modff.c:36: return (x-*y);
+      000070 C0 00            [24]  187 	push	ar0
+      000072 C0 05            [24]  188 	push	ar5
+      000074 C0 06            [24]  189 	push	ar6
+      000076 C0 07            [24]  190 	push	ar7
+      000078 89 82            [24]  191 	mov	dpl,r1
+      00007A 8A 83            [24]  192 	mov	dph,r2
+      00007C 8B F0            [24]  193 	mov	b,r3
+      00007E EC               [12]  194 	mov	a,r4
+      00007F 12r00r00         [24]  195 	lcall	___fssub
+      000082 AC 82            [24]  196 	mov	r4,dpl
+      000084 AD 83            [24]  197 	mov	r5,dph
+      000086 AE F0            [24]  198 	mov	r6,b
+      000088 FF               [12]  199 	mov	r7,a
+      000089 E5 81            [12]  200 	mov	a,sp
+      00008B 24 FC            [12]  201 	add	a,#0xfc
+      00008D F5 81            [12]  202 	mov	sp,a
+      00008F 8C 82            [24]  203 	mov	dpl,r4
+      000091 8D 83            [24]  204 	mov	dph,r5
+      000093 8E F0            [24]  205 	mov	b,r6
+      000095 EF               [12]  206 	mov	a,r7
+      000096 22               [24]  207 	ret
+                                    208 	.area CSEG    (CODE)
+                                    209 	.area CONST   (CODE)
+                                    210 	.area XINIT   (CODE)
+                                    211 	.area CABS    (ABS,CODE)

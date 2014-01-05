@@ -1,0 +1,21 @@
+XL2
+H 1 areas 6 global symbols
+S __div_signexte Ref0000
+S __get_remainder Ref0000
+S .__.ABS. Def0000
+S __div16 Ref0000
+A _CODE size 29 flags 0 addr 0
+S __moduschar_rrx_s Def0012
+S __modsuchar_rrx_s Def0000
+T 00 00
+R 00 00 00 00
+T 00 00 3A 03 00 FE 70 E2 2B 9A E2 2D 34 00 1C
+R 00 00 00 00
+T 0D 00 00 00 1A 00 00
+R 00 00 00 00 02 02 00 00 02 05 01 00
+T 12 00
+R 00 00 00 00
+T 12 00 3A 03 00 FC 32 FE 70 E2 2B 9A E2 2D 25 A0
+R 00 00 00 00
+T 20 00 FE 63 2C 1C 00 00 1A 00 00
+R 00 00 00 00 02 06 03 00 02 09 01 00

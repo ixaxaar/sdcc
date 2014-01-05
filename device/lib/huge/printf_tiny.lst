@@ -1,0 +1,286 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                                      4 ; This file was generated Wed Nov 27 12:28:02 2013
+                                      5 ;--------------------------------------------------------
+                                      6 	.module printf_tiny
+                                      7 	.optsdcc -mmcs51 --model-huge
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl _printf_tiny
+                                     13 ;--------------------------------------------------------
+                                     14 ; special function registers
+                                     15 ;--------------------------------------------------------
+                                     16 	.area RSEG    (ABS,DATA)
+      000000                         17 	.org 0x0000
+                                     18 ;--------------------------------------------------------
+                                     19 ; special function bits
+                                     20 ;--------------------------------------------------------
+                                     21 	.area RSEG    (ABS,DATA)
+      000000                         22 	.org 0x0000
+                                     23 ;--------------------------------------------------------
+                                     24 ; overlayable register banks
+                                     25 ;--------------------------------------------------------
+                                     26 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         27 	.ds 8
+                                     28 ;--------------------------------------------------------
+                                     29 ; internal ram data
+                                     30 ;--------------------------------------------------------
+                                     31 	.area DSEG    (DATA)
+                                     32 ;--------------------------------------------------------
+                                     33 ; overlayable items in internal ram 
+                                     34 ;--------------------------------------------------------
+                                     35 ;--------------------------------------------------------
+                                     36 ; indirectly addressable internal ram data
+                                     37 ;--------------------------------------------------------
+                                     38 	.area ISEG    (DATA)
+                                     39 ;--------------------------------------------------------
+                                     40 ; absolute internal ram data
+                                     41 ;--------------------------------------------------------
+                                     42 	.area IABS    (ABS,DATA)
+                                     43 	.area IABS    (ABS,DATA)
+                                     44 ;--------------------------------------------------------
+                                     45 ; bit data
+                                     46 ;--------------------------------------------------------
+                                     47 	.area BSEG    (BIT)
+                                     48 ;--------------------------------------------------------
+                                     49 ; paged external ram data
+                                     50 ;--------------------------------------------------------
+                                     51 	.area PSEG    (PAG,XDATA)
+                                     52 ;--------------------------------------------------------
+                                     53 ; external ram data
+                                     54 ;--------------------------------------------------------
+                                     55 	.area XSEG    (XDATA)
+                                     56 ;--------------------------------------------------------
+                                     57 ; absolute external ram data
+                                     58 ;--------------------------------------------------------
+                                     59 	.area XABS    (ABS,XDATA)
+                                     60 ;--------------------------------------------------------
+                                     61 ; external initialized ram data
+                                     62 ;--------------------------------------------------------
+                                     63 	.area XISEG   (XDATA)
+                                     64 	.area HOME    (CODE)
+                                     65 	.area GSINIT0 (CODE)
+                                     66 	.area GSINIT1 (CODE)
+                                     67 	.area GSINIT2 (CODE)
+                                     68 	.area GSINIT3 (CODE)
+                                     69 	.area GSINIT4 (CODE)
+                                     70 	.area GSINIT5 (CODE)
+                                     71 	.area GSINIT  (CODE)
+                                     72 	.area GSFINAL (CODE)
+                                     73 	.area CSEG    (CODE)
+                                     74 ;--------------------------------------------------------
+                                     75 ; global & static initialisations
+                                     76 ;--------------------------------------------------------
+                                     77 	.area HOME    (CODE)
+                                     78 	.area GSINIT  (CODE)
+                                     79 	.area GSFINAL (CODE)
+                                     80 	.area GSINIT  (CODE)
+                                     81 ;--------------------------------------------------------
+                                     82 ; Home
+                                     83 ;--------------------------------------------------------
+                                     84 	.area HOME    (CODE)
+                                     85 	.area HOME    (CODE)
+                                     86 ;--------------------------------------------------------
+                                     87 ; code
+                                     88 ;--------------------------------------------------------
+                                     89 	.area CSEG    (CODE)
+                                     90 ;------------------------------------------------------------
+                                     91 ;Allocation info for local variables in function 'printf_tiny'
+                                     92 ;------------------------------------------------------------
+                                     93 ;fmt                       Allocated to stack - _bp -5
+                                     94 ;------------------------------------------------------------
+                                     95 ;	printf_tiny.c:85: void printf_tiny(__code const char *fmt, ...) __reentrant
+                                     96 ;	-----------------------------------------
+                                     97 ;	 function printf_tiny
+                                     98 ;	-----------------------------------------
+      000000                         99 _printf_tiny:
+                           000007   100 	ar7 = 0x07
+                           000006   101 	ar6 = 0x06
+                           000005   102 	ar5 = 0x05
+                           000004   103 	ar4 = 0x04
+                           000003   104 	ar3 = 0x03
+                           000002   105 	ar2 = 0x02
+                           000001   106 	ar1 = 0x01
+                           000000   107 	ar0 = 0x00
+      000000 C0*00            [24]  108 	push	_bp
+      000002 85 81*00         [24]  109 	mov	_bp,sp
+                                    110 ;	printf_tiny.c:301: __endasm;
+      000005                        111 	printf_begin:
+      000005 E5*00            [12]  112 	mov a, _bp
+      000007 24 FD            [12]  113 	add a, #253
+      000009 F8               [12]  114 	mov r0, a
+      00000A 86 83            [24]  115 	mov dph, @r0
+      00000C 18               [12]  116 	dec r0
+      00000D 86 82            [24]  117 	mov dpl, @r0
+      00000F 18               [12]  118 	dec r0
+      000010                        119 	printf_main_loop:
+      000010 E4               [12]  120 	clr a
+      000011 93               [24]  121 	movc a, @a+dptr
+      000012 A3               [24]  122 	inc dptr
+      000013 24 DB            [12]  123 	add a, #256 - 37
+      000015 60 0C            [24]  124 	jz printf_format
+      000017 24 25            [12]  125 	add a, #37
+      000019 60 05            [24]  126 	jz printf_end_h
+      00001B 12r00rEE         [24]  127 	lcall printf_putchar
+      00001E 80 F0            [24]  128 	sjmp printf_main_loop
+      000020                        129 	printf_end_h:
+      000020 02r01r06         [24]  130 	ljmp printf_end
+      000023                        131 	printf_format:
+      000023 D2 D5            [12]  132 	setb PSW.5
+      000025 E4               [12]  133 	clr a
+      000026 93               [24]  134 	movc a, @a+dptr
+      000027 A3               [24]  135 	inc dptr
+      000028 C0 83            [24]  136 	push dph
+      00002A C0 82            [24]  137 	push dpl
+      00002C                        138 	printf_format_s:
+      00002C B4 73 14         [24]  139 	cjne a, #115, printf_format_c
+      00002F                        140 	printf_string:
+      00002F 86 F0            [24]  141 	mov b, @r0
+      000031 18               [12]  142 	dec r0
+      000032 86 83            [24]  143 	mov dph, @r0
+      000034 18               [12]  144 	dec r0
+      000035 86 82            [24]  145 	mov dpl, @r0
+      000037 18               [12]  146 	dec r0
+      000038                        147 	printf_str_loop:
+      000038 12r00r00         [24]  148 	lcall __gptrget
+      00003B 60 54            [24]  149 	jz printf_format_done
+      00003D A3               [24]  150 	inc dptr
+      00003E 12r00rEE         [24]  151 	lcall printf_putchar
+      000041 80 F5            [24]  152 	sjmp printf_str_loop
+      000043                        153 	printf_format_c:
+      000043 B4 63 08         [24]  154 	cjne a, #99, printf_format_d
+      000046 18               [12]  155 	dec r0
+      000047 E6               [12]  156 	mov a, @r0
+      000048 18               [12]  157 	dec r0
+      000049 12r00rEE         [24]  158 	lcall printf_putchar
+      00004C 80 43            [24]  159 	sjmp printf_format_done
+      00004E                        160 	printf_format_d:
+      00004E B4 64 17         [24]  161 	cjne a, #100, printf_format_x
+      000051 E6               [12]  162 	mov a, @r0
+      000052 30 E7 46         [24]  163 	jnb acc.7, printf_uint
+      000055 18               [12]  164 	dec r0
+      000056 E6               [12]  165 	mov a, @r0
+      000057 F4               [12]  166 	cpl a
+      000058 24 01            [12]  167 	add a, #1
+      00005A F6               [12]  168 	mov @r0, a
+      00005B 08               [12]  169 	inc r0
+      00005C E6               [12]  170 	mov a, @r0
+      00005D F4               [12]  171 	cpl a
+      00005E 34 00            [12]  172 	addc a, #0
+      000060 F6               [12]  173 	mov @r0, a
+      000061 74 2D            [12]  174 	mov a, #45
+      000063 12r00rEE         [24]  175 	lcall printf_putchar
+      000066 80 33            [24]  176 	sjmp printf_uint
+      000068                        177 	printf_format_x:
+      000068 B4 78 2D         [24]  178 	cjne a, #120, printf_format_u
+      00006B 86 83            [24]  179 	mov dph, @r0
+      00006D 18               [12]  180 	dec r0
+      00006E 86 82            [24]  181 	mov dpl, @r0
+      000070 18               [12]  182 	dec r0
+      000071 E4               [12]  183 	clr a
+      000072                        184 	printf_hex:
+      000072 12r00rDF         [24]  185 	lcall printf_phex_lsn
+      000075 E5 83            [12]  186 	mov a, dph
+      000077 12r00rDE         [24]  187 	lcall printf_phex_msn
+      00007A E5 83            [12]  188 	mov a, dph
+      00007C 12r00rDF         [24]  189 	lcall printf_phex_lsn
+      00007F E5 82            [12]  190 	mov a, dpl
+      000081 12r00rDE         [24]  191 	lcall printf_phex_msn
+      000084 E5 82            [12]  192 	mov a, dpl
+      000086 12r00rDF         [24]  193 	lcall printf_phex_lsn
+      000089 30 D5 05         [24]  194 	jnb PSW.5, printf_format_done
+      00008C 74 30            [12]  195 	mov a, #48
+      00008E 12r00rEE         [24]  196 	lcall printf_putchar
+      000091                        197 	printf_format_done:
+      000091 D0 82            [24]  198 	pop dpl
+      000093 D0 83            [24]  199 	pop dph
+      000095 02r00r10         [24]  200 	ljmp printf_main_loop
+      000098                        201 	printf_format_u:
+      000098 B4 75 F6         [24]  202 	cjne a, #117, printf_format_done
+      00009B                        203 	printf_uint:
+      00009B E6               [12]  204 	mov a, @r0
+      00009C FA               [12]  205 	mov r2, a
+      00009D 18               [12]  206 	dec r0
+      00009E E6               [12]  207 	mov a, @r0
+      00009F F9               [12]  208 	mov r1, a
+      0000A0 18               [12]  209 	dec r0
+      0000A1                        210 	printf_int2bcd:
+      0000A1 7C 10            [12]  211 	mov r4, #16
+      0000A3 7D 27            [12]  212 	mov r5, #39
+      0000A5 12r00rC9         [24]  213 	lcall div_by_sub
+      0000A8 FF               [12]  214 	mov r7, a
+      0000A9 7C E8            [12]  215 	mov r4, #232
+      0000AB 7D 03            [12]  216 	mov r5, #3
+      0000AD 12r00rC9         [24]  217 	lcall div_by_sub
+      0000B0 C4               [12]  218 	swap a
+      0000B1 F5 83            [12]  219 	mov dph, a
+      0000B3 7C 64            [12]  220 	mov r4, #100
+      0000B5 7D 00            [12]  221 	mov r5, #0
+      0000B7 12r00rC9         [24]  222 	lcall div_by_sub
+      0000BA 42 83            [12]  223 	orl dph, a
+      0000BC E9               [12]  224 	mov a, r1
+      0000BD 75 F0 0A         [24]  225 	mov b, #10
+      0000C0 84               [48]  226 	div ab
+      0000C1 C4               [12]  227 	swap a
+      0000C2 45 F0            [12]  228 	orl a, b
+      0000C4 F5 82            [12]  229 	mov dpl, a
+      0000C6 EF               [12]  230 	mov a, r7
+      0000C7 80 A9            [24]  231 	sjmp printf_hex
+      0000C9                        232 	div_by_sub:
+      0000C9 7B 00            [12]  233 	mov r3, #0
+      0000CB                        234 	div_by_sub_loop:
+      0000CB 0B               [12]  235 	inc r3
+      0000CC C3               [12]  236 	clr c
+      0000CD E9               [12]  237 	mov a, r1
+      0000CE 9C               [12]  238 	subb a, r4
+      0000CF F9               [12]  239 	mov r1, a
+      0000D0 EA               [12]  240 	mov a, r2
+      0000D1 9D               [12]  241 	subb a, r5
+      0000D2 FA               [12]  242 	mov r2, a
+      0000D3 50 F6            [24]  243 	jnc div_by_sub_loop
+      0000D5 1B               [12]  244 	dec r3
+      0000D6 E9               [12]  245 	mov a, r1
+      0000D7 2C               [12]  246 	add a, r4
+      0000D8 F9               [12]  247 	mov r1, a
+      0000D9 EA               [12]  248 	mov a, r2
+      0000DA 3D               [12]  249 	addc a, r5
+      0000DB FA               [12]  250 	mov r2, a
+      0000DC EB               [12]  251 	mov a, r3
+      0000DD 22               [24]  252 	ret
+      0000DE                        253 	printf_phex_msn:
+      0000DE C4               [12]  254 	swap a
+      0000DF                        255 	printf_phex_lsn:
+      0000DF 54 0F            [12]  256 	anl a, #15
+      0000E1 70 03            [24]  257 	jnz printf_phex_ok
+      0000E3 20 D5 1F         [24]  258 	jb PSW.5, printf_ret
+      0000E6                        259 	printf_phex_ok:
+      0000E6 C2 D5            [12]  260 	clr PSW.5
+      0000E8 24 90            [12]  261 	add a, #0x90
+      0000EA D4               [12]  262 	da a
+      0000EB 34 40            [12]  263 	addc a, #0x40
+      0000ED D4               [12]  264 	da a
+      0000EE                        265 	printf_putchar:
+      0000EE C0 83            [24]  266 	push dph
+      0000F0 C0 82            [24]  267 	push dpl
+      0000F2 C0 F0            [24]  268 	push b
+      0000F4 F5 82            [12]  269 	mov dpl, a
+      0000F6 E8               [12]  270 	mov a, r0
+      0000F7 C0 E0            [24]  271 	push acc
+      0000F9 12r00r00         [24]  272 	lcall _putchar
+      0000FC D0 E0            [24]  273 	pop acc
+      0000FE F8               [12]  274 	mov r0, a
+      0000FF D0 F0            [24]  275 	pop b
+      000101 D0 82            [24]  276 	pop dpl
+      000103 D0 83            [24]  277 	pop dph
+      000105                        278 	printf_ret:
+      000105 22               [24]  279 	ret
+      000106                        280 	printf_end:
+      000106 D0*00            [24]  281 	pop	_bp
+      000108 02r00r00         [24]  282 	ljmp	__sdcc_banked_ret
+                                    283 	.area CSEG    (CODE)
+                                    284 	.area CONST   (CODE)
+                                    285 	.area XINIT   (CODE)
+                                    286 	.area CABS    (ABS,CODE)

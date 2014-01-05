@@ -1,0 +1,35 @@
+XH3
+H A areas 2 global symbols
+M _isspace
+S .__.ABS. Def000000
+A _CODE size 0 flags 0 addr 0
+A DATA size 0 flags 0 addr 0
+A INITIALIZED size 0 flags 0 addr 0
+A DABS size 0 flags 8 addr 0
+A HOME size 0 flags 0 addr 0
+A GSINIT size 0 flags 0 addr 0
+A GSFINAL size 0 flags 0 addr 0
+A CODE size 2A flags 0 addr 0
+S _isspace Def000000
+A INITIALIZER size 0 flags 0 addr 0
+A CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 00 07
+T 00 00 00 7B 03 A1 20 27 1E 7B 03 A1 0C 27 18 7B
+R 00 00 00 07
+T 00 00 0D 03 A1 0A 27 12 7B 03 A1 0D 27 0C 7B 03
+R 00 00 00 07
+T 00 00 1A A1 09 27 06 7B 03 A1 0B 26 04
+R 00 00 00 07
+T 00 00 24
+R 00 00 00 07
+T 00 00 24 A6 01 20 01
+R 00 00 00 07
+T 00 00 28
+R 00 00 00 07
+T 00 00 28 4F
+R 00 00 00 07
+T 00 00 29
+R 00 00 00 07
+T 00 00 29 81
+R 00 00 00 07

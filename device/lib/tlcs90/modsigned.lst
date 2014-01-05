@@ -1,0 +1,54 @@
+                              1 ;--------------------------------------------------------------------------
+                              2 ;  modsigned.s
+                              3 ;
+                              4 ;  Copyright (C) 2009, Philipp Klaus Krause
+                              5 ;
+                              6 ;  This library is free software; you can redistribute it and/or modify it
+                              7 ;  under the terms of the GNU General Public License as published by the
+                              8 ;  Free Software Foundation; either version 2, or (at your option) any
+                              9 ;  later version.
+                             10 ;
+                             11 ;  This library is distributed in the hope that it will be useful,
+                             12 ;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                             13 ;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+                             14 ;  GNU General Public License for more details.
+                             15 ;
+                             16 ;  You should have received a copy of the GNU General Public License 
+                             17 ;  along with this library; see the file COPYING. If not, write to the
+                             18 ;  Free Software Foundation, 51 Franklin Street, Fifth Floor, Boston,
+                             19 ;   MA 02110-1301, USA.
+                             20 ;
+                             21 ;  As a special exception, if you link this library with other files,
+                             22 ;  some of which are compiled with SDCC, to produce an executable,
+                             23 ;  this library does not by itself cause the resulting executable to
+                             24 ;  be covered by the GNU General Public License. This exception does
+                             25 ;  not however invalidate any other reasons why the executable file
+                             26 ;   might be covered by the GNU General Public License.
+                             27 ;--------------------------------------------------------------------------
+                             28 
+                             29         .area   _CODE
+                             30 
+   0000                      31 __modschar_rrx_s::
+   0000 3A 03 00      [13]   32         ld      hl,#2+1
+   0003 FE 70         [ 7]   33         add     hl,sp
+                             34 
+   0005 E2 2B         [10]   35         ld      e,(hl)
+   0007 9A            [ 4]   36         dec     hl
+   0008 E2 2D         [10]   37         ld      l,(hl)
+                             38 
+                             39         ;; Fall through
+   000A                      40 __modschar_rrx_hds::
+   000A 1Cr00r00      [ 4]   41         call    __div8
+                             42 
+   000D 1Ar00r00      [ 7]   43         jp	__get_remainder
+                             44 
+   0010                      45 __modsint_rrx_s::
+   0010 F2 02 4A      [10]   46         ld	hl, 2 (sp)
+   0013 F2 04 49      [10]   47         ld	de, 4 (sp)
+                             48 
+                             49         ;; Fall through
+   0016                      50 __modsint_rrx_hds::
+   0016 1Cr00r00      [ 4]   51         call    __div16
+                             52 
+   0019 1Ar00r00      [ 7]   53         jp	__get_remainder
+                             54 

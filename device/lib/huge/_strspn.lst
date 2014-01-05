@@ -1,0 +1,221 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                                      4 ; This file was generated Wed Nov 27 12:28:00 2013
+                                      5 ;--------------------------------------------------------
+                                      6 	.module _strspn
+                                      7 	.optsdcc -mmcs51 --model-huge
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl _strchr
+                                     13 	.globl _strspn_PARM_2
+                                     14 	.globl _strspn
+                                     15 ;--------------------------------------------------------
+                                     16 ; special function registers
+                                     17 ;--------------------------------------------------------
+                                     18 	.area RSEG    (ABS,DATA)
+      000000                         19 	.org 0x0000
+                                     20 ;--------------------------------------------------------
+                                     21 ; special function bits
+                                     22 ;--------------------------------------------------------
+                                     23 	.area RSEG    (ABS,DATA)
+      000000                         24 	.org 0x0000
+                                     25 ;--------------------------------------------------------
+                                     26 ; overlayable register banks
+                                     27 ;--------------------------------------------------------
+                                     28 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         29 	.ds 8
+                                     30 ;--------------------------------------------------------
+                                     31 ; internal ram data
+                                     32 ;--------------------------------------------------------
+                                     33 	.area DSEG    (DATA)
+      000000                         34 _strspn_count_1_22:
+      000000                         35 	.ds 2
+                                     36 ;--------------------------------------------------------
+                                     37 ; overlayable items in internal ram 
+                                     38 ;--------------------------------------------------------
+                                     39 ;--------------------------------------------------------
+                                     40 ; indirectly addressable internal ram data
+                                     41 ;--------------------------------------------------------
+                                     42 	.area ISEG    (DATA)
+                                     43 ;--------------------------------------------------------
+                                     44 ; absolute internal ram data
+                                     45 ;--------------------------------------------------------
+                                     46 	.area IABS    (ABS,DATA)
+                                     47 	.area IABS    (ABS,DATA)
+                                     48 ;--------------------------------------------------------
+                                     49 ; bit data
+                                     50 ;--------------------------------------------------------
+                                     51 	.area BSEG    (BIT)
+                                     52 ;--------------------------------------------------------
+                                     53 ; paged external ram data
+                                     54 ;--------------------------------------------------------
+                                     55 	.area PSEG    (PAG,XDATA)
+                                     56 ;--------------------------------------------------------
+                                     57 ; external ram data
+                                     58 ;--------------------------------------------------------
+                                     59 	.area XSEG    (XDATA)
+      000000                         60 _strspn_PARM_2:
+      000000                         61 	.ds 3
+      000003                         62 _strspn_string_1_21:
+      000003                         63 	.ds 3
+                                     64 ;--------------------------------------------------------
+                                     65 ; absolute external ram data
+                                     66 ;--------------------------------------------------------
+                                     67 	.area XABS    (ABS,XDATA)
+                                     68 ;--------------------------------------------------------
+                                     69 ; external initialized ram data
+                                     70 ;--------------------------------------------------------
+                                     71 	.area XISEG   (XDATA)
+                                     72 	.area HOME    (CODE)
+                                     73 	.area GSINIT0 (CODE)
+                                     74 	.area GSINIT1 (CODE)
+                                     75 	.area GSINIT2 (CODE)
+                                     76 	.area GSINIT3 (CODE)
+                                     77 	.area GSINIT4 (CODE)
+                                     78 	.area GSINIT5 (CODE)
+                                     79 	.area GSINIT  (CODE)
+                                     80 	.area GSFINAL (CODE)
+                                     81 	.area CSEG    (CODE)
+                                     82 ;--------------------------------------------------------
+                                     83 ; global & static initialisations
+                                     84 ;--------------------------------------------------------
+                                     85 	.area HOME    (CODE)
+                                     86 	.area GSINIT  (CODE)
+                                     87 	.area GSFINAL (CODE)
+                                     88 	.area GSINIT  (CODE)
+                                     89 ;--------------------------------------------------------
+                                     90 ; Home
+                                     91 ;--------------------------------------------------------
+                                     92 	.area HOME    (CODE)
+                                     93 	.area HOME    (CODE)
+                                     94 ;--------------------------------------------------------
+                                     95 ; code
+                                     96 ;--------------------------------------------------------
+                                     97 	.area CSEG    (CODE)
+                                     98 ;------------------------------------------------------------
+                                     99 ;Allocation info for local variables in function 'strspn'
+                                    100 ;------------------------------------------------------------
+                                    101 ;count                     Allocated with name '_strspn_count_1_22'
+                                    102 ;ch                        Allocated to registers r1 
+                                    103 ;control                   Allocated with name '_strspn_PARM_2'
+                                    104 ;string                    Allocated with name '_strspn_string_1_21'
+                                    105 ;------------------------------------------------------------
+                                    106 ;	_strspn.c:31: size_t strspn (
+                                    107 ;	-----------------------------------------
+                                    108 ;	 function strspn
+                                    109 ;	-----------------------------------------
+      000000                        110 _strspn:
+                           000007   111 	ar7 = 0x07
+                           000006   112 	ar6 = 0x06
+                           000005   113 	ar5 = 0x05
+                           000004   114 	ar4 = 0x04
+                           000003   115 	ar3 = 0x03
+                           000002   116 	ar2 = 0x02
+                           000001   117 	ar1 = 0x01
+                           000000   118 	ar0 = 0x00
+      000000 AF F0            [24]  119 	mov	r7,b
+      000002 AE 83            [24]  120 	mov	r6,dph
+      000004 E5 82            [12]  121 	mov	a,dpl
+      000006 90r00r03         [24]  122 	mov	dptr,#_strspn_string_1_21
+      000009 F0               [24]  123 	movx	@dptr,a
+      00000A EE               [12]  124 	mov	a,r6
+      00000B A3               [24]  125 	inc	dptr
+      00000C F0               [24]  126 	movx	@dptr,a
+      00000D EF               [12]  127 	mov	a,r7
+      00000E A3               [24]  128 	inc	dptr
+      00000F F0               [24]  129 	movx	@dptr,a
+                                    130 ;	_strspn.c:39: while (ch = *string) {
+      000010 E4               [12]  131 	clr	a
+      000011 F5*00            [12]  132 	mov	_strspn_count_1_22,a
+      000013 F5*01            [12]  133 	mov	(_strspn_count_1_22 + 1),a
+      000015 90r00r03         [24]  134 	mov	dptr,#_strspn_string_1_21
+      000018 E0               [24]  135 	movx	a,@dptr
+      000019 FB               [12]  136 	mov	r3,a
+      00001A A3               [24]  137 	inc	dptr
+      00001B E0               [24]  138 	movx	a,@dptr
+      00001C FC               [12]  139 	mov	r4,a
+      00001D A3               [24]  140 	inc	dptr
+      00001E E0               [24]  141 	movx	a,@dptr
+      00001F FD               [12]  142 	mov	r5,a
+      000020                        143 00104$:
+      000020 8B 82            [24]  144 	mov	dpl,r3
+      000022 8C 83            [24]  145 	mov	dph,r4
+      000024 8D F0            [24]  146 	mov	b,r5
+      000026 12r00r00         [24]  147 	lcall	__gptrget
+      000029 FA               [12]  148 	mov	r2,a
+      00002A F9               [12]  149 	mov	r1,a
+      00002B 60 4F            [24]  150 	jz	00112$
+                                    151 ;	_strspn.c:40: if ( strchr(control,ch) )
+      00002D 90r00r00         [24]  152 	mov	dptr,#_strspn_PARM_2
+      000030 E0               [24]  153 	movx	a,@dptr
+      000031 F8               [12]  154 	mov	r0,a
+      000032 A3               [24]  155 	inc	dptr
+      000033 E0               [24]  156 	movx	a,@dptr
+      000034 FA               [12]  157 	mov	r2,a
+      000035 A3               [24]  158 	inc	dptr
+      000036 E0               [24]  159 	movx	a,@dptr
+      000037 FF               [12]  160 	mov	r7,a
+      000038 90r00r00         [24]  161 	mov	dptr,#_strchr_PARM_2
+      00003B E9               [12]  162 	mov	a,r1
+      00003C F0               [24]  163 	movx	@dptr,a
+      00003D 88 82            [24]  164 	mov	dpl,r0
+      00003F 8A 83            [24]  165 	mov	dph,r2
+      000041 8F F0            [24]  166 	mov	b,r7
+      000043 C0 05            [24]  167 	push	ar5
+      000045 C0 04            [24]  168 	push	ar4
+      000047 C0 03            [24]  169 	push	ar3
+      000049 78r00            [12]  170 	mov	r0,#_strchr
+      00004B 79s00            [12]  171 	mov	r1,#(_strchr >> 8)
+      00004D 7As00            [12]  172 	mov	r2,#(_strchr >> 16)
+      00004F 12r00r00         [24]  173 	lcall	__sdcc_banked_call
+      000052 AA 82            [24]  174 	mov	r2,dpl
+      000054 AE 83            [24]  175 	mov	r6,dph
+      000056 AF F0            [24]  176 	mov	r7,b
+      000058 D0 03            [24]  177 	pop	ar3
+      00005A D0 04            [24]  178 	pop	ar4
+      00005C D0 05            [24]  179 	pop	ar5
+      00005E EA               [12]  180 	mov	a,r2
+      00005F 4E               [12]  181 	orl	a,r6
+      000060 60 1A            [24]  182 	jz	00112$
+                                    183 ;	_strspn.c:41: count++ ;
+      000062 05*00            [12]  184 	inc	_strspn_count_1_22
+      000064 E4               [12]  185 	clr	a
+      000065 B5*00 02         [24]  186 	cjne	a,_strspn_count_1_22,00121$
+      000068 05*01            [12]  187 	inc	(_strspn_count_1_22 + 1)
+      00006A                        188 00121$:
+                                    189 ;	_strspn.c:44: string++ ;
+      00006A 0B               [12]  190 	inc	r3
+      00006B BB 00 01         [24]  191 	cjne	r3,#0x00,00122$
+      00006E 0C               [12]  192 	inc	r4
+      00006F                        193 00122$:
+      00006F 90r00r03         [24]  194 	mov	dptr,#_strspn_string_1_21
+      000072 EB               [12]  195 	mov	a,r3
+      000073 F0               [24]  196 	movx	@dptr,a
+      000074 EC               [12]  197 	mov	a,r4
+      000075 A3               [24]  198 	inc	dptr
+      000076 F0               [24]  199 	movx	@dptr,a
+      000077 ED               [12]  200 	mov	a,r5
+      000078 A3               [24]  201 	inc	dptr
+      000079 F0               [24]  202 	movx	@dptr,a
+      00007A 80 A4            [24]  203 	sjmp	00104$
+      00007C                        204 00112$:
+      00007C 90r00r03         [24]  205 	mov	dptr,#_strspn_string_1_21
+      00007F EB               [12]  206 	mov	a,r3
+      000080 F0               [24]  207 	movx	@dptr,a
+      000081 EC               [12]  208 	mov	a,r4
+      000082 A3               [24]  209 	inc	dptr
+      000083 F0               [24]  210 	movx	@dptr,a
+      000084 ED               [12]  211 	mov	a,r5
+      000085 A3               [24]  212 	inc	dptr
+      000086 F0               [24]  213 	movx	@dptr,a
+                                    214 ;	_strspn.c:47: return count ;
+      000087 85*00 82         [24]  215 	mov	dpl,_strspn_count_1_22
+      00008A 85*01 83         [24]  216 	mov	dph,(_strspn_count_1_22 + 1)
+      00008D 02r00r00         [24]  217 	ljmp	__sdcc_banked_ret
+                                    218 	.area CSEG    (CODE)
+                                    219 	.area CONST   (CODE)
+                                    220 	.area XINIT   (CODE)
+                                    221 	.area CABS    (ABS,CODE)

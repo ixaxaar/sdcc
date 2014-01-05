@@ -1,0 +1,484 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                                      4 ; This file was generated Wed Nov 27 12:28:00 2013
+                                      5 ;--------------------------------------------------------
+                                      6 	.module _mullong
+                                      7 	.optsdcc -mmcs51 --model-huge
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl __mullong_PARM_2
+                                     13 	.globl __mullong
+                                     14 ;--------------------------------------------------------
+                                     15 ; special function registers
+                                     16 ;--------------------------------------------------------
+                                     17 	.area RSEG    (ABS,DATA)
+      000000                         18 	.org 0x0000
+                                     19 ;--------------------------------------------------------
+                                     20 ; special function bits
+                                     21 ;--------------------------------------------------------
+                                     22 	.area RSEG    (ABS,DATA)
+      000000                         23 	.org 0x0000
+                                     24 ;--------------------------------------------------------
+                                     25 ; overlayable register banks
+                                     26 ;--------------------------------------------------------
+                                     27 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         28 	.ds 8
+                                     29 ;--------------------------------------------------------
+                                     30 ; internal ram data
+                                     31 ;--------------------------------------------------------
+                                     32 	.area DSEG    (DATA)
+                                     33 ;--------------------------------------------------------
+                                     34 ; overlayable items in internal ram 
+                                     35 ;--------------------------------------------------------
+                                     36 ;--------------------------------------------------------
+                                     37 ; indirectly addressable internal ram data
+                                     38 ;--------------------------------------------------------
+                                     39 	.area ISEG    (DATA)
+                                     40 ;--------------------------------------------------------
+                                     41 ; absolute internal ram data
+                                     42 ;--------------------------------------------------------
+                                     43 	.area IABS    (ABS,DATA)
+                                     44 	.area IABS    (ABS,DATA)
+                                     45 ;--------------------------------------------------------
+                                     46 ; bit data
+                                     47 ;--------------------------------------------------------
+                                     48 	.area BSEG    (BIT)
+                                     49 ;--------------------------------------------------------
+                                     50 ; paged external ram data
+                                     51 ;--------------------------------------------------------
+                                     52 	.area PSEG    (PAG,XDATA)
+                                     53 ;--------------------------------------------------------
+                                     54 ; external ram data
+                                     55 ;--------------------------------------------------------
+                                     56 	.area XSEG    (XDATA)
+      000000                         57 __mullong_PARM_2:
+      000000                         58 	.ds 4
+      000004                         59 __mullong_a_1_1:
+      000004                         60 	.ds 4
+      000008                         61 __mullong_t_1_2:
+      000008                         62 	.ds 4
+                                     63 ;--------------------------------------------------------
+                                     64 ; absolute external ram data
+                                     65 ;--------------------------------------------------------
+                                     66 	.area XABS    (ABS,XDATA)
+                                     67 ;--------------------------------------------------------
+                                     68 ; external initialized ram data
+                                     69 ;--------------------------------------------------------
+                                     70 	.area XISEG   (XDATA)
+                                     71 	.area HOME    (CODE)
+                                     72 	.area GSINIT0 (CODE)
+                                     73 	.area GSINIT1 (CODE)
+                                     74 	.area GSINIT2 (CODE)
+                                     75 	.area GSINIT3 (CODE)
+                                     76 	.area GSINIT4 (CODE)
+                                     77 	.area GSINIT5 (CODE)
+                                     78 	.area GSINIT  (CODE)
+                                     79 	.area GSFINAL (CODE)
+                                     80 	.area CSEG    (CODE)
+                                     81 ;--------------------------------------------------------
+                                     82 ; global & static initialisations
+                                     83 ;--------------------------------------------------------
+                                     84 	.area HOME    (CODE)
+                                     85 	.area GSINIT  (CODE)
+                                     86 	.area GSFINAL (CODE)
+                                     87 	.area GSINIT  (CODE)
+                                     88 ;--------------------------------------------------------
+                                     89 ; Home
+                                     90 ;--------------------------------------------------------
+                                     91 	.area HOME    (CODE)
+                                     92 	.area HOME    (CODE)
+                                     93 ;--------------------------------------------------------
+                                     94 ; code
+                                     95 ;--------------------------------------------------------
+                                     96 	.area CSEG    (CODE)
+                                     97 ;------------------------------------------------------------
+                                     98 ;Allocation info for local variables in function '_mullong'
+                                     99 ;------------------------------------------------------------
+                                    100 ;b                         Allocated with name '__mullong_PARM_2'
+                                    101 ;a                         Allocated with name '__mullong_a_1_1'
+                                    102 ;t                         Allocated with name '__mullong_t_1_2'
+                                    103 ;------------------------------------------------------------
+                                    104 ;	_mullong.c:734: _mullong (long a, long b)
+                                    105 ;	-----------------------------------------
+                                    106 ;	 function _mullong
+                                    107 ;	-----------------------------------------
+      000000                        108 __mullong:
+                           000007   109 	ar7 = 0x07
+                           000006   110 	ar6 = 0x06
+                           000005   111 	ar5 = 0x05
+                           000004   112 	ar4 = 0x04
+                           000003   113 	ar3 = 0x03
+                           000002   114 	ar2 = 0x02
+                           000001   115 	ar1 = 0x01
+                           000000   116 	ar0 = 0x00
+      000000 AF 82            [24]  117 	mov	r7,dpl
+      000002 AE 83            [24]  118 	mov	r6,dph
+      000004 AD F0            [24]  119 	mov	r5,b
+      000006 FC               [12]  120 	mov	r4,a
+      000007 90r00r04         [24]  121 	mov	dptr,#__mullong_a_1_1
+      00000A EF               [12]  122 	mov	a,r7
+      00000B F0               [24]  123 	movx	@dptr,a
+      00000C EE               [12]  124 	mov	a,r6
+      00000D A3               [24]  125 	inc	dptr
+      00000E F0               [24]  126 	movx	@dptr,a
+      00000F ED               [12]  127 	mov	a,r5
+      000010 A3               [24]  128 	inc	dptr
+      000011 F0               [24]  129 	movx	@dptr,a
+      000012 EC               [12]  130 	mov	a,r4
+      000013 A3               [24]  131 	inc	dptr
+      000014 F0               [24]  132 	movx	@dptr,a
+                                    133 ;	_mullong.c:738: t.i.hi = bcast(a)->b.b0 * bcast(b)->b.b2;           // A
+      000015 90r00r04         [24]  134 	mov	dptr,#__mullong_a_1_1
+      000018 E0               [24]  135 	movx	a,@dptr
+      000019 FF               [12]  136 	mov	r7,a
+      00001A 7Dr00            [12]  137 	mov	r5,#__mullong_PARM_2
+      00001C 7Es00            [12]  138 	mov	r6,#(__mullong_PARM_2 >> 8)
+      00001E 8D 82            [24]  139 	mov	dpl,r5
+      000020 8E 83            [24]  140 	mov	dph,r6
+      000022 A3               [24]  141 	inc	dptr
+      000023 A3               [24]  142 	inc	dptr
+      000024 E0               [24]  143 	movx	a,@dptr
+      000025 8F F0            [24]  144 	mov	b,r7
+      000027 A4               [48]  145 	mul	ab
+      000028 FF               [12]  146 	mov	r7,a
+      000029 AD F0            [24]  147 	mov	r5,b
+      00002B 90r00r0A         [24]  148 	mov	dptr,#(__mullong_t_1_2 + 0x0002)
+      00002E EF               [12]  149 	mov	a,r7
+      00002F F0               [24]  150 	movx	@dptr,a
+      000030 ED               [12]  151 	mov	a,r5
+      000031 A3               [24]  152 	inc	dptr
+      000032 F0               [24]  153 	movx	@dptr,a
+                                    154 ;	_mullong.c:739: t.i.lo = bcast(a)->b.b0 * bcast(b)->b.b0;           // A
+      000033 90r00r04         [24]  155 	mov	dptr,#__mullong_a_1_1
+      000036 E0               [24]  156 	movx	a,@dptr
+      000037 FF               [12]  157 	mov	r7,a
+      000038 90r00r00         [24]  158 	mov	dptr,#__mullong_PARM_2
+      00003B E0               [24]  159 	movx	a,@dptr
+      00003C 8F F0            [24]  160 	mov	b,r7
+      00003E A4               [48]  161 	mul	ab
+      00003F FF               [12]  162 	mov	r7,a
+      000040 AD F0            [24]  163 	mov	r5,b
+      000042 90r00r08         [24]  164 	mov	dptr,#__mullong_t_1_2
+      000045 EF               [12]  165 	mov	a,r7
+      000046 F0               [24]  166 	movx	@dptr,a
+      000047 ED               [12]  167 	mov	a,r5
+      000048 A3               [24]  168 	inc	dptr
+      000049 F0               [24]  169 	movx	@dptr,a
+                                    170 ;	_mullong.c:740: t.b.b3 += bcast(a)->b.b3 * bcast(b)->b.b0;          // G
+      00004A 90r00r0B         [24]  171 	mov	dptr,#(__mullong_t_1_2 + 0x0003)
+      00004D E0               [24]  172 	movx	a,@dptr
+      00004E FF               [12]  173 	mov	r7,a
+      00004F 7Dr04            [12]  174 	mov	r5,#__mullong_a_1_1
+      000051 7Es00            [12]  175 	mov	r6,#(__mullong_a_1_1 >> 8)
+      000053 8D 82            [24]  176 	mov	dpl,r5
+      000055 8E 83            [24]  177 	mov	dph,r6
+      000057 A3               [24]  178 	inc	dptr
+      000058 A3               [24]  179 	inc	dptr
+      000059 A3               [24]  180 	inc	dptr
+      00005A E0               [24]  181 	movx	a,@dptr
+      00005B FE               [12]  182 	mov	r6,a
+      00005C 90r00r00         [24]  183 	mov	dptr,#__mullong_PARM_2
+      00005F E0               [24]  184 	movx	a,@dptr
+      000060 8E F0            [24]  185 	mov	b,r6
+      000062 A4               [48]  186 	mul	ab
+      000063 2F               [12]  187 	add	a,r7
+      000064 90r00r0B         [24]  188 	mov	dptr,#(__mullong_t_1_2 + 0x0003)
+      000067 F0               [24]  189 	movx	@dptr,a
+                                    190 ;	_mullong.c:741: t.b.b3 += bcast(a)->b.b2 * bcast(b)->b.b1;          // F
+      000068 90r00r0B         [24]  191 	mov	dptr,#(__mullong_t_1_2 + 0x0003)
+      00006B E0               [24]  192 	movx	a,@dptr
+      00006C FF               [12]  193 	mov	r7,a
+      00006D 7Dr04            [12]  194 	mov	r5,#__mullong_a_1_1
+      00006F 7Es00            [12]  195 	mov	r6,#(__mullong_a_1_1 >> 8)
+      000071 8D 82            [24]  196 	mov	dpl,r5
+      000073 8E 83            [24]  197 	mov	dph,r6
+      000075 A3               [24]  198 	inc	dptr
+      000076 A3               [24]  199 	inc	dptr
+      000077 E0               [24]  200 	movx	a,@dptr
+      000078 FE               [12]  201 	mov	r6,a
+      000079 7Cr00            [12]  202 	mov	r4,#__mullong_PARM_2
+      00007B 7Ds00            [12]  203 	mov	r5,#(__mullong_PARM_2 >> 8)
+      00007D 8C 82            [24]  204 	mov	dpl,r4
+      00007F 8D 83            [24]  205 	mov	dph,r5
+      000081 A3               [24]  206 	inc	dptr
+      000082 E0               [24]  207 	movx	a,@dptr
+      000083 8E F0            [24]  208 	mov	b,r6
+      000085 A4               [48]  209 	mul	ab
+      000086 2F               [12]  210 	add	a,r7
+      000087 90r00r0B         [24]  211 	mov	dptr,#(__mullong_t_1_2 + 0x0003)
+      00008A F0               [24]  212 	movx	@dptr,a
+                                    213 ;	_mullong.c:742: t.i.hi += bcast(a)->b.b2 * bcast(b)->b.b0;          // E <- b lost in .lst
+      00008B 90r00r0A         [24]  214 	mov	dptr,#(__mullong_t_1_2 + 0x0002)
+      00008E E0               [24]  215 	movx	a,@dptr
+      00008F FE               [12]  216 	mov	r6,a
+      000090 A3               [24]  217 	inc	dptr
+      000091 E0               [24]  218 	movx	a,@dptr
+      000092 FF               [12]  219 	mov	r7,a
+      000093 7Cr04            [12]  220 	mov	r4,#__mullong_a_1_1
+      000095 7Ds00            [12]  221 	mov	r5,#(__mullong_a_1_1 >> 8)
+      000097 8C 82            [24]  222 	mov	dpl,r4
+      000099 8D 83            [24]  223 	mov	dph,r5
+      00009B A3               [24]  224 	inc	dptr
+      00009C A3               [24]  225 	inc	dptr
+      00009D E0               [24]  226 	movx	a,@dptr
+      00009E FD               [12]  227 	mov	r5,a
+      00009F 90r00r00         [24]  228 	mov	dptr,#__mullong_PARM_2
+      0000A2 E0               [24]  229 	movx	a,@dptr
+      0000A3 8D F0            [24]  230 	mov	b,r5
+      0000A5 A4               [48]  231 	mul	ab
+      0000A6 AB F0            [24]  232 	mov	r3,b
+      0000A8 2E               [12]  233 	add	a,r6
+      0000A9 FE               [12]  234 	mov	r6,a
+      0000AA EB               [12]  235 	mov	a,r3
+      0000AB 3F               [12]  236 	addc	a,r7
+      0000AC FF               [12]  237 	mov	r7,a
+      0000AD 90r00r0A         [24]  238 	mov	dptr,#(__mullong_t_1_2 + 0x0002)
+      0000B0 EE               [12]  239 	mov	a,r6
+      0000B1 F0               [24]  240 	movx	@dptr,a
+      0000B2 EF               [12]  241 	mov	a,r7
+      0000B3 A3               [24]  242 	inc	dptr
+      0000B4 F0               [24]  243 	movx	@dptr,a
+                                    244 ;	_mullong.c:744: t.i.hi += bcast(a)->b.b1 * bcast(b)->b.b1;          // D <- b lost in .lst
+      0000B5 90r00r0A         [24]  245 	mov	dptr,#(__mullong_t_1_2 + 0x0002)
+      0000B8 E0               [24]  246 	movx	a,@dptr
+      0000B9 FE               [12]  247 	mov	r6,a
+      0000BA A3               [24]  248 	inc	dptr
+      0000BB E0               [24]  249 	movx	a,@dptr
+      0000BC FF               [12]  250 	mov	r7,a
+      0000BD 7Cr04            [12]  251 	mov	r4,#__mullong_a_1_1
+      0000BF 7Ds00            [12]  252 	mov	r5,#(__mullong_a_1_1 >> 8)
+      0000C1 8C 82            [24]  253 	mov	dpl,r4
+      0000C3 8D 83            [24]  254 	mov	dph,r5
+      0000C5 A3               [24]  255 	inc	dptr
+      0000C6 E0               [24]  256 	movx	a,@dptr
+      0000C7 FD               [12]  257 	mov	r5,a
+      0000C8 7Br00            [12]  258 	mov	r3,#__mullong_PARM_2
+      0000CA 7Cs00            [12]  259 	mov	r4,#(__mullong_PARM_2 >> 8)
+      0000CC 8B 82            [24]  260 	mov	dpl,r3
+      0000CE 8C 83            [24]  261 	mov	dph,r4
+      0000D0 A3               [24]  262 	inc	dptr
+      0000D1 E0               [24]  263 	movx	a,@dptr
+      0000D2 8D F0            [24]  264 	mov	b,r5
+      0000D4 A4               [48]  265 	mul	ab
+      0000D5 AB F0            [24]  266 	mov	r3,b
+      0000D7 2E               [12]  267 	add	a,r6
+      0000D8 FE               [12]  268 	mov	r6,a
+      0000D9 EB               [12]  269 	mov	a,r3
+      0000DA 3F               [12]  270 	addc	a,r7
+      0000DB FF               [12]  271 	mov	r7,a
+      0000DC 90r00r0A         [24]  272 	mov	dptr,#(__mullong_t_1_2 + 0x0002)
+      0000DF EE               [12]  273 	mov	a,r6
+      0000E0 F0               [24]  274 	movx	@dptr,a
+      0000E1 EF               [12]  275 	mov	a,r7
+      0000E2 A3               [24]  276 	inc	dptr
+      0000E3 F0               [24]  277 	movx	@dptr,a
+                                    278 ;	_mullong.c:746: bcast(a)->bi.b3 = bcast(a)->b.b1 * bcast(b)->b.b2;  // C
+      0000E4 7Er04            [12]  279 	mov	r6,#__mullong_a_1_1
+      0000E6 7Fs00            [12]  280 	mov	r7,#(__mullong_a_1_1 >> 8)
+      0000E8 74 03            [12]  281 	mov	a,#0x03
+      0000EA 2E               [12]  282 	add	a,r6
+      0000EB FE               [12]  283 	mov	r6,a
+      0000EC E4               [12]  284 	clr	a
+      0000ED 3F               [12]  285 	addc	a,r7
+      0000EE FF               [12]  286 	mov	r7,a
+      0000EF 7Cr04            [12]  287 	mov	r4,#__mullong_a_1_1
+      0000F1 7Ds00            [12]  288 	mov	r5,#(__mullong_a_1_1 >> 8)
+      0000F3 8C 82            [24]  289 	mov	dpl,r4
+      0000F5 8D 83            [24]  290 	mov	dph,r5
+      0000F7 A3               [24]  291 	inc	dptr
+      0000F8 E0               [24]  292 	movx	a,@dptr
+      0000F9 FD               [12]  293 	mov	r5,a
+      0000FA 7Br00            [12]  294 	mov	r3,#__mullong_PARM_2
+      0000FC 7Cs00            [12]  295 	mov	r4,#(__mullong_PARM_2 >> 8)
+      0000FE 8B 82            [24]  296 	mov	dpl,r3
+      000100 8C 83            [24]  297 	mov	dph,r4
+      000102 A3               [24]  298 	inc	dptr
+      000103 A3               [24]  299 	inc	dptr
+      000104 E0               [24]  300 	movx	a,@dptr
+      000105 FC               [12]  301 	mov	r4,a
+      000106 8D F0            [24]  302 	mov	b,r5
+      000108 A4               [48]  303 	mul	ab
+      000109 FD               [12]  304 	mov	r5,a
+      00010A 8E 82            [24]  305 	mov	dpl,r6
+      00010C 8F 83            [24]  306 	mov	dph,r7
+      00010E F0               [24]  307 	movx	@dptr,a
+                                    308 ;	_mullong.c:747: bcast(a)->bi.i12 = bcast(a)->b.b1 * bcast(b)->b.b0; // C
+      00010F 7Er04            [12]  309 	mov	r6,#__mullong_a_1_1
+      000111 7Fs00            [12]  310 	mov	r7,#(__mullong_a_1_1 >> 8)
+      000113 0E               [12]  311 	inc	r6
+      000114 BE 00 01         [24]  312 	cjne	r6,#0x00,00103$
+      000117 0F               [12]  313 	inc	r7
+      000118                        314 00103$:
+      000118 7Cr04            [12]  315 	mov	r4,#__mullong_a_1_1
+      00011A 7Ds00            [12]  316 	mov	r5,#(__mullong_a_1_1 >> 8)
+      00011C 8C 82            [24]  317 	mov	dpl,r4
+      00011E 8D 83            [24]  318 	mov	dph,r5
+      000120 A3               [24]  319 	inc	dptr
+      000121 E0               [24]  320 	movx	a,@dptr
+      000122 FD               [12]  321 	mov	r5,a
+      000123 90r00r00         [24]  322 	mov	dptr,#__mullong_PARM_2
+      000126 E0               [24]  323 	movx	a,@dptr
+      000127 8D F0            [24]  324 	mov	b,r5
+      000129 A4               [48]  325 	mul	ab
+      00012A FD               [12]  326 	mov	r5,a
+      00012B AB F0            [24]  327 	mov	r3,b
+      00012D 8E 82            [24]  328 	mov	dpl,r6
+      00012F 8F 83            [24]  329 	mov	dph,r7
+      000131 ED               [12]  330 	mov	a,r5
+      000132 F0               [24]  331 	movx	@dptr,a
+      000133 EB               [12]  332 	mov	a,r3
+      000134 A3               [24]  333 	inc	dptr
+      000135 F0               [24]  334 	movx	@dptr,a
+                                    335 ;	_mullong.c:749: bcast(b)->bi.b3 = bcast(a)->b.b0 * bcast(b)->b.b3;  // B
+      000136 7Er00            [12]  336 	mov	r6,#__mullong_PARM_2
+      000138 7Fs00            [12]  337 	mov	r7,#(__mullong_PARM_2 >> 8)
+      00013A 74 03            [12]  338 	mov	a,#0x03
+      00013C 2E               [12]  339 	add	a,r6
+      00013D FE               [12]  340 	mov	r6,a
+      00013E E4               [12]  341 	clr	a
+      00013F 3F               [12]  342 	addc	a,r7
+      000140 FF               [12]  343 	mov	r7,a
+      000141 90r00r04         [24]  344 	mov	dptr,#__mullong_a_1_1
+      000144 E0               [24]  345 	movx	a,@dptr
+      000145 FD               [12]  346 	mov	r5,a
+      000146 7Br00            [12]  347 	mov	r3,#__mullong_PARM_2
+      000148 7Cs00            [12]  348 	mov	r4,#(__mullong_PARM_2 >> 8)
+      00014A 8B 82            [24]  349 	mov	dpl,r3
+      00014C 8C 83            [24]  350 	mov	dph,r4
+      00014E A3               [24]  351 	inc	dptr
+      00014F A3               [24]  352 	inc	dptr
+      000150 A3               [24]  353 	inc	dptr
+      000151 E0               [24]  354 	movx	a,@dptr
+      000152 FC               [12]  355 	mov	r4,a
+      000153 8D F0            [24]  356 	mov	b,r5
+      000155 A4               [48]  357 	mul	ab
+      000156 FD               [12]  358 	mov	r5,a
+      000157 8E 82            [24]  359 	mov	dpl,r6
+      000159 8F 83            [24]  360 	mov	dph,r7
+      00015B F0               [24]  361 	movx	@dptr,a
+                                    362 ;	_mullong.c:750: bcast(b)->bi.i12 = bcast(a)->b.b0 * bcast(b)->b.b1; // B
+      00015C 7Er00            [12]  363 	mov	r6,#__mullong_PARM_2
+      00015E 7Fs00            [12]  364 	mov	r7,#(__mullong_PARM_2 >> 8)
+      000160 0E               [12]  365 	inc	r6
+      000161 BE 00 01         [24]  366 	cjne	r6,#0x00,00104$
+      000164 0F               [12]  367 	inc	r7
+      000165                        368 00104$:
+      000165 90r00r04         [24]  369 	mov	dptr,#__mullong_a_1_1
+      000168 E0               [24]  370 	movx	a,@dptr
+      000169 FD               [12]  371 	mov	r5,a
+      00016A 7Br00            [12]  372 	mov	r3,#__mullong_PARM_2
+      00016C 7Cs00            [12]  373 	mov	r4,#(__mullong_PARM_2 >> 8)
+      00016E 8B 82            [24]  374 	mov	dpl,r3
+      000170 8C 83            [24]  375 	mov	dph,r4
+      000172 A3               [24]  376 	inc	dptr
+      000173 E0               [24]  377 	movx	a,@dptr
+      000174 8D F0            [24]  378 	mov	b,r5
+      000176 A4               [48]  379 	mul	ab
+      000177 FD               [12]  380 	mov	r5,a
+      000178 AB F0            [24]  381 	mov	r3,b
+      00017A 8E 82            [24]  382 	mov	dpl,r6
+      00017C 8F 83            [24]  383 	mov	dph,r7
+      00017E ED               [12]  384 	mov	a,r5
+      00017F F0               [24]  385 	movx	@dptr,a
+      000180 EB               [12]  386 	mov	a,r3
+      000181 A3               [24]  387 	inc	dptr
+      000182 F0               [24]  388 	movx	@dptr,a
+                                    389 ;	_mullong.c:752: bcast(b)->bi.b0 = 0;                                // B
+      000183 90r00r00         [24]  390 	mov	dptr,#__mullong_PARM_2
+      000186 E4               [12]  391 	clr	a
+      000187 F0               [24]  392 	movx	@dptr,a
+                                    393 ;	_mullong.c:753: bcast(a)->bi.b0 = 0;                                // C
+      000188 90r00r04         [24]  394 	mov	dptr,#__mullong_a_1_1
+      00018B F0               [24]  395 	movx	@dptr,a
+                                    396 ;	_mullong.c:754: t.l += a;
+      00018C 90r00r08         [24]  397 	mov	dptr,#__mullong_t_1_2
+      00018F E0               [24]  398 	movx	a,@dptr
+      000190 FC               [12]  399 	mov	r4,a
+      000191 A3               [24]  400 	inc	dptr
+      000192 E0               [24]  401 	movx	a,@dptr
+      000193 FD               [12]  402 	mov	r5,a
+      000194 A3               [24]  403 	inc	dptr
+      000195 E0               [24]  404 	movx	a,@dptr
+      000196 FE               [12]  405 	mov	r6,a
+      000197 A3               [24]  406 	inc	dptr
+      000198 E0               [24]  407 	movx	a,@dptr
+      000199 FF               [12]  408 	mov	r7,a
+      00019A 90r00r04         [24]  409 	mov	dptr,#__mullong_a_1_1
+      00019D E0               [24]  410 	movx	a,@dptr
+      00019E F8               [12]  411 	mov	r0,a
+      00019F A3               [24]  412 	inc	dptr
+      0001A0 E0               [24]  413 	movx	a,@dptr
+      0001A1 F9               [12]  414 	mov	r1,a
+      0001A2 A3               [24]  415 	inc	dptr
+      0001A3 E0               [24]  416 	movx	a,@dptr
+      0001A4 FA               [12]  417 	mov	r2,a
+      0001A5 A3               [24]  418 	inc	dptr
+      0001A6 E0               [24]  419 	movx	a,@dptr
+      0001A7 FB               [12]  420 	mov	r3,a
+      0001A8 E8               [12]  421 	mov	a,r0
+      0001A9 2C               [12]  422 	add	a,r4
+      0001AA FC               [12]  423 	mov	r4,a
+      0001AB E9               [12]  424 	mov	a,r1
+      0001AC 3D               [12]  425 	addc	a,r5
+      0001AD FD               [12]  426 	mov	r5,a
+      0001AE EA               [12]  427 	mov	a,r2
+      0001AF 3E               [12]  428 	addc	a,r6
+      0001B0 FE               [12]  429 	mov	r6,a
+      0001B1 EB               [12]  430 	mov	a,r3
+      0001B2 3F               [12]  431 	addc	a,r7
+      0001B3 FF               [12]  432 	mov	r7,a
+      0001B4 90r00r08         [24]  433 	mov	dptr,#__mullong_t_1_2
+      0001B7 EC               [12]  434 	mov	a,r4
+      0001B8 F0               [24]  435 	movx	@dptr,a
+      0001B9 ED               [12]  436 	mov	a,r5
+      0001BA A3               [24]  437 	inc	dptr
+      0001BB F0               [24]  438 	movx	@dptr,a
+      0001BC EE               [12]  439 	mov	a,r6
+      0001BD A3               [24]  440 	inc	dptr
+      0001BE F0               [24]  441 	movx	@dptr,a
+      0001BF EF               [12]  442 	mov	a,r7
+      0001C0 A3               [24]  443 	inc	dptr
+      0001C1 F0               [24]  444 	movx	@dptr,a
+                                    445 ;	_mullong.c:756: return t.l + b;
+      0001C2 90r00r08         [24]  446 	mov	dptr,#__mullong_t_1_2
+      0001C5 E0               [24]  447 	movx	a,@dptr
+      0001C6 A3               [24]  448 	inc	dptr
+      0001C7 E0               [24]  449 	movx	a,@dptr
+      0001C8 A3               [24]  450 	inc	dptr
+      0001C9 E0               [24]  451 	movx	a,@dptr
+      0001CA A3               [24]  452 	inc	dptr
+      0001CB E0               [24]  453 	movx	a,@dptr
+      0001CC 90r00r00         [24]  454 	mov	dptr,#__mullong_PARM_2
+      0001CF E0               [24]  455 	movx	a,@dptr
+      0001D0 F8               [12]  456 	mov	r0,a
+      0001D1 A3               [24]  457 	inc	dptr
+      0001D2 E0               [24]  458 	movx	a,@dptr
+      0001D3 F9               [12]  459 	mov	r1,a
+      0001D4 A3               [24]  460 	inc	dptr
+      0001D5 E0               [24]  461 	movx	a,@dptr
+      0001D6 FA               [12]  462 	mov	r2,a
+      0001D7 A3               [24]  463 	inc	dptr
+      0001D8 E0               [24]  464 	movx	a,@dptr
+      0001D9 FB               [12]  465 	mov	r3,a
+      0001DA E8               [12]  466 	mov	a,r0
+      0001DB 2C               [12]  467 	add	a,r4
+      0001DC FC               [12]  468 	mov	r4,a
+      0001DD E9               [12]  469 	mov	a,r1
+      0001DE 3D               [12]  470 	addc	a,r5
+      0001DF FD               [12]  471 	mov	r5,a
+      0001E0 EA               [12]  472 	mov	a,r2
+      0001E1 3E               [12]  473 	addc	a,r6
+      0001E2 FE               [12]  474 	mov	r6,a
+      0001E3 EB               [12]  475 	mov	a,r3
+      0001E4 3F               [12]  476 	addc	a,r7
+      0001E5 8C 82            [24]  477 	mov	dpl,r4
+      0001E7 8D 83            [24]  478 	mov	dph,r5
+      0001E9 8E F0            [24]  479 	mov	b,r6
+      0001EB 22               [24]  480 	ret
+                                    481 	.area CSEG    (CODE)
+                                    482 	.area CONST   (CODE)
+                                    483 	.area XINIT   (CODE)
+                                    484 	.area CABS    (ABS,CODE)

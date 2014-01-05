@@ -1,0 +1,1001 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                                      4 ; This file was generated Wed Nov 27 12:28:05 2013
+                                      5 ;--------------------------------------------------------
+                                      6 	.module printf_fast
+                                      7 	.optsdcc -mmcs51 --model-small
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl _printf_fast
+                                     13 ;--------------------------------------------------------
+                                     14 ; special function registers
+                                     15 ;--------------------------------------------------------
+                                     16 	.area RSEG    (ABS,DATA)
+      000000                         17 	.org 0x0000
+                                     18 ;--------------------------------------------------------
+                                     19 ; special function bits
+                                     20 ;--------------------------------------------------------
+                                     21 	.area RSEG    (ABS,DATA)
+      000000                         22 	.org 0x0000
+                                     23 ;--------------------------------------------------------
+                                     24 ; overlayable register banks
+                                     25 ;--------------------------------------------------------
+                                     26 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         27 	.ds 8
+                                     28 ;--------------------------------------------------------
+                                     29 ; internal ram data
+                                     30 ;--------------------------------------------------------
+                                     31 	.area DSEG    (DATA)
+      000000                         32 _field_width:
+      000000                         33 	.ds 1
+                                     34 ;--------------------------------------------------------
+                                     35 ; overlayable items in internal ram 
+                                     36 ;--------------------------------------------------------
+                                     37 ;--------------------------------------------------------
+                                     38 ; indirectly addressable internal ram data
+                                     39 ;--------------------------------------------------------
+                                     40 	.area ISEG    (DATA)
+                                     41 ;--------------------------------------------------------
+                                     42 ; absolute internal ram data
+                                     43 ;--------------------------------------------------------
+                                     44 	.area IABS    (ABS,DATA)
+                                     45 	.area IABS    (ABS,DATA)
+                                     46 ;--------------------------------------------------------
+                                     47 ; bit data
+                                     48 ;--------------------------------------------------------
+                                     49 	.area BSEG    (BIT)
+      000000                         50 _long_flag:
+      000000                         51 	.ds 1
+      000001                         52 _short_flag:
+      000001                         53 	.ds 1
+      000002                         54 _print_zero_flag:
+      000002                         55 	.ds 1
+      000003                         56 _negative_flag:
+      000003                         57 	.ds 1
+      000004                         58 _field_width_flag:
+      000004                         59 	.ds 1
+      000005                         60 _leading_zero_flag:
+      000005                         61 	.ds 1
+                                     62 ;--------------------------------------------------------
+                                     63 ; paged external ram data
+                                     64 ;--------------------------------------------------------
+                                     65 	.area PSEG    (PAG,XDATA)
+                                     66 ;--------------------------------------------------------
+                                     67 ; external ram data
+                                     68 ;--------------------------------------------------------
+                                     69 	.area XSEG    (XDATA)
+                                     70 ;--------------------------------------------------------
+                                     71 ; absolute external ram data
+                                     72 ;--------------------------------------------------------
+                                     73 	.area XABS    (ABS,XDATA)
+                                     74 ;--------------------------------------------------------
+                                     75 ; external initialized ram data
+                                     76 ;--------------------------------------------------------
+                                     77 	.area XISEG   (XDATA)
+                                     78 	.area HOME    (CODE)
+                                     79 	.area GSINIT0 (CODE)
+                                     80 	.area GSINIT1 (CODE)
+                                     81 	.area GSINIT2 (CODE)
+                                     82 	.area GSINIT3 (CODE)
+                                     83 	.area GSINIT4 (CODE)
+                                     84 	.area GSINIT5 (CODE)
+                                     85 	.area GSINIT  (CODE)
+                                     86 	.area GSFINAL (CODE)
+                                     87 	.area CSEG    (CODE)
+                                     88 ;--------------------------------------------------------
+                                     89 ; global & static initialisations
+                                     90 ;--------------------------------------------------------
+                                     91 	.area HOME    (CODE)
+                                     92 	.area GSINIT  (CODE)
+                                     93 	.area GSFINAL (CODE)
+                                     94 	.area GSINIT  (CODE)
+                                     95 ;--------------------------------------------------------
+                                     96 ; Home
+                                     97 ;--------------------------------------------------------
+                                     98 	.area HOME    (CODE)
+                                     99 	.area HOME    (CODE)
+                                    100 ;--------------------------------------------------------
+                                    101 ; code
+                                    102 ;--------------------------------------------------------
+                                    103 	.area CSEG    (CODE)
+                                    104 ;------------------------------------------------------------
+                                    105 ;Allocation info for local variables in function 'printf_fast'
+                                    106 ;------------------------------------------------------------
+                                    107 ;fmt                       Allocated to stack - _bp -4
+                                    108 ;------------------------------------------------------------
+                                    109 ;	printf_fast.c:146: void PRINTF_FAST(__code const char *fmt, ...) __reentrant
+                                    110 ;	-----------------------------------------
+                                    111 ;	 function printf_fast
+                                    112 ;	-----------------------------------------
+      000000                        113 _printf_fast:
+                           000007   114 	ar7 = 0x07
+                           000006   115 	ar6 = 0x06
+                           000005   116 	ar5 = 0x05
+                           000004   117 	ar4 = 0x04
+                           000003   118 	ar3 = 0x03
+                           000002   119 	ar2 = 0x02
+                           000001   120 	ar1 = 0x01
+                           000000   121 	ar0 = 0x00
+      000000 C0*00            [24]  122 	push	_bp
+      000002 85 81*00         [24]  123 	mov	_bp,sp
+                                    124 ;	printf_fast.c:1442: __endasm;
+      000005                        125 	printf_begin:
+      000005 E5*00            [12]  126 	mov a, _bp
+      000007 24 FD            [12]  127 	add a, #253
+      000009 F8               [12]  128 	mov r0, a
+      00000A 86 83            [24]  129 	mov dph, @r0
+      00000C 18               [12]  130 	dec r0
+      00000D 86 82            [24]  131 	mov dpl, @r0
+      00000F 18               [12]  132 	dec r0
+      000010                        133 	printf_main_loop:
+      000010 E4               [12]  134 	clr a
+      000011 93               [24]  135 	movc a, @a+dptr
+      000012 A3               [24]  136 	inc dptr
+      000013 B4 25 6B         [24]  137 	cjne a, #37, printf_normal
+      000016                        138 	printf_format:
+      000016 C2*00            [12]  139 	clr _long_flag
+      000018 C2*01            [12]  140 	clr _short_flag
+      00001A C2*02            [12]  141 	clr _print_zero_flag
+      00001C C2*03            [12]  142 	clr _negative_flag
+      00001E C2*04            [12]  143 	clr _field_width_flag
+      000020 C2*05            [12]  144 	clr _leading_zero_flag
+      000022 79r00            [12]  145 	mov r1, #_field_width
+      000024 77 00            [12]  146 	mov @r1, #0
+      000026                        147 	printf_format_loop:
+      000026 E4               [12]  148 	clr a
+      000027 93               [24]  149 	movc a, @a+dptr
+      000028 A3               [24]  150 	inc dptr
+      000029 24 C6            [12]  151 	add a, #198
+      00002B 40 17            [24]  152 	jc printf_nondigit1
+      00002D 24 0A            [12]  153 	add a, #10
+      00002F 50 15            [24]  154 	jnc printf_nondigit2
+      000031                        155 	printf_digit:
+      000031 70 05            [24]  156 	jnz printf_digit_2
+      000033 B5*00 02         [24]  157 	cjne a, _field_width, printf_digit_2
+      000036 D2*05            [12]  158 	setb _leading_zero_flag
+      000038                        159 	printf_digit_2:
+      000038 D2*04            [12]  160 	setb _field_width_flag
+      00003A FA               [12]  161 	mov r2, a
+      00003B E7               [12]  162 	mov a, @r1
+      00003C 75 F0 0A         [24]  163 	mov b, #10
+      00003F A4               [48]  164 	mul ab
+      000040 2A               [12]  165 	add a, r2
+      000041 F7               [12]  166 	mov @r1, a
+      000042 80 E2            [24]  167 	sjmp printf_format_loop
+      000044                        168 	printf_nondigit1:
+      000044 24 0A            [12]  169 	add a, #10
+      000046                        170 	printf_nondigit2:
+      000046 24 30            [12]  171 	add a, #48
+      000048                        172 	printf_format_l:
+      000048 B4 6C 04         [24]  173 	cjne a, #108, printf_format_h
+      00004B D2*00            [12]  174 	setb _long_flag
+      00004D 80 D7            [24]  175 	sjmp printf_format_loop
+      00004F                        176 	printf_format_h:
+      00004F B4 68 04         [24]  177 	cjne a, #104, printf_format_s
+      000052 D2*01            [12]  178 	setb _short_flag
+      000054 80 D0            [24]  179 	sjmp printf_format_loop
+      000056                        180 	printf_format_s:
+      000056 B4 73 03         [24]  181 	cjne a, #115, printf_format_d
+      000059 02r00r8C         [24]  182 	ljmp printf_string
+      00005C                        183 	printf_format_d:
+      00005C B4 64 06         [24]  184 	cjne a, #100, printf_format_u
+      00005F 12r02r15         [24]  185 	lcall printf_get_int
+      000062 02r00rE8         [24]  186 	ljmp printf_int
+      000065                        187 	printf_format_u:
+      000065 B4 75 06         [24]  188 	cjne a, #117, printf_format_c
+      000068 12r02r15         [24]  189 	lcall printf_get_int
+      00006B 02r01r08         [24]  190 	ljmp printf_uint
+      00006E                        191 	printf_format_c:
+      00006E B4 63 05         [24]  192 	cjne a, #99, printf_format_x
+      000071 18               [12]  193 	dec r0
+      000072 E6               [12]  194 	mov a, @r0
+      000073 18               [12]  195 	dec r0
+      000074 80 0D            [24]  196 	sjmp printf_char
+      000076                        197 	printf_format_x:
+      000076 B4 78 03         [24]  198 	cjne a, #120, printf_format_f
+      000079 02r00rC7         [24]  199 	ljmp printf_hex
+      00007C                        200 	printf_format_f:
+      00007C                        201 	printf_format_dot:
+      00007C B4 2E 02         [24]  202 	cjne a, #46, printf_normal
+      00007F 80 A5            [24]  203 	sjmp printf_format_loop
+      000081                        204 	printf_normal:
+      000081 60 06            [24]  205 	jz printf_eot
+      000083                        206 	printf_char:
+      000083 12r03r07         [24]  207 	lcall printf_putchar
+      000086 02r00r10         [24]  208 	ljmp printf_main_loop
+      000089                        209 	printf_eot:
+      000089 02r03r21         [24]  210 	ljmp printf_end
+      00008C                        211 	printf_string:
+      00008C C0 83            [24]  212 	push dph
+      00008E C0 82            [24]  213 	push dpl
+      000090 86 F0            [24]  214 	mov b, @r0
+      000092 18               [12]  215 	dec r0
+      000093 86 83            [24]  216 	mov dph, @r0
+      000095 18               [12]  217 	dec r0
+      000096 86 82            [24]  218 	mov dpl, @r0
+      000098 18               [12]  219 	dec r0
+      000099 30*04 19         [24]  220 	jnb _field_width_flag, printf_str_loop
+      00009C C2*05            [12]  221 	clr _leading_zero_flag
+      00009E C0 82            [24]  222 	push dpl
+      0000A0 C0 83            [24]  223 	push dph
+      0000A2                        224 	printf_str_fw_loop:
+      0000A2 12r00r00         [24]  225 	lcall __gptrget
+      0000A5 60 07            [24]  226 	jz printf_str_space
+      0000A7 A3               [24]  227 	inc dptr
+      0000A8 15*00            [12]  228 	dec _field_width
+      0000AA E5*00            [12]  229 	mov a, _field_width
+      0000AC 70 F4            [24]  230 	jnz printf_str_fw_loop
+      0000AE                        231 	printf_str_space:
+      0000AE 12r02rF2         [24]  232 	lcall printf_space
+      0000B1 D0 83            [24]  233 	pop dph
+      0000B3 D0 82            [24]  234 	pop dpl
+      0000B5                        235 	printf_str_loop:
+      0000B5 12r00r00         [24]  236 	lcall __gptrget
+      0000B8 60 06            [24]  237 	jz printf_str_done
+      0000BA A3               [24]  238 	inc dptr
+      0000BB 12r03r07         [24]  239 	lcall printf_putchar
+      0000BE 80 F5            [24]  240 	sjmp printf_str_loop
+      0000C0                        241 	printf_str_done:
+      0000C0 D0 82            [24]  242 	pop dpl
+      0000C2 D0 83            [24]  243 	pop dph
+      0000C4 02r00r10         [24]  244 	ljmp printf_main_loop
+      0000C7                        245 	printf_hex:
+      0000C7 12r00rDF         [24]  246 	lcall printf_hex8
+      0000CA 20*01 0C         [24]  247 	jb _short_flag, printf_hex_end
+      0000CD 12r00rDF         [24]  248 	lcall printf_hex8
+      0000D0 30*00 06         [24]  249 	jnb _long_flag, printf_hex_end
+      0000D3 12r00rDF         [24]  250 	lcall printf_hex8
+      0000D6 12r00rDF         [24]  251 	lcall printf_hex8
+      0000D9                        252 	printf_hex_end:
+      0000D9 12r03r19         [24]  253 	lcall printf_zero
+      0000DC 02r00r10         [24]  254 	ljmp printf_main_loop
+      0000DF                        255 	printf_hex8:
+      0000DF E6               [12]  256 	mov a, @r0
+      0000E0 12r02rF7         [24]  257 	lcall printf_phex_msn
+      0000E3 E6               [12]  258 	mov a, @r0
+      0000E4 18               [12]  259 	dec r0
+      0000E5 02r02rF8         [24]  260 	ljmp printf_phex_lsn
+      0000E8                        261 	printf_int:
+      0000E8 ED               [12]  262 	mov a, r5
+      0000E9 30 E7 1C         [24]  263 	jnb acc.7, printf_uint
+      0000EC D2*03            [12]  264 	setb _negative_flag
+      0000EE E9               [12]  265 	mov a, r1
+      0000EF F4               [12]  266 	cpl a
+      0000F0 24 01            [12]  267 	add a, #1
+      0000F2 F9               [12]  268 	mov r1, a
+      0000F3 20*01 12         [24]  269 	jb _short_flag, printf_uint
+      0000F6 EA               [12]  270 	mov a, r2
+      0000F7 F4               [12]  271 	cpl a
+      0000F8 34 00            [12]  272 	addc a, #0
+      0000FA FA               [12]  273 	mov r2, a
+      0000FB 30*00 0A         [24]  274 	jnb _long_flag, printf_uint
+      0000FE EB               [12]  275 	mov a, r3
+      0000FF F4               [12]  276 	cpl a
+      000100 34 00            [12]  277 	addc a, #0
+      000102 FB               [12]  278 	mov r3, a
+      000103 EC               [12]  279 	mov a, r4
+      000104 F4               [12]  280 	cpl a
+      000105 34 00            [12]  281 	addc a, #0
+      000107 FC               [12]  282 	mov r4, a
+      000108                        283 	printf_uint:
+      000108 20*01 10         [24]  284 	jb _short_flag, printf_uint_ck8
+      00010B 30*00 08         [24]  285 	jnb _long_flag, printf_uint_ck16
+      00010E                        286 	printf_uint_ck32:
+      00010E EB               [12]  287 	mov a, r3
+      00010F 70 21            [24]  288 	jnz printf_uint_begin
+      000111 EC               [12]  289 	mov a, r4
+      000112 70 1E            [24]  290 	jnz printf_uint_begin
+      000114 C2*00            [12]  291 	clr _long_flag
+      000116                        292 	printf_uint_ck16:
+      000116 EA               [12]  293 	mov a, r2
+      000117 70 19            [24]  294 	jnz printf_uint_begin
+      000119 D2*01            [12]  295 	setb _short_flag
+      00011B                        296 	printf_uint_ck8:
+      00011B E9               [12]  297 	mov a, r1
+      00011C 70 14            [24]  298 	jnz printf_uint_begin
+      00011E 30*04 09         [24]  299 	jnb _field_width_flag, printf_uint_zero
+      000121 E5*00            [12]  300 	mov a, _field_width
+      000123 60 05            [24]  301 	jz printf_uint_zero
+      000125 15*00            [12]  302 	dec _field_width
+      000127 12r02rF2         [24]  303 	lcall printf_space
+      00012A                        304 	printf_uint_zero:
+      00012A 74 30            [12]  305 	mov a, #48
+      00012C 12r03r07         [24]  306 	lcall printf_putchar
+      00012F 02r00r10         [24]  307 	ljmp printf_main_loop
+      000132                        308 	printf_uint_begin:
+      000132 C0 82            [24]  309 	push dpl
+      000134 C0 83            [24]  310 	push dph
+      000136 12r02r2F         [24]  311 	lcall printf_int2bcd
+      000139                        312 	printf_uint_2:
+      000139 30*04 60         [24]  313 	jnb _field_width_flag, printf_uifw_end
+      00013C                        314 	printf_uifw_32:
+      00013C 79 0A            [12]  315 	mov r1, #10
+      00013E 30*00 1D         [24]  316 	jnb _long_flag, printf_uifw_16
+      000141 EB               [12]  317 	mov a, r3
+      000142 54 F0            [12]  318 	anl a, #0xF0
+      000144 70 36            [24]  319 	jnz printf_uifw_sub
+      000146 19               [12]  320 	dec r1
+      000147 EB               [12]  321 	mov a, r3
+      000148 54 0F            [12]  322 	anl a, #0x0F
+      00014A 70 30            [24]  323 	jnz printf_uifw_sub
+      00014C 19               [12]  324 	dec r1
+      00014D EA               [12]  325 	mov a, r2
+      00014E 54 F0            [12]  326 	anl a, #0xF0
+      000150 70 2A            [24]  327 	jnz printf_uifw_sub
+      000152 19               [12]  328 	dec r1
+      000153 EA               [12]  329 	mov a, r2
+      000154 54 0F            [12]  330 	anl a, #0x0F
+      000156 70 24            [24]  331 	jnz printf_uifw_sub
+      000158 19               [12]  332 	dec r1
+      000159 EF               [12]  333 	mov a, r7
+      00015A 54 F0            [12]  334 	anl a, #0xF0
+      00015C 70 1E            [24]  335 	jnz printf_uifw_sub
+      00015E                        336 	printf_uifw_16:
+      00015E 79 05            [12]  337 	mov r1, #5
+      000160 20*01 0B         [24]  338 	jb _short_flag, printf_uifw_8
+      000163 EF               [12]  339 	mov a, r7
+      000164 54 0F            [12]  340 	anl a, #0x0F
+      000166 70 14            [24]  341 	jnz printf_uifw_sub
+      000168 19               [12]  342 	dec r1
+      000169 EE               [12]  343 	mov a, r6
+      00016A 54 F0            [12]  344 	anl a, #0xF0
+      00016C 70 0E            [24]  345 	jnz printf_uifw_sub
+      00016E                        346 	printf_uifw_8:
+      00016E 79 03            [12]  347 	mov r1, #3
+      000170 EE               [12]  348 	mov a, r6
+      000171 54 0F            [12]  349 	anl a, #0x0F
+      000173 70 07            [24]  350 	jnz printf_uifw_sub
+      000175 19               [12]  351 	dec r1
+      000176 ED               [12]  352 	mov a, r5
+      000177 54 F0            [12]  353 	anl a, #0xF0
+      000179 70 01            [24]  354 	jnz printf_uifw_sub
+      00017B 19               [12]  355 	dec r1
+      00017C                        356 	printf_uifw_sub:
+      00017C E5*00            [12]  357 	mov a, _field_width
+      00017E A2*03            [12]  358 	mov c, _negative_flag
+      000180 99               [12]  359 	subb a, r1
+      000181 40 19            [24]  360 	jc printf_uifw_end
+      000183 F5*00            [12]  361 	mov _field_width, a
+      000185 C0 03            [24]  362 	push ar3
+      000187 C0 02            [24]  363 	push ar2
+      000189 C0 07            [24]  364 	push ar7
+      00018B C0 06            [24]  365 	push ar6
+      00018D C0 05            [24]  366 	push ar5
+      00018F 12r02rF2         [24]  367 	lcall printf_space
+      000192 D0 05            [24]  368 	pop ar5
+      000194 D0 06            [24]  369 	pop ar6
+      000196 D0 07            [24]  370 	pop ar7
+      000198 D0 02            [24]  371 	pop ar2
+      00019A D0 03            [24]  372 	pop ar3
+      00019C                        373 	printf_uifw_end:
+      00019C                        374 	printf_uint_doit:
+      00019C 30*03 19         [24]  375 	jnb _negative_flag, printf_uint_pos
+      00019F C0 03            [24]  376 	push ar3
+      0001A1 C0 02            [24]  377 	push ar2
+      0001A3 C0 07            [24]  378 	push ar7
+      0001A5 C0 06            [24]  379 	push ar6
+      0001A7 C0 05            [24]  380 	push ar5
+      0001A9 74 2D            [12]  381 	mov a, #45
+      0001AB 12r03r07         [24]  382 	lcall printf_putchar
+      0001AE D0 05            [24]  383 	pop ar5
+      0001B0 D0 06            [24]  384 	pop ar6
+      0001B2 D0 07            [24]  385 	pop ar7
+      0001B4 D0 02            [24]  386 	pop ar2
+      0001B6 D0 03            [24]  387 	pop ar3
+      0001B8                        388 	printf_uint_pos:
+      0001B8 20*01 40         [24]  389 	jb _short_flag, printf_uint8
+      0001BB 30*00 2C         [24]  390 	jnb _long_flag, printf_uint16
+      0001BE                        391 	printf_uint32:
+      0001BE C0 05            [24]  392 	push ar5
+      0001C0 C0 06            [24]  393 	push ar6
+      0001C2 C0 07            [24]  394 	push ar7
+      0001C4 8A 82            [24]  395 	mov dpl, r2
+      0001C6 EB               [12]  396 	mov a, r3
+      0001C7 F5 83            [12]  397 	mov dph, a
+      0001C9 12r02rF7         [24]  398 	lcall printf_phex_msn
+      0001CC E5 83            [12]  399 	mov a, dph
+      0001CE 12r02rF8         [24]  400 	lcall printf_phex_lsn
+      0001D1 E5 82            [12]  401 	mov a, dpl
+      0001D3 12r02rF7         [24]  402 	lcall printf_phex_msn
+      0001D6 E5 82            [12]  403 	mov a, dpl
+      0001D8 12r02rF8         [24]  404 	lcall printf_phex_lsn
+      0001DB D0 E0            [24]  405 	pop acc
+      0001DD F5 82            [12]  406 	mov dpl, a
+      0001DF 12r02rF7         [24]  407 	lcall printf_phex_msn
+      0001E2 E5 82            [12]  408 	mov a, dpl
+      0001E4 D0 83            [24]  409 	pop dph
+      0001E6 D0 82            [24]  410 	pop dpl
+      0001E8 80 05            [24]  411 	sjmp printf_uint16a
+      0001EA                        412 	printf_uint16:
+      0001EA 8D 82            [24]  413 	mov dpl, r5
+      0001EC 8E 83            [24]  414 	mov dph, r6
+      0001EE EF               [12]  415 	mov a, r7
+      0001EF                        416 	printf_uint16a:
+      0001EF 12r02rF8         [24]  417 	lcall printf_phex_lsn
+      0001F2 E5 83            [12]  418 	mov a, dph
+      0001F4 12r02rF7         [24]  419 	lcall printf_phex_msn
+      0001F7 E5 83            [12]  420 	mov a, dph
+      0001F9 80 03            [24]  421 	sjmp printf_uint8a
+      0001FB                        422 	printf_uint8:
+      0001FB 8D 82            [24]  423 	mov dpl, r5
+      0001FD EE               [12]  424 	mov a, r6
+      0001FE                        425 	printf_uint8a:
+      0001FE 12r02rF8         [24]  426 	lcall printf_phex_lsn
+      000201 E5 82            [12]  427 	mov a, dpl
+      000203 12r02rF7         [24]  428 	lcall printf_phex_msn
+      000206 E5 82            [12]  429 	mov a, dpl
+      000208 12r02rF8         [24]  430 	lcall printf_phex_lsn
+      00020B 12r03r19         [24]  431 	lcall printf_zero
+      00020E D0 83            [24]  432 	pop dph
+      000210 D0 82            [24]  433 	pop dpl
+      000212 02r00r10         [24]  434 	ljmp printf_main_loop
+      000215                        435 	printf_get_int:
+      000215 E6               [12]  436 	mov a, @r0
+      000216 F9               [12]  437 	mov r1, a
+      000217 FD               [12]  438 	mov r5, a
+      000218 18               [12]  439 	dec r0
+      000219 20*01 12         [24]  440 	jb _short_flag, printf_get_done
+      00021C AA 01            [24]  441 	mov r2, ar1
+      00021E E6               [12]  442 	mov a, @r0
+      00021F F9               [12]  443 	mov r1, a
+      000220 18               [12]  444 	dec r0
+      000221 30*00 0A         [24]  445 	jnb _long_flag, printf_get_done
+      000224 AC 02            [24]  446 	mov r4, ar2
+      000226 AB 01            [24]  447 	mov r3, ar1
+      000228 E6               [12]  448 	mov a, @r0
+      000229 FA               [12]  449 	mov r2, a
+      00022A 18               [12]  450 	dec r0
+      00022B E6               [12]  451 	mov a, @r0
+      00022C F9               [12]  452 	mov r1, a
+      00022D 18               [12]  453 	dec r0
+      00022E                        454 	printf_get_done:
+      00022E 22               [24]  455 	ret
+      00022F                        456 	printf_int2bcd:
+      00022F E9               [12]  457 	mov a, r1
+      000230 75 F0 64         [24]  458 	mov b, #100
+      000233 84               [48]  459 	div ab
+      000234 FE               [12]  460 	mov r6, a
+      000235 74 0A            [12]  461 	mov a, #10
+      000237 C5 F0            [12]  462 	xch a, b
+      000239 84               [48]  463 	div ab
+      00023A C4               [12]  464 	swap a
+      00023B 45 F0            [12]  465 	orl a, b
+      00023D FD               [12]  466 	mov r5, a
+      00023E 30*01 01         [24]  467 	jnb _short_flag, printf_i2bcd_16
+      000241 22               [24]  468 	ret
+      000242                        469 	printf_i2bcd_16:
+      000242 EA               [12]  470 	mov a, r2
+      000243 54 0F            [12]  471 	anl a, #0x0F
+      000245 F9               [12]  472 	mov r1, a
+      000246 90r00r00         [24]  473 	mov dptr, #_int2bcd_2
+      000249 93               [24]  474 	movc a, @a+dptr
+      00024A 2D               [12]  475 	add a, r5
+      00024B D4               [12]  476 	da a
+      00024C FD               [12]  477 	mov r5, a
+      00024D E9               [12]  478 	mov a, r1
+      00024E 44 10            [12]  479 	orl a, #16
+      000250 93               [24]  480 	movc a, @a+dptr
+      000251 3E               [12]  481 	addc a, r6
+      000252 D4               [12]  482 	da a
+      000253 FE               [12]  483 	mov r6, a
+      000254 EA               [12]  484 	mov a, r2
+      000255 C4               [12]  485 	swap a
+      000256 54 0F            [12]  486 	anl a, #0x0F
+      000258 F9               [12]  487 	mov r1, a
+      000259 90r00r20         [24]  488 	mov dptr, #_int2bcd_3
+      00025C 93               [24]  489 	movc a, @a+dptr
+      00025D 2D               [12]  490 	add a, r5
+      00025E D4               [12]  491 	da a
+      00025F FD               [12]  492 	mov r5, a
+      000260 E9               [12]  493 	mov a, r1
+      000261 44 10            [12]  494 	orl a, #16
+      000263 93               [24]  495 	movc a, @a+dptr
+      000264 3E               [12]  496 	addc a, r6
+      000265 D4               [12]  497 	da a
+      000266 FE               [12]  498 	mov r6, a
+      000267 E9               [12]  499 	mov a, r1
+      000268 44 20            [12]  500 	orl a, #32
+      00026A 93               [24]  501 	movc a, @a+dptr
+      00026B 34 00            [12]  502 	addc a, #0
+      00026D D4               [12]  503 	da a
+      00026E FF               [12]  504 	mov r7, a
+      00026F 20*00 01         [24]  505 	jb _long_flag, printf_i2bcd_32
+      000272 22               [24]  506 	ret
+      000273                        507 	printf_i2bcd_32:
+      000273 EB               [12]  508 	mov a, r3
+      000274 54 0F            [12]  509 	anl a, #0x0F
+      000276 F9               [12]  510 	mov r1, a
+      000277 90r00r50         [24]  511 	mov dptr, #_int2bcd_4
+      00027A 93               [24]  512 	movc a, @a+dptr
+      00027B 2D               [12]  513 	add a, r5
+      00027C D4               [12]  514 	da a
+      00027D FD               [12]  515 	mov r5, a
+      00027E E9               [12]  516 	mov a, r1
+      00027F 44 10            [12]  517 	orl a, #16
+      000281 93               [24]  518 	movc a, @a+dptr
+      000282 3E               [12]  519 	addc a, r6
+      000283 D4               [12]  520 	da a
+      000284 FE               [12]  521 	mov r6, a
+      000285 E9               [12]  522 	mov a, r1
+      000286 44 20            [12]  523 	orl a, #32
+      000288 93               [24]  524 	movc a, @a+dptr
+      000289 3F               [12]  525 	addc a, r7
+      00028A D4               [12]  526 	da a
+      00028B FF               [12]  527 	mov r7, a
+      00028C E4               [12]  528 	clr a
+      00028D 34 00            [12]  529 	addc a, #0
+      00028F FA               [12]  530 	mov r2, a
+      000290 EB               [12]  531 	mov a, r3
+      000291 C4               [12]  532 	swap a
+      000292 54 0F            [12]  533 	anl a, #0x0F
+      000294 F9               [12]  534 	mov r1, a
+      000295 90r00r80         [24]  535 	mov dptr, #_int2bcd_5
+      000298 93               [24]  536 	movc a, @a+dptr
+      000299 2D               [12]  537 	add a, r5
+      00029A D4               [12]  538 	da a
+      00029B FD               [12]  539 	mov r5, a
+      00029C E9               [12]  540 	mov a, r1
+      00029D 44 10            [12]  541 	orl a, #16
+      00029F 93               [24]  542 	movc a, @a+dptr
+      0002A0 3E               [12]  543 	addc a, r6
+      0002A1 D4               [12]  544 	da a
+      0002A2 FE               [12]  545 	mov r6, a
+      0002A3 E9               [12]  546 	mov a, r1
+      0002A4 44 20            [12]  547 	orl a, #32
+      0002A6 93               [24]  548 	movc a, @a+dptr
+      0002A7 3F               [12]  549 	addc a, r7
+      0002A8 D4               [12]  550 	da a
+      0002A9 FF               [12]  551 	mov r7, a
+      0002AA E9               [12]  552 	mov a, r1
+      0002AB 44 30            [12]  553 	orl a, #48
+      0002AD 93               [24]  554 	movc a, @a+dptr
+      0002AE 3A               [12]  555 	addc a, r2
+      0002AF D4               [12]  556 	da a
+      0002B0 FA               [12]  557 	mov r2, a
+      0002B1 EC               [12]  558 	mov a, r4
+      0002B2 54 0F            [12]  559 	anl a, #0x0F
+      0002B4 F9               [12]  560 	mov r1, a
+      0002B5 90r00rC0         [24]  561 	mov dptr, #_int2bcd_6
+      0002B8 7B 00            [12]  562 	mov r3, #0
+      0002BA 12r02rC5         [24]  563 	lcall printf_bcd_add10
+      0002BD EC               [12]  564 	mov a, r4
+      0002BE C4               [12]  565 	swap a
+      0002BF 54 0F            [12]  566 	anl a, #0x0F
+      0002C1 F9               [12]  567 	mov r1, a
+      0002C2 90r01r10         [24]  568 	mov dptr, #_int2bcd_7
+      0002C5                        569 	printf_bcd_add10:
+      0002C5 93               [24]  570 	movc a, @a+dptr
+      0002C6 2D               [12]  571 	add a, r5
+      0002C7 D4               [12]  572 	da a
+      0002C8 FD               [12]  573 	mov r5, a
+      0002C9 E9               [12]  574 	mov a, r1
+      0002CA 44 10            [12]  575 	orl a, #16
+      0002CC 93               [24]  576 	movc a, @a+dptr
+      0002CD 3E               [12]  577 	addc a, r6
+      0002CE D4               [12]  578 	da a
+      0002CF FE               [12]  579 	mov r6, a
+      0002D0 E9               [12]  580 	mov a, r1
+      0002D1 44 20            [12]  581 	orl a, #32
+      0002D3 93               [24]  582 	movc a, @a+dptr
+      0002D4 3F               [12]  583 	addc a, r7
+      0002D5 D4               [12]  584 	da a
+      0002D6 FF               [12]  585 	mov r7, a
+      0002D7 E9               [12]  586 	mov a, r1
+      0002D8 44 30            [12]  587 	orl a, #48
+      0002DA 93               [24]  588 	movc a, @a+dptr
+      0002DB 3A               [12]  589 	addc a, r2
+      0002DC D4               [12]  590 	da a
+      0002DD FA               [12]  591 	mov r2, a
+      0002DE E9               [12]  592 	mov a, r1
+      0002DF 44 40            [12]  593 	orl a, #64
+      0002E1 93               [24]  594 	movc a, @a+dptr
+      0002E2 3B               [12]  595 	addc a, r3
+      0002E3 D4               [12]  596 	da a
+      0002E4 FB               [12]  597 	mov r3, a
+      0002E5 22               [24]  598 	ret
+      0002E6                        599 	printf_space_loop:
+      0002E6 74 20            [12]  600 	mov a, #32
+      0002E8 30*05 02         [24]  601 	jnb _leading_zero_flag, printf_space_output
+      0002EB 74 30            [12]  602 	mov a, #48
+      0002ED                        603 	printf_space_output:
+      0002ED 12r03r07         [24]  604 	lcall printf_putchar
+      0002F0 15*00            [12]  605 	dec _field_width
+      0002F2                        606 	printf_space:
+      0002F2 E5*00            [12]  607 	mov a, _field_width
+      0002F4 70 F0            [24]  608 	jnz printf_space_loop
+      0002F6 22               [24]  609 	ret
+      0002F7                        610 	printf_phex_msn:
+      0002F7 C4               [12]  611 	swap a
+      0002F8                        612 	printf_phex_lsn:
+      0002F8 54 0F            [12]  613 	anl a, #15
+      0002FA 70 03            [24]  614 	jnz printf_phex_ok
+      0002FC 30*02 19         [24]  615 	jnb _print_zero_flag, printf_ret
+      0002FF                        616 	printf_phex_ok:
+      0002FF D2*02            [12]  617 	setb _print_zero_flag
+      000301 24 90            [12]  618 	add a, #0x90
+      000303 D4               [12]  619 	da a
+      000304 34 40            [12]  620 	addc a, #0x40
+      000306 D4               [12]  621 	da a
+      000307                        622 	printf_putchar:
+      000307 C0 83            [24]  623 	push dph
+      000309 C0 82            [24]  624 	push dpl
+      00030B C0 00            [24]  625 	push ar0
+      00030D F5 82            [12]  626 	mov dpl, a
+      00030F 12r00r00         [24]  627 	lcall _putchar
+      000312 D0 00            [24]  628 	pop ar0
+      000314 D0 82            [24]  629 	pop dpl
+      000316 D0 83            [24]  630 	pop dph
+      000318                        631 	printf_ret:
+      000318 22               [24]  632 	ret
+      000319                        633 	printf_zero:
+      000319 20*02 FC         [24]  634 	jb _print_zero_flag, printf_ret
+      00031C 74 30            [12]  635 	mov a, #48
+      00031E 02r03r07         [24]  636 	ljmp printf_putchar
+      000321                        637 	printf_end:
+      000321 D0*00            [24]  638 	pop	_bp
+      000323 22               [24]  639 	ret
+                                    640 	.area CSEG    (CODE)
+                                    641 	.area CONST   (CODE)
+      000000                        642 _int2bcd_2:
+      000000 00                     643 	.db #0x00	; 0
+      000001 56                     644 	.db #0x56	; 86	'V'
+      000002 12                     645 	.db #0x12	; 18
+      000003 68                     646 	.db #0x68	; 104	'h'
+      000004 24                     647 	.db #0x24	; 36
+      000005 80                     648 	.db #0x80	; 128
+      000006 36                     649 	.db #0x36	; 54	'6'
+      000007 92                     650 	.db #0x92	; 146
+      000008 48                     651 	.db #0x48	; 72	'H'
+      000009 04                     652 	.db #0x04	; 4
+      00000A 60                     653 	.db #0x60	; 96
+      00000B 16                     654 	.db #0x16	; 22
+      00000C 72                     655 	.db #0x72	; 114	'r'
+      00000D 28                     656 	.db #0x28	; 40
+      00000E 84                     657 	.db #0x84	; 132
+      00000F 40                     658 	.db #0x40	; 64
+      000010 00                     659 	.db #0x00	; 0
+      000011 02                     660 	.db #0x02	; 2
+      000012 05                     661 	.db #0x05	; 5
+      000013 07                     662 	.db #0x07	; 7
+      000014 10                     663 	.db #0x10	; 16
+      000015 12                     664 	.db #0x12	; 18
+      000016 15                     665 	.db #0x15	; 21
+      000017 17                     666 	.db #0x17	; 23
+      000018 20                     667 	.db #0x20	; 32
+      000019 23                     668 	.db #0x23	; 35
+      00001A 25                     669 	.db #0x25	; 37
+      00001B 28                     670 	.db #0x28	; 40
+      00001C 30                     671 	.db #0x30	; 48	'0'
+      00001D 33                     672 	.db #0x33	; 51	'3'
+      00001E 35                     673 	.db #0x35	; 53	'5'
+      00001F 38                     674 	.db #0x38	; 56	'8'
+      000020                        675 _int2bcd_3:
+      000020 00                     676 	.db #0x00	; 0
+      000021 96                     677 	.db #0x96	; 150
+      000022 92                     678 	.db #0x92	; 146
+      000023 88                     679 	.db #0x88	; 136
+      000024 84                     680 	.db #0x84	; 132
+      000025 80                     681 	.db #0x80	; 128
+      000026 76                     682 	.db #0x76	; 118	'v'
+      000027 72                     683 	.db #0x72	; 114	'r'
+      000028 68                     684 	.db #0x68	; 104	'h'
+      000029 64                     685 	.db #0x64	; 100	'd'
+      00002A 60                     686 	.db #0x60	; 96
+      00002B 56                     687 	.db #0x56	; 86	'V'
+      00002C 52                     688 	.db #0x52	; 82	'R'
+      00002D 48                     689 	.db #0x48	; 72	'H'
+      00002E 44                     690 	.db #0x44	; 68	'D'
+      00002F 40                     691 	.db #0x40	; 64
+      000030 00                     692 	.db #0x00	; 0
+      000031 40                     693 	.db #0x40	; 64
+      000032 81                     694 	.db #0x81	; 129
+      000033 22                     695 	.db #0x22	; 34
+      000034 63                     696 	.db #0x63	; 99	'c'
+      000035 04                     697 	.db #0x04	; 4
+      000036 45                     698 	.db #0x45	; 69	'E'
+      000037 86                     699 	.db #0x86	; 134
+      000038 27                     700 	.db #0x27	; 39
+      000039 68                     701 	.db #0x68	; 104	'h'
+      00003A 09                     702 	.db #0x09	; 9
+      00003B 50                     703 	.db #0x50	; 80	'P'
+      00003C 91                     704 	.db #0x91	; 145
+      00003D 32                     705 	.db #0x32	; 50	'2'
+      00003E 73                     706 	.db #0x73	; 115	's'
+      00003F 14                     707 	.db #0x14	; 20
+      000040 00                     708 	.db #0x00	; 0
+      000041 00                     709 	.db #0x00	; 0
+      000042 00                     710 	.db #0x00	; 0
+      000043 01                     711 	.db #0x01	; 1
+      000044 01                     712 	.db #0x01	; 1
+      000045 02                     713 	.db #0x02	; 2
+      000046 02                     714 	.db #0x02	; 2
+      000047 02                     715 	.db #0x02	; 2
+      000048 03                     716 	.db #0x03	; 3
+      000049 03                     717 	.db #0x03	; 3
+      00004A 04                     718 	.db #0x04	; 4
+      00004B 04                     719 	.db #0x04	; 4
+      00004C 04                     720 	.db #0x04	; 4
+      00004D 05                     721 	.db #0x05	; 5
+      00004E 05                     722 	.db #0x05	; 5
+      00004F 06                     723 	.db #0x06	; 6
+      000050                        724 _int2bcd_4:
+      000050 00                     725 	.db #0x00	; 0
+      000051 36                     726 	.db #0x36	; 54	'6'
+      000052 72                     727 	.db #0x72	; 114	'r'
+      000053 08                     728 	.db #0x08	; 8
+      000054 44                     729 	.db #0x44	; 68	'D'
+      000055 80                     730 	.db #0x80	; 128
+      000056 16                     731 	.db #0x16	; 22
+      000057 52                     732 	.db #0x52	; 82	'R'
+      000058 88                     733 	.db #0x88	; 136
+      000059 24                     734 	.db #0x24	; 36
+      00005A 60                     735 	.db #0x60	; 96
+      00005B 96                     736 	.db #0x96	; 150
+      00005C 32                     737 	.db #0x32	; 50	'2'
+      00005D 68                     738 	.db #0x68	; 104	'h'
+      00005E 04                     739 	.db #0x04	; 4
+      00005F 40                     740 	.db #0x40	; 64
+      000060 00                     741 	.db #0x00	; 0
+      000061 55                     742 	.db #0x55	; 85	'U'
+      000062 10                     743 	.db #0x10	; 16
+      000063 66                     744 	.db #0x66	; 102	'f'
+      000064 21                     745 	.db #0x21	; 33
+      000065 76                     746 	.db #0x76	; 118	'v'
+      000066 32                     747 	.db #0x32	; 50	'2'
+      000067 87                     748 	.db #0x87	; 135
+      000068 42                     749 	.db #0x42	; 66	'B'
+      000069 98                     750 	.db #0x98	; 152
+      00006A 53                     751 	.db #0x53	; 83	'S'
+      00006B 08                     752 	.db #0x08	; 8
+      00006C 64                     753 	.db #0x64	; 100	'd'
+      00006D 19                     754 	.db #0x19	; 25
+      00006E 75                     755 	.db #0x75	; 117	'u'
+      00006F 30                     756 	.db #0x30	; 48	'0'
+      000070 00                     757 	.db #0x00	; 0
+      000071 06                     758 	.db #0x06	; 6
+      000072 13                     759 	.db #0x13	; 19
+      000073 19                     760 	.db #0x19	; 25
+      000074 26                     761 	.db #0x26	; 38
+      000075 32                     762 	.db #0x32	; 50	'2'
+      000076 39                     763 	.db #0x39	; 57	'9'
+      000077 45                     764 	.db #0x45	; 69	'E'
+      000078 52                     765 	.db #0x52	; 82	'R'
+      000079 58                     766 	.db #0x58	; 88	'X'
+      00007A 65                     767 	.db #0x65	; 101	'e'
+      00007B 72                     768 	.db #0x72	; 114	'r'
+      00007C 78                     769 	.db #0x78	; 120	'x'
+      00007D 85                     770 	.db #0x85	; 133
+      00007E 91                     771 	.db #0x91	; 145
+      00007F 98                     772 	.db #0x98	; 152
+      000080                        773 _int2bcd_5:
+      000080 00                     774 	.db #0x00	; 0
+      000081 76                     775 	.db #0x76	; 118	'v'
+      000082 52                     776 	.db #0x52	; 82	'R'
+      000083 28                     777 	.db #0x28	; 40
+      000084 04                     778 	.db #0x04	; 4
+      000085 80                     779 	.db #0x80	; 128
+      000086 56                     780 	.db #0x56	; 86	'V'
+      000087 32                     781 	.db #0x32	; 50	'2'
+      000088 08                     782 	.db #0x08	; 8
+      000089 84                     783 	.db #0x84	; 132
+      00008A 60                     784 	.db #0x60	; 96
+      00008B 36                     785 	.db #0x36	; 54	'6'
+      00008C 12                     786 	.db #0x12	; 18
+      00008D 88                     787 	.db #0x88	; 136
+      00008E 64                     788 	.db #0x64	; 100	'd'
+      00008F 40                     789 	.db #0x40	; 64
+      000090 00                     790 	.db #0x00	; 0
+      000091 85                     791 	.db #0x85	; 133
+      000092 71                     792 	.db #0x71	; 113	'q'
+      000093 57                     793 	.db #0x57	; 87	'W'
+      000094 43                     794 	.db #0x43	; 67	'C'
+      000095 28                     795 	.db #0x28	; 40
+      000096 14                     796 	.db #0x14	; 20
+      000097 00                     797 	.db #0x00	; 0
+      000098 86                     798 	.db #0x86	; 134
+      000099 71                     799 	.db #0x71	; 113	'q'
+      00009A 57                     800 	.db #0x57	; 87	'W'
+      00009B 43                     801 	.db #0x43	; 67	'C'
+      00009C 29                     802 	.db #0x29	; 41
+      00009D 14                     803 	.db #0x14	; 20
+      00009E 00                     804 	.db #0x00	; 0
+      00009F 86                     805 	.db #0x86	; 134
+      0000A0 00                     806 	.db #0x00	; 0
+      0000A1 04                     807 	.db #0x04	; 4
+      0000A2 09                     808 	.db #0x09	; 9
+      0000A3 14                     809 	.db #0x14	; 20
+      0000A4 19                     810 	.db #0x19	; 25
+      0000A5 24                     811 	.db #0x24	; 36
+      0000A6 29                     812 	.db #0x29	; 41
+      0000A7 34                     813 	.db #0x34	; 52	'4'
+      0000A8 38                     814 	.db #0x38	; 56	'8'
+      0000A9 43                     815 	.db #0x43	; 67	'C'
+      0000AA 48                     816 	.db #0x48	; 72	'H'
+      0000AB 53                     817 	.db #0x53	; 83	'S'
+      0000AC 58                     818 	.db #0x58	; 88	'X'
+      0000AD 63                     819 	.db #0x63	; 99	'c'
+      0000AE 68                     820 	.db #0x68	; 104	'h'
+      0000AF 72                     821 	.db #0x72	; 114	'r'
+      0000B0 00                     822 	.db #0x00	; 0
+      0000B1 01                     823 	.db #0x01	; 1
+      0000B2 02                     824 	.db #0x02	; 2
+      0000B3 03                     825 	.db #0x03	; 3
+      0000B4 04                     826 	.db #0x04	; 4
+      0000B5 05                     827 	.db #0x05	; 5
+      0000B6 06                     828 	.db #0x06	; 6
+      0000B7 07                     829 	.db #0x07	; 7
+      0000B8 08                     830 	.db #0x08	; 8
+      0000B9 09                     831 	.db #0x09	; 9
+      0000BA 10                     832 	.db #0x10	; 16
+      0000BB 11                     833 	.db #0x11	; 17
+      0000BC 12                     834 	.db #0x12	; 18
+      0000BD 13                     835 	.db #0x13	; 19
+      0000BE 14                     836 	.db #0x14	; 20
+      0000BF 15                     837 	.db #0x15	; 21
+      0000C0                        838 _int2bcd_6:
+      0000C0 00                     839 	.db #0x00	; 0
+      0000C1 16                     840 	.db #0x16	; 22
+      0000C2 32                     841 	.db #0x32	; 50	'2'
+      0000C3 48                     842 	.db #0x48	; 72	'H'
+      0000C4 64                     843 	.db #0x64	; 100	'd'
+      0000C5 80                     844 	.db #0x80	; 128
+      0000C6 96                     845 	.db #0x96	; 150
+      0000C7 12                     846 	.db #0x12	; 18
+      0000C8 28                     847 	.db #0x28	; 40
+      0000C9 44                     848 	.db #0x44	; 68	'D'
+      0000CA 60                     849 	.db #0x60	; 96
+      0000CB 76                     850 	.db #0x76	; 118	'v'
+      0000CC 92                     851 	.db #0x92	; 146
+      0000CD 08                     852 	.db #0x08	; 8
+      0000CE 24                     853 	.db #0x24	; 36
+      0000CF 40                     854 	.db #0x40	; 64
+      0000D0 00                     855 	.db #0x00	; 0
+      0000D1 72                     856 	.db #0x72	; 114	'r'
+      0000D2 44                     857 	.db #0x44	; 68	'D'
+      0000D3 16                     858 	.db #0x16	; 22
+      0000D4 88                     859 	.db #0x88	; 136
+      0000D5 60                     860 	.db #0x60	; 96
+      0000D6 32                     861 	.db #0x32	; 50	'2'
+      0000D7 05                     862 	.db #0x05	; 5
+      0000D8 77                     863 	.db #0x77	; 119	'w'
+      0000D9 49                     864 	.db #0x49	; 73	'I'
+      0000DA 21                     865 	.db #0x21	; 33
+      0000DB 93                     866 	.db #0x93	; 147
+      0000DC 65                     867 	.db #0x65	; 101	'e'
+      0000DD 38                     868 	.db #0x38	; 56	'8'
+      0000DE 10                     869 	.db #0x10	; 16
+      0000DF 82                     870 	.db #0x82	; 130
+      0000E0 00                     871 	.db #0x00	; 0
+      0000E1 77                     872 	.db #0x77	; 119	'w'
+      0000E2 55                     873 	.db #0x55	; 85	'U'
+      0000E3 33                     874 	.db #0x33	; 51	'3'
+      0000E4 10                     875 	.db #0x10	; 16
+      0000E5 88                     876 	.db #0x88	; 136
+      0000E6 66                     877 	.db #0x66	; 102	'f'
+      0000E7 44                     878 	.db #0x44	; 68	'D'
+      0000E8 21                     879 	.db #0x21	; 33
+      0000E9 99                     880 	.db #0x99	; 153
+      0000EA 77                     881 	.db #0x77	; 119	'w'
+      0000EB 54                     882 	.db #0x54	; 84	'T'
+      0000EC 32                     883 	.db #0x32	; 50	'2'
+      0000ED 10                     884 	.db #0x10	; 16
+      0000EE 88                     885 	.db #0x88	; 136
+      0000EF 65                     886 	.db #0x65	; 101	'e'
+      0000F0 00                     887 	.db #0x00	; 0
+      0000F1 16                     888 	.db #0x16	; 22
+      0000F2 33                     889 	.db #0x33	; 51	'3'
+      0000F3 50                     890 	.db #0x50	; 80	'P'
+      0000F4 67                     891 	.db #0x67	; 103	'g'
+      0000F5 83                     892 	.db #0x83	; 131
+      0000F6 00                     893 	.db #0x00	; 0
+      0000F7 17                     894 	.db #0x17	; 23
+      0000F8 34                     895 	.db #0x34	; 52	'4'
+      0000F9 50                     896 	.db #0x50	; 80	'P'
+      0000FA 67                     897 	.db #0x67	; 103	'g'
+      0000FB 84                     898 	.db #0x84	; 132
+      0000FC 01                     899 	.db #0x01	; 1
+      0000FD 18                     900 	.db #0x18	; 24
+      0000FE 34                     901 	.db #0x34	; 52	'4'
+      0000FF 51                     902 	.db #0x51	; 81	'Q'
+      000100 00                     903 	.db #0x00	; 0
+      000101 00                     904 	.db #0x00	; 0
+      000102 00                     905 	.db #0x00	; 0
+      000103 00                     906 	.db #0x00	; 0
+      000104 00                     907 	.db #0x00	; 0
+      000105 00                     908 	.db #0x00	; 0
+      000106 01                     909 	.db #0x01	; 1
+      000107 01                     910 	.db #0x01	; 1
+      000108 01                     911 	.db #0x01	; 1
+      000109 01                     912 	.db #0x01	; 1
+      00010A 01                     913 	.db #0x01	; 1
+      00010B 01                     914 	.db #0x01	; 1
+      00010C 02                     915 	.db #0x02	; 2
+      00010D 02                     916 	.db #0x02	; 2
+      00010E 02                     917 	.db #0x02	; 2
+      00010F 02                     918 	.db #0x02	; 2
+      000110                        919 _int2bcd_7:
+      000110 00                     920 	.db #0x00	; 0
+      000111 56                     921 	.db #0x56	; 86	'V'
+      000112 12                     922 	.db #0x12	; 18
+      000113 68                     923 	.db #0x68	; 104	'h'
+      000114 24                     924 	.db #0x24	; 36
+      000115 80                     925 	.db #0x80	; 128
+      000116 36                     926 	.db #0x36	; 54	'6'
+      000117 92                     927 	.db #0x92	; 146
+      000118 48                     928 	.db #0x48	; 72	'H'
+      000119 04                     929 	.db #0x04	; 4
+      00011A 60                     930 	.db #0x60	; 96
+      00011B 16                     931 	.db #0x16	; 22
+      00011C 72                     932 	.db #0x72	; 114	'r'
+      00011D 28                     933 	.db #0x28	; 40
+      00011E 84                     934 	.db #0x84	; 132
+      00011F 40                     935 	.db #0x40	; 64
+      000120 00                     936 	.db #0x00	; 0
+      000121 54                     937 	.db #0x54	; 84	'T'
+      000122 09                     938 	.db #0x09	; 9
+      000123 63                     939 	.db #0x63	; 99	'c'
+      000124 18                     940 	.db #0x18	; 24
+      000125 72                     941 	.db #0x72	; 114	'r'
+      000126 27                     942 	.db #0x27	; 39
+      000127 81                     943 	.db #0x81	; 129
+      000128 36                     944 	.db #0x36	; 54	'6'
+      000129 91                     945 	.db #0x91	; 145
+      00012A 45                     946 	.db #0x45	; 69	'E'
+      00012B 00                     947 	.db #0x00	; 0
+      00012C 54                     948 	.db #0x54	; 84	'T'
+      00012D 09                     949 	.db #0x09	; 9
+      00012E 63                     950 	.db #0x63	; 99	'c'
+      00012F 18                     951 	.db #0x18	; 24
+      000130 00                     952 	.db #0x00	; 0
+      000131 43                     953 	.db #0x43	; 67	'C'
+      000132 87                     954 	.db #0x87	; 135
+      000133 30                     955 	.db #0x30	; 48	'0'
+      000134 74                     956 	.db #0x74	; 116	't'
+      000135 17                     957 	.db #0x17	; 23
+      000136 61                     958 	.db #0x61	; 97	'a'
+      000137 04                     959 	.db #0x04	; 4
+      000138 48                     960 	.db #0x48	; 72	'H'
+      000139 91                     961 	.db #0x91	; 145
+      00013A 35                     962 	.db #0x35	; 53	'5'
+      00013B 79                     963 	.db #0x79	; 121	'y'
+      00013C 22                     964 	.db #0x22	; 34
+      00013D 66                     965 	.db #0x66	; 102	'f'
+      00013E 09                     966 	.db #0x09	; 9
+      00013F 53                     967 	.db #0x53	; 83	'S'
+      000140 00                     968 	.db #0x00	; 0
+      000141 68                     969 	.db #0x68	; 104	'h'
+      000142 36                     970 	.db #0x36	; 54	'6'
+      000143 05                     971 	.db #0x05	; 5
+      000144 73                     972 	.db #0x73	; 115	's'
+      000145 42                     973 	.db #0x42	; 66	'B'
+      000146 10                     974 	.db #0x10	; 16
+      000147 79                     975 	.db #0x79	; 121	'y'
+      000148 47                     976 	.db #0x47	; 71	'G'
+      000149 15                     977 	.db #0x15	; 21
+      00014A 84                     978 	.db #0x84	; 132
+      00014B 52                     979 	.db #0x52	; 82	'R'
+      00014C 21                     980 	.db #0x21	; 33
+      00014D 89                     981 	.db #0x89	; 137
+      00014E 58                     982 	.db #0x58	; 88	'X'
+      00014F 26                     983 	.db #0x26	; 38
+      000150 00                     984 	.db #0x00	; 0
+      000151 02                     985 	.db #0x02	; 2
+      000152 05                     986 	.db #0x05	; 5
+      000153 08                     987 	.db #0x08	; 8
+      000154 10                     988 	.db #0x10	; 16
+      000155 13                     989 	.db #0x13	; 19
+      000156 16                     990 	.db #0x16	; 22
+      000157 18                     991 	.db #0x18	; 24
+      000158 21                     992 	.db #0x21	; 33
+      000159 24                     993 	.db #0x24	; 36
+      00015A 26                     994 	.db #0x26	; 38
+      00015B 29                     995 	.db #0x29	; 41
+      00015C 32                     996 	.db #0x32	; 50	'2'
+      00015D 34                     997 	.db #0x34	; 52	'4'
+      00015E 37                     998 	.db #0x37	; 55	'7'
+      00015F 40                     999 	.db #0x40	; 64
+                                   1000 	.area XINIT   (CODE)
+                                   1001 	.area CABS    (ABS,CODE)

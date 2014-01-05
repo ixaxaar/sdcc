@@ -1,0 +1,555 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                                      4 ; This file was generated Wed Nov 27 12:27:59 2013
+                                      5 ;--------------------------------------------------------
+                                      6 	.module sqrtf
+                                      7 	.optsdcc -mmcs51 --model-huge
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl _ldexpf
+                                     13 	.globl _frexpf
+                                     14 	.globl _sqrtf
+                                     15 ;--------------------------------------------------------
+                                     16 ; special function registers
+                                     17 ;--------------------------------------------------------
+                                     18 	.area RSEG    (ABS,DATA)
+      000000                         19 	.org 0x0000
+                                     20 ;--------------------------------------------------------
+                                     21 ; special function bits
+                                     22 ;--------------------------------------------------------
+                                     23 	.area RSEG    (ABS,DATA)
+      000000                         24 	.org 0x0000
+                                     25 ;--------------------------------------------------------
+                                     26 ; overlayable register banks
+                                     27 ;--------------------------------------------------------
+                                     28 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         29 	.ds 8
+                                     30 ;--------------------------------------------------------
+                                     31 ; internal ram data
+                                     32 ;--------------------------------------------------------
+                                     33 	.area DSEG    (DATA)
+                                     34 ;--------------------------------------------------------
+                                     35 ; overlayable items in internal ram 
+                                     36 ;--------------------------------------------------------
+                                     37 ;--------------------------------------------------------
+                                     38 ; indirectly addressable internal ram data
+                                     39 ;--------------------------------------------------------
+                                     40 	.area ISEG    (DATA)
+                                     41 ;--------------------------------------------------------
+                                     42 ; absolute internal ram data
+                                     43 ;--------------------------------------------------------
+                                     44 	.area IABS    (ABS,DATA)
+                                     45 	.area IABS    (ABS,DATA)
+                                     46 ;--------------------------------------------------------
+                                     47 ; bit data
+                                     48 ;--------------------------------------------------------
+                                     49 	.area BSEG    (BIT)
+                                     50 ;--------------------------------------------------------
+                                     51 ; paged external ram data
+                                     52 ;--------------------------------------------------------
+                                     53 	.area PSEG    (PAG,XDATA)
+                                     54 ;--------------------------------------------------------
+                                     55 ; external ram data
+                                     56 ;--------------------------------------------------------
+                                     57 	.area XSEG    (XDATA)
+                                     58 ;--------------------------------------------------------
+                                     59 ; absolute external ram data
+                                     60 ;--------------------------------------------------------
+                                     61 	.area XABS    (ABS,XDATA)
+                                     62 ;--------------------------------------------------------
+                                     63 ; external initialized ram data
+                                     64 ;--------------------------------------------------------
+                                     65 	.area XISEG   (XDATA)
+                                     66 	.area HOME    (CODE)
+                                     67 	.area GSINIT0 (CODE)
+                                     68 	.area GSINIT1 (CODE)
+                                     69 	.area GSINIT2 (CODE)
+                                     70 	.area GSINIT3 (CODE)
+                                     71 	.area GSINIT4 (CODE)
+                                     72 	.area GSINIT5 (CODE)
+                                     73 	.area GSINIT  (CODE)
+                                     74 	.area GSFINAL (CODE)
+                                     75 	.area CSEG    (CODE)
+                                     76 ;--------------------------------------------------------
+                                     77 ; global & static initialisations
+                                     78 ;--------------------------------------------------------
+                                     79 	.area HOME    (CODE)
+                                     80 	.area GSINIT  (CODE)
+                                     81 	.area GSFINAL (CODE)
+                                     82 	.area GSINIT  (CODE)
+                                     83 ;--------------------------------------------------------
+                                     84 ; Home
+                                     85 ;--------------------------------------------------------
+                                     86 	.area HOME    (CODE)
+                                     87 	.area HOME    (CODE)
+                                     88 ;--------------------------------------------------------
+                                     89 ; code
+                                     90 ;--------------------------------------------------------
+                                     91 	.area CSEG    (CODE)
+                                     92 ;------------------------------------------------------------
+                                     93 ;Allocation info for local variables in function 'sqrtf'
+                                     94 ;------------------------------------------------------------
+                                     95 ;x                         Allocated to registers r4 r5 r6 r7 
+                                     96 ;f                         Allocated to stack - _bp +5
+                                     97 ;y                         Allocated to stack - _bp +9
+                                     98 ;n                         Allocated to stack - _bp +13
+                                     99 ;sloc0                     Allocated to stack - _bp +1
+                                    100 ;------------------------------------------------------------
+                                    101 ;	sqrtf.c:37: float sqrtf(const float x) _FLOAT_FUNC_REENTRANT
+                                    102 ;	-----------------------------------------
+                                    103 ;	 function sqrtf
+                                    104 ;	-----------------------------------------
+      000000                        105 _sqrtf:
+                           000007   106 	ar7 = 0x07
+                           000006   107 	ar6 = 0x06
+                           000005   108 	ar5 = 0x05
+                           000004   109 	ar4 = 0x04
+                           000003   110 	ar3 = 0x03
+                           000002   111 	ar2 = 0x02
+                           000001   112 	ar1 = 0x01
+                           000000   113 	ar0 = 0x00
+      000000 C0*00            [24]  114 	push	_bp
+      000002 85 81*00         [24]  115 	mov	_bp,sp
+      000005 AC 82            [24]  116 	mov	r4,dpl
+      000007 AD 83            [24]  117 	mov	r5,dph
+      000009 AE F0            [24]  118 	mov	r6,b
+      00000B FF               [12]  119 	mov	r7,a
+      00000C E5 81            [12]  120 	mov	a,sp
+      00000E 24 0E            [12]  121 	add	a,#0x0E
+      000010 F5 81            [12]  122 	mov	sp,a
+                                    123 ;	sqrtf.c:42: if (x==0.0) return x;
+      000012 8C F0            [24]  124 	mov	b,r4
+      000014 ED               [12]  125 	mov	a,r5
+      000015 42 F0            [12]  126 	orl	b,a
+      000017 EE               [12]  127 	mov	a,r6
+      000018 42 F0            [12]  128 	orl	b,a
+      00001A EF               [12]  129 	mov	a,r7
+      00001B 54 7F            [12]  130 	anl	a,#0x7F
+      00001D 45 F0            [12]  131 	orl	a,b
+      00001F 70 0A            [24]  132 	jnz	00107$
+      000021 8C 82            [24]  133 	mov	dpl,r4
+      000023 8D 83            [24]  134 	mov	dph,r5
+      000025 8E F0            [24]  135 	mov	b,r6
+      000027 EF               [12]  136 	mov	a,r7
+      000028 02r02rD1         [24]  137 	ljmp	00111$
+      00002B                        138 00107$:
+                                    139 ;	sqrtf.c:43: else if (x==1.0) return 1.0;
+      00002B C0 07            [24]  140 	push	ar7
+      00002D C0 06            [24]  141 	push	ar6
+      00002F C0 05            [24]  142 	push	ar5
+      000031 C0 04            [24]  143 	push	ar4
+      000033 E4               [12]  144 	clr	a
+      000034 C0 E0            [24]  145 	push	acc
+      000036 C0 E0            [24]  146 	push	acc
+      000038 74 80            [12]  147 	mov	a,#0x80
+      00003A C0 E0            [24]  148 	push	acc
+      00003C 74 3F            [12]  149 	mov	a,#0x3F
+      00003E C0 E0            [24]  150 	push	acc
+      000040 8C 82            [24]  151 	mov	dpl,r4
+      000042 8D 83            [24]  152 	mov	dph,r5
+      000044 8E F0            [24]  153 	mov	b,r6
+      000046 EF               [12]  154 	mov	a,r7
+      000047 12r00r00         [24]  155 	lcall	___fseq
+      00004A AB 82            [24]  156 	mov	r3,dpl
+      00004C E5 81            [12]  157 	mov	a,sp
+      00004E 24 FC            [12]  158 	add	a,#0xfc
+      000050 F5 81            [12]  159 	mov	sp,a
+      000052 D0 04            [24]  160 	pop	ar4
+      000054 D0 05            [24]  161 	pop	ar5
+      000056 D0 06            [24]  162 	pop	ar6
+      000058 D0 07            [24]  163 	pop	ar7
+      00005A EB               [12]  164 	mov	a,r3
+      00005B 60 0B            [24]  165 	jz	00104$
+      00005D 90 00 00         [24]  166 	mov	dptr,#0x0000
+      000060 75 F0 80         [24]  167 	mov	b,#0x80
+      000063 74 3F            [12]  168 	mov	a,#0x3F
+      000065 02r02rD1         [24]  169 	ljmp	00111$
+      000068                        170 00104$:
+                                    171 ;	sqrtf.c:44: else if (x<0.0)
+      000068 C0 07            [24]  172 	push	ar7
+      00006A C0 06            [24]  173 	push	ar6
+      00006C C0 05            [24]  174 	push	ar5
+      00006E C0 04            [24]  175 	push	ar4
+      000070 E4               [12]  176 	clr	a
+      000071 C0 E0            [24]  177 	push	acc
+      000073 C0 E0            [24]  178 	push	acc
+      000075 C0 E0            [24]  179 	push	acc
+      000077 C0 E0            [24]  180 	push	acc
+      000079 8C 82            [24]  181 	mov	dpl,r4
+      00007B 8D 83            [24]  182 	mov	dph,r5
+      00007D 8E F0            [24]  183 	mov	b,r6
+      00007F EF               [12]  184 	mov	a,r7
+      000080 12r00r00         [24]  185 	lcall	___fslt
+      000083 AB 82            [24]  186 	mov	r3,dpl
+      000085 E5 81            [12]  187 	mov	a,sp
+      000087 24 FC            [12]  188 	add	a,#0xfc
+      000089 F5 81            [12]  189 	mov	sp,a
+      00008B D0 04            [24]  190 	pop	ar4
+      00008D D0 05            [24]  191 	pop	ar5
+      00008F D0 06            [24]  192 	pop	ar6
+      000091 D0 07            [24]  193 	pop	ar7
+      000093 EB               [12]  194 	mov	a,r3
+      000094 60 12            [24]  195 	jz	00108$
+                                    196 ;	sqrtf.c:46: errno=EDOM;
+      000096 90r00r00         [24]  197 	mov	dptr,#_errno
+      000099 74 21            [12]  198 	mov	a,#0x21
+      00009B F0               [24]  199 	movx	@dptr,a
+      00009C E4               [12]  200 	clr	a
+      00009D A3               [24]  201 	inc	dptr
+      00009E F0               [24]  202 	movx	@dptr,a
+                                    203 ;	sqrtf.c:47: return 0.0;
+      00009F 90 00 00         [24]  204 	mov	dptr,#(0x00&0x00ff)
+      0000A2 E4               [12]  205 	clr	a
+      0000A3 F5 F0            [12]  206 	mov	b,a
+      0000A5 02r02rD1         [24]  207 	ljmp	00111$
+      0000A8                        208 00108$:
+                                    209 ;	sqrtf.c:49: f=frexpf(x, &n);
+      0000A8 E5*00            [12]  210 	mov	a,_bp
+      0000AA 24 0D            [12]  211 	add	a,#0x0D
+      0000AC 90r00r00         [24]  212 	mov	dptr,#_frexpf_PARM_2
+      0000AF F0               [24]  213 	movx	@dptr,a
+      0000B0 E4               [12]  214 	clr	a
+      0000B1 A3               [24]  215 	inc	dptr
+      0000B2 F0               [24]  216 	movx	@dptr,a
+      0000B3 74 40            [12]  217 	mov	a,#0x40
+      0000B5 A3               [24]  218 	inc	dptr
+      0000B6 F0               [24]  219 	movx	@dptr,a
+      0000B7 8C 82            [24]  220 	mov	dpl,r4
+      0000B9 8D 83            [24]  221 	mov	dph,r5
+      0000BB 8E F0            [24]  222 	mov	b,r6
+      0000BD EF               [12]  223 	mov	a,r7
+      0000BE 78r00            [12]  224 	mov	r0,#_frexpf
+      0000C0 79s00            [12]  225 	mov	r1,#(_frexpf >> 8)
+      0000C2 7As00            [12]  226 	mov	r2,#(_frexpf >> 16)
+      0000C4 12r00r00         [24]  227 	lcall	__sdcc_banked_call
+      0000C7 AC 82            [24]  228 	mov	r4,dpl
+      0000C9 AD 83            [24]  229 	mov	r5,dph
+      0000CB AE F0            [24]  230 	mov	r6,b
+      0000CD FF               [12]  231 	mov	r7,a
+      0000CE E5*00            [12]  232 	mov	a,_bp
+      0000D0 24 05            [12]  233 	add	a,#0x05
+      0000D2 F8               [12]  234 	mov	r0,a
+      0000D3 A6 04            [24]  235 	mov	@r0,ar4
+      0000D5 08               [12]  236 	inc	r0
+      0000D6 A6 05            [24]  237 	mov	@r0,ar5
+      0000D8 08               [12]  238 	inc	r0
+      0000D9 A6 06            [24]  239 	mov	@r0,ar6
+      0000DB 08               [12]  240 	inc	r0
+      0000DC A6 07            [24]  241 	mov	@r0,ar7
+                                    242 ;	sqrtf.c:50: y=0.41731+0.59016*f; /*Educated guess*/
+      0000DE E5*00            [12]  243 	mov	a,_bp
+      0000E0 24 05            [12]  244 	add	a,#0x05
+      0000E2 F8               [12]  245 	mov	r0,a
+      0000E3 E6               [12]  246 	mov	a,@r0
+      0000E4 C0 E0            [24]  247 	push	acc
+      0000E6 08               [12]  248 	inc	r0
+      0000E7 E6               [12]  249 	mov	a,@r0
+      0000E8 C0 E0            [24]  250 	push	acc
+      0000EA 08               [12]  251 	inc	r0
+      0000EB E6               [12]  252 	mov	a,@r0
+      0000EC C0 E0            [24]  253 	push	acc
+      0000EE 08               [12]  254 	inc	r0
+      0000EF E6               [12]  255 	mov	a,@r0
+      0000F0 C0 E0            [24]  256 	push	acc
+      0000F2 90 14 BA         [24]  257 	mov	dptr,#0x14BA
+      0000F5 75 F0 17         [24]  258 	mov	b,#0x17
+      0000F8 74 3F            [12]  259 	mov	a,#0x3F
+      0000FA 12r00r00         [24]  260 	lcall	___fsmul
+      0000FD AA 82            [24]  261 	mov	r2,dpl
+      0000FF AB 83            [24]  262 	mov	r3,dph
+      000101 AE F0            [24]  263 	mov	r6,b
+      000103 FF               [12]  264 	mov	r7,a
+      000104 E5 81            [12]  265 	mov	a,sp
+      000106 24 FC            [12]  266 	add	a,#0xfc
+      000108 F5 81            [12]  267 	mov	sp,a
+      00010A 74 A8            [12]  268 	mov	a,#0xA8
+      00010C C0 E0            [24]  269 	push	acc
+      00010E 04               [12]  270 	inc	a
+      00010F C0 E0            [24]  271 	push	acc
+      000111 74 D5            [12]  272 	mov	a,#0xD5
+      000113 C0 E0            [24]  273 	push	acc
+      000115 74 3E            [12]  274 	mov	a,#0x3E
+      000117 C0 E0            [24]  275 	push	acc
+      000119 8A 82            [24]  276 	mov	dpl,r2
+      00011B 8B 83            [24]  277 	mov	dph,r3
+      00011D 8E F0            [24]  278 	mov	b,r6
+      00011F EF               [12]  279 	mov	a,r7
+      000120 12r00r00         [24]  280 	lcall	___fsadd
+      000123 AC 82            [24]  281 	mov	r4,dpl
+      000125 AD 83            [24]  282 	mov	r5,dph
+      000127 AE F0            [24]  283 	mov	r6,b
+      000129 FF               [12]  284 	mov	r7,a
+      00012A E5 81            [12]  285 	mov	a,sp
+      00012C 24 FC            [12]  286 	add	a,#0xfc
+      00012E F5 81            [12]  287 	mov	sp,a
+      000130 E5*00            [12]  288 	mov	a,_bp
+      000132 24 09            [12]  289 	add	a,#0x09
+      000134 F8               [12]  290 	mov	r0,a
+      000135 A6 04            [24]  291 	mov	@r0,ar4
+      000137 08               [12]  292 	inc	r0
+      000138 A6 05            [24]  293 	mov	@r0,ar5
+      00013A 08               [12]  294 	inc	r0
+      00013B A6 06            [24]  295 	mov	@r0,ar6
+      00013D 08               [12]  296 	inc	r0
+      00013E A6 07            [24]  297 	mov	@r0,ar7
+                                    298 ;	sqrtf.c:52: y+=f/y;
+      000140 E5*00            [12]  299 	mov	a,_bp
+      000142 24 09            [12]  300 	add	a,#0x09
+      000144 F8               [12]  301 	mov	r0,a
+      000145 E6               [12]  302 	mov	a,@r0
+      000146 C0 E0            [24]  303 	push	acc
+      000148 08               [12]  304 	inc	r0
+      000149 E6               [12]  305 	mov	a,@r0
+      00014A C0 E0            [24]  306 	push	acc
+      00014C 08               [12]  307 	inc	r0
+      00014D E6               [12]  308 	mov	a,@r0
+      00014E C0 E0            [24]  309 	push	acc
+      000150 08               [12]  310 	inc	r0
+      000151 E6               [12]  311 	mov	a,@r0
+      000152 C0 E0            [24]  312 	push	acc
+      000154 E5*00            [12]  313 	mov	a,_bp
+      000156 24 05            [12]  314 	add	a,#0x05
+      000158 F8               [12]  315 	mov	r0,a
+      000159 86 82            [24]  316 	mov	dpl,@r0
+      00015B 08               [12]  317 	inc	r0
+      00015C 86 83            [24]  318 	mov	dph,@r0
+      00015E 08               [12]  319 	inc	r0
+      00015F 86 F0            [24]  320 	mov	b,@r0
+      000161 08               [12]  321 	inc	r0
+      000162 E6               [12]  322 	mov	a,@r0
+      000163 12r00r00         [24]  323 	lcall	___fsdiv
+      000166 AA 82            [24]  324 	mov	r2,dpl
+      000168 AB 83            [24]  325 	mov	r3,dph
+      00016A AE F0            [24]  326 	mov	r6,b
+      00016C FF               [12]  327 	mov	r7,a
+      00016D E5 81            [12]  328 	mov	a,sp
+      00016F 24 FC            [12]  329 	add	a,#0xfc
+      000171 F5 81            [12]  330 	mov	sp,a
+      000173 C0 02            [24]  331 	push	ar2
+      000175 C0 03            [24]  332 	push	ar3
+      000177 C0 06            [24]  333 	push	ar6
+      000179 C0 07            [24]  334 	push	ar7
+      00017B E5*00            [12]  335 	mov	a,_bp
+      00017D 24 09            [12]  336 	add	a,#0x09
+      00017F F8               [12]  337 	mov	r0,a
+      000180 86 82            [24]  338 	mov	dpl,@r0
+      000182 08               [12]  339 	inc	r0
+      000183 86 83            [24]  340 	mov	dph,@r0
+      000185 08               [12]  341 	inc	r0
+      000186 86 F0            [24]  342 	mov	b,@r0
+      000188 08               [12]  343 	inc	r0
+      000189 E6               [12]  344 	mov	a,@r0
+      00018A 12r00r00         [24]  345 	lcall	___fsadd
+      00018D AC 82            [24]  346 	mov	r4,dpl
+      00018F AD 83            [24]  347 	mov	r5,dph
+      000191 AE F0            [24]  348 	mov	r6,b
+      000193 FF               [12]  349 	mov	r7,a
+      000194 E5 81            [12]  350 	mov	a,sp
+      000196 24 FC            [12]  351 	add	a,#0xfc
+      000198 F5 81            [12]  352 	mov	sp,a
+      00019A E5*00            [12]  353 	mov	a,_bp
+      00019C 24 09            [12]  354 	add	a,#0x09
+      00019E F8               [12]  355 	mov	r0,a
+      00019F A6 04            [24]  356 	mov	@r0,ar4
+      0001A1 08               [12]  357 	inc	r0
+      0001A2 A6 05            [24]  358 	mov	@r0,ar5
+      0001A4 08               [12]  359 	inc	r0
+      0001A5 A6 06            [24]  360 	mov	@r0,ar6
+      0001A7 08               [12]  361 	inc	r0
+      0001A8 A6 07            [24]  362 	mov	@r0,ar7
+                                    363 ;	sqrtf.c:53: y=ldexpf(y, -2) + f/y; /*Faster version of 0.25 * y + f/y*/
+      0001AA 90r00r00         [24]  364 	mov	dptr,#_ldexpf_PARM_2
+      0001AD 74 FE            [12]  365 	mov	a,#0xFE
+      0001AF F0               [24]  366 	movx	@dptr,a
+      0001B0 04               [12]  367 	inc	a
+      0001B1 A3               [24]  368 	inc	dptr
+      0001B2 F0               [24]  369 	movx	@dptr,a
+      0001B3 E5*00            [12]  370 	mov	a,_bp
+      0001B5 24 09            [12]  371 	add	a,#0x09
+      0001B7 F8               [12]  372 	mov	r0,a
+      0001B8 86 82            [24]  373 	mov	dpl,@r0
+      0001BA 08               [12]  374 	inc	r0
+      0001BB 86 83            [24]  375 	mov	dph,@r0
+      0001BD 08               [12]  376 	inc	r0
+      0001BE 86 F0            [24]  377 	mov	b,@r0
+      0001C0 08               [12]  378 	inc	r0
+      0001C1 E6               [12]  379 	mov	a,@r0
+      0001C2 78r00            [12]  380 	mov	r0,#_ldexpf
+      0001C4 79s00            [12]  381 	mov	r1,#(_ldexpf >> 8)
+      0001C6 7As00            [12]  382 	mov	r2,#(_ldexpf >> 16)
+      0001C8 12r00r00         [24]  383 	lcall	__sdcc_banked_call
+      0001CB A8*00            [24]  384 	mov	r0,_bp
+      0001CD 08               [12]  385 	inc	r0
+      0001CE A6 82            [24]  386 	mov	@r0,dpl
+      0001D0 08               [12]  387 	inc	r0
+      0001D1 A6 83            [24]  388 	mov	@r0,dph
+      0001D3 08               [12]  389 	inc	r0
+      0001D4 A6 F0            [24]  390 	mov	@r0,b
+      0001D6 08               [12]  391 	inc	r0
+      0001D7 F6               [12]  392 	mov	@r0,a
+      0001D8 E5*00            [12]  393 	mov	a,_bp
+      0001DA 24 09            [12]  394 	add	a,#0x09
+      0001DC F8               [12]  395 	mov	r0,a
+      0001DD E6               [12]  396 	mov	a,@r0
+      0001DE C0 E0            [24]  397 	push	acc
+      0001E0 08               [12]  398 	inc	r0
+      0001E1 E6               [12]  399 	mov	a,@r0
+      0001E2 C0 E0            [24]  400 	push	acc
+      0001E4 08               [12]  401 	inc	r0
+      0001E5 E6               [12]  402 	mov	a,@r0
+      0001E6 C0 E0            [24]  403 	push	acc
+      0001E8 08               [12]  404 	inc	r0
+      0001E9 E6               [12]  405 	mov	a,@r0
+      0001EA C0 E0            [24]  406 	push	acc
+      0001EC E5*00            [12]  407 	mov	a,_bp
+      0001EE 24 05            [12]  408 	add	a,#0x05
+      0001F0 F8               [12]  409 	mov	r0,a
+      0001F1 86 82            [24]  410 	mov	dpl,@r0
+      0001F3 08               [12]  411 	inc	r0
+      0001F4 86 83            [24]  412 	mov	dph,@r0
+      0001F6 08               [12]  413 	inc	r0
+      0001F7 86 F0            [24]  414 	mov	b,@r0
+      0001F9 08               [12]  415 	inc	r0
+      0001FA E6               [12]  416 	mov	a,@r0
+      0001FB 12r00r00         [24]  417 	lcall	___fsdiv
+      0001FE AA 82            [24]  418 	mov	r2,dpl
+      000200 AB 83            [24]  419 	mov	r3,dph
+      000202 AE F0            [24]  420 	mov	r6,b
+      000204 FF               [12]  421 	mov	r7,a
+      000205 E5 81            [12]  422 	mov	a,sp
+      000207 24 FC            [12]  423 	add	a,#0xfc
+      000209 F5 81            [12]  424 	mov	sp,a
+      00020B C0 02            [24]  425 	push	ar2
+      00020D C0 03            [24]  426 	push	ar3
+      00020F C0 06            [24]  427 	push	ar6
+      000211 C0 07            [24]  428 	push	ar7
+      000213 A8*00            [24]  429 	mov	r0,_bp
+      000215 08               [12]  430 	inc	r0
+      000216 86 82            [24]  431 	mov	dpl,@r0
+      000218 08               [12]  432 	inc	r0
+      000219 86 83            [24]  433 	mov	dph,@r0
+      00021B 08               [12]  434 	inc	r0
+      00021C 86 F0            [24]  435 	mov	b,@r0
+      00021E 08               [12]  436 	inc	r0
+      00021F E6               [12]  437 	mov	a,@r0
+      000220 12r00r00         [24]  438 	lcall	___fsadd
+      000223 AC 82            [24]  439 	mov	r4,dpl
+      000225 AD 83            [24]  440 	mov	r5,dph
+      000227 AE F0            [24]  441 	mov	r6,b
+      000229 FF               [12]  442 	mov	r7,a
+      00022A E5 81            [12]  443 	mov	a,sp
+      00022C 24 FC            [12]  444 	add	a,#0xfc
+      00022E F5 81            [12]  445 	mov	sp,a
+      000230 E5*00            [12]  446 	mov	a,_bp
+      000232 24 09            [12]  447 	add	a,#0x09
+      000234 F8               [12]  448 	mov	r0,a
+      000235 A6 04            [24]  449 	mov	@r0,ar4
+      000237 08               [12]  450 	inc	r0
+      000238 A6 05            [24]  451 	mov	@r0,ar5
+      00023A 08               [12]  452 	inc	r0
+      00023B A6 06            [24]  453 	mov	@r0,ar6
+      00023D 08               [12]  454 	inc	r0
+      00023E A6 07            [24]  455 	mov	@r0,ar7
+                                    456 ;	sqrtf.c:55: if (n&1)
+      000240 E5*00            [12]  457 	mov	a,_bp
+      000242 24 0D            [12]  458 	add	a,#0x0d
+      000244 F8               [12]  459 	mov	r0,a
+      000245 E6               [12]  460 	mov	a,@r0
+      000246 30 E0 47         [24]  461 	jnb	acc.0,00110$
+                                    462 ;	sqrtf.c:57: y*=0.7071067812;
+      000249 E5*00            [12]  463 	mov	a,_bp
+      00024B 24 09            [12]  464 	add	a,#0x09
+      00024D F8               [12]  465 	mov	r0,a
+      00024E E6               [12]  466 	mov	a,@r0
+      00024F C0 E0            [24]  467 	push	acc
+      000251 08               [12]  468 	inc	r0
+      000252 E6               [12]  469 	mov	a,@r0
+      000253 C0 E0            [24]  470 	push	acc
+      000255 08               [12]  471 	inc	r0
+      000256 E6               [12]  472 	mov	a,@r0
+      000257 C0 E0            [24]  473 	push	acc
+      000259 08               [12]  474 	inc	r0
+      00025A E6               [12]  475 	mov	a,@r0
+      00025B C0 E0            [24]  476 	push	acc
+      00025D 90 04 F3         [24]  477 	mov	dptr,#0x04F3
+      000260 75 F0 35         [24]  478 	mov	b,#0x35
+      000263 74 3F            [12]  479 	mov	a,#0x3F
+      000265 12r00r00         [24]  480 	lcall	___fsmul
+      000268 AC 82            [24]  481 	mov	r4,dpl
+      00026A AD 83            [24]  482 	mov	r5,dph
+      00026C AE F0            [24]  483 	mov	r6,b
+      00026E FF               [12]  484 	mov	r7,a
+      00026F E5 81            [12]  485 	mov	a,sp
+      000271 24 FC            [12]  486 	add	a,#0xfc
+      000273 F5 81            [12]  487 	mov	sp,a
+      000275 E5*00            [12]  488 	mov	a,_bp
+      000277 24 09            [12]  489 	add	a,#0x09
+      000279 F8               [12]  490 	mov	r0,a
+      00027A A6 04            [24]  491 	mov	@r0,ar4
+      00027C 08               [12]  492 	inc	r0
+      00027D A6 05            [24]  493 	mov	@r0,ar5
+      00027F 08               [12]  494 	inc	r0
+      000280 A6 06            [24]  495 	mov	@r0,ar6
+      000282 08               [12]  496 	inc	r0
+      000283 A6 07            [24]  497 	mov	@r0,ar7
+                                    498 ;	sqrtf.c:58: ++n;
+      000285 E5*00            [12]  499 	mov	a,_bp
+      000287 24 0D            [12]  500 	add	a,#0x0d
+      000289 F8               [12]  501 	mov	r0,a
+      00028A 06               [12]  502 	inc	@r0
+      00028B B6 00 02         [24]  503 	cjne	@r0,#0x00,00129$
+      00028E 08               [12]  504 	inc	r0
+      00028F 06               [12]  505 	inc	@r0
+      000290                        506 00129$:
+      000290                        507 00110$:
+                                    508 ;	sqrtf.c:60: return ldexpf(y, n/2);
+      000290 90r00r00         [24]  509 	mov	dptr,#__divsint_PARM_2
+      000293 74 02            [12]  510 	mov	a,#0x02
+      000295 F0               [24]  511 	movx	@dptr,a
+      000296 E4               [12]  512 	clr	a
+      000297 A3               [24]  513 	inc	dptr
+      000298 F0               [24]  514 	movx	@dptr,a
+      000299 E5*00            [12]  515 	mov	a,_bp
+      00029B 24 0D            [12]  516 	add	a,#0x0d
+      00029D F8               [12]  517 	mov	r0,a
+      00029E 86 82            [24]  518 	mov	dpl,@r0
+      0002A0 08               [12]  519 	inc	r0
+      0002A1 86 83            [24]  520 	mov	dph,@r0
+      0002A3 12r00r00         [24]  521 	lcall	__divsint
+      0002A6 AE 82            [24]  522 	mov	r6,dpl
+      0002A8 AF 83            [24]  523 	mov	r7,dph
+      0002AA 90r00r00         [24]  524 	mov	dptr,#_ldexpf_PARM_2
+      0002AD EE               [12]  525 	mov	a,r6
+      0002AE F0               [24]  526 	movx	@dptr,a
+      0002AF EF               [12]  527 	mov	a,r7
+      0002B0 A3               [24]  528 	inc	dptr
+      0002B1 F0               [24]  529 	movx	@dptr,a
+      0002B2 E5*00            [12]  530 	mov	a,_bp
+      0002B4 24 09            [12]  531 	add	a,#0x09
+      0002B6 F8               [12]  532 	mov	r0,a
+      0002B7 86 82            [24]  533 	mov	dpl,@r0
+      0002B9 08               [12]  534 	inc	r0
+      0002BA 86 83            [24]  535 	mov	dph,@r0
+      0002BC 08               [12]  536 	inc	r0
+      0002BD 86 F0            [24]  537 	mov	b,@r0
+      0002BF 08               [12]  538 	inc	r0
+      0002C0 E6               [12]  539 	mov	a,@r0
+      0002C1 78r00            [12]  540 	mov	r0,#_ldexpf
+      0002C3 79s00            [12]  541 	mov	r1,#(_ldexpf >> 8)
+      0002C5 7As00            [12]  542 	mov	r2,#(_ldexpf >> 16)
+      0002C7 12r00r00         [24]  543 	lcall	__sdcc_banked_call
+      0002CA AC 82            [24]  544 	mov	r4,dpl
+      0002CC AD 83            [24]  545 	mov	r5,dph
+      0002CE AE F0            [24]  546 	mov	r6,b
+      0002D0 FF               [12]  547 	mov	r7,a
+      0002D1                        548 00111$:
+      0002D1 85*00 81         [24]  549 	mov	sp,_bp
+      0002D4 D0*00            [24]  550 	pop	_bp
+      0002D6 02r00r00         [24]  551 	ljmp	__sdcc_banked_ret
+                                    552 	.area CSEG    (CODE)
+                                    553 	.area CONST   (CODE)
+                                    554 	.area XINIT   (CODE)
+                                    555 	.area CABS    (ABS,CODE)

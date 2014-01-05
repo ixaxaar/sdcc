@@ -1,0 +1,34 @@
+stm8pst.o: stm8pst.c ../asxxsrc/asxxxx.h ../asxxsrc/../../sdccconf.h \
+ stm8.h
+stm8mch.o: stm8mch.c ../asxxsrc/asxxxx.h ../asxxsrc/../../sdccconf.h \
+ stm8.h
+stm8adr.o: stm8adr.c ../asxxsrc/asxxxx.h ../asxxsrc/../../sdccconf.h \
+ stm8.h
+asdbg.o: ../asxxsrc/asdbg.c ../../support/util/dbuf_string.h \
+ ../../support/util/dbuf.h ../asxxsrc/asxxxx.h \
+ ../asxxsrc/../../sdccconf.h
+asdata.o: ../asxxsrc/asdata.c ../asxxsrc/asxxxx.h \
+ ../asxxsrc/../../sdccconf.h
+asexpr.o: ../asxxsrc/asexpr.c ../asxxsrc/sdas.h ../asxxsrc/asxxxx.h \
+ ../asxxsrc/../../sdccconf.h
+aslex.o: ../asxxsrc/aslex.c ../../support/util/dbuf_string.h \
+ ../../support/util/dbuf.h ../asxxsrc/asxxxx.h \
+ ../asxxsrc/../../sdccconf.h
+aslist.o: ../asxxsrc/aslist.c ../asxxsrc/asxxxx.h \
+ ../asxxsrc/../../sdccconf.h
+asmain.o: ../asxxsrc/asmain.c ../asxxsrc/sdas.h \
+ ../../support/util/dbuf_string.h ../../support/util/dbuf.h \
+ ../asxxsrc/asxxxx.h ../asxxsrc/../../sdccconf.h
+asout.o: ../asxxsrc/asout.c ../asxxsrc/sdas.h ../asxxsrc/asxxxx.h \
+ ../asxxsrc/../../sdccconf.h
+assubr.o: ../asxxsrc/assubr.c ../asxxsrc/sdas.h ../asxxsrc/asxxxx.h \
+ ../asxxsrc/../../sdccconf.h
+assym.o: ../asxxsrc/assym.c ../asxxsrc/asxxxx.h \
+ ../asxxsrc/../../sdccconf.h
+asmcro.o: ../asxxsrc/asmcro.c ../asxxsrc/asxxxx.h \
+ ../asxxsrc/../../sdccconf.h
+sdas.o: ../asxxsrc/sdas.c ../asxxsrc/sdas.h
+strcmpi.o: ../asxxsrc/strcmpi.c
+dbuf.o: ../../support/util/dbuf.c ../../support/util/dbuf.h
+dbuf_string.o: ../../support/util/dbuf_string.c \
+ ../../support/util/dbuf_string.h ../../support/util/dbuf.h

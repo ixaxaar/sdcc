@@ -1,0 +1,13 @@
+XL2
+H 1 areas 2 global symbols
+S .__.ABS. Def0000
+A _CODE size 11 flags 0 addr 0
+S _strcpy Def0000
+T 00 00
+R 00 00 00 00
+T 00 00 58 59 5A 52 51 50 51 FE 65
+R 00 00 00 00
+T 09 00
+R 00 00 00 00
+T 09 00 E2 67 FE 58 CE FA 5A 1E
+R 00 00 00 00

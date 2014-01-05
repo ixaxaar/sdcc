@@ -1,0 +1,45 @@
+XH3
+H A areas 4 global symbols
+M acosf
+S ___fseq Ref000000
+S .__.ABS. Def000000
+S _asincosf Ref000000
+A _CODE size 0 flags 0 addr 0
+A DATA size 0 flags 0 addr 0
+A INITIALIZED size 0 flags 0 addr 0
+A DABS size 0 flags 8 addr 0
+A HOME size 0 flags 0 addr 0
+A GSINIT size 0 flags 0 addr 0
+A GSFINAL size 0 flags 0 addr 0
+A CODE size 55 flags 0 addr 0
+S _acosf Def000000
+A INITIALIZER size 0 flags 0 addr 0
+A CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 00 07
+T 00 00 00 5F 89 4B 80 4B 3F 1E 09 89 1E 09 89 CD
+R 00 00 00 07
+T 00 00 0D 00 00 5B 08 4D 27 05 5F 90 5F 20 3B
+R 00 00 00 07 02 03 00 00
+T 00 00 19
+R 00 00 00 07
+T 00 00 19 5F 89 4B 80 4B BF 1E 09 89 1E 09 89 CD
+R 00 00 00 07
+T 00 00 26 00 00 5B 08 4D 27 09 AE 0F DB 90 AE
+R 00 00 00 07 02 03 00 00
+T 00 00 32 40 49 20 1E
+R 00 00 00 07
+T 00 00 36
+R 00 00 00 07
+T 00 00 36 1E 05 26 0D 1E 03 26 09 AE 0F DB 90 AE
+R 00 00 00 07
+T 00 00 43 3F C9 20 0D
+R 00 00 00 07
+T 00 00 47
+R 00 00 00 07
+T 00 00 47 4B 01 1E 06 89 1E 06 89 CD 00 00 5B 05
+R 00 00 00 07 02 0C 00 02
+T 00 00 54
+R 00 00 00 07
+T 00 00 54 81
+R 00 00 00 07

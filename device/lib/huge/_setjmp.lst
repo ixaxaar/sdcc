@@ -1,0 +1,594 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                                      4 ; This file was generated Wed Nov 27 12:28:01 2013
+                                      5 ;--------------------------------------------------------
+                                      6 	.module _setjmp
+                                      7 	.optsdcc -mmcs51 --model-huge
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl _longjmp
+                                     13 	.globl _CY
+                                     14 	.globl _AC
+                                     15 	.globl _F0
+                                     16 	.globl _RS1
+                                     17 	.globl _RS0
+                                     18 	.globl _OV
+                                     19 	.globl _F1
+                                     20 	.globl _P
+                                     21 	.globl _PS
+                                     22 	.globl _PT1
+                                     23 	.globl _PX1
+                                     24 	.globl _PT0
+                                     25 	.globl _PX0
+                                     26 	.globl _RD
+                                     27 	.globl _WR
+                                     28 	.globl _T1
+                                     29 	.globl _T0
+                                     30 	.globl _INT1
+                                     31 	.globl _INT0
+                                     32 	.globl _TXD
+                                     33 	.globl _RXD
+                                     34 	.globl _P3_7
+                                     35 	.globl _P3_6
+                                     36 	.globl _P3_5
+                                     37 	.globl _P3_4
+                                     38 	.globl _P3_3
+                                     39 	.globl _P3_2
+                                     40 	.globl _P3_1
+                                     41 	.globl _P3_0
+                                     42 	.globl _EA
+                                     43 	.globl _ES
+                                     44 	.globl _ET1
+                                     45 	.globl _EX1
+                                     46 	.globl _ET0
+                                     47 	.globl _EX0
+                                     48 	.globl _P2_7
+                                     49 	.globl _P2_6
+                                     50 	.globl _P2_5
+                                     51 	.globl _P2_4
+                                     52 	.globl _P2_3
+                                     53 	.globl _P2_2
+                                     54 	.globl _P2_1
+                                     55 	.globl _P2_0
+                                     56 	.globl _SM0
+                                     57 	.globl _SM1
+                                     58 	.globl _SM2
+                                     59 	.globl _REN
+                                     60 	.globl _TB8
+                                     61 	.globl _RB8
+                                     62 	.globl _TI
+                                     63 	.globl _RI
+                                     64 	.globl _P1_7
+                                     65 	.globl _P1_6
+                                     66 	.globl _P1_5
+                                     67 	.globl _P1_4
+                                     68 	.globl _P1_3
+                                     69 	.globl _P1_2
+                                     70 	.globl _P1_1
+                                     71 	.globl _P1_0
+                                     72 	.globl _TF1
+                                     73 	.globl _TR1
+                                     74 	.globl _TF0
+                                     75 	.globl _TR0
+                                     76 	.globl _IE1
+                                     77 	.globl _IT1
+                                     78 	.globl _IE0
+                                     79 	.globl _IT0
+                                     80 	.globl _P0_7
+                                     81 	.globl _P0_6
+                                     82 	.globl _P0_5
+                                     83 	.globl _P0_4
+                                     84 	.globl _P0_3
+                                     85 	.globl _P0_2
+                                     86 	.globl _P0_1
+                                     87 	.globl _P0_0
+                                     88 	.globl _B
+                                     89 	.globl _ACC
+                                     90 	.globl _PSW
+                                     91 	.globl _IP
+                                     92 	.globl _P3
+                                     93 	.globl _IE
+                                     94 	.globl _P2
+                                     95 	.globl _SBUF
+                                     96 	.globl _SCON
+                                     97 	.globl _P1
+                                     98 	.globl _TH1
+                                     99 	.globl _TH0
+                                    100 	.globl _TL1
+                                    101 	.globl _TL0
+                                    102 	.globl _TMOD
+                                    103 	.globl _TCON
+                                    104 	.globl _PCON
+                                    105 	.globl _DPH
+                                    106 	.globl _DPL
+                                    107 	.globl _SP
+                                    108 	.globl _P0
+                                    109 	.globl _longjmp_PARM_2
+                                    110 	.globl ___setjmp
+                                    111 ;--------------------------------------------------------
+                                    112 ; special function registers
+                                    113 ;--------------------------------------------------------
+                                    114 	.area RSEG    (ABS,DATA)
+      000000                        115 	.org 0x0000
+                           000080   116 _P0	=	0x0080
+                           000081   117 _SP	=	0x0081
+                           000082   118 _DPL	=	0x0082
+                           000083   119 _DPH	=	0x0083
+                           000087   120 _PCON	=	0x0087
+                           000088   121 _TCON	=	0x0088
+                           000089   122 _TMOD	=	0x0089
+                           00008A   123 _TL0	=	0x008a
+                           00008B   124 _TL1	=	0x008b
+                           00008C   125 _TH0	=	0x008c
+                           00008D   126 _TH1	=	0x008d
+                           000090   127 _P1	=	0x0090
+                           000098   128 _SCON	=	0x0098
+                           000099   129 _SBUF	=	0x0099
+                           0000A0   130 _P2	=	0x00a0
+                           0000A8   131 _IE	=	0x00a8
+                           0000B0   132 _P3	=	0x00b0
+                           0000B8   133 _IP	=	0x00b8
+                           0000D0   134 _PSW	=	0x00d0
+                           0000E0   135 _ACC	=	0x00e0
+                           0000F0   136 _B	=	0x00f0
+                                    137 ;--------------------------------------------------------
+                                    138 ; special function bits
+                                    139 ;--------------------------------------------------------
+                                    140 	.area RSEG    (ABS,DATA)
+      000000                        141 	.org 0x0000
+                           000080   142 _P0_0	=	0x0080
+                           000081   143 _P0_1	=	0x0081
+                           000082   144 _P0_2	=	0x0082
+                           000083   145 _P0_3	=	0x0083
+                           000084   146 _P0_4	=	0x0084
+                           000085   147 _P0_5	=	0x0085
+                           000086   148 _P0_6	=	0x0086
+                           000087   149 _P0_7	=	0x0087
+                           000088   150 _IT0	=	0x0088
+                           000089   151 _IE0	=	0x0089
+                           00008A   152 _IT1	=	0x008a
+                           00008B   153 _IE1	=	0x008b
+                           00008C   154 _TR0	=	0x008c
+                           00008D   155 _TF0	=	0x008d
+                           00008E   156 _TR1	=	0x008e
+                           00008F   157 _TF1	=	0x008f
+                           000090   158 _P1_0	=	0x0090
+                           000091   159 _P1_1	=	0x0091
+                           000092   160 _P1_2	=	0x0092
+                           000093   161 _P1_3	=	0x0093
+                           000094   162 _P1_4	=	0x0094
+                           000095   163 _P1_5	=	0x0095
+                           000096   164 _P1_6	=	0x0096
+                           000097   165 _P1_7	=	0x0097
+                           000098   166 _RI	=	0x0098
+                           000099   167 _TI	=	0x0099
+                           00009A   168 _RB8	=	0x009a
+                           00009B   169 _TB8	=	0x009b
+                           00009C   170 _REN	=	0x009c
+                           00009D   171 _SM2	=	0x009d
+                           00009E   172 _SM1	=	0x009e
+                           00009F   173 _SM0	=	0x009f
+                           0000A0   174 _P2_0	=	0x00a0
+                           0000A1   175 _P2_1	=	0x00a1
+                           0000A2   176 _P2_2	=	0x00a2
+                           0000A3   177 _P2_3	=	0x00a3
+                           0000A4   178 _P2_4	=	0x00a4
+                           0000A5   179 _P2_5	=	0x00a5
+                           0000A6   180 _P2_6	=	0x00a6
+                           0000A7   181 _P2_7	=	0x00a7
+                           0000A8   182 _EX0	=	0x00a8
+                           0000A9   183 _ET0	=	0x00a9
+                           0000AA   184 _EX1	=	0x00aa
+                           0000AB   185 _ET1	=	0x00ab
+                           0000AC   186 _ES	=	0x00ac
+                           0000AF   187 _EA	=	0x00af
+                           0000B0   188 _P3_0	=	0x00b0
+                           0000B1   189 _P3_1	=	0x00b1
+                           0000B2   190 _P3_2	=	0x00b2
+                           0000B3   191 _P3_3	=	0x00b3
+                           0000B4   192 _P3_4	=	0x00b4
+                           0000B5   193 _P3_5	=	0x00b5
+                           0000B6   194 _P3_6	=	0x00b6
+                           0000B7   195 _P3_7	=	0x00b7
+                           0000B0   196 _RXD	=	0x00b0
+                           0000B1   197 _TXD	=	0x00b1
+                           0000B2   198 _INT0	=	0x00b2
+                           0000B3   199 _INT1	=	0x00b3
+                           0000B4   200 _T0	=	0x00b4
+                           0000B5   201 _T1	=	0x00b5
+                           0000B6   202 _WR	=	0x00b6
+                           0000B7   203 _RD	=	0x00b7
+                           0000B8   204 _PX0	=	0x00b8
+                           0000B9   205 _PT0	=	0x00b9
+                           0000BA   206 _PX1	=	0x00ba
+                           0000BB   207 _PT1	=	0x00bb
+                           0000BC   208 _PS	=	0x00bc
+                           0000D0   209 _P	=	0x00d0
+                           0000D1   210 _F1	=	0x00d1
+                           0000D2   211 _OV	=	0x00d2
+                           0000D3   212 _RS0	=	0x00d3
+                           0000D4   213 _RS1	=	0x00d4
+                           0000D5   214 _F0	=	0x00d5
+                           0000D6   215 _AC	=	0x00d6
+                           0000D7   216 _CY	=	0x00d7
+                                    217 ;--------------------------------------------------------
+                                    218 ; overlayable register banks
+                                    219 ;--------------------------------------------------------
+                                    220 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                        221 	.ds 8
+                                    222 ;--------------------------------------------------------
+                                    223 ; internal ram data
+                                    224 ;--------------------------------------------------------
+                                    225 	.area DSEG    (DATA)
+                                    226 ;--------------------------------------------------------
+                                    227 ; overlayable items in internal ram 
+                                    228 ;--------------------------------------------------------
+                                    229 ;--------------------------------------------------------
+                                    230 ; indirectly addressable internal ram data
+                                    231 ;--------------------------------------------------------
+                                    232 	.area ISEG    (DATA)
+                                    233 ;--------------------------------------------------------
+                                    234 ; absolute internal ram data
+                                    235 ;--------------------------------------------------------
+                                    236 	.area IABS    (ABS,DATA)
+                                    237 	.area IABS    (ABS,DATA)
+                                    238 ;--------------------------------------------------------
+                                    239 ; bit data
+                                    240 ;--------------------------------------------------------
+                                    241 	.area BSEG    (BIT)
+                                    242 ;--------------------------------------------------------
+                                    243 ; paged external ram data
+                                    244 ;--------------------------------------------------------
+                                    245 	.area PSEG    (PAG,XDATA)
+                                    246 ;--------------------------------------------------------
+                                    247 ; external ram data
+                                    248 ;--------------------------------------------------------
+                                    249 	.area XSEG    (XDATA)
+      000000                        250 ___setjmp_buf_1_2:
+      000000                        251 	.ds 3
+      000003                        252 _longjmp_PARM_2:
+      000003                        253 	.ds 2
+      000005                        254 _longjmp_buf_1_4:
+      000005                        255 	.ds 3
+                                    256 ;--------------------------------------------------------
+                                    257 ; absolute external ram data
+                                    258 ;--------------------------------------------------------
+                                    259 	.area XABS    (ABS,XDATA)
+                                    260 ;--------------------------------------------------------
+                                    261 ; external initialized ram data
+                                    262 ;--------------------------------------------------------
+                                    263 	.area XISEG   (XDATA)
+                                    264 	.area HOME    (CODE)
+                                    265 	.area GSINIT0 (CODE)
+                                    266 	.area GSINIT1 (CODE)
+                                    267 	.area GSINIT2 (CODE)
+                                    268 	.area GSINIT3 (CODE)
+                                    269 	.area GSINIT4 (CODE)
+                                    270 	.area GSINIT5 (CODE)
+                                    271 	.area GSINIT  (CODE)
+                                    272 	.area GSFINAL (CODE)
+                                    273 	.area CSEG    (CODE)
+                                    274 ;--------------------------------------------------------
+                                    275 ; global & static initialisations
+                                    276 ;--------------------------------------------------------
+                                    277 	.area HOME    (CODE)
+                                    278 	.area GSINIT  (CODE)
+                                    279 	.area GSFINAL (CODE)
+                                    280 	.area GSINIT  (CODE)
+                                    281 ;--------------------------------------------------------
+                                    282 ; Home
+                                    283 ;--------------------------------------------------------
+                                    284 	.area HOME    (CODE)
+                                    285 	.area HOME    (CODE)
+                                    286 ;--------------------------------------------------------
+                                    287 ; code
+                                    288 ;--------------------------------------------------------
+                                    289 	.area CSEG    (CODE)
+                                    290 ;------------------------------------------------------------
+                                    291 ;Allocation info for local variables in function '__setjmp'
+                                    292 ;------------------------------------------------------------
+                                    293 ;buf                       Allocated with name '___setjmp_buf_1_2'
+                                    294 ;------------------------------------------------------------
+                                    295 ;	_setjmp.c:404: int __setjmp (jmp_buf buf)
+                                    296 ;	-----------------------------------------
+                                    297 ;	 function __setjmp
+                                    298 ;	-----------------------------------------
+      000000                        299 ___setjmp:
+                           000007   300 	ar7 = 0x07
+                           000006   301 	ar6 = 0x06
+                           000005   302 	ar5 = 0x05
+                           000004   303 	ar4 = 0x04
+                           000003   304 	ar3 = 0x03
+                           000002   305 	ar2 = 0x02
+                           000001   306 	ar1 = 0x01
+                           000000   307 	ar0 = 0x00
+      000000 AF F0            [24]  308 	mov	r7,b
+      000002 AE 83            [24]  309 	mov	r6,dph
+      000004 E5 82            [12]  310 	mov	a,dpl
+      000006 90r00r00         [24]  311 	mov	dptr,#___setjmp_buf_1_2
+      000009 F0               [24]  312 	movx	@dptr,a
+      00000A EE               [12]  313 	mov	a,r6
+      00000B A3               [24]  314 	inc	dptr
+      00000C F0               [24]  315 	movx	@dptr,a
+      00000D EF               [12]  316 	mov	a,r7
+      00000E A3               [24]  317 	inc	dptr
+      00000F F0               [24]  318 	movx	@dptr,a
+                                    319 ;	_setjmp.c:413: *buf++ = SP;
+      000010 90r00r00         [24]  320 	mov	dptr,#___setjmp_buf_1_2
+      000013 E0               [24]  321 	movx	a,@dptr
+      000014 FD               [12]  322 	mov	r5,a
+      000015 A3               [24]  323 	inc	dptr
+      000016 E0               [24]  324 	movx	a,@dptr
+      000017 FE               [12]  325 	mov	r6,a
+      000018 A3               [24]  326 	inc	dptr
+      000019 E0               [24]  327 	movx	a,@dptr
+      00001A FF               [12]  328 	mov	r7,a
+      00001B 8D 82            [24]  329 	mov	dpl,r5
+      00001D 8E 83            [24]  330 	mov	dph,r6
+      00001F 8F F0            [24]  331 	mov	b,r7
+      000021 E5 81            [12]  332 	mov	a,_SP
+      000023 12r00r00         [24]  333 	lcall	__gptrput
+      000026 90r00r00         [24]  334 	mov	dptr,#___setjmp_buf_1_2
+      000029 74 01            [12]  335 	mov	a,#0x01
+      00002B 2D               [12]  336 	add	a,r5
+      00002C F0               [24]  337 	movx	@dptr,a
+      00002D E4               [12]  338 	clr	a
+      00002E 3E               [12]  339 	addc	a,r6
+      00002F A3               [24]  340 	inc	dptr
+      000030 F0               [24]  341 	movx	@dptr,a
+      000031 EF               [12]  342 	mov	a,r7
+      000032 A3               [24]  343 	inc	dptr
+      000033 F0               [24]  344 	movx	@dptr,a
+                                    345 ;	_setjmp.c:415: *buf++ = *((unsigned char __data *) SP - 0);
+      000034 90r00r00         [24]  346 	mov	dptr,#___setjmp_buf_1_2
+      000037 E0               [24]  347 	movx	a,@dptr
+      000038 FD               [12]  348 	mov	r5,a
+      000039 A3               [24]  349 	inc	dptr
+      00003A E0               [24]  350 	movx	a,@dptr
+      00003B FE               [12]  351 	mov	r6,a
+      00003C A3               [24]  352 	inc	dptr
+      00003D E0               [24]  353 	movx	a,@dptr
+      00003E FF               [12]  354 	mov	r7,a
+      00003F A9 81            [24]  355 	mov	r1,_SP
+      000041 87 04            [24]  356 	mov	ar4,@r1
+      000043 8D 82            [24]  357 	mov	dpl,r5
+      000045 8E 83            [24]  358 	mov	dph,r6
+      000047 8F F0            [24]  359 	mov	b,r7
+      000049 EC               [12]  360 	mov	a,r4
+      00004A 12r00r00         [24]  361 	lcall	__gptrput
+      00004D 90r00r00         [24]  362 	mov	dptr,#___setjmp_buf_1_2
+      000050 74 01            [12]  363 	mov	a,#0x01
+      000052 2D               [12]  364 	add	a,r5
+      000053 F0               [24]  365 	movx	@dptr,a
+      000054 E4               [12]  366 	clr	a
+      000055 3E               [12]  367 	addc	a,r6
+      000056 A3               [24]  368 	inc	dptr
+      000057 F0               [24]  369 	movx	@dptr,a
+      000058 EF               [12]  370 	mov	a,r7
+      000059 A3               [24]  371 	inc	dptr
+      00005A F0               [24]  372 	movx	@dptr,a
+                                    373 ;	_setjmp.c:416: *buf++ = *((unsigned char __data *) SP - 1);
+      00005B 90r00r00         [24]  374 	mov	dptr,#___setjmp_buf_1_2
+      00005E E0               [24]  375 	movx	a,@dptr
+      00005F FD               [12]  376 	mov	r5,a
+      000060 A3               [24]  377 	inc	dptr
+      000061 E0               [24]  378 	movx	a,@dptr
+      000062 FE               [12]  379 	mov	r6,a
+      000063 A3               [24]  380 	inc	dptr
+      000064 E0               [24]  381 	movx	a,@dptr
+      000065 FF               [12]  382 	mov	r7,a
+      000066 E5 81            [12]  383 	mov	a,_SP
+      000068 14               [12]  384 	dec	a
+      000069 F9               [12]  385 	mov	r1,a
+      00006A 87 04            [24]  386 	mov	ar4,@r1
+      00006C 8D 82            [24]  387 	mov	dpl,r5
+      00006E 8E 83            [24]  388 	mov	dph,r6
+      000070 8F F0            [24]  389 	mov	b,r7
+      000072 EC               [12]  390 	mov	a,r4
+      000073 12r00r00         [24]  391 	lcall	__gptrput
+      000076 90r00r00         [24]  392 	mov	dptr,#___setjmp_buf_1_2
+      000079 74 01            [12]  393 	mov	a,#0x01
+      00007B 2D               [12]  394 	add	a,r5
+      00007C F0               [24]  395 	movx	@dptr,a
+      00007D E4               [12]  396 	clr	a
+      00007E 3E               [12]  397 	addc	a,r6
+      00007F A3               [24]  398 	inc	dptr
+      000080 F0               [24]  399 	movx	@dptr,a
+      000081 EF               [12]  400 	mov	a,r7
+      000082 A3               [24]  401 	inc	dptr
+      000083 F0               [24]  402 	movx	@dptr,a
+                                    403 ;	_setjmp.c:418: *buf++ = *((unsigned char __data *) SP - 2);
+      000084 90r00r00         [24]  404 	mov	dptr,#___setjmp_buf_1_2
+      000087 E0               [24]  405 	movx	a,@dptr
+      000088 FD               [12]  406 	mov	r5,a
+      000089 A3               [24]  407 	inc	dptr
+      00008A E0               [24]  408 	movx	a,@dptr
+      00008B FE               [12]  409 	mov	r6,a
+      00008C A3               [24]  410 	inc	dptr
+      00008D E0               [24]  411 	movx	a,@dptr
+      00008E FF               [12]  412 	mov	r7,a
+      00008F E5 81            [12]  413 	mov	a,_SP
+      000091 24 FE            [12]  414 	add	a,#0xFE
+      000093 F9               [12]  415 	mov	r1,a
+      000094 87 04            [24]  416 	mov	ar4,@r1
+      000096 8D 82            [24]  417 	mov	dpl,r5
+      000098 8E 83            [24]  418 	mov	dph,r6
+      00009A 8F F0            [24]  419 	mov	b,r7
+      00009C EC               [12]  420 	mov	a,r4
+      00009D 12r00r00         [24]  421 	lcall	__gptrput
+      0000A0 90r00r00         [24]  422 	mov	dptr,#___setjmp_buf_1_2
+      0000A3 74 01            [12]  423 	mov	a,#0x01
+      0000A5 2D               [12]  424 	add	a,r5
+      0000A6 F0               [24]  425 	movx	@dptr,a
+      0000A7 E4               [12]  426 	clr	a
+      0000A8 3E               [12]  427 	addc	a,r6
+      0000A9 A3               [24]  428 	inc	dptr
+      0000AA F0               [24]  429 	movx	@dptr,a
+      0000AB EF               [12]  430 	mov	a,r7
+      0000AC A3               [24]  431 	inc	dptr
+      0000AD F0               [24]  432 	movx	@dptr,a
+                                    433 ;	_setjmp.c:420: return 0;
+      0000AE 90 00 00         [24]  434 	mov	dptr,#0x0000
+      0000B1 02r00r00         [24]  435 	ljmp	__sdcc_banked_ret
+                                    436 ;------------------------------------------------------------
+                                    437 ;Allocation info for local variables in function 'longjmp'
+                                    438 ;------------------------------------------------------------
+                                    439 ;rv                        Allocated with name '_longjmp_PARM_2'
+                                    440 ;buf                       Allocated with name '_longjmp_buf_1_4'
+                                    441 ;lsp                       Allocated with name '_longjmp_lsp_1_5'
+                                    442 ;------------------------------------------------------------
+                                    443 ;	_setjmp.c:423: int longjmp (jmp_buf buf, int rv)
+                                    444 ;	-----------------------------------------
+                                    445 ;	 function longjmp
+                                    446 ;	-----------------------------------------
+      0000B4                        447 _longjmp:
+      0000B4 AF F0            [24]  448 	mov	r7,b
+      0000B6 AE 83            [24]  449 	mov	r6,dph
+      0000B8 E5 82            [12]  450 	mov	a,dpl
+      0000BA 90r00r05         [24]  451 	mov	dptr,#_longjmp_buf_1_4
+      0000BD F0               [24]  452 	movx	@dptr,a
+      0000BE EE               [12]  453 	mov	a,r6
+      0000BF A3               [24]  454 	inc	dptr
+      0000C0 F0               [24]  455 	movx	@dptr,a
+      0000C1 EF               [12]  456 	mov	a,r7
+      0000C2 A3               [24]  457 	inc	dptr
+      0000C3 F0               [24]  458 	movx	@dptr,a
+                                    459 ;	_setjmp.c:431: lsp = *buf++;
+      0000C4 90r00r05         [24]  460 	mov	dptr,#_longjmp_buf_1_4
+      0000C7 E0               [24]  461 	movx	a,@dptr
+      0000C8 FD               [12]  462 	mov	r5,a
+      0000C9 A3               [24]  463 	inc	dptr
+      0000CA E0               [24]  464 	movx	a,@dptr
+      0000CB FE               [12]  465 	mov	r6,a
+      0000CC A3               [24]  466 	inc	dptr
+      0000CD E0               [24]  467 	movx	a,@dptr
+      0000CE FF               [12]  468 	mov	r7,a
+      0000CF 8D 82            [24]  469 	mov	dpl,r5
+      0000D1 8E 83            [24]  470 	mov	dph,r6
+      0000D3 8F F0            [24]  471 	mov	b,r7
+      0000D5 12r00r00         [24]  472 	lcall	__gptrget
+      0000D8 FC               [12]  473 	mov	r4,a
+      0000D9 90r00r05         [24]  474 	mov	dptr,#_longjmp_buf_1_4
+      0000DC 74 01            [12]  475 	mov	a,#0x01
+      0000DE 2D               [12]  476 	add	a,r5
+      0000DF F0               [24]  477 	movx	@dptr,a
+      0000E0 E4               [12]  478 	clr	a
+      0000E1 3E               [12]  479 	addc	a,r6
+      0000E2 A3               [24]  480 	inc	dptr
+      0000E3 F0               [24]  481 	movx	@dptr,a
+      0000E4 EF               [12]  482 	mov	a,r7
+      0000E5 A3               [24]  483 	inc	dptr
+      0000E6 F0               [24]  484 	movx	@dptr,a
+                                    485 ;	_setjmp.c:433: *((unsigned char __data *) lsp - 0) = *buf++;
+      0000E7 8C 01            [24]  486 	mov	ar1,r4
+      0000E9 90r00r05         [24]  487 	mov	dptr,#_longjmp_buf_1_4
+      0000EC E0               [24]  488 	movx	a,@dptr
+      0000ED FD               [12]  489 	mov	r5,a
+      0000EE A3               [24]  490 	inc	dptr
+      0000EF E0               [24]  491 	movx	a,@dptr
+      0000F0 FE               [12]  492 	mov	r6,a
+      0000F1 A3               [24]  493 	inc	dptr
+      0000F2 E0               [24]  494 	movx	a,@dptr
+      0000F3 FF               [12]  495 	mov	r7,a
+      0000F4 8D 82            [24]  496 	mov	dpl,r5
+      0000F6 8E 83            [24]  497 	mov	dph,r6
+      0000F8 8F F0            [24]  498 	mov	b,r7
+      0000FA 12r00r00         [24]  499 	lcall	__gptrget
+      0000FD FB               [12]  500 	mov	r3,a
+      0000FE 90r00r05         [24]  501 	mov	dptr,#_longjmp_buf_1_4
+      000101 74 01            [12]  502 	mov	a,#0x01
+      000103 2D               [12]  503 	add	a,r5
+      000104 F0               [24]  504 	movx	@dptr,a
+      000105 E4               [12]  505 	clr	a
+      000106 3E               [12]  506 	addc	a,r6
+      000107 A3               [24]  507 	inc	dptr
+      000108 F0               [24]  508 	movx	@dptr,a
+      000109 EF               [12]  509 	mov	a,r7
+      00010A A3               [24]  510 	inc	dptr
+      00010B F0               [24]  511 	movx	@dptr,a
+      00010C A7 03            [24]  512 	mov	@r1,ar3
+                                    513 ;	_setjmp.c:434: *((unsigned char __data *) lsp - 1) = *buf++;
+      00010E E9               [12]  514 	mov	a,r1
+      00010F 14               [12]  515 	dec	a
+      000110 F8               [12]  516 	mov	r0,a
+      000111 90r00r05         [24]  517 	mov	dptr,#_longjmp_buf_1_4
+      000114 E0               [24]  518 	movx	a,@dptr
+      000115 FD               [12]  519 	mov	r5,a
+      000116 A3               [24]  520 	inc	dptr
+      000117 E0               [24]  521 	movx	a,@dptr
+      000118 FE               [12]  522 	mov	r6,a
+      000119 A3               [24]  523 	inc	dptr
+      00011A E0               [24]  524 	movx	a,@dptr
+      00011B FF               [12]  525 	mov	r7,a
+      00011C 8D 82            [24]  526 	mov	dpl,r5
+      00011E 8E 83            [24]  527 	mov	dph,r6
+      000120 8F F0            [24]  528 	mov	b,r7
+      000122 12r00r00         [24]  529 	lcall	__gptrget
+      000125 FB               [12]  530 	mov	r3,a
+      000126 90r00r05         [24]  531 	mov	dptr,#_longjmp_buf_1_4
+      000129 74 01            [12]  532 	mov	a,#0x01
+      00012B 2D               [12]  533 	add	a,r5
+      00012C F0               [24]  534 	movx	@dptr,a
+      00012D E4               [12]  535 	clr	a
+      00012E 3E               [12]  536 	addc	a,r6
+      00012F A3               [24]  537 	inc	dptr
+      000130 F0               [24]  538 	movx	@dptr,a
+      000131 EF               [12]  539 	mov	a,r7
+      000132 A3               [24]  540 	inc	dptr
+      000133 F0               [24]  541 	movx	@dptr,a
+      000134 A6 03            [24]  542 	mov	@r0,ar3
+                                    543 ;	_setjmp.c:436: *((unsigned char __data *) lsp - 2) = *buf++;
+      000136 19               [12]  544 	dec	r1
+      000137 19               [12]  545 	dec	r1
+      000138 90r00r05         [24]  546 	mov	dptr,#_longjmp_buf_1_4
+      00013B E0               [24]  547 	movx	a,@dptr
+      00013C FD               [12]  548 	mov	r5,a
+      00013D A3               [24]  549 	inc	dptr
+      00013E E0               [24]  550 	movx	a,@dptr
+      00013F FE               [12]  551 	mov	r6,a
+      000140 A3               [24]  552 	inc	dptr
+      000141 E0               [24]  553 	movx	a,@dptr
+      000142 FF               [12]  554 	mov	r7,a
+      000143 8D 82            [24]  555 	mov	dpl,r5
+      000145 8E 83            [24]  556 	mov	dph,r6
+      000147 8F F0            [24]  557 	mov	b,r7
+      000149 12r00r00         [24]  558 	lcall	__gptrget
+      00014C FB               [12]  559 	mov	r3,a
+      00014D 90r00r05         [24]  560 	mov	dptr,#_longjmp_buf_1_4
+      000150 74 01            [12]  561 	mov	a,#0x01
+      000152 2D               [12]  562 	add	a,r5
+      000153 F0               [24]  563 	movx	@dptr,a
+      000154 E4               [12]  564 	clr	a
+      000155 3E               [12]  565 	addc	a,r6
+      000156 A3               [24]  566 	inc	dptr
+      000157 F0               [24]  567 	movx	@dptr,a
+      000158 EF               [12]  568 	mov	a,r7
+      000159 A3               [24]  569 	inc	dptr
+      00015A F0               [24]  570 	movx	@dptr,a
+      00015B A7 03            [24]  571 	mov	@r1,ar3
+                                    572 ;	_setjmp.c:438: SP = lsp;
+      00015D 8C 81            [24]  573 	mov	_SP,r4
+                                    574 ;	_setjmp.c:439: return rv ? rv : 1;
+      00015F 90r00r03         [24]  575 	mov	dptr,#_longjmp_PARM_2
+      000162 E0               [24]  576 	movx	a,@dptr
+      000163 FE               [12]  577 	mov	r6,a
+      000164 A3               [24]  578 	inc	dptr
+      000165 E0               [24]  579 	movx	a,@dptr
+      000166 FF               [12]  580 	mov	r7,a
+      000167 4E               [12]  581 	orl	a,r6
+      000168 60 02            [24]  582 	jz	00103$
+      00016A 80 04            [24]  583 	sjmp	00104$
+      00016C                        584 00103$:
+      00016C 7E 01            [12]  585 	mov	r6,#0x01
+      00016E 7F 00            [12]  586 	mov	r7,#0x00
+      000170                        587 00104$:
+      000170 8E 82            [24]  588 	mov	dpl,r6
+      000172 8F 83            [24]  589 	mov	dph,r7
+      000174 02r00r00         [24]  590 	ljmp	__sdcc_banked_ret
+                                    591 	.area CSEG    (CODE)
+                                    592 	.area CONST   (CODE)
+                                    593 	.area XINIT   (CODE)
+                                    594 	.area CABS    (ABS,CODE)

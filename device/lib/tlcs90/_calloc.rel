@@ -1,0 +1,38 @@
+XL2
+H 9 areas 7 global symbols
+M _calloc
+O -mtlcs90
+S _malloc Ref0000
+S .__.ABS. Def0000
+S __mulint_rrx_s Ref0000
+S _memset Ref0000
+A _CODE size 2E flags 0 addr 0
+S _calloc Def0000
+S _calloc_start Def0000
+S _calloc_end Def002E
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 00 00
+T 00 00
+R 00 00 00 00
+T 00 00 54 F2 06 4A 52 F2 06 4A 52 1C 00 00 16
+R 00 00 00 00 02 0C 02 00
+T 0D 00 04 00 08 51 51 1C 00 00 16 02 00 59 24 FD
+R 00 00 00 00 02 08 00 00
+T 1B 00 66 C6 0E 52 51 38 00 00 50 52 1C 00 00 16
+R 00 00 00 00 02 0D 03 00
+T 29 00 06 00 5A
+R 00 00 00 00
+T 2C 00
+R 00 00 00 00
+T 2C 00 5C 1E
+R 00 00 00 00
+T 2E 00
+R 00 00 00 00

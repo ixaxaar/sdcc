@@ -1,0 +1,250 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                                      4 ; This file was generated Wed Nov 27 12:27:56 2013
+                                      5 ;--------------------------------------------------------
+                                      6 	.module _divuint
+                                      7 	.optsdcc -mmcs51 --model-large
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl __divuint_PARM_2
+                                     13 	.globl __divuint
+                                     14 ;--------------------------------------------------------
+                                     15 ; special function registers
+                                     16 ;--------------------------------------------------------
+                                     17 	.area RSEG    (ABS,DATA)
+      000000                         18 	.org 0x0000
+                                     19 ;--------------------------------------------------------
+                                     20 ; special function bits
+                                     21 ;--------------------------------------------------------
+                                     22 	.area RSEG    (ABS,DATA)
+      000000                         23 	.org 0x0000
+                                     24 ;--------------------------------------------------------
+                                     25 ; overlayable register banks
+                                     26 ;--------------------------------------------------------
+                                     27 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         28 	.ds 8
+                                     29 ;--------------------------------------------------------
+                                     30 ; internal ram data
+                                     31 ;--------------------------------------------------------
+                                     32 	.area DSEG    (DATA)
+                                     33 ;--------------------------------------------------------
+                                     34 ; overlayable items in internal ram 
+                                     35 ;--------------------------------------------------------
+                                     36 ;--------------------------------------------------------
+                                     37 ; indirectly addressable internal ram data
+                                     38 ;--------------------------------------------------------
+                                     39 	.area ISEG    (DATA)
+                                     40 ;--------------------------------------------------------
+                                     41 ; absolute internal ram data
+                                     42 ;--------------------------------------------------------
+                                     43 	.area IABS    (ABS,DATA)
+                                     44 	.area IABS    (ABS,DATA)
+                                     45 ;--------------------------------------------------------
+                                     46 ; bit data
+                                     47 ;--------------------------------------------------------
+                                     48 	.area BSEG    (BIT)
+      000000                         49 __divuint_c_1_2:
+      000000                         50 	.ds 1
+                                     51 ;--------------------------------------------------------
+                                     52 ; paged external ram data
+                                     53 ;--------------------------------------------------------
+                                     54 	.area PSEG    (PAG,XDATA)
+                                     55 ;--------------------------------------------------------
+                                     56 ; external ram data
+                                     57 ;--------------------------------------------------------
+                                     58 	.area XSEG    (XDATA)
+      000000                         59 __divuint_PARM_2:
+      000000                         60 	.ds 2
+      000002                         61 __divuint_x_1_1:
+      000002                         62 	.ds 2
+      000004                         63 __divuint_reste_1_2:
+      000004                         64 	.ds 2
+                                     65 ;--------------------------------------------------------
+                                     66 ; absolute external ram data
+                                     67 ;--------------------------------------------------------
+                                     68 	.area XABS    (ABS,XDATA)
+                                     69 ;--------------------------------------------------------
+                                     70 ; external initialized ram data
+                                     71 ;--------------------------------------------------------
+                                     72 	.area XISEG   (XDATA)
+                                     73 	.area HOME    (CODE)
+                                     74 	.area GSINIT0 (CODE)
+                                     75 	.area GSINIT1 (CODE)
+                                     76 	.area GSINIT2 (CODE)
+                                     77 	.area GSINIT3 (CODE)
+                                     78 	.area GSINIT4 (CODE)
+                                     79 	.area GSINIT5 (CODE)
+                                     80 	.area GSINIT  (CODE)
+                                     81 	.area GSFINAL (CODE)
+                                     82 	.area CSEG    (CODE)
+                                     83 ;--------------------------------------------------------
+                                     84 ; global & static initialisations
+                                     85 ;--------------------------------------------------------
+                                     86 	.area HOME    (CODE)
+                                     87 	.area GSINIT  (CODE)
+                                     88 	.area GSFINAL (CODE)
+                                     89 	.area GSINIT  (CODE)
+                                     90 ;--------------------------------------------------------
+                                     91 ; Home
+                                     92 ;--------------------------------------------------------
+                                     93 	.area HOME    (CODE)
+                                     94 	.area HOME    (CODE)
+                                     95 ;--------------------------------------------------------
+                                     96 ; code
+                                     97 ;--------------------------------------------------------
+                                     98 	.area CSEG    (CODE)
+                                     99 ;------------------------------------------------------------
+                                    100 ;Allocation info for local variables in function '_divuint'
+                                    101 ;------------------------------------------------------------
+                                    102 ;y                         Allocated with name '__divuint_PARM_2'
+                                    103 ;x                         Allocated with name '__divuint_x_1_1'
+                                    104 ;reste                     Allocated with name '__divuint_reste_1_2'
+                                    105 ;count                     Allocated with name '__divuint_count_1_2'
+                                    106 ;------------------------------------------------------------
+                                    107 ;	_divuint.c:155: _divuint (unsigned int x, unsigned int y)
+                                    108 ;	-----------------------------------------
+                                    109 ;	 function _divuint
+                                    110 ;	-----------------------------------------
+      000000                        111 __divuint:
+                           000007   112 	ar7 = 0x07
+                           000006   113 	ar6 = 0x06
+                           000005   114 	ar5 = 0x05
+                           000004   115 	ar4 = 0x04
+                           000003   116 	ar3 = 0x03
+                           000002   117 	ar2 = 0x02
+                           000001   118 	ar1 = 0x01
+                           000000   119 	ar0 = 0x00
+      000000 AF 83            [24]  120 	mov	r7,dph
+      000002 E5 82            [12]  121 	mov	a,dpl
+      000004 90r00r02         [24]  122 	mov	dptr,#__divuint_x_1_1
+      000007 F0               [24]  123 	movx	@dptr,a
+      000008 EF               [12]  124 	mov	a,r7
+      000009 A3               [24]  125 	inc	dptr
+      00000A F0               [24]  126 	movx	@dptr,a
+                                    127 ;	_divuint.c:157: unsigned int reste = 0;
+      00000B 90r00r04         [24]  128 	mov	dptr,#__divuint_reste_1_2
+      00000E E4               [12]  129 	clr	a
+      00000F F0               [24]  130 	movx	@dptr,a
+      000010 A3               [24]  131 	inc	dptr
+      000011 F0               [24]  132 	movx	@dptr,a
+                                    133 ;	_divuint.c:161: do
+      000012 90r00r00         [24]  134 	mov	dptr,#__divuint_PARM_2
+      000015 E0               [24]  135 	movx	a,@dptr
+      000016 FE               [12]  136 	mov	r6,a
+      000017 A3               [24]  137 	inc	dptr
+      000018 E0               [24]  138 	movx	a,@dptr
+      000019 FF               [12]  139 	mov	r7,a
+      00001A 7D 10            [12]  140 	mov	r5,#0x10
+      00001C                        141 00105$:
+                                    142 ;	_divuint.c:164: c = MSB_SET(x);
+      00001C 90r00r02         [24]  143 	mov	dptr,#__divuint_x_1_1
+      00001F E0               [24]  144 	movx	a,@dptr
+      000020 FB               [12]  145 	mov	r3,a
+      000021 A3               [24]  146 	inc	dptr
+      000022 E0               [24]  147 	movx	a,@dptr
+      000023 FC               [12]  148 	mov	r4,a
+      000024 33               [12]  149 	rlc	a
+      000025 92*00            [24]  150 	mov	__divuint_c_1_2,c
+                                    151 ;	_divuint.c:165: x <<= 1;
+      000027 EC               [12]  152 	mov	a,r4
+      000028 CB               [12]  153 	xch	a,r3
+      000029 25 E0            [12]  154 	add	a,acc
+      00002B CB               [12]  155 	xch	a,r3
+      00002C 33               [12]  156 	rlc	a
+      00002D FC               [12]  157 	mov	r4,a
+      00002E 90r00r02         [24]  158 	mov	dptr,#__divuint_x_1_1
+      000031 EB               [12]  159 	mov	a,r3
+      000032 F0               [24]  160 	movx	@dptr,a
+      000033 EC               [12]  161 	mov	a,r4
+      000034 A3               [24]  162 	inc	dptr
+      000035 F0               [24]  163 	movx	@dptr,a
+                                    164 ;	_divuint.c:166: reste <<= 1;
+      000036 90r00r04         [24]  165 	mov	dptr,#__divuint_reste_1_2
+      000039 E0               [24]  166 	movx	a,@dptr
+      00003A FB               [12]  167 	mov	r3,a
+      00003B A3               [24]  168 	inc	dptr
+      00003C E0               [24]  169 	movx	a,@dptr
+      00003D CB               [12]  170 	xch	a,r3
+      00003E 25 E0            [12]  171 	add	a,acc
+      000040 CB               [12]  172 	xch	a,r3
+      000041 33               [12]  173 	rlc	a
+      000042 FC               [12]  174 	mov	r4,a
+      000043 90r00r04         [24]  175 	mov	dptr,#__divuint_reste_1_2
+      000046 EB               [12]  176 	mov	a,r3
+      000047 F0               [24]  177 	movx	@dptr,a
+      000048 EC               [12]  178 	mov	a,r4
+      000049 A3               [24]  179 	inc	dptr
+      00004A F0               [24]  180 	movx	@dptr,a
+                                    181 ;	_divuint.c:167: if (c)
+      00004B 30*00 12         [24]  182 	jnb	__divuint_c_1_2,00102$
+                                    183 ;	_divuint.c:168: reste |= 1;
+      00004E 90r00r04         [24]  184 	mov	dptr,#__divuint_reste_1_2
+      000051 E0               [24]  185 	movx	a,@dptr
+      000052 FB               [12]  186 	mov	r3,a
+      000053 A3               [24]  187 	inc	dptr
+      000054 E0               [24]  188 	movx	a,@dptr
+      000055 FC               [12]  189 	mov	r4,a
+      000056 90r00r04         [24]  190 	mov	dptr,#__divuint_reste_1_2
+      000059 74 01            [12]  191 	mov	a,#0x01
+      00005B 4B               [12]  192 	orl	a,r3
+      00005C F0               [24]  193 	movx	@dptr,a
+      00005D EC               [12]  194 	mov	a,r4
+      00005E A3               [24]  195 	inc	dptr
+      00005F F0               [24]  196 	movx	@dptr,a
+      000060                        197 00102$:
+                                    198 ;	_divuint.c:170: if (reste >= y)
+      000060 90r00r04         [24]  199 	mov	dptr,#__divuint_reste_1_2
+      000063 E0               [24]  200 	movx	a,@dptr
+      000064 FB               [12]  201 	mov	r3,a
+      000065 A3               [24]  202 	inc	dptr
+      000066 E0               [24]  203 	movx	a,@dptr
+      000067 FC               [12]  204 	mov	r4,a
+      000068 C3               [12]  205 	clr	c
+      000069 EB               [12]  206 	mov	a,r3
+      00006A 9E               [12]  207 	subb	a,r6
+      00006B EC               [12]  208 	mov	a,r4
+      00006C 9F               [12]  209 	subb	a,r7
+      00006D 40 1D            [24]  210 	jc	00106$
+                                    211 ;	_divuint.c:172: reste -= y;
+      00006F 90r00r04         [24]  212 	mov	dptr,#__divuint_reste_1_2
+      000072 EB               [12]  213 	mov	a,r3
+      000073 C3               [12]  214 	clr	c
+      000074 9E               [12]  215 	subb	a,r6
+      000075 F0               [24]  216 	movx	@dptr,a
+      000076 EC               [12]  217 	mov	a,r4
+      000077 9F               [12]  218 	subb	a,r7
+      000078 A3               [24]  219 	inc	dptr
+      000079 F0               [24]  220 	movx	@dptr,a
+                                    221 ;	_divuint.c:174: x |= 1;
+      00007A 90r00r02         [24]  222 	mov	dptr,#__divuint_x_1_1
+      00007D E0               [24]  223 	movx	a,@dptr
+      00007E FB               [12]  224 	mov	r3,a
+      00007F A3               [24]  225 	inc	dptr
+      000080 E0               [24]  226 	movx	a,@dptr
+      000081 FC               [12]  227 	mov	r4,a
+      000082 90r00r02         [24]  228 	mov	dptr,#__divuint_x_1_1
+      000085 74 01            [12]  229 	mov	a,#0x01
+      000087 4B               [12]  230 	orl	a,r3
+      000088 F0               [24]  231 	movx	@dptr,a
+      000089 EC               [12]  232 	mov	a,r4
+      00008A A3               [24]  233 	inc	dptr
+      00008B F0               [24]  234 	movx	@dptr,a
+      00008C                        235 00106$:
+                                    236 ;	_divuint.c:177: while (--count);
+      00008C DD 8E            [24]  237 	djnz	r5,00105$
+                                    238 ;	_divuint.c:178: return x;
+      00008E 90r00r02         [24]  239 	mov	dptr,#__divuint_x_1_1
+      000091 E0               [24]  240 	movx	a,@dptr
+      000092 FE               [12]  241 	mov	r6,a
+      000093 A3               [24]  242 	inc	dptr
+      000094 E0               [24]  243 	movx	a,@dptr
+      000095 8E 82            [24]  244 	mov	dpl,r6
+      000097 F5 83            [12]  245 	mov	dph,a
+      000099 22               [24]  246 	ret
+                                    247 	.area CSEG    (CODE)
+                                    248 	.area CONST   (CODE)
+                                    249 	.area XINIT   (CODE)
+                                    250 	.area CABS    (ABS,CODE)

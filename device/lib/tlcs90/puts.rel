@@ -1,0 +1,36 @@
+XL2
+H 9 areas 5 global symbols
+M puts
+O -mtlcs90
+S _putchar Ref0000
+S .__.ABS. Def0000
+A _CODE size 28 flags 0 addr 0
+S _puts_end Def0028
+S _puts Def0000
+S _puts_start Def0000
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 00 00
+T 00 00
+R 00 00 00 00
+T 00 00 54 F2 04 4A 38 00 00
+R 00 00 00 00
+T 07 00
+R 00 00 00 00
+T 07 00 E2 2A 90 22 FE 66 C6 0D 92 52 50 51 96 1C
+R 00 00 00 00
+T 15 00 00 00 96 58 5A C8 EB
+R 00 00 00 00 02 02 00 00
+T 1C 00
+R 00 00 00 00
+T 1C 00 50 36 0A 56 96 1C 00 00 96 5A 5C 1E
+R 00 00 00 00 02 08 00 00
+T 28 00
+R 00 00 00 00

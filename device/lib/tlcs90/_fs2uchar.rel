@@ -1,0 +1,34 @@
+XL2
+H 9 areas 5 global symbols
+M _fs2uchar
+O -mtlcs90
+S ___fs2ulong Ref0000
+S .__.ABS. Def0000
+A _CODE size 0 flags 0 addr 0
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 21 flags 0 addr 0
+S ___fs2uchar_start Def0000
+S ___fs2uchar_end Def0021
+S ___fs2uchar Def0000
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 04 00
+T 00 00
+R 00 00 04 00
+T 00 00 54 F2 06 4A 52 F2 06 4A 52 1C 00 00 16
+R 00 00 04 00 02 0C 00 00
+T 0D 00 04 00 25 6A FF 24 6B 00 23 6B 00 22 6B 00
+R 00 00 04 00
+T 1B 00 C7 02 35 FF
+R 00 00 04 00
+T 1F 00
+R 00 00 04 00
+T 1F 00 5C 1E
+R 00 00 04 00
+T 21 00
+R 00 00 04 00

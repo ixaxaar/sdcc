@@ -1,0 +1,55 @@
+                              1 ;--------------------------------------------------------------------------
+                              2 ;  divmixed.s
+                              3 ;
+                              4 ;  Copyright (C) 2010, Philipp Klaus Krause
+                              5 ;
+                              6 ;  This library is free software; you can redistribute it and/or modify it
+                              7 ;  under the terms of the GNU General Public License as published by the
+                              8 ;  Free Software Foundation; either version 2, or (at your option) any
+                              9 ;  later version.
+                             10 ;
+                             11 ;  This library is distributed in the hope that it will be useful,
+                             12 ;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                             13 ;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+                             14 ;  GNU General Public License for more details.
+                             15 ;
+                             16 ;  You should have received a copy of the GNU General Public License 
+                             17 ;  along with this library; see the file COPYING. If not, write to the
+                             18 ;  Free Software Foundation, 51 Franklin Street, Fifth Floor, Boston,
+                             19 ;   MA 02110-1301, USA.
+                             20 ;
+                             21 ;  As a special exception, if you link this library with other files,
+                             22 ;  some of which are compiled with SDCC, to produce an executable,
+                             23 ;  this library does not by itself cause the resulting executable to
+                             24 ;  be covered by the GNU General Public License. This exception does
+                             25 ;  not however invalidate any other reasons why the executable file
+                             26 ;   might be covered by the GNU General Public License.
+                             27 ;--------------------------------------------------------------------------
+                             28 
+   0000                      29 __divsuchar_rrx_s::
+   0000 3A 03 00      [13]   30         ld      hl,#2+1
+   0003 FE 70         [ 7]   31         add     hl,sp
+                             32 
+   0005 E2 2B         [10]   33         ld      e,(hl)
+   0007 9A            [ 4]   34         dec     hl
+   0008 E2 2D         [10]   35         ld      l,(hl)
+   000A 34 00         [11]   36         ld      h,#0
+                             37 
+   000C 1Ar00r00      [ 7]   38         jp      __div_signexte
+                             39 
+   000F                      40 __divuschar_rrx_s::
+   000F 3A 03 00      [13]   41         ld      hl,#2+1
+   0012 FC 32         [17]   42         ld      d, h
+   0014 FE 70         [ 7]   43         add     hl,sp
+                             44 
+   0016 E2 2B         [10]   45         ld      e,(hl)
+   0018 9A            [ 4]   46         dec     hl
+   0019 E2 2D         [10]   47         ld      l,(hl)
+                             48 
+   001B 25            [ 4]   49         ld      a,l             ; Sign extend
+   001C A0            [ 4]   50         rlca
+   001D FE 63         [ 7]   51         sbc     a, a
+   001F 2C            [ 4]   52         ld      h,a
+                             53 
+   0020 1Ar00r00      [ 7]   54         jp      __div16
+                             55 

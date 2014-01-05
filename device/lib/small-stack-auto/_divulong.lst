@@ -1,0 +1,202 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                                      4 ; This file was generated Wed Nov 27 12:28:03 2013
+                                      5 ;--------------------------------------------------------
+                                      6 	.module _divulong
+                                      7 	.optsdcc -mmcs51 --model-small
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 ;--------------------------------------------------------
+                                     13 ; special function registers
+                                     14 ;--------------------------------------------------------
+                                     15 	.area RSEG    (ABS,DATA)
+      000000                         16 	.org 0x0000
+                                     17 ;--------------------------------------------------------
+                                     18 ; special function bits
+                                     19 ;--------------------------------------------------------
+                                     20 	.area RSEG    (ABS,DATA)
+      000000                         21 	.org 0x0000
+                                     22 ;--------------------------------------------------------
+                                     23 ; overlayable register banks
+                                     24 ;--------------------------------------------------------
+                                     25 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         26 	.ds 8
+                                     27 ;--------------------------------------------------------
+                                     28 ; internal ram data
+                                     29 ;--------------------------------------------------------
+                                     30 	.area DSEG    (DATA)
+                                     31 ;--------------------------------------------------------
+                                     32 ; overlayable items in internal ram 
+                                     33 ;--------------------------------------------------------
+                                     34 ;--------------------------------------------------------
+                                     35 ; indirectly addressable internal ram data
+                                     36 ;--------------------------------------------------------
+                                     37 	.area ISEG    (DATA)
+                                     38 ;--------------------------------------------------------
+                                     39 ; absolute internal ram data
+                                     40 ;--------------------------------------------------------
+                                     41 	.area IABS    (ABS,DATA)
+                                     42 	.area IABS    (ABS,DATA)
+                                     43 ;--------------------------------------------------------
+                                     44 ; bit data
+                                     45 ;--------------------------------------------------------
+                                     46 	.area BSEG    (BIT)
+                                     47 ;--------------------------------------------------------
+                                     48 ; paged external ram data
+                                     49 ;--------------------------------------------------------
+                                     50 	.area PSEG    (PAG,XDATA)
+                                     51 ;--------------------------------------------------------
+                                     52 ; external ram data
+                                     53 ;--------------------------------------------------------
+                                     54 	.area XSEG    (XDATA)
+                                     55 ;--------------------------------------------------------
+                                     56 ; absolute external ram data
+                                     57 ;--------------------------------------------------------
+                                     58 	.area XABS    (ABS,XDATA)
+                                     59 ;--------------------------------------------------------
+                                     60 ; external initialized ram data
+                                     61 ;--------------------------------------------------------
+                                     62 	.area XISEG   (XDATA)
+                                     63 	.area HOME    (CODE)
+                                     64 	.area GSINIT0 (CODE)
+                                     65 	.area GSINIT1 (CODE)
+                                     66 	.area GSINIT2 (CODE)
+                                     67 	.area GSINIT3 (CODE)
+                                     68 	.area GSINIT4 (CODE)
+                                     69 	.area GSINIT5 (CODE)
+                                     70 	.area GSINIT  (CODE)
+                                     71 	.area GSFINAL (CODE)
+                                     72 	.area CSEG    (CODE)
+                                     73 ;--------------------------------------------------------
+                                     74 ; global & static initialisations
+                                     75 ;--------------------------------------------------------
+                                     76 	.area HOME    (CODE)
+                                     77 	.area GSINIT  (CODE)
+                                     78 	.area GSFINAL (CODE)
+                                     79 	.area GSINIT  (CODE)
+                                     80 ;--------------------------------------------------------
+                                     81 ; Home
+                                     82 ;--------------------------------------------------------
+                                     83 	.area HOME    (CODE)
+                                     84 	.area HOME    (CODE)
+                                     85 ;--------------------------------------------------------
+                                     86 ; code
+                                     87 ;--------------------------------------------------------
+                                     88 	.area CSEG    (CODE)
+                                     89 ;------------------------------------------------------------
+                                     90 ;Allocation info for local variables in function '_divlong_dummy'
+                                     91 ;------------------------------------------------------------
+                                     92 ;	_divulong.c:192: _divlong_dummy (void) __naked
+                                     93 ;	-----------------------------------------
+                                     94 ;	 function _divlong_dummy
+                                     95 ;	-----------------------------------------
+      000000                         96 __divlong_dummy:
+                                     97 ;	naked function: no prologue.
+                                     98 ;	_divulong.c:323: __endasm;
+                                     99 	.globl __divulong
+      000000                        100 	__divulong:
+                                    101 	.globl __divlong ; entry point for __divslong
+                                    102 ; parameter x comes in a, b, dph, dpl
+      000000 FB               [12]  103 	mov r3,a ; save parameter r3
+      000001 E5 81            [12]  104 	mov a,sp
+      000003 24 FB            [12]  105 	add a,#-2-3 ; 2 bytes return address, 3 bytes param y
+      000005 F8               [12]  106 	mov r0,a ; r0 points to r1
+      000006                        107 	__divlong:
+                                    108 ; entry point for __divslong
+      000006 E6               [12]  109 	mov a,@r0 ; load r1
+      000007 F9               [12]  110 	mov r1,a
+      000008 08               [12]  111 	inc r0 ; r0 points to y1
+      000009 7A 20            [12]  112 	mov r2,#32
+      00000B E4               [12]  113 	clr a
+      00000C FC               [12]  114 	mov r4,a
+      00000D FD               [12]  115 	mov r5,a
+      00000E FE               [12]  116 	mov r6,a
+      00000F FF               [12]  117 	mov r7,a
+                                    118 ; optimization loop in lp0 until the first bit is shifted into rest
+      000010                        119 	lp0:
+      000010 E5 82            [12]  120 	mov a,dpl ; x <<= 1
+      000012 25 82            [12]  121 	add a,dpl
+      000014 F5 82            [12]  122 	mov dpl,a
+      000016 E5 83            [12]  123 	mov a,dph
+      000018 33               [12]  124 	rlc a
+      000019 F5 83            [12]  125 	mov dph,a
+      00001B E5 F0            [12]  126 	mov a,b
+      00001D 33               [12]  127 	rlc a
+      00001E F5 F0            [12]  128 	mov b,a
+      000020 EB               [12]  129 	mov a,r3
+      000021 33               [12]  130 	rlc a
+      000022 FB               [12]  131 	mov r3,a
+      000023 40 17            [24]  132 	jc in_lp
+      000025 DA E9            [24]  133 	djnz r2,lp0
+      000027 80 42            [24]  134 	sjmp exit
+      000029                        135 	loop:
+      000029 E5 82            [12]  136 	mov a,dpl ; x <<= 1
+      00002B 25 82            [12]  137 	add a,dpl
+      00002D F5 82            [12]  138 	mov dpl,a
+      00002F E5 83            [12]  139 	mov a,dph
+      000031 33               [12]  140 	rlc a
+      000032 F5 83            [12]  141 	mov dph,a
+      000034 E5 F0            [12]  142 	mov a,b
+      000036 33               [12]  143 	rlc a
+      000037 F5 F0            [12]  144 	mov b,a
+      000039 EB               [12]  145 	mov a,r3
+      00003A 33               [12]  146 	rlc a
+      00003B FB               [12]  147 	mov r3,a
+      00003C                        148 	in_lp:
+      00003C EC               [12]  149 	mov a,r4 ; reste <<= 1
+      00003D 33               [12]  150 	rlc a ; feed in carry
+      00003E FC               [12]  151 	mov r4,a
+      00003F ED               [12]  152 	mov a,r5
+      000040 33               [12]  153 	rlc a
+      000041 FD               [12]  154 	mov r5,a
+      000042 EE               [12]  155 	mov a,r6
+      000043 33               [12]  156 	rlc a
+      000044 FE               [12]  157 	mov r6,a
+      000045 EF               [12]  158 	mov a,r7
+      000046 33               [12]  159 	rlc a
+      000047 FF               [12]  160 	mov r7,a
+      000048 EC               [12]  161 	mov a,r4 ; reste - y
+      000049 99               [12]  162 	subb a,r1 ; carry is always clear here, because
+                                    163 ; reste <<= 1 never overflows
+      00004A ED               [12]  164 	mov a,r5
+      00004B 96               [12]  165 	subb a,@r0 ; y1
+      00004C EE               [12]  166 	mov a,r6
+      00004D 08               [12]  167 	inc r0
+      00004E 96               [12]  168 	subb a,@r0 ; y2
+      00004F EF               [12]  169 	mov a,r7
+      000050 08               [12]  170 	inc r0
+      000051 96               [12]  171 	subb a,@r0 ; y3
+      000052 18               [12]  172 	dec r0
+      000053 18               [12]  173 	dec r0
+      000054 40 13            [24]  174 	jc minus ; reste >= y?
+                                    175 ; -> yes; reste -= y;
+      000056 EC               [12]  176 	mov a,r4
+      000057 99               [12]  177 	subb a,r1 ; carry is always clear here (jc)
+      000058 FC               [12]  178 	mov r4,a
+      000059 ED               [12]  179 	mov a,r5
+      00005A 96               [12]  180 	subb a,@r0 ; y1
+      00005B FD               [12]  181 	mov r5,a
+      00005C EE               [12]  182 	mov a,r6
+      00005D 08               [12]  183 	inc r0
+      00005E 96               [12]  184 	subb a,@r0 ; y2
+      00005F FE               [12]  185 	mov r6,a
+      000060 EF               [12]  186 	mov a,r7
+      000061 08               [12]  187 	inc r0
+      000062 96               [12]  188 	subb a,@r0 ; y3
+      000063 FF               [12]  189 	mov r7,a
+      000064 18               [12]  190 	dec r0
+      000065 18               [12]  191 	dec r0
+      000066 43 82 01         [24]  192 	orl dpl,#1
+      000069                        193 	minus:
+      000069 DA BE            [24]  194 	djnz r2,loop ; -> no
+      00006B                        195 	exit:
+      00006B EB               [12]  196 	mov a,r3 ; prepare the return value
+      00006C 22               [24]  197 	ret
+                                    198 ;	naked function: no epilogue.
+                                    199 	.area CSEG    (CODE)
+                                    200 	.area CONST   (CODE)
+                                    201 	.area XINIT   (CODE)
+                                    202 	.area CABS    (ABS,CODE)

@@ -1,0 +1,613 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                              4 ; This file was generated Wed Nov 27 12:28:19 2013
+                              5 ;--------------------------------------------------------
+                              6 	.module _fsmul
+                              7 	.optsdcc -mtlcs90
+                              8 	
+                              9 ;--------------------------------------------------------
+                             10 ; Public variables in this module
+                             11 ;--------------------------------------------------------
+                             12 	.globl ___fsmul
+                             13 ;--------------------------------------------------------
+                             14 ; ram data
+                             15 ;--------------------------------------------------------
+                             16 	.area _DATA
+                             17 ;--------------------------------------------------------
+                             18 ; ram data
+                             19 ;--------------------------------------------------------
+                             20 	.area _INITIALIZED
+                             21 ;--------------------------------------------------------
+                             22 ; absolute external ram data
+                             23 ;--------------------------------------------------------
+                             24 	.area _DABS (ABS)
+                             25 ;--------------------------------------------------------
+                             26 ; global & static initialisations
+                             27 ;--------------------------------------------------------
+                             28 	.area _HOME
+                             29 	.area _GSINIT
+                             30 	.area _GSFINAL
+                             31 	.area _GSINIT
+                             32 ;--------------------------------------------------------
+                             33 ; Home
+                             34 ;--------------------------------------------------------
+                             35 	.area _HOME
+                             36 ;../_fsmul.c:241: float __fsmul (float a1, float a2) {
+                             37 ;	---------------------------------
+                             38 ; Function __fsmul
+                             39 ; ---------------------------------
+   0000                      40 ___fsmul_start::
+   0000                      41 ___fsmul:
+   0000 54            [ 4]   42 	push	ix
+   0001 3C 00 00      [ 4]   43 	ld	ix,#0
+   0004 FE 14         [ 7]   44 	add	ix,sp
+   0006 16 E8 FF      [ 7]   45 	add	sp, #-24
+                             46 ;../_fsmul.c:247: fl1.f = a1;
+   0009 3A 0B 00      [13]   47 	ld	hl,#0x000B
+   000C FE 70         [ 7]   48 	add	hl,sp
+   000E 08            [ 4]   49 	ex	de,hl
+   000F 3A 1C 00      [13]   50 	ld	hl, #0x001C
+   0012 FE 70         [ 7]   51 	add	hl, sp
+   0014 38 04 00      [12]   52 	ld	bc, #0x0004
+   0017 FE 59         [ 7]   53 	ldir
+                             54 ;../_fsmul.c:248: fl2.f = a2;
+   0019 3A 07 00      [13]   55 	ld	hl,#0x0007
+   001C FE 70         [ 7]   56 	add	hl,sp
+   001E 08            [ 4]   57 	ex	de,hl
+   001F 3A 20 00      [13]   58 	ld	hl, #0x0020
+   0022 FE 70         [ 7]   59 	add	hl, sp
+   0024 38 04 00      [12]   60 	ld	bc, #0x0004
+   0027 FE 59         [ 7]   61 	ldir
+                             62 ;../_fsmul.c:250: if (!fl1.l || !fl2.l)
+   0029 3A 0B 00      [13]   63 	ld	hl,#0x000B
+   002C FE 70         [ 7]   64 	add	hl,sp
+   002E E2 29         [10]   65 	ld	c,(hl)
+   0030 92            [ 4]   66 	inc	hl
+   0031 E2 28         [10]   67 	ld	b,(hl)
+   0033 92            [ 4]   68 	inc	hl
+   0034 E2 2B         [10]   69 	ld	e,(hl)
+   0036 92            [ 4]   70 	inc	hl
+   0037 E2 2E         [10]   71 	ld	a, (hl)
+   0039 FB 66         [ 4]   72 	or	a, e
+   003B F8 66         [11]   73 	or	a, b
+   003D F9 66         [ 6]   74 	or	a,c
+   003F C6 18         [ 7]   75 	jr	Z,00101$
+   0041 3A 07 00      [13]   76 	ld	hl,#0x0007
+   0044 FE 70         [ 7]   77 	add	hl,sp
+   0046 E2 2B         [10]   78 	ld	e,(hl)
+   0048 92            [ 4]   79 	inc	hl
+   0049 E2 2A         [10]   80 	ld	d,(hl)
+   004B 92            [ 4]   81 	inc	hl
+   004C E2 28         [10]   82 	ld	b,(hl)
+   004E 92            [ 4]   83 	inc	hl
+   004F E2 2E         [10]   84 	ld	a, (hl)
+   0051 F8 66         [11]   85 	or	a, b
+   0053 FA 66         [10]   86 	or	a, d
+   0055 FB 66         [ 4]   87 	or	a,e
+   0057 CE 0A         [ 7]   88 	jr	NZ,00102$
+   0059                      89 00101$:
+                             90 ;../_fsmul.c:251: return (0);
+   0059 3A 00 00      [13]   91 	ld	hl,#0x0000
+   005C FD 33                92 	ld	e,l
+   005E FC 32         [17]   93 	ld	d,h
+   0060 1Ar33r04      [ 7]   94 	jp	00113$
+   0063                      95 00102$:
+                             96 ;../_fsmul.c:254: sign = SIGN (fl1.l) ^ SIGN (fl2.l);
+   0063 3A 0B 00      [13]   97 	ld	hl,#0x000B
+   0066 FE 70         [ 7]   98 	add	hl,sp
+   0068 E2 2A         [10]   99 	ld	d,(hl)
+   006A 92            [ 4]  100 	inc	hl
+   006B E2 2B         [10]  101 	ld	e,(hl)
+   006D 92            [ 4]  102 	inc	hl
+   006E E2 29         [10]  103 	ld	c,(hl)
+   0070 92            [ 4]  104 	inc	hl
+   0071 E2 2E         [10]  105 	ld	a, (hl)
+   0073 FE A0         [ 7]  106 	rlc	a
+   0075 6C 01         [ 4]  107 	and	a,#0x01
+   0077 F4 FF 26      [17]  108 	ld	-1 (ix),a
+   007A 3A 07 00      [13]  109 	ld	hl,#0x0007
+   007D FE 70         [ 7]  110 	add	hl,sp
+   007F E2 2B         [10]  111 	ld	e,(hl)
+   0081 92            [ 4]  112 	inc	hl
+   0082 E2 2A         [10]  113 	ld	d,(hl)
+   0084 92            [ 4]  114 	inc	hl
+   0085 E2 28         [10]  115 	ld	b,(hl)
+   0087 92            [ 4]  116 	inc	hl
+   0088 E2 2E         [10]  117 	ld	a, (hl)
+   008A FE A0         [ 7]  118 	rlc	a
+   008C 6C 01         [ 4]  119 	and	a,#0x01
+   008E F0 FF 65      [11]  120 	xor	a, -1 (ix)
+   0091 F4 E8 26      [17]  121 	ld	-24 (ix),a
+                            122 ;../_fsmul.c:255: exp = EXP (fl1.l) - EXCESS;
+   0094 3A 0B 00      [13]  123 	ld	hl,#0x000B
+   0097 FE 70         [ 7]  124 	add	hl,sp
+   0099 E2 2B         [10]  125 	ld	e,(hl)
+   009B 92            [ 4]  126 	inc	hl
+   009C E2 2A         [10]  127 	ld	d,(hl)
+   009E 92            [ 4]  128 	inc	hl
+   009F E2 29         [10]  129 	ld	c,(hl)
+   00A1 92            [ 4]  130 	inc	hl
+   00A2 E2 28         [10]  131 	ld	b,(hl)
+   00A4 36 17         [10]  132 	ld	a,#0x17
+   00A6                     133 00143$:
+   00A6 F8 A7         [11]  134 	srl	b
+   00A8 F9 A3         [ 6]  135 	rr	c
+   00AA FA A3         [10]  136 	rr	d
+   00AC FB A3         [ 4]  137 	rr	e
+   00AE 8E            [ 7]  138 	dec	a
+   00AF CE F5         [ 7]  139 	jr	NZ,00143$
+   00B1 32 00         [13]  140 	ld	d,#0x00
+   00B3 38 00 00      [12]  141 	ld	bc,#0x0000
+   00B6 23            [ 6]  142 	ld	a,e
+   00B7 68 82         [ 4]  143 	add	a,#0x82
+   00B9 2D            [ 4]  144 	ld	l,a
+   00BA 22            [16]  145 	ld	a,d
+   00BB 69 FF         [ 4]  146 	adc	a,#0xFF
+   00BD 2C            [ 4]  147 	ld	h,a
+   00BE 21            [10]  148 	ld	a,c
+   00BF 69 FF         [ 4]  149 	adc	a,#0xFF
+   00C1 20            [12]  150 	ld	a,b
+   00C2 69 FF         [ 4]  151 	adc	a,#0xFF
+   00C4 F4 E9 25      [17]  152 	ld	-23 (ix),l
+   00C7 F4 EA 24      [17]  153 	ld	-22 (ix),h
+                            154 ;../_fsmul.c:256: exp += EXP (fl2.l);
+   00CA 3A 07 00      [13]  155 	ld	hl,#0x0007
+   00CD FE 70         [ 7]  156 	add	hl,sp
+   00CF E2 2B         [10]  157 	ld	e,(hl)
+   00D1 92            [ 4]  158 	inc	hl
+   00D2 E2 2A         [10]  159 	ld	d,(hl)
+   00D4 92            [ 4]  160 	inc	hl
+   00D5 E2 29         [10]  161 	ld	c,(hl)
+   00D7 92            [ 4]  162 	inc	hl
+   00D8 E2 28         [10]  163 	ld	b,(hl)
+   00DA 36 17         [10]  164 	ld	a,#0x17
+   00DC                     165 00145$:
+   00DC F8 A7         [11]  166 	srl	b
+   00DE F9 A3         [ 6]  167 	rr	c
+   00E0 FA A3         [10]  168 	rr	d
+   00E2 FB A3         [ 4]  169 	rr	e
+   00E4 8E            [ 7]  170 	dec	a
+   00E5 CE F5         [ 7]  171 	jr	NZ,00145$
+   00E7 F4 FB 23      [17]  172 	ld	-5 (ix),e
+   00EA F4 FC 37 00   [17]  173 	ld	-4 (ix),#0x00
+   00EE F4 FD 37 00   [17]  174 	ld	-3 (ix),#0x00
+   00F2 F4 FE 37 00   [17]  175 	ld	-2 (ix),#0x00
+   00F6 F0 E9 2D      [11]  176 	ld	l,-23 (ix)
+   00F9 F0 EA 2C      [11]  177 	ld	h,-22 (ix)
+   00FC F0 EA 2E      [11]  178 	ld	a,-22 (ix)
+   00FF A2            [ 4]  179 	rla
+   0100 FE 63         [ 7]  180 	sbc	a, a
+   0102 29            [11]  181 	ld	c,a
+   0103 28            [12]  182 	ld	b,a
+   0104 25            [ 4]  183 	ld	a,l
+   0105 F0 FB 60      [11]  184 	add	a, -5 (ix)
+   0108 2D            [ 4]  185 	ld	l,a
+   0109 24            [ 4]  186 	ld	a,h
+   010A F0 FC 61      [11]  187 	adc	a, -4 (ix)
+   010D 2C            [ 4]  188 	ld	h,a
+   010E 21            [10]  189 	ld	a,c
+   010F F0 FD 61      [11]  190 	adc	a, -3 (ix)
+   0112 20            [12]  191 	ld	a,b
+   0113 F0 FE 61      [11]  192 	adc	a, -2 (ix)
+   0116 F4 E9 25      [17]  193 	ld	-23 (ix),l
+   0119 F4 EA 24      [17]  194 	ld	-22 (ix),h
+                            195 ;../_fsmul.c:258: fl1.l = MANT (fl1.l);
+   011C 3A 0B 00      [13]  196 	ld	hl,#0x000B
+   011F FE 70         [ 7]  197 	add	hl,sp
+   0121 F6 13 42      [ 7]  198 	ld	19 (sp), hl
+   0124 3A 0B 00      [13]  199 	ld	hl,#0x000B
+   0127 FE 70         [ 7]  200 	add	hl,sp
+   0129 E2 2B         [10]  201 	ld	e,(hl)
+   012B 92            [ 4]  202 	inc	hl
+   012C E2 2A         [10]  203 	ld	d,(hl)
+   012E 92            [ 4]  204 	inc	hl
+   012F E2 29         [10]  205 	ld	c,(hl)
+   0131 92            [ 4]  206 	inc	hl
+   0132 E2 28         [10]  207 	ld	b,(hl)
+   0134 F9 B7         [ 6]  208 	res	7, c
+   0136 30 00         [12]  209 	ld	b,#0x00
+   0138 F9 BF         [ 6]  210 	set	7, c
+   013A F2 13 4A      [10]  211 	ld	hl, 19 (sp)
+   013D EA 23         [10]  212 	ld	(hl),e
+   013F 92            [ 4]  213 	inc	hl
+   0140 EA 22         [10]  214 	ld	(hl),d
+   0142 92            [ 4]  215 	inc	hl
+   0143 EA 21         [10]  216 	ld	(hl),c
+   0145 92            [ 4]  217 	inc	hl
+   0146 EA 20         [10]  218 	ld	(hl),b
+                            219 ;../_fsmul.c:259: fl2.l = MANT (fl2.l);
+   0148 3A 07 00      [13]  220 	ld	hl,#0x0007
+   014B FE 70         [ 7]  221 	add	hl,sp
+   014D F6 13 42      [ 7]  222 	ld	19 (sp), hl
+   0150 3A 07 00      [13]  223 	ld	hl,#0x0007
+   0153 FE 70         [ 7]  224 	add	hl,sp
+   0155 E2 2B         [10]  225 	ld	e,(hl)
+   0157 92            [ 4]  226 	inc	hl
+   0158 E2 2A         [10]  227 	ld	d,(hl)
+   015A 92            [ 4]  228 	inc	hl
+   015B E2 29         [10]  229 	ld	c,(hl)
+   015D 92            [ 4]  230 	inc	hl
+   015E E2 28         [10]  231 	ld	b,(hl)
+   0160 F9 B7         [ 6]  232 	res	7, c
+   0162 30 00         [12]  233 	ld	b,#0x00
+   0164 F9 BF         [ 6]  234 	set	7, c
+   0166 21            [10]  235 	ld	a, c
+   0167 F2 13 4A      [10]  236 	ld	hl, 19 (sp)
+   016A EA 23         [10]  237 	ld	(hl),e
+   016C 92            [ 4]  238 	inc	hl
+   016D EA 22         [10]  239 	ld	(hl),d
+   016F 92            [ 4]  240 	inc	hl
+   0170 EA 21         [10]  241 	ld	(hl),c
+   0172 92            [ 4]  242 	inc	hl
+   0173 EA 20         [10]  243 	ld	(hl),b
+                            244 ;../_fsmul.c:262: result = (fl1.l >> 8) * (fl2.l >> 8);
+   0175 3A 0B 00      [13]  245 	ld	hl,#0x000B
+   0178 FE 70         [ 7]  246 	add	hl,sp
+   017A E2 2B         [10]  247 	ld	e,(hl)
+   017C 92            [ 4]  248 	inc	hl
+   017D E2 2A         [10]  249 	ld	d,(hl)
+   017F 92            [ 4]  250 	inc	hl
+   0180 E2 29         [10]  251 	ld	c,(hl)
+   0182 92            [ 4]  252 	inc	hl
+   0183 E2 28         [10]  253 	ld	b,(hl)
+   0185 56            [ 7]  254 	push	af
+   0186 F4 FB 23      [17]  255 	ld	-5 (ix),e
+   0189 F4 FC 22      [17]  256 	ld	-4 (ix),d
+   018C F4 FD 21      [17]  257 	ld	-3 (ix),c
+   018F F4 FE 20      [17]  258 	ld	-2 (ix),b
+   0192 5E            [ 7]  259 	pop	af
+   0193 36 08         [10]  260 	ld	a,#0x08
+   0195                     261 00147$:
+   0195 E7 FE A7      [11]  262 	srl	-2 (ix)
+   0198 E7 FD A3      [11]  263 	rr	-3 (ix)
+   019B E7 FC A3      [11]  264 	rr	-4 (ix)
+   019E E7 FB A3      [11]  265 	rr	-5 (ix)
+   01A1 8E            [ 7]  266 	dec	a
+   01A2 CE F1         [ 7]  267 	jr	NZ,00147$
+   01A4 3A 07 00      [13]  268 	ld	hl,#0x0007
+   01A7 FE 70         [ 7]  269 	add	hl,sp
+   01A9 E2 2B         [10]  270 	ld	e,(hl)
+   01AB 92            [ 4]  271 	inc	hl
+   01AC E2 2A         [10]  272 	ld	d,(hl)
+   01AE 92            [ 4]  273 	inc	hl
+   01AF E2 29         [10]  274 	ld	c,(hl)
+   01B1 92            [ 4]  275 	inc	hl
+   01B2 E2 28         [10]  276 	ld	b,(hl)
+   01B4 36 08         [10]  277 	ld	a,#0x08
+   01B6                     278 00149$:
+   01B6 F8 A7         [11]  279 	srl	b
+   01B8 F9 A3         [ 6]  280 	rr	c
+   01BA FA A3         [10]  281 	rr	d
+   01BC FB A3         [ 4]  282 	rr	e
+   01BE 8E            [ 7]  283 	dec	a
+   01BF CE F5         [ 7]  284 	jr	NZ,00149$
+   01C1 50            [ 4]  285 	push	bc
+   01C2 51            [ 4]  286 	push	de
+   01C3 F2 19 4A      [10]  287 	ld	hl, 25 (sp)
+   01C6 52            [ 4]  288 	push	hl
+   01C7 F2 19 4A      [10]  289 	ld	hl, 25 (sp)
+   01CA 52            [ 4]  290 	push	hl
+   01CB 1Cr00r00      [ 4]  291 	call	__mullong_rrx_s
+   01CE 16 08 00      [ 7]  292 	add	sp, #8
+   01D1 F4 EB 25      [17]  293 	ld	-21 (ix),l
+   01D4 F4 EC 24      [17]  294 	ld	-20 (ix),h
+   01D7 F4 ED 23      [17]  295 	ld	-19 (ix),e
+   01DA F4 EE 22      [17]  296 	ld	-18 (ix),d
+                            297 ;../_fsmul.c:263: result += ((fl1.l & (unsigned long) 0xFF) * (fl2.l >> 8)) >> 8;
+   01DD 3A 0B 00      [13]  298 	ld	hl,#0x000B
+   01E0 FE 70         [ 7]  299 	add	hl,sp
+   01E2 E2 2B         [10]  300 	ld	e,(hl)
+   01E4 92            [ 4]  301 	inc	hl
+   01E5 E2 2A         [10]  302 	ld	d,(hl)
+   01E7 92            [ 4]  303 	inc	hl
+   01E8 E2 29         [10]  304 	ld	c,(hl)
+   01EA 92            [ 4]  305 	inc	hl
+   01EB E2 28         [10]  306 	ld	b,(hl)
+   01ED F4 FB 23      [17]  307 	ld	-5 (ix),e
+   01F0 F4 FC 37 00   [17]  308 	ld	-4 (ix),#0x00
+   01F4 F4 FD 37 00   [17]  309 	ld	-3 (ix),#0x00
+   01F8 F4 FE 37 00   [17]  310 	ld	-2 (ix),#0x00
+   01FC 3A 07 00      [13]  311 	ld	hl,#0x0007
+   01FF FE 70         [ 7]  312 	add	hl,sp
+   0201 E2 2B         [10]  313 	ld	e,(hl)
+   0203 92            [ 4]  314 	inc	hl
+   0204 E2 2A         [10]  315 	ld	d,(hl)
+   0206 92            [ 4]  316 	inc	hl
+   0207 E2 29         [10]  317 	ld	c,(hl)
+   0209 92            [ 4]  318 	inc	hl
+   020A E2 28         [10]  319 	ld	b,(hl)
+   020C 36 08         [10]  320 	ld	a,#0x08
+   020E                     321 00151$:
+   020E F8 A7         [11]  322 	srl	b
+   0210 F9 A3         [ 6]  323 	rr	c
+   0212 FA A3         [10]  324 	rr	d
+   0214 FB A3         [ 4]  325 	rr	e
+   0216 8E            [ 7]  326 	dec	a
+   0217 CE F5         [ 7]  327 	jr	NZ,00151$
+   0219 50            [ 4]  328 	push	bc
+   021A 51            [ 4]  329 	push	de
+   021B F2 19 4A      [10]  330 	ld	hl, 25 (sp)
+   021E 52            [ 4]  331 	push	hl
+   021F F2 19 4A      [10]  332 	ld	hl, 25 (sp)
+   0222 52            [ 4]  333 	push	hl
+   0223 1Cr00r00      [ 4]  334 	call	__mullong_rrx_s
+   0226 16 08 00      [ 7]  335 	add	sp, #8
+   0229 FD 30               336 	ld	b,l
+   022B FC 31         [17]  337 	ld	c,h
+   022D 36 08         [10]  338 	ld	a,#0x08
+   022F                     339 00153$:
+   022F FA A7         [10]  340 	srl	d
+   0231 FB A3         [ 4]  341 	rr	e
+   0233 F9 A3         [ 6]  342 	rr	c
+   0235 F8 A3         [11]  343 	rr	b
+   0237 8E            [ 7]  344 	dec	a
+   0238 CE F5         [ 7]  345 	jr	NZ,00153$
+   023A F0 EB 2E      [11]  346 	ld	a,-21 (ix)
+   023D F8 60         [11]  347 	add	a, b
+   023F F4 EB 26      [17]  348 	ld	-21 (ix),a
+   0242 F0 EC 2E      [11]  349 	ld	a,-20 (ix)
+   0245 F9 61         [ 6]  350 	adc	a, c
+   0247 F4 EC 26      [17]  351 	ld	-20 (ix),a
+   024A F0 ED 2E      [11]  352 	ld	a,-19 (ix)
+   024D FB 61         [ 4]  353 	adc	a, e
+   024F F4 ED 26      [17]  354 	ld	-19 (ix),a
+   0252 F0 EE 2E      [11]  355 	ld	a,-18 (ix)
+   0255 FA 61         [10]  356 	adc	a, d
+   0257 F4 EE 26      [17]  357 	ld	-18 (ix),a
+                            358 ;../_fsmul.c:264: result += ((fl2.l & (unsigned long) 0xFF) * (fl1.l >> 8)) >> 8;
+   025A 3A 07 00      [13]  359 	ld	hl,#0x0007
+   025D FE 70         [ 7]  360 	add	hl,sp
+   025F E2 2B         [10]  361 	ld	e,(hl)
+   0261 92            [ 4]  362 	inc	hl
+   0262 E2 2A         [10]  363 	ld	d,(hl)
+   0264 92            [ 4]  364 	inc	hl
+   0265 E2 29         [10]  365 	ld	c,(hl)
+   0267 92            [ 4]  366 	inc	hl
+   0268 E2 28         [10]  367 	ld	b,(hl)
+   026A F4 FB 23      [17]  368 	ld	-5 (ix),e
+   026D F4 FC 37 00   [17]  369 	ld	-4 (ix),#0x00
+   0271 F4 FD 37 00   [17]  370 	ld	-3 (ix),#0x00
+   0275 F4 FE 37 00   [17]  371 	ld	-2 (ix),#0x00
+   0279 3A 0B 00      [13]  372 	ld	hl,#0x000B
+   027C FE 70         [ 7]  373 	add	hl,sp
+   027E E2 2B         [10]  374 	ld	e,(hl)
+   0280 92            [ 4]  375 	inc	hl
+   0281 E2 2A         [10]  376 	ld	d,(hl)
+   0283 92            [ 4]  377 	inc	hl
+   0284 E2 29         [10]  378 	ld	c,(hl)
+   0286 92            [ 4]  379 	inc	hl
+   0287 E2 28         [10]  380 	ld	b,(hl)
+   0289 36 08         [10]  381 	ld	a,#0x08
+   028B                     382 00155$:
+   028B F8 A7         [11]  383 	srl	b
+   028D F9 A3         [ 6]  384 	rr	c
+   028F FA A3         [10]  385 	rr	d
+   0291 FB A3         [ 4]  386 	rr	e
+   0293 8E            [ 7]  387 	dec	a
+   0294 CE F5         [ 7]  388 	jr	NZ,00155$
+   0296 50            [ 4]  389 	push	bc
+   0297 51            [ 4]  390 	push	de
+   0298 F2 19 4A      [10]  391 	ld	hl, 25 (sp)
+   029B 52            [ 4]  392 	push	hl
+   029C F2 19 4A      [10]  393 	ld	hl, 25 (sp)
+   029F 52            [ 4]  394 	push	hl
+   02A0 1Cr00r00      [ 4]  395 	call	__mullong_rrx_s
+   02A3 16 08 00      [ 7]  396 	add	sp, #8
+   02A6 FD 30               397 	ld	b,l
+   02A8 FC 31         [17]  398 	ld	c,h
+   02AA 36 08         [10]  399 	ld	a,#0x08
+   02AC                     400 00157$:
+   02AC FA A7         [10]  401 	srl	d
+   02AE FB A3         [ 4]  402 	rr	e
+   02B0 F9 A3         [ 6]  403 	rr	c
+   02B2 F8 A3         [11]  404 	rr	b
+   02B4 8E            [ 7]  405 	dec	a
+   02B5 CE F5         [ 7]  406 	jr	NZ,00157$
+   02B7 F0 EB 2E      [11]  407 	ld	a,-21 (ix)
+   02BA F8 60         [11]  408 	add	a, b
+   02BC F4 EB 26      [17]  409 	ld	-21 (ix),a
+   02BF F0 EC 2E      [11]  410 	ld	a,-20 (ix)
+   02C2 F9 61         [ 6]  411 	adc	a, c
+   02C4 F4 EC 26      [17]  412 	ld	-20 (ix),a
+   02C7 F0 ED 2E      [11]  413 	ld	a,-19 (ix)
+   02CA FB 61         [ 4]  414 	adc	a, e
+   02CC F4 ED 26      [17]  415 	ld	-19 (ix),a
+   02CF F0 EE 2E      [11]  416 	ld	a,-18 (ix)
+   02D2 FA 61         [10]  417 	adc	a, d
+   02D4 F4 EE 26      [17]  418 	ld	-18 (ix),a
+                            419 ;../_fsmul.c:267: result += 0x40;
+   02D7 F0 EB 2E      [11]  420 	ld	a,-21 (ix)
+   02DA 68 40         [ 4]  421 	add	a, #0x40
+   02DC F4 EB 26      [17]  422 	ld	-21 (ix),a
+   02DF F0 EC 2E      [11]  423 	ld	a,-20 (ix)
+   02E2 69 00         [ 4]  424 	adc	a, #0x00
+   02E4 F4 EC 26      [17]  425 	ld	-20 (ix),a
+   02E7 F0 ED 2E      [11]  426 	ld	a,-19 (ix)
+   02EA 69 00         [ 4]  427 	adc	a, #0x00
+   02EC F4 ED 26      [17]  428 	ld	-19 (ix),a
+   02EF F0 EE 2E      [11]  429 	ld	a,-18 (ix)
+   02F2 69 00         [ 4]  430 	adc	a, #0x00
+   02F4 F4 EE 26      [17]  431 	ld	-18 (ix),a
+                            432 ;../_fsmul.c:269: if (result & SIGNBIT)
+   02F7 F0 EE AF      [11]  433 	bit	7, -18 (ix)
+   02FA EBr32r03 C6   [ 4]  434 	jp	Z,00105$
+                            435 ;../_fsmul.c:272: result += 0x40;
+   02FE F0 EB 2E      [11]  436 	ld	a,-21 (ix)
+   0301 68 40         [ 4]  437 	add	a, #0x40
+   0303 F4 EB 26      [17]  438 	ld	-21 (ix),a
+   0306 F0 EC 2E      [11]  439 	ld	a,-20 (ix)
+   0309 69 00         [ 4]  440 	adc	a, #0x00
+   030B F4 EC 26      [17]  441 	ld	-20 (ix),a
+   030E F0 ED 2E      [11]  442 	ld	a,-19 (ix)
+   0311 69 00         [ 4]  443 	adc	a, #0x00
+   0313 F4 ED 26      [17]  444 	ld	-19 (ix),a
+   0316 F0 EE 2E      [11]  445 	ld	a,-18 (ix)
+   0319 69 00         [ 4]  446 	adc	a, #0x00
+   031B F4 EE 26      [17]  447 	ld	-18 (ix),a
+                            448 ;../_fsmul.c:273: result >>= 8;
+   031E 56            [ 7]  449 	push	af
+   031F 5E            [ 7]  450 	pop	af
+   0320 30 08         [12]  451 	ld	b,#0x08
+   0322                     452 00160$:
+   0322 E7 EE A7      [11]  453 	srl	-18 (ix)
+   0325 E7 ED A3      [11]  454 	rr	-19 (ix)
+   0328 E7 EC A3      [11]  455 	rr	-20 (ix)
+   032B E7 EB A3      [11]  456 	rr	-21 (ix)
+   032E 18 F2         [12]  457 	djnz	00160$
+   0330 C8 18         [11]  458 	jr	00106$
+   0332                     459 00105$:
+                            460 ;../_fsmul.c:277: result >>= 7;
+   0332 56            [ 7]  461 	push	af
+   0333 5E            [ 7]  462 	pop	af
+   0334 30 07         [12]  463 	ld	b,#0x07
+   0336                     464 00162$:
+   0336 E7 EE A7      [11]  465 	srl	-18 (ix)
+   0339 E7 ED A3      [11]  466 	rr	-19 (ix)
+   033C E7 EC A3      [11]  467 	rr	-20 (ix)
+   033F E7 EB A3      [11]  468 	rr	-21 (ix)
+   0342 18 F2         [12]  469 	djnz	00162$
+                            470 ;../_fsmul.c:278: exp--;
+   0344 F2 01 8F      [10]  471 	dec	1 (sp)
+   0347 F2 01 4A      [10]  472 	ld	hl, 1 (sp)
+   034A                     473 00106$:
+                            474 ;../_fsmul.c:281: result &= ~HIDDEN;
+   034A F0 ED B7      [11]  475 	res	7, -19 (ix)
+                            476 ;../_fsmul.c:284: if (exp >= 0x100)
+   034D F0 EA 2E      [11]  477 	ld	a,-22 (ix)
+   0350 6D 80         [ 4]  478 	xor	a, #0x80
+   0352 6A 81         [ 4]  479 	sub	a, #0x81
+   0354 EBr86r03 C7   [ 4]  480 	jp	C,00111$
+                            481 ;../_fsmul.c:285: fl1.l = (sign ? SIGNBIT : 0) | __INFINITY;
+   0358 3A 0B 00      [13]  482 	ld	hl,#0x000B
+   035B FE 70         [ 7]  483 	add	hl,sp
+   035D F0 E8 2E      [11]  484 	ld	a,-24 (ix)
+   0360 FE 66         [ 7]  485 	or	a, a
+   0362 C6 08         [ 7]  486 	jr	Z,00115$
+   0364 38 00 00      [12]  487 	ld	bc,#0x0000
+   0367 39 00 80      [11]  488 	ld	de,#0x8000
+   036A C8 06         [11]  489 	jr	00116$
+   036C                     490 00115$:
+   036C 38 00 00      [12]  491 	ld	bc,#0x0000
+   036F 39 00 00      [11]  492 	ld	de,#0x0000
+   0372                     493 00116$:
+   0372 FB BF         [ 4]  494 	set	7, e
+   0374 22            [16]  495 	ld	a,d
+   0375 6E 7F         [ 7]  496 	or	a, #0x7F
+   0377 2A            [16]  497 	ld	d,a
+   0378 EA 21         [10]  498 	ld	(hl),c
+   037A 92            [ 4]  499 	inc	hl
+   037B EA 20         [10]  500 	ld	(hl),b
+   037D 92            [ 4]  501 	inc	hl
+   037E EA 23         [10]  502 	ld	(hl),e
+   0380 92            [ 4]  503 	inc	hl
+   0381 EA 22         [10]  504 	ld	(hl),d
+   0383 1Ar1Fr04      [ 7]  505 	jp	00112$
+   0386                     506 00111$:
+                            507 ;../_fsmul.c:286: else if (exp < 0)
+   0386 F0 EA AF      [11]  508 	bit	7, -22 (ix)
+   0389 C6 17         [ 7]  509 	jr	Z,00108$
+                            510 ;../_fsmul.c:287: fl1.l = 0;
+   038B 3A 0B 00      [13]  511 	ld	hl,#0x000B
+   038E FE 70         [ 7]  512 	add	hl,sp
+   0390 FE 65         [ 7]  513 	xor	a, a
+   0392 EA 26         [10]  514 	ld	(hl), a
+   0394 92            [ 4]  515 	inc	hl
+   0395 EA 26         [10]  516 	ld	(hl), a
+   0397 92            [ 4]  517 	inc	hl
+   0398 FE 65         [ 7]  518 	xor	a, a
+   039A EA 26         [10]  519 	ld	(hl), a
+   039C 92            [ 4]  520 	inc	hl
+   039D EA 26         [10]  521 	ld	(hl), a
+   039F 1Ar1Fr04      [ 7]  522 	jp	00112$
+   03A2                     523 00108$:
+                            524 ;../_fsmul.c:289: fl1.l = PACK (sign ? SIGNBIT : 0 , exp, result);
+   03A2 3A 0B 00      [13]  525 	ld	hl,#0x000B
+   03A5 FE 70         [ 7]  526 	add	hl,sp
+   03A7 F6 13 42      [ 7]  527 	ld	19 (sp), hl
+   03AA F0 E8 2E      [11]  528 	ld	a,-24 (ix)
+   03AD FE 66         [ 7]  529 	or	a, a
+   03AF C6 12         [ 7]  530 	jr	Z,00117$
+   03B1 F4 F7 37 00   [17]  531 	ld	-9 (ix),#0x00
+   03B5 F4 F8 37 00   [17]  532 	ld	-8 (ix),#0x00
+   03B9 F4 F9 37 00   [17]  533 	ld	-7 (ix),#0x00
+   03BD F4 FA 37 80   [17]  534 	ld	-6 (ix),#0x80
+   03C1 C8 0E         [11]  535 	jr	00118$
+   03C3                     536 00117$:
+   03C3 FE 65         [ 7]  537 	xor	a, a
+   03C5 F4 F7 26      [17]  538 	ld	-9 (ix),a
+   03C8 F4 F8 26      [17]  539 	ld	-8 (ix),a
+   03CB F4 F9 26      [17]  540 	ld	-7 (ix),a
+   03CE F4 FA 26      [17]  541 	ld	-6 (ix),a
+   03D1                     542 00118$:
+   03D1 F0 E9 2D      [11]  543 	ld	l,-23 (ix)
+   03D4 F0 EA 2C      [11]  544 	ld	h,-22 (ix)
+   03D7 F0 EA 2E      [11]  545 	ld	a,-22 (ix)
+   03DA A2            [ 4]  546 	rla
+   03DB FE 63         [ 7]  547 	sbc	a, a
+   03DD 2B            [ 6]  548 	ld	e,a
+   03DE 2A            [16]  549 	ld	d,a
+   03DF 30 17         [12]  550 	ld	b,#0x17
+   03E1                     551 00164$:
+   03E1 FA 70         [10]  552 	add	hl, hl
+   03E3 FB A2         [ 4]  553 	rl	e
+   03E5 FA A2         [10]  554 	rl	d
+   03E7 18 F8         [12]  555 	djnz	00164$
+   03E9 25            [ 4]  556 	ld	a,l
+   03EA F0 F7 66      [11]  557 	or	a, -9 (ix)
+   03ED 2D            [ 4]  558 	ld	l,a
+   03EE 24            [ 4]  559 	ld	a,h
+   03EF F0 F8 66      [11]  560 	or	a, -8 (ix)
+   03F2 2C            [ 4]  561 	ld	h,a
+   03F3 23            [ 6]  562 	ld	a,e
+   03F4 F0 F9 66      [11]  563 	or	a, -7 (ix)
+   03F7 2B            [ 6]  564 	ld	e,a
+   03F8 22            [16]  565 	ld	a,d
+   03F9 F0 FA 66      [11]  566 	or	a, -6 (ix)
+   03FC 2A            [16]  567 	ld	d,a
+   03FD 25            [ 4]  568 	ld	a,l
+   03FE F0 EB 66      [11]  569 	or	a, -21 (ix)
+   0401 29            [11]  570 	ld	c,a
+   0402 24            [ 4]  571 	ld	a,h
+   0403 F0 EC 66      [11]  572 	or	a, -20 (ix)
+   0406 28            [12]  573 	ld	b,a
+   0407 23            [ 6]  574 	ld	a,e
+   0408 F0 ED 66      [11]  575 	or	a, -19 (ix)
+   040B 2B            [ 6]  576 	ld	e,a
+   040C 22            [16]  577 	ld	a,d
+   040D F0 EE 66      [11]  578 	or	a, -18 (ix)
+   0410 2A            [16]  579 	ld	d,a
+   0411 F2 13 4A      [10]  580 	ld	hl, 19 (sp)
+   0414 EA 21         [10]  581 	ld	(hl),c
+   0416 92            [ 4]  582 	inc	hl
+   0417 EA 20         [10]  583 	ld	(hl),b
+   0419 92            [ 4]  584 	inc	hl
+   041A EA 23         [10]  585 	ld	(hl),e
+   041C 92            [ 4]  586 	inc	hl
+   041D EA 22         [10]  587 	ld	(hl),d
+   041F                     588 00112$:
+                            589 ;../_fsmul.c:290: return (fl1.f);
+   041F 3A 0B 00      [13]  590 	ld	hl,#0x000B
+   0422 FE 70         [ 7]  591 	add	hl,sp
+   0424 E2 28         [10]  592 	ld	b,(hl)
+   0426 92            [ 4]  593 	inc	hl
+   0427 E2 29         [10]  594 	ld	c,(hl)
+   0429 92            [ 4]  595 	inc	hl
+   042A E2 2B         [10]  596 	ld	e,(hl)
+   042C 92            [ 4]  597 	inc	hl
+   042D E2 2A         [10]  598 	ld	d,(hl)
+   042F F8 35         [11]  599 	ld	l,b
+   0431 F9 34         [ 6]  600 	ld	h,c
+   0433                     601 00113$:
+   0433 FC 3E         [17]  602 	ld	sp, ix
+   0435 5C            [ 4]  603 	pop	ix
+   0436 1E            [ 7]  604 	ret
+   0437                     605 ___fsmul_end::
+                            606 	.area _HOME
+                            607 ;--------------------------------------------------------
+                            608 ; code
+                            609 ;--------------------------------------------------------
+                            610 	.area _CODE
+                            611 	.area _CODE
+                            612 	.area _INITIALIZER
+                            613 	.area _CABS (ABS)

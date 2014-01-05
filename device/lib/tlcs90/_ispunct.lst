@@ -1,0 +1,117 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                              4 ; This file was generated Wed Nov 27 12:28:24 2013
+                              5 ;--------------------------------------------------------
+                              6 	.module _ispunct
+                              7 	.optsdcc -mtlcs90
+                              8 	
+                              9 ;--------------------------------------------------------
+                             10 ; Public variables in this module
+                             11 ;--------------------------------------------------------
+                             12 	.globl _isspace
+                             13 	.globl _isprint
+                             14 	.globl _isupper
+                             15 	.globl _islower
+                             16 	.globl _isdigit
+                             17 	.globl _ispunct
+                             18 ;--------------------------------------------------------
+                             19 ; ram data
+                             20 ;--------------------------------------------------------
+                             21 	.area _DATA
+                             22 ;--------------------------------------------------------
+                             23 ; ram data
+                             24 ;--------------------------------------------------------
+                             25 	.area _INITIALIZED
+                             26 ;--------------------------------------------------------
+                             27 ; absolute external ram data
+                             28 ;--------------------------------------------------------
+                             29 	.area _DABS (ABS)
+                             30 ;--------------------------------------------------------
+                             31 ; global & static initialisations
+                             32 ;--------------------------------------------------------
+                             33 	.area _HOME
+                             34 	.area _GSINIT
+                             35 	.area _GSFINAL
+                             36 	.area _GSINIT
+                             37 ;--------------------------------------------------------
+                             38 ; Home
+                             39 ;--------------------------------------------------------
+                             40 	.area _HOME
+                             41 	.area _HOME
+                             42 ;--------------------------------------------------------
+                             43 ; code
+                             44 ;--------------------------------------------------------
+                             45 	.area _CODE
+                             46 ;../_ispunct.c:31: char ispunct (unsigned char c)
+                             47 ;	---------------------------------
+                             48 ; Function ispunct
+                             49 ; ---------------------------------
+   0000                      50 _ispunct_start::
+   0000                      51 _ispunct:
+                             52 ;../_ispunct.c:33: if ( isprint (c) &&
+   0000 3A 02 00      [13]   53 	ld	hl, #2+0
+   0003 FE 70         [ 7]   54 	add	hl, sp
+   0005 E2 2E         [10]   55 	ld	a, (hl)
+   0007 56            [ 7]   56 	push	af
+   0008 96            [ 7]   57 	inc	sp
+   0009 1Cr00r00      [ 4]   58 	call	_isprint
+   000C 96            [ 7]   59 	inc	sp
+   000D 25            [ 4]   60 	ld	a,l
+   000E FE 66         [ 7]   61 	or	a, a
+   0010 EBr63r00 C6   [ 4]   62 	jp	Z,00102$
+                             63 ;../_ispunct.c:34: !islower(c) &&
+   0014 3A 02 00      [13]   64 	ld	hl, #2+0
+   0017 FE 70         [ 7]   65 	add	hl, sp
+   0019 E2 2E         [10]   66 	ld	a, (hl)
+   001B 56            [ 7]   67 	push	af
+   001C 96            [ 7]   68 	inc	sp
+   001D 1Cr00r00      [ 4]   69 	call	_islower
+   0020 96            [ 7]   70 	inc	sp
+   0021 25            [ 4]   71 	ld	a,l
+   0022 FE 66         [ 7]   72 	or	a, a
+   0024 EBr63r00 CE   [ 4]   73 	jp	NZ,00102$
+                             74 ;../_ispunct.c:35: !isupper(c) &&
+   0028 3A 02 00      [13]   75 	ld	hl, #2+0
+   002B FE 70         [ 7]   76 	add	hl, sp
+   002D E2 2E         [10]   77 	ld	a, (hl)
+   002F 56            [ 7]   78 	push	af
+   0030 96            [ 7]   79 	inc	sp
+   0031 1Cr00r00      [ 4]   80 	call	_isupper
+   0034 96            [ 7]   81 	inc	sp
+   0035 25            [ 4]   82 	ld	a,l
+   0036 FE 66         [ 7]   83 	or	a, a
+   0038 EBr63r00 CE   [ 4]   84 	jp	NZ,00102$
+                             85 ;../_ispunct.c:36: !isspace(c) &&
+   003C 3A 02 00      [13]   86 	ld	hl, #2+0
+   003F FE 70         [ 7]   87 	add	hl, sp
+   0041 E2 2E         [10]   88 	ld	a, (hl)
+   0043 56            [ 7]   89 	push	af
+   0044 96            [ 7]   90 	inc	sp
+   0045 1Cr00r00      [ 4]   91 	call	_isspace
+   0048 96            [ 7]   92 	inc	sp
+   0049 25            [ 4]   93 	ld	a,l
+   004A FE 66         [ 7]   94 	or	a, a
+   004C CE 15         [ 7]   95 	jr	NZ,00102$
+                             96 ;../_ispunct.c:37: !isdigit(c) )
+   004E 3A 02 00      [13]   97 	ld	hl, #2+0
+   0051 FE 70         [ 7]   98 	add	hl, sp
+   0053 E2 2E         [10]   99 	ld	a, (hl)
+   0055 56            [ 7]  100 	push	af
+   0056 96            [ 7]  101 	inc	sp
+   0057 1Cr00r00      [ 4]  102 	call	_isdigit
+   005A 96            [ 7]  103 	inc	sp
+   005B 25            [ 4]  104 	ld	a,l
+   005C FE 66         [ 7]  105 	or	a, a
+   005E CE 03         [ 7]  106 	jr	NZ,00102$
+                            107 ;../_ispunct.c:38: return 1;
+   0060 35 01         [11]  108 	ld	l,#0x01
+   0062 1E            [ 7]  109 	ret
+   0063                     110 00102$:
+                            111 ;../_ispunct.c:39: return 0;
+   0063 35 00         [11]  112 	ld	l,#0x00
+   0065 1E            [ 7]  113 	ret
+   0066                     114 _ispunct_end::
+                            115 	.area _CODE
+                            116 	.area _INITIALIZER
+                            117 	.area _CABS (ABS)

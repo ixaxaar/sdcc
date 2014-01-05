@@ -1,0 +1,102 @@
+                              1 ;--------------------------------------------------------------------------
+                              2 ;  crt0.s - Generic crt0.s for a Z80
+                              3 ;
+                              4 ;  Copyright (C) 2000, Michael Hope
+                              5 ;
+                              6 ;  This library is free software; you can redistribute it and/or modify it
+                              7 ;  under the terms of the GNU General Public License as published by the
+                              8 ;  Free Software Foundation; either version 2, or (at your option) any
+                              9 ;  later version.
+                             10 ;
+                             11 ;  This library is distributed in the hope that it will be useful,
+                             12 ;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                             13 ;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+                             14 ;  GNU General Public License for more details.
+                             15 ;
+                             16 ;  You should have received a copy of the GNU General Public License 
+                             17 ;  along with this library; see the file COPYING. If not, write to the
+                             18 ;  Free Software Foundation, 51 Franklin Street, Fifth Floor, Boston,
+                             19 ;   MA 02110-1301, USA.
+                             20 ;
+                             21 ;  As a special exception, if you link this library with other files,
+                             22 ;  some of which are compiled with SDCC, to produce an executable,
+                             23 ;  this library does not by itself cause the resulting executable to
+                             24 ;  be covered by the GNU General Public License. This exception does
+                             25 ;  not however invalidate any other reasons why the executable file
+                             26 ;   might be covered by the GNU General Public License.
+                             27 ;--------------------------------------------------------------------------
+                             28 
+                             29 	.module crt0
+                             30 	.globl	_main
+                             31 
+                             32 	.area	_HEADER (ABS)
+                             33 	;; Reset vector
+   0000                      34 	.org 	0
+   0000 1Ar00r01      [ 7]   35 	jp	init
+                             36 
+   0008                      37 	.org	0x08
+   0008 1F            [ 4]   38 	reti
+   0010                      39 	.org	0x10
+   0010 1F            [ 4]   40 	reti
+   0018                      41 	.org	0x18
+   0018 1F            [ 4]   42 	reti
+   0020                      43 	.org	0x20
+   0020 1F            [ 4]   44 	reti
+   0028                      45 	.org	0x28
+   0028 1F            [ 4]   46 	reti
+   0030                      47 	.org	0x30
+   0030 1F            [ 4]   48 	reti
+   0038                      49 	.org	0x38
+   0038 1F            [ 4]   50 	reti
+                             51 
+   0100                      52 	.org	0x100
+   0100                      53 init:
+                             54 	;; Stack at the top of memory.
+   0100 3E FF FF      [ 7]   55 	ld	sp,#0xffff
+                             56 
+                             57         ;; Initialise global variables
+   0103 1Cr00r00      [ 4]   58         call    gsinit
+   0106 1Cr00r00      [ 4]   59 	call	_main
+   0109 1Ar03r00      [ 7]   60 	jp	_exit
+                             61 
+                             62 	;; Ordering of segments for the linker.
+                             63 	.area	_HOME
+                             64 	.area	_CODE
+                             65 	.area	_INITIALIZER
+                             66 	.area   _GSINIT
+                             67 	.area   _GSFINAL
+                             68 
+                             69 	.area	_DATA
+                             70 	.area	_INITIALIZED
+                             71 	.area	_BSEG
+                             72 	.area   _BSS
+                             73 	.area   _HEAP
+                             74 
+                             75 	.area   _CODE
+   0000                      76 __clock::
+   0000 36 02         [10]   77 	ld	a,#2
+q                            78 	rst     0x08
+   0002 1E            [ 7]   79 	ret
+                             80 
+   0003                      81 _exit::
+                             82 	;; Exit - special code to the emulator
+   0003 36 00         [10]   83 	ld	a,#0
+q                            84 	rst     0x08
+   0005                      85 1$:
+   0005 01            [10]   86 	halt
+   0006 C8 FD         [11]   87 	jr	1$
+                             88 
+                             89 	.area   _GSINIT
+   0000                      90 gsinit::
+   0000 38r00r00      [12]   91 	ld	bc, #l__INITIALIZER
+   0003 20            [12]   92 	ld	a, b
+   0004 F9 66         [ 6]   93 	or	a, c
+   0006 C6 08         [ 7]   94 	jr	Z, gsinit_next
+   0008 39r00r00      [11]   95 	ld	de, #s__INITIALIZED
+   000B 3Ar00r00      [13]   96 	ld	hl, #s__INITIALIZER
+   000E FE 59         [ 7]   97 	ldir
+   0010                      98 gsinit_next:
+                             99 
+                            100 	.area   _GSFINAL
+   0000 1E            [ 7]  101 	ret
+                            102 

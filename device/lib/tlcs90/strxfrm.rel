@@ -1,0 +1,31 @@
+XL2
+H 9 areas 6 global symbols
+M strxfrm
+O -mtlcs90
+S .__.ABS. Def0000
+S _strncpy Ref0000
+S _strlen Ref0000
+A _CODE size 1E flags 0 addr 0
+S _strxfrm_start Def0000
+S _strxfrm_end Def001E
+S _strxfrm Def0000
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 00 00
+T 00 00
+R 00 00 00 00
+T 00 00 F2 06 4A 52 F2 06 4A 52 F2 06 4A 52 1C
+R 00 00 00 00
+T 0D 00 00 00 16 06 00 F2 04 4A 52 1C 00 00 16
+R 00 00 00 00 02 02 01 00 02 0C 02 00
+T 1A 00 02 00 92 1E
+R 00 00 00 00
+T 1E 00
+R 00 00 00 00

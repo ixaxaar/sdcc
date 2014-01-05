@@ -1,0 +1,47 @@
+XL2
+H 9 areas 4 global symbols
+M _isxdigit
+O -mtlcs90
+S .__.ABS. Def0000
+A _CODE size 38 flags 0 addr 0
+S _isxdigit Def0000
+S _isxdigit_start Def0000
+S _isxdigit_end Def0038
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 00 00
+T 00 00
+R 00 00 00 00
+T 00 00 54 3C 00 00 FE 14 F0 04 2E 6A 30 C7 07 36
+R 00 00 00 00
+T 0E 00 39 F0 04 62 CF 1C
+R 00 00 00 00
+T 14 00
+R 00 00 00 00
+T 14 00 F0 04 2E 6A 61 C7 07 36 66 F0 04 62 CF 0E
+R 00 00 00 00
+T 22 00
+R 00 00 00 00
+T 22 00 F0 04 2E 6A 41 C7 0B 36 46 F0 04 62 C7 04
+R 00 00 00 00
+T 30 00
+R 00 00 00 00
+T 30 00 35 01 C8 02
+R 00 00 00 00
+T 34 00
+R 00 00 00 00
+T 34 00 35 00
+R 00 00 00 00
+T 36 00
+R 00 00 00 00
+T 36 00 5C 1E
+R 00 00 00 00
+T 38 00
+R 00 00 00 00

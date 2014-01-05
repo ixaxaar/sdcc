@@ -1,0 +1,51 @@
+XL2
+H 9 areas 4 global symbols
+M _memcmp
+O -mtlcs90
+S .__.ABS. Def0000
+A _CODE size 6C flags 0 addr 0
+S _memcmp Def0000
+S _memcmp_start Def0000
+S _memcmp_end Def006C
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 00 00
+T 00 00
+R 00 00 00 00
+T 00 00 54 3C 00 00 FE 14 16 FE FF F0 09 2E F0 08
+R 00 00 00 00
+T 0E 00 66 CE 06 3A 00 00 1A 68 00
+R 00 00 00 00 00 09 00 00
+T 17 00
+R 00 00 00 00
+T 17 00 08 F2 0A 4A 08
+R 00 00 00 00
+T 1C 00
+R 00 00 00 00
+T 1C 00 99 22 FB 66 EB 52 00 C6 F2 06 4D E5 2E F4
+R 00 00 00 00 00 07 00 00
+T 2A 00 FE 26 F0 06 29 F0 07 28 E0 2E F4 FF 26 F0
+R 00 00 00 00
+T 38 00 FE 2E F0 FF 62 CE 13 95 52 55 5A F6 08 42
+R 00 00 00 00
+T 46 00 5A F9 35 F8 34 92 F6 08 42 1A 1C 00
+R 00 00 00 00 00 0C 00 00
+T 52 00
+R 00 00 00 00
+T 52 00 F2 06 4A E2 2B 32 00 F2 08 4A E2 2D 34 00
+R 00 00 00 00
+T 60 00 23 FD 62 2D 22 FC 63 2C
+R 00 00 00 00
+T 68 00
+R 00 00 00 00
+T 68 00 FC 3E 5C 1E
+R 00 00 00 00
+T 6C 00
+R 00 00 00 00

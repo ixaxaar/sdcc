@@ -1,0 +1,9 @@
+XL2
+H 1 areas 2 global symbols
+S .__.ABS. Def0000
+A _CODE size E flags 0 addr 0
+S _abs Def0000
+T 00 00
+R 00 00 00 00
+T 00 00 5A 59 51 52 FE 65 2D 2C F9 73 FE DD 08 1E
+R 00 00 00 00

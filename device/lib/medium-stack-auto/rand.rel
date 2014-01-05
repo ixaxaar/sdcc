@@ -1,0 +1,70 @@
+XH3
+H 1A areas 4 global symbols
+M rand
+O -mmcs51 --model-medium
+S .__.ABS. Def000000
+S __mullong Ref000000
+A _CODE size 0 flags 0 addr 0
+A RSEG size 0 flags 8 addr 0
+A RSEG0 size 0 flags 8 addr 0
+A RSEG1 size 0 flags 8 addr 0
+A REG_BANK_0 size 8 flags 4 addr 0
+A DSEG size 0 flags 0 addr 0
+A ISEG size 0 flags 0 addr 0
+A IABS size 0 flags 8 addr 0
+A BSEG size 0 flags 80 addr 0
+A PSEG size 4 flags 50 addr 0
+A XSEG size 0 flags 40 addr 0
+A XABS size 0 flags 48 addr 0
+A XISEG size 0 flags 40 addr 0
+A HOME size 0 flags 20 addr 0
+A GSINIT0 size 0 flags 20 addr 0
+A GSINIT1 size 0 flags 20 addr 0
+A GSINIT2 size 0 flags 20 addr 0
+A GSINIT3 size 0 flags 20 addr 0
+A GSINIT4 size 0 flags 20 addr 0
+A GSINIT5 size 0 flags 20 addr 0
+A GSINIT size C flags 20 addr 0
+A GSFINAL size 0 flags 20 addr 0
+A CSEG size 5C flags 20 addr 0
+S _rand Def000000
+S _srand Def00004B
+A CONST size 0 flags 20 addr 0
+A XINIT size 0 flags 20 addr 0
+A CABS size 0 flags 28 addr 0
+T 00 00 00
+R 00 00 00 02
+T 00 00 00
+R 00 00 00 03
+T 00 00 00
+R 00 00 00 04
+T 00 00 00
+R 00 00 00 09
+T 00 00 00
+R 00 00 00 09
+T 00 00 00 78 00 00 00 74 01 F2 08 E4 F2 08 F2 08
+R 00 00 00 14 F1 01 04 00 09
+T 00 00 0B F2
+R 00 00 00 14
+T 00 00 00
+R 00 00 00 16
+T 00 00 00 78 00 00 00 E2 C0 E0 08 E2 C0 E0 08 E2
+R 00 00 00 16 F1 01 04 00 09
+T 00 00 0B C0 E0 08 E2 C0 E0 90 4E 6D 75 F0 C6 74
+R 00 00 00 16
+T 00 00 18 41 12 00 00 AC 82 AD 83 AE F0 FF E5 81
+R 00 00 00 16 02 05 00 01
+T 00 00 25 24 FC F5 81 78 00 00 00 74 39 2C F2 74
+R 00 00 00 16 F1 01 08 00 09
+T 00 00 30 30 3D 08 F2 E4 3E 08 F2 E4 3F 08 F2 78
+R 00 00 00 16
+T 00 00 3D 00 00 02 E2 FC 08 E2 FD 8C 82 74 7F 5D
+R 00 00 00 16 F1 01 03 00 09
+T 00 00 48 F5 83 22
+R 00 00 00 16
+T 00 00 4B
+R 00 00 00 16
+T 00 00 4B AE 82 AF 83 78 00 00 00 EE F2 08 EF F2
+R 00 00 00 16 F1 01 08 00 09
+T 00 00 56 08 E4 F2 08 F2 22
+R 00 00 00 16

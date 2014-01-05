@@ -1,0 +1,367 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                                      4 ; This file was generated Wed Nov 27 12:27:52 2013
+                                      5 ;--------------------------------------------------------
+                                      6 	.module expf
+                                      7 	.optsdcc -mmcs51 --model-medium
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl _expf
+                                     13 ;--------------------------------------------------------
+                                     14 ; special function registers
+                                     15 ;--------------------------------------------------------
+                                     16 	.area RSEG    (ABS,DATA)
+      000000                         17 	.org 0x0000
+                                     18 ;--------------------------------------------------------
+                                     19 ; special function bits
+                                     20 ;--------------------------------------------------------
+                                     21 	.area RSEG    (ABS,DATA)
+      000000                         22 	.org 0x0000
+                                     23 ;--------------------------------------------------------
+                                     24 ; overlayable register banks
+                                     25 ;--------------------------------------------------------
+                                     26 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         27 	.ds 8
+                                     28 ;--------------------------------------------------------
+                                     29 ; internal ram data
+                                     30 ;--------------------------------------------------------
+                                     31 	.area DSEG    (DATA)
+      000000                         32 _expf_y:
+      000000                         33 	.ds 4
+      000004                         34 _n:
+      000004                         35 	.ds 1
+                                     36 ;--------------------------------------------------------
+                                     37 ; overlayable items in internal ram 
+                                     38 ;--------------------------------------------------------
+                                     39 ;--------------------------------------------------------
+                                     40 ; indirectly addressable internal ram data
+                                     41 ;--------------------------------------------------------
+                                     42 	.area ISEG    (DATA)
+                                     43 ;--------------------------------------------------------
+                                     44 ; absolute internal ram data
+                                     45 ;--------------------------------------------------------
+                                     46 	.area IABS    (ABS,DATA)
+                                     47 	.area IABS    (ABS,DATA)
+                                     48 ;--------------------------------------------------------
+                                     49 ; bit data
+                                     50 ;--------------------------------------------------------
+                                     51 	.area BSEG    (BIT)
+      000000                         52 _sign_bit:
+      000000                         53 	.ds 1
+                                     54 ;--------------------------------------------------------
+                                     55 ; paged external ram data
+                                     56 ;--------------------------------------------------------
+                                     57 	.area PSEG    (PAG,XDATA)
+                                     58 ;--------------------------------------------------------
+                                     59 ; external ram data
+                                     60 ;--------------------------------------------------------
+                                     61 	.area XSEG    (XDATA)
+                                     62 ;--------------------------------------------------------
+                                     63 ; absolute external ram data
+                                     64 ;--------------------------------------------------------
+                                     65 	.area XABS    (ABS,XDATA)
+                                     66 ;--------------------------------------------------------
+                                     67 ; external initialized ram data
+                                     68 ;--------------------------------------------------------
+                                     69 	.area XISEG   (XDATA)
+                                     70 	.area HOME    (CODE)
+                                     71 	.area GSINIT0 (CODE)
+                                     72 	.area GSINIT1 (CODE)
+                                     73 	.area GSINIT2 (CODE)
+                                     74 	.area GSINIT3 (CODE)
+                                     75 	.area GSINIT4 (CODE)
+                                     76 	.area GSINIT5 (CODE)
+                                     77 	.area GSINIT  (CODE)
+                                     78 	.area GSFINAL (CODE)
+                                     79 	.area CSEG    (CODE)
+                                     80 ;--------------------------------------------------------
+                                     81 ; global & static initialisations
+                                     82 ;--------------------------------------------------------
+                                     83 	.area HOME    (CODE)
+                                     84 	.area GSINIT  (CODE)
+                                     85 	.area GSFINAL (CODE)
+                                     86 	.area GSINIT  (CODE)
+                                     87 ;--------------------------------------------------------
+                                     88 ; Home
+                                     89 ;--------------------------------------------------------
+                                     90 	.area HOME    (CODE)
+                                     91 	.area HOME    (CODE)
+                                     92 ;--------------------------------------------------------
+                                     93 ; code
+                                     94 ;--------------------------------------------------------
+                                     95 	.area CSEG    (CODE)
+                                     96 ;------------------------------------------------------------
+                                     97 ;Allocation info for local variables in function 'expf'
+                                     98 ;------------------------------------------------------------
+                                     99 ;	expf.c:50: float expf(float x)
+                                    100 ;	-----------------------------------------
+                                    101 ;	 function expf
+                                    102 ;	-----------------------------------------
+      000000                        103 _expf:
+                           000007   104 	ar7 = 0x07
+                           000006   105 	ar6 = 0x06
+                           000005   106 	ar5 = 0x05
+                           000004   107 	ar4 = 0x04
+                           000003   108 	ar3 = 0x03
+                           000002   109 	ar2 = 0x02
+                           000001   110 	ar1 = 0x01
+                           000000   111 	ar0 = 0x00
+                                    112 ;	expf.c:248: __endasm;
+      000000 A2 E7            [12]  113 	mov c, acc.7
+      000002 92*00            [24]  114 	mov _sign_bit, c
+      000004 C2 E7            [12]  115 	clr acc.7
+      000006 F8               [12]  116 	mov r0, a
+      000007 A2 F7            [12]  117 	mov c, b.7
+      000009 33               [12]  118 	rlc a
+      00000A 24 99            [12]  119 	add a, #153
+      00000C 40 0B            [24]  120 	jc expf_not_zero
+      00000E 90 00 00         [24]  121 	mov dptr, #0
+      000011 75 F0 80         [24]  122 	mov b, #0x80
+      000014 74 3F            [12]  123 	mov a, #0x3F
+      000016 02r01r3A         [24]  124 	ljmp expf_exit
+      000019                        125 	expf_not_zero:
+      000019 75*04 00         [24]  126 	mov _n, #0
+      00001C E5 82            [12]  127 	mov a, dpl
+      00001E 24 E8            [12]  128 	add a, #0xE8
+      000020 E5 83            [12]  129 	mov a, dph
+      000022 34 8D            [12]  130 	addc a, #0x8D
+      000024 E5 F0            [12]  131 	mov a, b
+      000026 34 CE            [12]  132 	addc a, #0xCE
+      000028 E8               [12]  133 	mov a, r0
+      000029 34 C0            [12]  134 	addc a, #0xC0
+      00002B E8               [12]  135 	mov a, r0
+      00002C 50 58            [24]  136 	jnc expf_no_range_reduction
+      00002E                        137 	expf_range_reduction:
+      00002E 85 82*00         [24]  138 	mov (_expf_y + 0), dpl
+      000031 85 83*01         [24]  139 	mov (_expf_y + 1), dph
+      000034 85 F0*02         [24]  140 	mov (_expf_y + 2), b
+      000037 F5*03            [12]  141 	mov (_expf_y + 3), a
+      000039 78 3B            [12]  142 	mov r0, #0x3B
+      00003B C0 00            [24]  143 	push ar0
+      00003D 78 AA            [12]  144 	mov r0, #0xAA
+      00003F C0 00            [24]  145 	push ar0
+      000041 78 B8            [12]  146 	mov r0, #0xB8
+      000043 C0 00            [24]  147 	push ar0
+      000045 78 3F            [12]  148 	mov r0, #0x3F
+      000047 C0 00            [24]  149 	push ar0
+      000049 12r00r00         [24]  150 	lcall ___fsmul
+      00004C 15 81            [12]  151 	dec sp
+      00004E 15 81            [12]  152 	dec sp
+      000050 15 81            [12]  153 	dec sp
+      000052 15 81            [12]  154 	dec sp
+      000054 12r00r00         [24]  155 	lcall ___fs2uchar
+      000057 E5 82            [12]  156 	mov a, dpl
+      000059 F5*04            [12]  157 	mov _n, a
+      00005B 24 80            [12]  158 	add a, #128
+      00005D 50 06            [24]  159 	jnc expf_range_ok
+      00005F 12r00r00         [24]  160 	lcall fs_return_inf
+      000062 02r01r3A         [24]  161 	ljmp expf_exit
+      000065                        162 	expf_range_ok:
+      000065 78 00            [12]  163 	mov r0,#0x00
+      000067 79 80            [12]  164 	mov r1,#0x80
+      000069 7A 31            [12]  165 	mov r2,#0x31
+      00006B 7B BF            [12]  166 	mov r3,#0xBF
+      00006D 12r01r3B         [24]  167 	lcall expf_scale_and_add
+      000070 85 82*00         [24]  168 	mov (_expf_y + 0), dpl
+      000073 85 83*01         [24]  169 	mov (_expf_y + 1), dph
+      000076 85 F0*02         [24]  170 	mov (_expf_y + 2), b
+      000079 F5*03            [12]  171 	mov (_expf_y + 3), a
+      00007B 78 83            [12]  172 	mov r0,#0x83
+      00007D 79 80            [12]  173 	mov r1,#0x80
+      00007F 7A 5E            [12]  174 	mov r2,#0x5E
+      000081 7B 39            [12]  175 	mov r3,#0x39
+      000083 12r01r3B         [24]  176 	lcall expf_scale_and_add
+      000086                        177 	expf_no_range_reduction:
+      000086                        178 	expf_cordic_begin:
+      000086 A2 F7            [12]  179 	mov c, b.7
+      000088 33               [12]  180 	rlc a
+      000089 D2 F7            [12]  181 	setb b.7
+      00008B A9 82            [24]  182 	mov r1, dpl
+      00008D AA 83            [24]  183 	mov r2, dph
+      00008F AB F0            [24]  184 	mov r3, b
+      000091 7C 00            [12]  185 	mov r4, #0
+      000093 B4 79 02         [24]  186 	cjne a, #121, exp_lshift
+      000096 80 0F            [24]  187 	sjmp exp_noshift
+      000098                        188 	exp_lshift:
+      000098 40 07            [24]  189 	jc exp_rshift
+      00009A 24 87            [12]  190 	add a, #135
+      00009C 12r01r73         [24]  191 	lcall fs_lshift_a
+      00009F 80 06            [24]  192 	sjmp exp_noshift
+      0000A1                        193 	exp_rshift:
+      0000A1 F4               [12]  194 	cpl a
+      0000A2 24 7A            [12]  195 	add a, #122
+      0000A4 12r00r00         [24]  196 	lcall fs_rshift_a
+      0000A7                        197 	exp_noshift:
+      0000A7 E4               [12]  198 	clr a
+      0000A8 F5*00            [12]  199 	mov (_expf_y + 0), a
+      0000AA F5*01            [12]  200 	mov (_expf_y + 1), a
+      0000AC F5*02            [12]  201 	mov (_expf_y + 2), a
+      0000AE 75*03 20         [24]  202 	mov (_expf_y + 3), #0x20
+      0000B1 90r00r00         [24]  203 	mov dptr, #__fs_natural_log_table
+      0000B4 F8               [12]  204 	mov r0, a
+      0000B5                        205 	exp_cordic_loop:
+      0000B5 E4               [12]  206 	clr a
+      0000B6 93               [24]  207 	movc a, @a+dptr
+      0000B7 F5 F0            [12]  208 	mov b, a
+      0000B9 A3               [24]  209 	inc dptr
+      0000BA E4               [12]  210 	clr a
+      0000BB 93               [24]  211 	movc a, @a+dptr
+      0000BC FD               [12]  212 	mov r5, a
+      0000BD A3               [24]  213 	inc dptr
+      0000BE E4               [12]  214 	clr a
+      0000BF 93               [24]  215 	movc a, @a+dptr
+      0000C0 FE               [12]  216 	mov r6, a
+      0000C1 A3               [24]  217 	inc dptr
+      0000C2 E4               [12]  218 	clr a
+      0000C3 93               [24]  219 	movc a, @a+dptr
+      0000C4 FF               [12]  220 	mov r7, a
+      0000C5 A3               [24]  221 	inc dptr
+      0000C6 C3               [12]  222 	clr c
+      0000C7 E9               [12]  223 	mov a, r1
+      0000C8 95 F0            [12]  224 	subb a, b
+      0000CA EA               [12]  225 	mov a, r2
+      0000CB 9D               [12]  226 	subb a, r5
+      0000CC EB               [12]  227 	mov a, r3
+      0000CD 9E               [12]  228 	subb a, r6
+      0000CE EC               [12]  229 	mov a, r4
+      0000CF 9F               [12]  230 	subb a, r7
+      0000D0 40 30            [24]  231 	jc exp_cordic_skip
+      0000D2 C3               [12]  232 	clr c
+      0000D3 E9               [12]  233 	mov a, r1
+      0000D4 95 F0            [12]  234 	subb a, b
+      0000D6 F9               [12]  235 	mov r1, a
+      0000D7 EA               [12]  236 	mov a, r2
+      0000D8 9D               [12]  237 	subb a, r5
+      0000D9 FA               [12]  238 	mov r2, a
+      0000DA EB               [12]  239 	mov a, r3
+      0000DB 9E               [12]  240 	subb a, r6
+      0000DC FB               [12]  241 	mov r3, a
+      0000DD EC               [12]  242 	mov a, r4
+      0000DE 9F               [12]  243 	subb a, r7
+      0000DF FC               [12]  244 	mov r4, a
+      0000E0 85*00 F0         [24]  245 	mov b, (_expf_y + 0)
+      0000E3 AD*01            [24]  246 	mov r5, (_expf_y + 1)
+      0000E5 AE*02            [24]  247 	mov r6, (_expf_y + 2)
+      0000E7 AF*03            [24]  248 	mov r7, (_expf_y + 3)
+      0000E9 E8               [12]  249 	mov a, r0
+      0000EA 12r00r00         [24]  250 	lcall __fs_cordic_rshift_r765_unsigned
+      0000ED E5*00            [12]  251 	mov a, (_expf_y + 0)
+      0000EF 25 F0            [12]  252 	add a, b
+      0000F1 F5*00            [12]  253 	mov (_expf_y + 0), a
+      0000F3 E5*01            [12]  254 	mov a, (_expf_y + 1)
+      0000F5 3D               [12]  255 	addc a, r5
+      0000F6 F5*01            [12]  256 	mov (_expf_y + 1), a
+      0000F8 E5*02            [12]  257 	mov a, (_expf_y + 2)
+      0000FA 3E               [12]  258 	addc a, r6
+      0000FB F5*02            [12]  259 	mov (_expf_y + 2), a
+      0000FD E5*03            [12]  260 	mov a, (_expf_y + 3)
+      0000FF 3F               [12]  261 	addc a, r7
+      000100 F5*03            [12]  262 	mov (_expf_y + 3), a
+      000102                        263 	exp_cordic_skip:
+      000102 08               [12]  264 	inc r0
+      000103 B8 1B AF         [24]  265 	cjne r0, #27, exp_cordic_loop
+      000106 AC*03            [24]  266 	mov r4, (_expf_y + 3)
+      000108 AB*02            [24]  267 	mov r3, (_expf_y + 2)
+      00010A AA*01            [24]  268 	mov r2, (_expf_y + 1)
+      00010C A9*00            [24]  269 	mov r1, (_expf_y + 0)
+      00010E 12r00r00         [24]  270 	lcall fs_normalize_a
+      000111 74 7F            [12]  271 	mov a, #127
+      000113 25*04            [12]  272 	add a, _n
+      000115 F5 82            [12]  273 	mov dpl, a
+      000117 12r00r00         [24]  274 	lcall fs_round_and_return
+      00011A 30*00 1B         [24]  275 	jnb _sign_bit, expf_done
+      00011D C0 82            [24]  276 	push dpl
+      00011F C0 83            [24]  277 	push dph
+      000121 C0 F0            [24]  278 	push b
+      000123 C0 E0            [24]  279 	push acc
+      000125 90 00 00         [24]  280 	mov dptr, #0
+      000128 75 F0 80         [24]  281 	mov b, #0x80
+      00012B 74 3F            [12]  282 	mov a, #0x3F
+      00012D 12r00r00         [24]  283 	lcall ___fsdiv
+      000130 15 81            [12]  284 	dec sp
+      000132 15 81            [12]  285 	dec sp
+      000134 15 81            [12]  286 	dec sp
+      000136 15 81            [12]  287 	dec sp
+      000138                        288 	expf_done:
+      000138 C2 E7            [12]  289 	clr acc.7
+      00013A                        290 	expf_exit:
+      00013A 22               [24]  291 	ret
+                                    292 ;------------------------------------------------------------
+                                    293 ;Allocation info for local variables in function 'dummy1'
+                                    294 ;------------------------------------------------------------
+                                    295 ;	expf.c:252: static void dummy1(void) __naked
+                                    296 ;	-----------------------------------------
+                                    297 ;	 function dummy1
+                                    298 ;	-----------------------------------------
+      00013B                        299 _dummy1:
+                                    300 ;	naked function: no prologue.
+                                    301 ;	expf.c:282: __endasm;
+                                    302 	.globl fs_lshift_a
+      00013B                        303 	expf_scale_and_add:
+      00013B C0 00            [24]  304 	push ar0
+      00013D C0 01            [24]  305 	push ar1
+      00013F C0 02            [24]  306 	push ar2
+      000141 C0 03            [24]  307 	push ar3
+      000143 85*04 82         [24]  308 	mov dpl, _n
+      000146 12r00r00         [24]  309 	lcall ___uchar2fs
+      000149 12r00r00         [24]  310 	lcall ___fsmul
+      00014C 15 81            [12]  311 	dec sp
+      00014E 15 81            [12]  312 	dec sp
+      000150 15 81            [12]  313 	dec sp
+      000152 15 81            [12]  314 	dec sp
+      000154 C0 82            [24]  315 	push dpl
+      000156 C0 83            [24]  316 	push dph
+      000158 C0 F0            [24]  317 	push b
+      00015A C0 E0            [24]  318 	push acc
+      00015C 85*00 82         [24]  319 	mov dpl, (_expf_y + 0)
+      00015F 85*01 83         [24]  320 	mov dph, (_expf_y + 1)
+      000162 85*02 F0         [24]  321 	mov b, (_expf_y + 2)
+      000165 E5*03            [12]  322 	mov a, (_expf_y + 3)
+      000167 12r00r00         [24]  323 	lcall ___fsadd
+      00016A 15 81            [12]  324 	dec sp
+      00016C 15 81            [12]  325 	dec sp
+      00016E 15 81            [12]  326 	dec sp
+      000170 15 81            [12]  327 	dec sp
+      000172 22               [24]  328 	ret
+                                    329 ;	naked function: no epilogue.
+                                    330 ;------------------------------------------------------------
+                                    331 ;Allocation info for local variables in function 'dummy'
+                                    332 ;------------------------------------------------------------
+                                    333 ;	expf.c:285: static void dummy(void) __naked
+                                    334 ;	-----------------------------------------
+                                    335 ;	 function dummy
+                                    336 ;	-----------------------------------------
+      000173                        337 _dummy:
+                                    338 ;	naked function: no prologue.
+                                    339 ;	expf.c:311: __endasm;
+                                    340 	.globl fs_lshift_a
+      000173                        341 	fs_lshift_a:
+      000173 60 14            [24]  342 	jz fs_lshift_done
+      000175 C0 00            [24]  343 	push ar0
+      000177 F8               [12]  344 	mov r0, a
+      000178                        345 	fs_lshift_loop:
+      000178 C3               [12]  346 	clr c
+      000179 E9               [12]  347 	mov a, r1
+      00017A 33               [12]  348 	rlc a
+      00017B F9               [12]  349 	mov r1, a
+      00017C EA               [12]  350 	mov a, r2
+      00017D 33               [12]  351 	rlc a
+      00017E FA               [12]  352 	mov r2, a
+      00017F EB               [12]  353 	mov a, r3
+      000180 33               [12]  354 	rlc a
+      000181 FB               [12]  355 	mov r3, a
+      000182 EC               [12]  356 	mov a, r4
+      000183 33               [12]  357 	rlc a
+      000184 FC               [12]  358 	mov r4, a
+      000185 D8 F1            [24]  359 	djnz r0, fs_lshift_loop
+      000187 D0 00            [24]  360 	pop ar0
+      000189                        361 	fs_lshift_done:
+      000189 22               [24]  362 	ret
+                                    363 ;	naked function: no epilogue.
+                                    364 	.area CSEG    (CODE)
+                                    365 	.area CONST   (CODE)
+                                    366 	.area XINIT   (CODE)
+                                    367 	.area CABS    (ABS,CODE)

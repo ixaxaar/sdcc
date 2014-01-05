@@ -1,0 +1,205 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                                      4 ; This file was generated Wed Nov 27 12:28:53 2013
+                                      5 ;--------------------------------------------------------
+                                      6 	.module _realloc
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl __sdcc_find_memheader
+                                     12 	.globl _memmove
+                                     13 	.globl _memcpy
+                                     14 	.globl _free
+                                     15 	.globl _malloc
+                                     16 	.globl _realloc
+                                     17 ;--------------------------------------------------------
+                                     18 ; ram data
+                                     19 ;--------------------------------------------------------
+                                     20 	.area DATA
+                                     21 ;--------------------------------------------------------
+                                     22 ; ram data
+                                     23 ;--------------------------------------------------------
+                                     24 	.area INITIALIZED
+                                     25 ;--------------------------------------------------------
+                                     26 ; absolute external ram data
+                                     27 ;--------------------------------------------------------
+                                     28 	.area DABS (ABS)
+                                     29 ;--------------------------------------------------------
+                                     30 ; global & static initialisations
+                                     31 ;--------------------------------------------------------
+                                     32 	.area HOME
+                                     33 	.area GSINIT
+                                     34 	.area GSFINAL
+                                     35 	.area GSINIT
+                                     36 ;--------------------------------------------------------
+                                     37 ; Home
+                                     38 ;--------------------------------------------------------
+                                     39 	.area HOME
+                                     40 	.area HOME
+                                     41 ;--------------------------------------------------------
+                                     42 ; code
+                                     43 ;--------------------------------------------------------
+                                     44 	.area CODE
+                                     45 ;	../_realloc.c: 84: void __xdata * realloc (void * p, size_t size)
+                                     46 ;	-----------------------------------------
+                                     47 ;	 function realloc
+                                     48 ;	-----------------------------------------
+      000000                         49 _realloc:
+      000000 52 16            [ 2]   50 	sub	sp, #22
+                                     51 ;	../_realloc.c: 142: }
+      000002 9B               [ 1]   52 	sim
+                                     53 ;	../_realloc.c: 92: pthis = _sdcc_find_memheader(p);
+      000003 1E 19            [ 2]   54 	ldw	x, (0x19, sp)
+      000005 89               [ 2]   55 	pushw	x
+      000006 CDr00r00         [ 4]   56 	call	__sdcc_find_memheader
+      000009 5B 02            [ 2]   57 	addw	sp, #2
+      00000B 1F 05            [ 2]   58 	ldw	(0x05, sp), x
+                                     59 ;	../_realloc.c: 93: if (pthis)
+      00000D 1E 05            [ 2]   60 	ldw	x, (0x05, sp)
+      00000F 26 03            [ 1]   61 	jrne	00142$
+      000011 CCr00rE0         [ 2]   62 	jp	00114$
+      000014                         63 00142$:
+                                     64 ;	../_realloc.c: 95: if (size > (0xFFFF-HEADER_SIZE))
+      000014 1E 1B            [ 2]   65 	ldw	x, (0x1b, sp)
+      000016 A3 FF F9         [ 2]   66 	cpw	x, #0xfff9
+      000019 23 06            [ 2]   67 	jrule	00111$
+                                     68 ;	../_realloc.c: 97: ret = (void __xdata *) NULL; //To prevent overflow in next line
+      00001B 5F               [ 1]   69 	clrw	x
+      00001C 1F 01            [ 2]   70 	ldw	(0x01, sp), x
+      00001E CCr00rEA         [ 2]   71 	jp	00115$
+      000021                         72 00111$:
+                                     73 ;	../_realloc.c: 101: size += HEADER_SIZE; //We need a memory for header too
+      000021 1E 1B            [ 2]   74 	ldw	x, (0x1b, sp)
+      000023 1C 00 06         [ 2]   75 	addw	x, #0x0006
+      000026 1F 1B            [ 2]   76 	ldw	(0x1b, sp), x
+                                     77 ;	../_realloc.c: 103: if ((((unsigned int)pthis->next) - ((unsigned int)pthis)) >= size)
+      000028 1E 05            [ 2]   78 	ldw	x, (0x05, sp)
+      00002A FE               [ 2]   79 	ldw	x, (x)
+      00002B 1F 15            [ 2]   80 	ldw	(0x15, sp), x
+      00002D 16 15            [ 2]   81 	ldw	y, (0x15, sp)
+      00002F 1E 05            [ 2]   82 	ldw	x, (0x05, sp)
+      000031 1F 13            [ 2]   83 	ldw	(0x13, sp), x
+      000033 72 F2 13         [ 2]   84 	subw	y, (0x13, sp)
+                                     85 ;	../_realloc.c: 105: pthis->len = size;
+      000036 1E 05            [ 2]   86 	ldw	x, (0x05, sp)
+      000038 1C 00 04         [ 2]   87 	addw	x, #0x0004
+      00003B 1F 11            [ 2]   88 	ldw	(0x11, sp), x
+                                     89 ;	../_realloc.c: 103: if ((((unsigned int)pthis->next) - ((unsigned int)pthis)) >= size)
+      00003D 93               [ 1]   90 	ldw	x, y
+      00003E 13 1B            [ 2]   91 	cpw	x, (0x1b, sp)
+      000040 25 0C            [ 1]   92 	jrc	00108$
+                                     93 ;	../_realloc.c: 105: pthis->len = size;
+      000042 1E 11            [ 2]   94 	ldw	x, (0x11, sp)
+      000044 16 1B            [ 2]   95 	ldw	y, (0x1b, sp)
+      000046 FF               [ 2]   96 	ldw	(x), y
+                                     97 ;	../_realloc.c: 106: ret = p;
+      000047 16 19            [ 2]   98 	ldw	y, (0x19, sp)
+      000049 17 01            [ 2]   99 	ldw	(0x01, sp), y
+      00004B CCr00rEA         [ 2]  100 	jp	00115$
+      00004E                        101 00108$:
+                                    102 ;	../_realloc.c: 110: if ((_sdcc_prev_memheader) &&
+      00004E CEu00u00         [ 2]  103 	ldw	x, __sdcc_prev_memheader+0
+      000051 27 5B            [ 1]  104 	jreq	00104$
+                                    105 ;	../_realloc.c: 111: ((((unsigned int)pthis->next) -
+      000053 16 15            [ 2]  106 	ldw	y, (0x15, sp)
+                                    107 ;	../_realloc.c: 112: ((unsigned int)_sdcc_prev_memheader) -
+      000055 CEu00u00         [ 2]  108 	ldw	x, __sdcc_prev_memheader+0
+      000058 1F 0F            [ 2]  109 	ldw	(0x0f, sp), x
+      00005A 72 F2 0F         [ 2]  110 	subw	y, (0x0f, sp)
+                                    111 ;	../_realloc.c: 113: _sdcc_prev_memheader->len) >= size))
+      00005D CEu00u00         [ 2]  112 	ldw	x, __sdcc_prev_memheader+0
+      000060 1F 0D            [ 2]  113 	ldw	(0x0d, sp), x
+      000062 1E 0D            [ 2]  114 	ldw	x, (0x0d, sp)
+      000064 EE 04            [ 2]  115 	ldw	x, (0x4, x)
+      000066 1F 0B            [ 2]  116 	ldw	(0x0b, sp), x
+      000068 72 F2 0B         [ 2]  117 	subw	y, (0x0b, sp)
+      00006B 93               [ 1]  118 	ldw	x, y
+      00006C 13 1B            [ 2]  119 	cpw	x, (0x1b, sp)
+      00006E 25 3E            [ 1]  120 	jrc	00104$
+                                    121 ;	../_realloc.c: 115: pnew = (MEMHEADER __xdata * )((char __xdata *)_sdcc_prev_memheader + _sdcc_prev_memheader->len);
+      000070 CEu00u00         [ 2]  122 	ldw	x, __sdcc_prev_memheader+0
+      000073 72 FB 0B         [ 2]  123 	addw	x, (0x0b, sp)
+      000076 1F 03            [ 2]  124 	ldw	(0x03, sp), x
+                                    125 ;	../_realloc.c: 116: _sdcc_prev_memheader->next = pnew;
+      000078 1E 0D            [ 2]  126 	ldw	x, (0x0d, sp)
+      00007A 16 03            [ 2]  127 	ldw	y, (0x03, sp)
+      00007C FF               [ 2]  128 	ldw	(x), y
+                                    129 ;	../_realloc.c: 119: pthis->next->prev = pnew;
+      00007D 1E 05            [ 2]  130 	ldw	x, (0x05, sp)
+      00007F FE               [ 2]  131 	ldw	x, (x)
+      000080 5C               [ 2]  132 	incw	x
+      000081 5C               [ 2]  133 	incw	x
+      000082 16 03            [ 2]  134 	ldw	y, (0x03, sp)
+      000084 FF               [ 2]  135 	ldw	(x), y
+                                    136 ;	../_realloc.c: 122: memmove(pnew, pthis, pthis->len);
+      000085 1E 11            [ 2]  137 	ldw	x, (0x11, sp)
+      000087 FE               [ 2]  138 	ldw	x, (x)
+      000088 7B 05            [ 1]  139 	ld	a, (0x05, sp)
+      00008A 6B 09            [ 1]  140 	ld	(0x09, sp), a
+      00008C 7B 06            [ 1]  141 	ld	a, (0x06, sp)
+      00008E 16 03            [ 2]  142 	ldw	y, (0x03, sp)
+      000090 17 07            [ 2]  143 	ldw	(0x07, sp), y
+      000092 89               [ 2]  144 	pushw	x
+      000093 88               [ 1]  145 	push	a
+      000094 7B 0C            [ 1]  146 	ld	a, (0x0c, sp)
+      000096 88               [ 1]  147 	push	a
+      000097 1E 0B            [ 2]  148 	ldw	x, (0x0b, sp)
+      000099 89               [ 2]  149 	pushw	x
+      00009A CDr00r00         [ 4]  150 	call	_memmove
+      00009D 5B 06            [ 2]  151 	addw	sp, #6
+                                    152 ;	../_realloc.c: 123: pnew->len = size;
+      00009F 1E 03            [ 2]  153 	ldw	x, (0x03, sp)
+      0000A1 16 1B            [ 2]  154 	ldw	y, (0x1b, sp)
+      0000A3 EF 04            [ 2]  155 	ldw	(0x0004, x), y
+                                    156 ;	../_realloc.c: 124: ret = MEM(pnew);
+      0000A5 1E 03            [ 2]  157 	ldw	x, (0x03, sp)
+      0000A7 1C 00 06         [ 2]  158 	addw	x, #0x0006
+      0000AA 1F 01            [ 2]  159 	ldw	(0x01, sp), x
+      0000AC 20 3C            [ 2]  160 	jra	00115$
+      0000AE                        161 00104$:
+                                    162 ;	../_realloc.c: 128: ret = malloc(size - HEADER_SIZE);
+      0000AE 1E 1B            [ 2]  163 	ldw	x, (0x1b, sp)
+      0000B0 1D 00 06         [ 2]  164 	subw	x, #0x0006
+      0000B3 89               [ 2]  165 	pushw	x
+      0000B4 CDr00r00         [ 4]  166 	call	_malloc
+      0000B7 5B 02            [ 2]  167 	addw	sp, #2
+      0000B9 1F 01            [ 2]  168 	ldw	(0x01, sp), x
+                                    169 ;	../_realloc.c: 129: if (ret)
+      0000BB 1E 01            [ 2]  170 	ldw	x, (0x01, sp)
+      0000BD 27 2B            [ 1]  171 	jreq	00115$
+                                    172 ;	../_realloc.c: 131: memcpy(ret, MEM(pthis), pthis->len - HEADER_SIZE);
+      0000BF 1E 11            [ 2]  173 	ldw	x, (0x11, sp)
+      0000C1 FE               [ 2]  174 	ldw	x, (x)
+      0000C2 1D 00 06         [ 2]  175 	subw	x, #0x0006
+      0000C5 16 05            [ 2]  176 	ldw	y, (0x05, sp)
+      0000C7 72 A9 00 06      [ 2]  177 	addw	y, #0x0006
+      0000CB 89               [ 2]  178 	pushw	x
+      0000CC 90 89            [ 2]  179 	pushw	y
+      0000CE 1E 05            [ 2]  180 	ldw	x, (0x05, sp)
+      0000D0 89               [ 2]  181 	pushw	x
+      0000D1 CDr00r00         [ 4]  182 	call	_memcpy
+      0000D4 5B 06            [ 2]  183 	addw	sp, #6
+                                    184 ;	../_realloc.c: 132: free(p);
+      0000D6 1E 19            [ 2]  185 	ldw	x, (0x19, sp)
+      0000D8 89               [ 2]  186 	pushw	x
+      0000D9 CDr00r00         [ 4]  187 	call	_free
+      0000DC 5B 02            [ 2]  188 	addw	sp, #2
+      0000DE 20 0A            [ 2]  189 	jra	00115$
+      0000E0                        190 00114$:
+                                    191 ;	../_realloc.c: 140: ret = malloc(size);
+      0000E0 1E 1B            [ 2]  192 	ldw	x, (0x1b, sp)
+      0000E2 89               [ 2]  193 	pushw	x
+      0000E3 CDr00r00         [ 4]  194 	call	_malloc
+      0000E6 5B 02            [ 2]  195 	addw	sp, #2
+      0000E8 1F 01            [ 2]  196 	ldw	(0x01, sp), x
+      0000EA                        197 00115$:
+      0000EA 9A               [ 1]  198 	rim
+                                    199 ;	../_realloc.c: 143: return ret;
+      0000EB 1E 01            [ 2]  200 	ldw	x, (0x01, sp)
+      0000ED 5B 16            [ 2]  201 	addw	sp, #22
+      0000EF 81               [ 4]  202 	ret
+                                    203 	.area CODE
+                                    204 	.area INITIALIZER
+                                    205 	.area CABS (ABS)

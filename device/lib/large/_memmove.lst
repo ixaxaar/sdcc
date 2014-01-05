@@ -1,0 +1,330 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.3.1 #8898 (Nov 27 2013) (Linux)
+                                      4 ; This file was generated Wed Nov 27 12:27:58 2013
+                                      5 ;--------------------------------------------------------
+                                      6 	.module _memmove
+                                      7 	.optsdcc -mmcs51 --model-large
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl _memmove_PARM_3
+                                     13 	.globl _memmove_PARM_2
+                                     14 	.globl _memmove
+                                     15 ;--------------------------------------------------------
+                                     16 ; special function registers
+                                     17 ;--------------------------------------------------------
+                                     18 	.area RSEG    (ABS,DATA)
+      000000                         19 	.org 0x0000
+                                     20 ;--------------------------------------------------------
+                                     21 ; special function bits
+                                     22 ;--------------------------------------------------------
+                                     23 	.area RSEG    (ABS,DATA)
+      000000                         24 	.org 0x0000
+                                     25 ;--------------------------------------------------------
+                                     26 ; overlayable register banks
+                                     27 ;--------------------------------------------------------
+                                     28 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         29 	.ds 8
+                                     30 ;--------------------------------------------------------
+                                     31 ; internal ram data
+                                     32 ;--------------------------------------------------------
+                                     33 	.area DSEG    (DATA)
+                                     34 ;--------------------------------------------------------
+                                     35 ; overlayable items in internal ram 
+                                     36 ;--------------------------------------------------------
+                                     37 	.area	OSEG    (OVR,DATA)
+      000000                         38 _memmove_sloc0_1_0:
+      000000                         39 	.ds 3
+      000003                         40 _memmove_sloc1_1_0:
+      000003                         41 	.ds 4
+      000007                         42 _memmove_sloc2_1_0:
+      000007                         43 	.ds 2
+                                     44 ;--------------------------------------------------------
+                                     45 ; indirectly addressable internal ram data
+                                     46 ;--------------------------------------------------------
+                                     47 	.area ISEG    (DATA)
+                                     48 ;--------------------------------------------------------
+                                     49 ; absolute internal ram data
+                                     50 ;--------------------------------------------------------
+                                     51 	.area IABS    (ABS,DATA)
+                                     52 	.area IABS    (ABS,DATA)
+                                     53 ;--------------------------------------------------------
+                                     54 ; bit data
+                                     55 ;--------------------------------------------------------
+                                     56 	.area BSEG    (BIT)
+                                     57 ;--------------------------------------------------------
+                                     58 ; paged external ram data
+                                     59 ;--------------------------------------------------------
+                                     60 	.area PSEG    (PAG,XDATA)
+                                     61 ;--------------------------------------------------------
+                                     62 ; external ram data
+                                     63 ;--------------------------------------------------------
+                                     64 	.area XSEG    (XDATA)
+      000000                         65 _memmove_PARM_2:
+      000000                         66 	.ds 3
+      000003                         67 _memmove_PARM_3:
+      000003                         68 	.ds 2
+      000005                         69 _memmove_dst_1_21:
+      000005                         70 	.ds 3
+                                     71 ;--------------------------------------------------------
+                                     72 ; absolute external ram data
+                                     73 ;--------------------------------------------------------
+                                     74 	.area XABS    (ABS,XDATA)
+                                     75 ;--------------------------------------------------------
+                                     76 ; external initialized ram data
+                                     77 ;--------------------------------------------------------
+                                     78 	.area XISEG   (XDATA)
+                                     79 	.area HOME    (CODE)
+                                     80 	.area GSINIT0 (CODE)
+                                     81 	.area GSINIT1 (CODE)
+                                     82 	.area GSINIT2 (CODE)
+                                     83 	.area GSINIT3 (CODE)
+                                     84 	.area GSINIT4 (CODE)
+                                     85 	.area GSINIT5 (CODE)
+                                     86 	.area GSINIT  (CODE)
+                                     87 	.area GSFINAL (CODE)
+                                     88 	.area CSEG    (CODE)
+                                     89 ;--------------------------------------------------------
+                                     90 ; global & static initialisations
+                                     91 ;--------------------------------------------------------
+                                     92 	.area HOME    (CODE)
+                                     93 	.area GSINIT  (CODE)
+                                     94 	.area GSFINAL (CODE)
+                                     95 	.area GSINIT  (CODE)
+                                     96 ;--------------------------------------------------------
+                                     97 ; Home
+                                     98 ;--------------------------------------------------------
+                                     99 	.area HOME    (CODE)
+                                    100 	.area HOME    (CODE)
+                                    101 ;--------------------------------------------------------
+                                    102 ; code
+                                    103 ;--------------------------------------------------------
+                                    104 	.area CSEG    (CODE)
+                                    105 ;------------------------------------------------------------
+                                    106 ;Allocation info for local variables in function 'memmove'
+                                    107 ;------------------------------------------------------------
+                                    108 ;src                       Allocated with name '_memmove_PARM_2'
+                                    109 ;acount                    Allocated with name '_memmove_PARM_3'
+                                    110 ;dst                       Allocated with name '_memmove_dst_1_21'
+                                    111 ;ret                       Allocated with name '_memmove_ret_1_22'
+                                    112 ;d                         Allocated with name '_memmove_d_1_22'
+                                    113 ;s                         Allocated with name '_memmove_s_1_22'
+                                    114 ;sloc0                     Allocated with name '_memmove_sloc0_1_0'
+                                    115 ;sloc1                     Allocated with name '_memmove_sloc1_1_0'
+                                    116 ;sloc2                     Allocated with name '_memmove_sloc2_1_0'
+                                    117 ;------------------------------------------------------------
+                                    118 ;	_memmove.c:40: void * memmove (
+                                    119 ;	-----------------------------------------
+                                    120 ;	 function memmove
+                                    121 ;	-----------------------------------------
+      000000                        122 _memmove:
+                           000007   123 	ar7 = 0x07
+                           000006   124 	ar6 = 0x06
+                           000005   125 	ar5 = 0x05
+                           000004   126 	ar4 = 0x04
+                           000003   127 	ar3 = 0x03
+                           000002   128 	ar2 = 0x02
+                           000001   129 	ar1 = 0x01
+                           000000   130 	ar0 = 0x00
+      000000 AF F0            [24]  131 	mov	r7,b
+      000002 AE 83            [24]  132 	mov	r6,dph
+      000004 E5 82            [12]  133 	mov	a,dpl
+      000006 90r00r05         [24]  134 	mov	dptr,#_memmove_dst_1_21
+      000009 F0               [24]  135 	movx	@dptr,a
+      00000A EE               [12]  136 	mov	a,r6
+      00000B A3               [24]  137 	inc	dptr
+      00000C F0               [24]  138 	movx	@dptr,a
+      00000D EF               [12]  139 	mov	a,r7
+      00000E A3               [24]  140 	inc	dptr
+      00000F F0               [24]  141 	movx	@dptr,a
+                                    142 ;	_memmove.c:46: void * ret = dst;
+      000010 90r00r05         [24]  143 	mov	dptr,#_memmove_dst_1_21
+      000013 E0               [24]  144 	movx	a,@dptr
+      000014 FD               [12]  145 	mov	r5,a
+      000015 A3               [24]  146 	inc	dptr
+      000016 E0               [24]  147 	movx	a,@dptr
+      000017 FE               [12]  148 	mov	r6,a
+      000018 A3               [24]  149 	inc	dptr
+      000019 E0               [24]  150 	movx	a,@dptr
+      00001A FF               [12]  151 	mov	r7,a
+                                    152 ;	_memmove.c:50: if ((uintptr_t)src < (uintptr_t)dst) {
+      00001B 90r00r00         [24]  153 	mov	dptr,#_memmove_PARM_2
+      00001E E0               [24]  154 	movx	a,@dptr
+      00001F F5*00            [12]  155 	mov	_memmove_sloc0_1_0,a
+      000021 A3               [24]  156 	inc	dptr
+      000022 E0               [24]  157 	movx	a,@dptr
+      000023 F5*01            [12]  158 	mov	(_memmove_sloc0_1_0 + 1),a
+      000025 A3               [24]  159 	inc	dptr
+      000026 E0               [24]  160 	movx	a,@dptr
+      000027 F5*02            [12]  161 	mov	(_memmove_sloc0_1_0 + 2),a
+      000029 85*00*03         [24]  162 	mov	_memmove_sloc1_1_0,_memmove_sloc0_1_0
+      00002C 85*01*04         [24]  163 	mov	(_memmove_sloc1_1_0 + 1),(_memmove_sloc0_1_0 + 1)
+      00002F 85*02*05         [24]  164 	mov	(_memmove_sloc1_1_0 + 2),(_memmove_sloc0_1_0 + 2)
+      000032 75*06 00         [24]  165 	mov	(_memmove_sloc1_1_0 + 3),#0x00
+      000035 8D 02            [24]  166 	mov	ar2,r5
+      000037 8E 03            [24]  167 	mov	ar3,r6
+      000039 8F 04            [24]  168 	mov	ar4,r7
+      00003B 8C 01            [24]  169 	mov	ar1,r4
+      00003D 7C 00            [12]  170 	mov	r4,#0x00
+      00003F C3               [12]  171 	clr	c
+      000040 E5*03            [12]  172 	mov	a,_memmove_sloc1_1_0
+      000042 9A               [12]  173 	subb	a,r2
+      000043 E5*04            [12]  174 	mov	a,(_memmove_sloc1_1_0 + 1)
+      000045 9B               [12]  175 	subb	a,r3
+      000046 E5*05            [12]  176 	mov	a,(_memmove_sloc1_1_0 + 2)
+      000048 99               [12]  177 	subb	a,r1
+      000049 E5*06            [12]  178 	mov	a,(_memmove_sloc1_1_0 + 3)
+      00004B 9C               [12]  179 	subb	a,r4
+      00004C 40 03            [24]  180 	jc	00129$
+      00004E 02r00rCD         [24]  181 	ljmp	00108$
+      000051                        182 00129$:
+                                    183 ;	_memmove.c:54: d = ((char *)dst)+acount-1;
+      000051 8D 02            [24]  184 	mov	ar2,r5
+      000053 8E 03            [24]  185 	mov	ar3,r6
+      000055 8F 04            [24]  186 	mov	ar4,r7
+      000057 90r00r03         [24]  187 	mov	dptr,#_memmove_PARM_3
+      00005A E0               [24]  188 	movx	a,@dptr
+      00005B F8               [12]  189 	mov	r0,a
+      00005C A3               [24]  190 	inc	dptr
+      00005D E0               [24]  191 	movx	a,@dptr
+      00005E F9               [12]  192 	mov	r1,a
+      00005F E8               [12]  193 	mov	a,r0
+      000060 2A               [12]  194 	add	a,r2
+      000061 FA               [12]  195 	mov	r2,a
+      000062 E9               [12]  196 	mov	a,r1
+      000063 3B               [12]  197 	addc	a,r3
+      000064 FB               [12]  198 	mov	r3,a
+      000065 1A               [12]  199 	dec	r2
+      000066 BA FF 01         [24]  200 	cjne	r2,#0xFF,00130$
+      000069 1B               [12]  201 	dec	r3
+      00006A                        202 00130$:
+                                    203 ;	_memmove.c:55: s = ((char *)src)+acount-1;
+      00006A C0 05            [24]  204 	push	ar5
+      00006C C0 06            [24]  205 	push	ar6
+      00006E C0 07            [24]  206 	push	ar7
+      000070 AD*00            [24]  207 	mov	r5,_memmove_sloc0_1_0
+      000072 AE*01            [24]  208 	mov	r6,(_memmove_sloc0_1_0 + 1)
+      000074 AF*02            [24]  209 	mov	r7,(_memmove_sloc0_1_0 + 2)
+      000076 E8               [12]  210 	mov	a,r0
+      000077 2D               [12]  211 	add	a,r5
+      000078 FD               [12]  212 	mov	r5,a
+      000079 E9               [12]  213 	mov	a,r1
+      00007A 3E               [12]  214 	addc	a,r6
+      00007B FE               [12]  215 	mov	r6,a
+      00007C ED               [12]  216 	mov	a,r5
+      00007D 24 FF            [12]  217 	add	a,#0xFF
+      00007F F5*03            [12]  218 	mov	_memmove_sloc1_1_0,a
+      000081 EE               [12]  219 	mov	a,r6
+      000082 34 FF            [12]  220 	addc	a,#0xFF
+      000084 F5*04            [12]  221 	mov	(_memmove_sloc1_1_0 + 1),a
+      000086 8F*05            [24]  222 	mov	(_memmove_sloc1_1_0 + 2),r7
+                                    223 ;	_memmove.c:56: while (acount--) {
+      000088 88*07            [24]  224 	mov	_memmove_sloc2_1_0,r0
+      00008A 89*08            [24]  225 	mov	(_memmove_sloc2_1_0 + 1),r1
+                                    226 ;	_memmove.c:71: return(ret);
+      00008C D0 07            [24]  227 	pop	ar7
+      00008E D0 06            [24]  228 	pop	ar6
+      000090 D0 05            [24]  229 	pop	ar5
+                                    230 ;	_memmove.c:56: while (acount--) {
+      000092                        231 00101$:
+      000092 A8*07            [24]  232 	mov	r0,_memmove_sloc2_1_0
+      000094 A9*08            [24]  233 	mov	r1,(_memmove_sloc2_1_0 + 1)
+      000096 15*07            [12]  234 	dec	_memmove_sloc2_1_0
+      000098 74 FF            [12]  235 	mov	a,#0xFF
+      00009A B5*07 02         [24]  236 	cjne	a,_memmove_sloc2_1_0,00131$
+      00009D 15*08            [12]  237 	dec	(_memmove_sloc2_1_0 + 1)
+      00009F                        238 00131$:
+      00009F E8               [12]  239 	mov	a,r0
+      0000A0 49               [12]  240 	orl	a,r1
+      0000A1 70 03            [24]  241 	jnz	00132$
+      0000A3 02r01r2B         [24]  242 	ljmp	00109$
+      0000A6                        243 00132$:
+                                    244 ;	_memmove.c:57: *d-- = *s--;
+      0000A6 85*03 82         [24]  245 	mov	dpl,_memmove_sloc1_1_0
+      0000A9 85*04 83         [24]  246 	mov	dph,(_memmove_sloc1_1_0 + 1)
+      0000AC 85*05 F0         [24]  247 	mov	b,(_memmove_sloc1_1_0 + 2)
+      0000AF 12r00r00         [24]  248 	lcall	__gptrget
+      0000B2 F9               [12]  249 	mov	r1,a
+      0000B3 15*03            [12]  250 	dec	_memmove_sloc1_1_0
+      0000B5 74 FF            [12]  251 	mov	a,#0xFF
+      0000B7 B5*03 02         [24]  252 	cjne	a,_memmove_sloc1_1_0,00133$
+      0000BA 15*04            [12]  253 	dec	(_memmove_sloc1_1_0 + 1)
+      0000BC                        254 00133$:
+      0000BC 8A 82            [24]  255 	mov	dpl,r2
+      0000BE 8B 83            [24]  256 	mov	dph,r3
+      0000C0 8C F0            [24]  257 	mov	b,r4
+      0000C2 E9               [12]  258 	mov	a,r1
+      0000C3 12r00r00         [24]  259 	lcall	__gptrput
+      0000C6 1A               [12]  260 	dec	r2
+      0000C7 BA FF 01         [24]  261 	cjne	r2,#0xFF,00134$
+      0000CA 1B               [12]  262 	dec	r3
+      0000CB                        263 00134$:
+      0000CB 80 C5            [24]  264 	sjmp	00101$
+      0000CD                        265 00108$:
+                                    266 ;	_memmove.c:64: d = dst;
+      0000CD 8D 02            [24]  267 	mov	ar2,r5
+      0000CF 8E 03            [24]  268 	mov	ar3,r6
+      0000D1 8F 04            [24]  269 	mov	ar4,r7
+                                    270 ;	_memmove.c:65: s = src;
+      0000D3 C0 05            [24]  271 	push	ar5
+      0000D5 C0 06            [24]  272 	push	ar6
+      0000D7 C0 07            [24]  273 	push	ar7
+      0000D9 A8*00            [24]  274 	mov	r0,_memmove_sloc0_1_0
+      0000DB A9*01            [24]  275 	mov	r1,(_memmove_sloc0_1_0 + 1)
+      0000DD AF*02            [24]  276 	mov	r7,(_memmove_sloc0_1_0 + 2)
+      0000DF 88*03            [24]  277 	mov	_memmove_sloc1_1_0,r0
+      0000E1 89*04            [24]  278 	mov	(_memmove_sloc1_1_0 + 1),r1
+      0000E3 8F*05            [24]  279 	mov	(_memmove_sloc1_1_0 + 2),r7
+                                    280 ;	_memmove.c:66: while (acount--) {
+      0000E5 90r00r03         [24]  281 	mov	dptr,#_memmove_PARM_3
+      0000E8 E0               [24]  282 	movx	a,@dptr
+      0000E9 F5*07            [12]  283 	mov	_memmove_sloc2_1_0,a
+      0000EB A3               [24]  284 	inc	dptr
+      0000EC E0               [24]  285 	movx	a,@dptr
+      0000ED F5*08            [12]  286 	mov	(_memmove_sloc2_1_0 + 1),a
+                                    287 ;	_memmove.c:71: return(ret);
+      0000EF D0 07            [24]  288 	pop	ar7
+      0000F1 D0 06            [24]  289 	pop	ar6
+      0000F3 D0 05            [24]  290 	pop	ar5
+                                    291 ;	_memmove.c:66: while (acount--) {
+      0000F5                        292 00104$:
+      0000F5 A8*07            [24]  293 	mov	r0,_memmove_sloc2_1_0
+      0000F7 A9*08            [24]  294 	mov	r1,(_memmove_sloc2_1_0 + 1)
+      0000F9 15*07            [12]  295 	dec	_memmove_sloc2_1_0
+      0000FB 74 FF            [12]  296 	mov	a,#0xFF
+      0000FD B5*07 02         [24]  297 	cjne	a,_memmove_sloc2_1_0,00135$
+      000100 15*08            [12]  298 	dec	(_memmove_sloc2_1_0 + 1)
+      000102                        299 00135$:
+      000102 E8               [12]  300 	mov	a,r0
+      000103 49               [12]  301 	orl	a,r1
+      000104 60 25            [24]  302 	jz	00109$
+                                    303 ;	_memmove.c:67: *d++ = *s++;
+      000106 85*03 82         [24]  304 	mov	dpl,_memmove_sloc1_1_0
+      000109 85*04 83         [24]  305 	mov	dph,(_memmove_sloc1_1_0 + 1)
+      00010C 85*05 F0         [24]  306 	mov	b,(_memmove_sloc1_1_0 + 2)
+      00010F 12r00r00         [24]  307 	lcall	__gptrget
+      000112 F9               [12]  308 	mov	r1,a
+      000113 A3               [24]  309 	inc	dptr
+      000114 85 82*03         [24]  310 	mov	_memmove_sloc1_1_0,dpl
+      000117 85 83*04         [24]  311 	mov	(_memmove_sloc1_1_0 + 1),dph
+      00011A 8A 82            [24]  312 	mov	dpl,r2
+      00011C 8B 83            [24]  313 	mov	dph,r3
+      00011E 8C F0            [24]  314 	mov	b,r4
+      000120 E9               [12]  315 	mov	a,r1
+      000121 12r00r00         [24]  316 	lcall	__gptrput
+      000124 A3               [24]  317 	inc	dptr
+      000125 AA 82            [24]  318 	mov	r2,dpl
+      000127 AB 83            [24]  319 	mov	r3,dph
+      000129 80 CA            [24]  320 	sjmp	00104$
+      00012B                        321 00109$:
+                                    322 ;	_memmove.c:71: return(ret);
+      00012B 8D 82            [24]  323 	mov	dpl,r5
+      00012D 8E 83            [24]  324 	mov	dph,r6
+      00012F 8F F0            [24]  325 	mov	b,r7
+      000131 22               [24]  326 	ret
+                                    327 	.area CSEG    (CODE)
+                                    328 	.area CONST   (CODE)
+                                    329 	.area XINIT   (CODE)
+                                    330 	.area CABS    (ABS,CODE)

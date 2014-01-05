@@ -1,0 +1,49 @@
+XL2
+H 9 areas 4 global symbols
+M _divulong
+O -mtlcs90
+S .__.ABS. Def0000
+A _CODE size 79 flags 0 addr 0
+S __divulong Def0000
+S __divulong_start Def0000
+S __divulong_end Def0079
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 00 00
+T 00 00
+R 00 00 00 00
+T 00 00 54 3C 00 00 FE 14 9E 38 00 00 39 00 00 F4
+R 00 00 00 00
+T 0E 00 FF 37 20
+R 00 00 00 00
+T 11 00
+R 00 00 00 00
+T 11 00 F0 07 2E FE A0 6C 01 2C 56 5E F0 04 A4 F0
+R 00 00 00 00
+T 1F 00 05 A2 F0 06 A2 F0 07 A2 F8 A4 F9 A2 FB A2
+R 00 00 00 00
+T 2D 00 FA A2 FC A8 C6 02 F8 B8
+R 00 00 00 00
+T 35 00
+R 00 00 00 00
+T 35 00 20 F0 08 62 21 F0 09 63 23 F0 0A 63 22 F0
+R 00 00 00 00
+T 43 00 0B 63 C7 17 20 F0 08 62 28 21 F0 09 63 29
+R 00 00 00 00
+T 51 00 23 F0 0A 63 2B 22 F0 0B 63 2A F0 04 B8
+R 00 00 00 00
+T 5E 00
+R 00 00 00 00
+T 5E 00 F0 FF 8F F0 FF 2E FE 66 EB 11 00 CE F0 04
+R 00 00 00 00 00 0B 00 00
+T 6C 00 2D F0 05 2C F0 06 2B F0 07 2A 96 5C 1E
+R 00 00 00 00
+T 79 00
+R 00 00 00 00
